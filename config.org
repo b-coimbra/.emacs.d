@@ -371,6 +371,15 @@ The tower of rebellion creeps upon man's world, The unspoken faith displayed bef
             dashboard-set-heading-icons t
             dashboard-set-file-icons t
             dashboard-set-navigator t)
+      (setq dashboard-navigator-buttons
+            `(;; line1
+              ((,(all-the-icons-octicon "octoface" :height 1.1 :v-adjust 0.0)
+                "Homepage"
+                "Browse homepage"
+                (lambda (&rest _) (browse-url "https://github.com/0-l/megumacs")))
+               (,(all-the-icons-faicon "refresh" :height 1.1 :v-adjust 0.0)
+                "Update" "Update Megumacs" (lambda (&rest _) (update-packages)) warning)
+               ("⚑" nil "Report BUG" (lambda (&rest _) (browse-url "https://github.com/0-l/megumacs/issues/new")) error))))
       :config
       (dashboard-setup-startup-hook))
   #+end_src
@@ -874,6 +883,7 @@ The tower of rebellion creeps upon man's world, The unspoken faith displayed bef
 
    #+begin_src emacs-lisp
      (use-package focus
+       :defer t
        :ensure t
        :hook (prog-mode . focus-mode)
        :general
