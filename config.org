@@ -72,12 +72,16 @@ The tower of rebellion creeps upon man's world, The unspoken faith displayed bef
       inhibit-compacting-font-cache t                  ; Faster navigation point (costs more memory)
       recentf-mode t                                   ; Keep recent files
       make-backup-files nil                            ; Stop creating backup files
+      display-line-numbers-type 'relative              ; Use relative line numbers
       vc-follow-symlinks t)                            ; Don't ask for confirmation when opening symlinked file
      (cd "~/")                                         ; Move to the user directory
+     (global-display-line-numbers-mode t)              ; Enable line numbers globally
      (delete-selection-mode 1)                         ; Replace region when inserting text
      (display-time-mode 1)                             ; Enable time in the mode-line
      (global-auto-revert-mode 1)                       ; Automatically revert a buffer when it changes on disk
      (fringe-mode 0)                                   ; Disable fringes
+     (electric-pair-mode t)                            ; Enable Matching delimeters
+     (electric-indent-mode t)                          ; Auto indentation
      (fset 'yes-or-no-p 'y-or-n-p)                     ; Replace yes/no prompts with y/n
      (global-subword-mode 1)                           ; Iterate through CamelCase words
      (menu-bar-mode 0)                                 ; Disable the menu bar
@@ -100,6 +104,8 @@ The tower of rebellion creeps upon man's world, The unspoken faith displayed bef
    #+begin_src emacs-lisp
      (add-hook 'focus-out-hook #'garbage-collect)
    #+end_src
+   
+   Always defer loading packages on startup.
 
 ** Load =.custom.el=
 
@@ -363,23 +369,24 @@ The tower of rebellion creeps upon man's world, The unspoken faith displayed bef
       (setq dashboard-banner-logo-title "[M E G U M A C S]"
             dashboard-startup-banner (expand-file-name "banners/megumacs.png" user-emacs-directory)
             dashboard-footer "EXPLOOOOOOOOOOSIONNN!"
-            dashboard-footer-icon (all-the-icons-wicon "meteor"
-                                                       :height 1.1
-                                                       :v-adjust -0.05
-                                                       :face 'font-lock-keyword-face)
+            dashboard-footer-icon (all-the-icons-wicon "meteor" :height 1.1 :v-adjust -0.05 :face 'font-lock-keyword-face)
             dashboard-center-content t
             dashboard-set-heading-icons t
             dashboard-set-file-icons t
             dashboard-set-navigator t)
       (setq dashboard-navigator-buttons
-            `(;; line1
-              ((,(all-the-icons-octicon "octoface" :height 1.1 :v-adjust 0.0)
+            `(((,(all-the-icons-octicon "octoface" :height 1.1 :v-adjust 0.0)
                 "Homepage"
                 "Browse homepage"
                 (lambda (&rest _) (browse-url "https://github.com/0-l/megumacs")))
                (,(all-the-icons-faicon "refresh" :height 1.1 :v-adjust 0.0)
-                "Update" "Update Megumacs" (lambda (&rest _) (update-packages)) warning)
-               ("⚑" nil "Report BUG" (lambda (&rest _) (browse-url "https://github.com/0-l/megumacs/issues/new")) error))))
+                "Update"
+                "Update Megumacs"
+                (lambda (&rest _) (update-packages)) warning)
+               ("⚑"
+                nil
+                "Report BUG"
+                (lambda (&rest _) (browse-url "https://github.com/0-l/megumacs/issues/new")) error))))
       :config
       (dashboard-setup-startup-hook))
   #+end_src
@@ -544,10 +551,9 @@ The tower of rebellion creeps upon man's world, The unspoken faith displayed bef
          "p" '(:ignore t :which-key "project")
          ;; Toggles
          "t" '(:ignore t :which-key "toggles")
-         "tn" 'nlinum-mode
+         "tn" 'display-line-numbers-mode
          "tL" 'visual-line-mode
          "tu" 'lsp-ui-mode
-         "ta" 'aggressive-indent-mode
          ;; Themes
          "T" '(:ignore t :which-key "themes")
          "Ts" 'counsel-load-theme
@@ -559,8 +565,10 @@ The tower of rebellion creeps upon man's world, The unspoken faith displayed bef
          "wk" 'evil-window-up
          "wl" 'evil-window-right
          "wh" 'evil-window-left
-         "ws" 'evil-window-split
-         "wv" 'evil-window-vsplit
+         ;; "ws" 'evil-window-split
+         ;; "wv" 'evil-window-vsplit
+         "ws" 'split-and-follow-horizontally
+         "wv" 'split-and-follow-vertically
          "wd" 'evil-window-delete
          "wc" 'evil-window-delete
          "wH" 'evil-window-move-far-left
@@ -634,16 +642,19 @@ The tower of rebellion creeps upon man's world, The unspoken faith displayed bef
    A tree layout file explorer.
 
    #+begin_src emacs-lisp
-    (use-package treemacs
-      :ensure t
-      :defer t
-      :general
-      (nmap
-        :prefix "<SPC>"
-        "tt" 'treemacs)
-      :config
-      (setq treemacs-no-png-images t
-            treemacs-width 25))
+     (use-package treemacs
+       :ensure t
+       :defer t
+       :general
+       (nmap
+         :prefix "<SPC>"
+         "tt" 'treemacs)
+       :config
+       (setq treemacs-no-png-images t
+             treemacs-width 25))
+
+     (use-package treemacs-evil
+       :ensure t)
    #+end_src
 
 ** [[https://github.com/bbatsov/projectile][Projectile]]
@@ -813,19 +824,6 @@ The tower of rebellion creeps upon man's world, The unspoken faith displayed bef
        (winum-mode))
    #+end_src
 
-** [[https://github.com/xcodebuild/nlinum-relative][Relative numbers]]
-   
-   Relative line numbers.
-
-   #+begin_src emacs-lisp
-     (use-package nlinum-relative
-       :ensure t
-       :hook (prog-mode . nlinum-relative-mode)
-       :config
-       (nlinum-relative-setup-evil)
-       (setq nlinum-relative-redisplay-delay 0))
-   #+end_src
-  
 ** [[https://github.com/wasamasa/eyebrowse][Eyebrowse]]
    
    A simple-minded way of managing window configs in emacs.
@@ -837,6 +835,22 @@ The tower of rebellion creeps upon man's world, The unspoken faith displayed bef
     :config
     (eyebrowse-mode)
     (eyebrowse-setup-opinionated-keys))
+   #+end_src
+
+** Focus on newly created windows
+   
+   #+begin_src emacs-lisp
+      (defun split-and-follow-horizontally ()
+         (interactive)
+         (split-window-below)
+         (balance-windows)
+         (other-window 1))
+
+      (defun split-and-follow-vertically ()
+         (interactive)
+         (split-window-right)
+         (balance-windows)
+         (other-window 1))
    #+end_src
 
 * Navigation
@@ -885,7 +899,6 @@ The tower of rebellion creeps upon man's world, The unspoken faith displayed bef
      (use-package focus
        :defer t
        :ensure t
-       :hook (prog-mode . focus-mode)
        :general
        (nmap
          :prefix "<SPC>"
@@ -893,16 +906,6 @@ The tower of rebellion creeps upon man's world, The unspoken faith displayed bef
          "Fp" 'focus-pin
          "Fu" 'focus-unpin
          "Fc" 'focus-change-thing))
-   #+end_src
-** [[https://github.com/Malabarba/aggressive-indent-mode][Aggressive indent]]
-   
-   Minor mode that keeps your code always indented.
-   
-   #+begin_src emacs-lisp
-     (use-package aggressive-indent
-       :ensure t
-       :config
-       (global-aggressive-indent-mode))
    #+end_src
 
 * Templates
