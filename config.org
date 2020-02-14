@@ -3,7 +3,11 @@
 #+STARTUP: inlineimages
 #+SETUPFILE: https://fniessen.github.io/org-html-themes/setup/theme-readtheorg.setup
 
+* Introduction
+
+#+begin_center
 [[./banners/megumacs2.png]]
+#+end_center
 
 #+begin_quote
 Crimson-black blaze, king of myriad worlds, though I promulgate the laws of nature, I am the alias of destruction incarnate in accordance with the principles of creation. Let the hammer of eternity descend unto me! ... Burn to ashes within the crimson.
@@ -88,7 +92,6 @@ The tower of rebellion creeps upon man's world, The unspoken faith displayed bef
      (mouse-avoidance-mode 'banish)                    ; Avoid collision of mouse with point
      (put 'downcase-region 'disabled nil)              ; Enable downcase-region
      (put 'upcase-region 'disabled nil)                ; Enable upcase-region
-     (set-default-coding-systems 'utf-8)               ; Default to utf-8 encoding
    #+end_src
 
    Enable fullscreen.
@@ -105,7 +108,14 @@ The tower of rebellion creeps upon man's world, The unspoken faith displayed bef
      (add-hook 'focus-out-hook #'garbage-collect)
    #+end_src
    
-   Always defer loading packages on startup.
+   Default to utf-8 encoding.
+   
+   #+begin_src emacs-lisp
+     (set-default-coding-systems 'utf-8)
+     (set-language-environment "UTF-8")
+     (prefer-coding-system 'utf-8)
+     (set-terminal-coding-system 'utf-8)
+   #+end_src
 
 ** Load =.custom.el=
 
@@ -279,26 +289,26 @@ The tower of rebellion creeps upon man's world, The unspoken faith displayed bef
    Set of eye pleasing themes for GNU Emacs. Supports both GUI and terminal.
 
    #+begin_src emacs-lisp
-     (use-package kaolin-themes
-       :config
-       (load-theme 'kaolin-bubblegum)
-       (setq kaolin-themes-bold t
-             kaolin-themes-italic t
-             kaolin-themes-underline t
-             kaolin-themes-distinct-company-scrollbar t))
+     ;; (use-package kaolin-themes
+     ;;   :config
+     ;;   (load-theme 'kaolin-bubblegum)
+     ;;   (setq kaolin-themes-bold t
+     ;;         kaolin-themes-italic t
+     ;;         kaolin-themes-underline t
+     ;;         kaolin-themes-distinct-company-scrollbar t))
    #+end_src
   
 ** [[https://github.com/hlissner/emacs-doom-themes][Doom themes]]
    
-  An opinionated pack of modern color-themes 
+   An opinionated pack of modern color-themes 
 
    #+begin_src emacs-lisp
-     ;; (use-package doom-themes
-     ;;   :ensure t
-     ;;   :config
-     ;;   (load-theme 'doom-nord)
-     ;;   (setq doom-themes-enable-bold t
-     ;;         doom-themes-enable-italic t))
+     (use-package doom-themes
+       :ensure t
+       :config
+       (load-theme 'doom-gruvbox)
+       (setq doom-themes-enable-bold t
+             doom-themes-enable-italic t))
    #+end_src
 
 ** [[https://github.com/domtronn/all-the-icons.el][All the icons]]
@@ -362,7 +372,7 @@ The tower of rebellion creeps upon man's world, The unspoken faith displayed bef
    
    An extensible emacs startup screen showing you what’s most important.
 
-  #+begin_src emacs-lisp
+   #+begin_src emacs-lisp
     (use-package dashboard
       :ensure t
       :init
@@ -389,14 +399,14 @@ The tower of rebellion creeps upon man's world, The unspoken faith displayed bef
                 (lambda (&rest _) (browse-url "https://github.com/0-l/megumacs/issues/new")) error))))
       :config
       (dashboard-setup-startup-hook))
-  #+end_src
+   #+end_src
 
 * Auto completion
 ** [[https://github.com/company-mode/company-mode][Company]]
    
    Modular in-buffer completion framework.
 
-  #+begin_src emacs-lisp
+   #+begin_src emacs-lisp
     (use-package company
       :defer 5
       :ensure t
@@ -408,8 +418,8 @@ The tower of rebellion creeps upon man's world, The unspoken faith displayed bef
                      company-capf
                      company-dabbrev))
       (setq company-show-numbers t
-	    company-alignip-align-annotations t))
-  #+end_src
+        company-alignip-align-annotations t))
+   #+end_src
    
 ** [[https://github.com/tigersoldier/company-lsp][Company/lsp]]
    
@@ -434,7 +444,7 @@ The tower of rebellion creeps upon man's world, The unspoken faith displayed bef
    
    Base package for =evil-mode=
 
-  #+begin_src emacs-lisp
+   #+begin_src emacs-lisp
     (use-package evil
       :ensure t
       :init
@@ -442,7 +452,7 @@ The tower of rebellion creeps upon man's world, The unspoken faith displayed bef
             evil-want-C-u-scroll t)
       :config
       (evil-mode 1))
-  #+end_src
+   #+end_src
   
 ** [[https://github.com/syl20bnr/evil-escape][evil-escape]]
 
@@ -652,9 +662,6 @@ The tower of rebellion creeps upon man's world, The unspoken faith displayed bef
        :config
        (setq treemacs-no-png-images t
              treemacs-width 25))
-
-     (use-package treemacs-evil
-       :ensure t)
    #+end_src
 
 ** [[https://github.com/bbatsov/projectile][Projectile]]
@@ -786,7 +793,7 @@ The tower of rebellion creeps upon man's world, The unspoken faith displayed bef
     
     Higher level UI modules of =lsp-mode=.
    
-   #+begin_src emacs-lisp
+    #+begin_src emacs-lisp
     (use-package lsp-ui
       :ensure t
       :after lsp-mode
@@ -808,7 +815,7 @@ The tower of rebellion creeps upon man's world, The unspoken faith displayed bef
             lsp-ui-sideline-toggle-symbols-info t
             lsp-ui-sideline-show-hover t
             lsp-ui-peek-enable t))
-   #+end_src
+    #+end_src
 
 * Buffers and Windows
 ** [[https://github.com/deb0ch/emacs-winum][Winum]]
@@ -922,12 +929,12 @@ The tower of rebellion creeps upon man's world, The unspoken faith displayed bef
       (setq yas-prompt-functions 'yas-ido-prompt))
    #+end_src
 
-*** [[https://github.com/AndreaCrotti/yasnippet-snippets][Yasnippet/snippets]]
+** [[https://github.com/AndreaCrotti/yasnippet-snippets][Yasnippet/snippets]]
     
-    A collection of =yasnippet= snippets for many languages
+   A collection of =yasnippet= snippets for many languages
 
-    #+begin_src emacs-lisp
+   #+begin_src emacs-lisp
     (use-package yasnippet-snippets
       :after yasnippet
       :ensure t)
-    #+end_src
+   #+end_src
