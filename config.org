@@ -1,7 +1,17 @@
-#+TITLE: MEGUMACS
-#+AUTHOR: index
-#+STARTUP: inlineimages
-#+SETUPFILE: https://fniessen.github.io/org-html-themes/setup/theme-readtheorg.setup
+#+options: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline author:t
+#+options: broken-links:nil c:nil creator:nil d:(not "LOGBOOK") date:t e:t
+#+options: email:nil f:t inline:t num:t p:nil pri:nil prop:nil stat:t tags:t
+#+options: tasks:t tex:t timestamp:t title:t toc:t todo:t |:t
+#+title: MEGUMACS
+#+date: <2020-02-01 Sat>
+#+author: index
+#+email: 0th@protonmail.com
+#+setupfile: https://fniessen.github.io/org-html-themes/setup/theme-readtheorg.setup
+#+startup: inlineimages
+#+language: en
+#+select_tags: export
+#+exclude_tags: noexport
+#+creator: Emacs 26.3 (Org mode 9.3.1)
 
 * Introduction
 
@@ -306,7 +316,7 @@ The tower of rebellion creeps upon man's world, The unspoken faith displayed bef
      (use-package doom-themes
        :ensure t
        :config
-       (load-theme 'doom-gruvbox)
+       (load-theme 'doom-sourcerer)
        (setq doom-themes-enable-bold t
              doom-themes-enable-italic t))
    #+end_src
