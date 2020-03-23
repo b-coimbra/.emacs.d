@@ -15,29 +15,29 @@
 
 * Introduction
 
-#+begin_center
-[[./banners/megumacs2.png]]
-#+end_center
+  #+begin_center
+  [[./banners/megumacs2.png]]
+  #+end_center
 
-#+begin_quote
-Crimson-black blaze, king of myriad worlds, though I promulgate the laws of nature, I am the alias of destruction incarnate in accordance with the principles of creation. Let the hammer of eternity descend unto me! ... Burn to ashes within the crimson.
-#+end_quote
+  #+begin_quote
+  Crimson-black blaze, king of myriad worlds, though I promulgate the laws of nature, I am the alias of destruction incarnate in accordance with the principles of creation. Let the hammer of eternity descend unto me! ... Burn to ashes within the crimson.
+  #+end_quote
 
-#+begin_quote
-Detonation... Detonation... Detonation... Wielder of the most glorious, powerful, and grand explosion magic, my name is Megumin. The blow that I am given to strike turns a blind eye to the fate of my kindred, rendering all hope of rebirth and anguish, and the model by which all forces are judged! Pitiful creature... Synchronize yourself with the red smoke, and atone in a surge of blood!
-#+end_quote
+  #+begin_quote
+  Detonation... Detonation... Detonation... Wielder of the most glorious, powerful, and grand explosion magic, my name is Megumin. The blow that I am given to strike turns a blind eye to the fate of my kindred, rendering all hope of rebirth and anguish, and the model by which all forces are judged! Pitiful creature... Synchronize yourself with the red smoke, and atone in a surge of blood!
+  #+end_quote
 
-#+begin_quote
-Darkness blacker than black and darker than dark, I beseech thee, combine with my deep crimson. The time of awakening cometh. Justice, fallen upon the infallible boundary, appear now as an intangible distortion! Dance, Dance, Dance! I desire for my torrent of power a destructive force: a destructive force without equal! Return all creation to cinders, and come from the abyss!
-#+end_quote
+  #+begin_quote
+  Darkness blacker than black and darker than dark, I beseech thee, combine with my deep crimson. The time of awakening cometh. Justice, fallen upon the infallible boundary, appear now as an intangible distortion! Dance, Dance, Dance! I desire for my torrent of power a destructive force: a destructive force without equal! Return all creation to cinders, and come from the abyss!
+  #+end_quote
 
-#+begin_quote
-Oh, blackness shrouded in light Frenzied blaze clad in night In the name of the crimson demons, let the collapse of thine origin manifest. Summon before me the root of thy power hidden within the lands of the kingdom of demise!
-#+end_quote
+  #+begin_quote
+  Oh, blackness shrouded in light Frenzied blaze clad in night In the name of the crimson demons, let the collapse of thine origin manifest. Summon before me the root of thy power hidden within the lands of the kingdom of demise!
+  #+end_quote
 
-#+begin_quote
-The tower of rebellion creeps upon man's world, The unspoken faith displayed before me, The time has come! Now, awaken from your slumber, and by my madness, be wrought!
-#+end_quote
+  #+begin_quote
+  The tower of rebellion creeps upon man's world, The unspoken faith displayed before me, The time has come! Now, awaken from your slumber, and by my madness, be wrought!
+  #+end_quote
 
 * Bootstrap
 ** Better defaults
@@ -65,7 +65,7 @@ The tower of rebellion creeps upon man's world, The unspoken faith displayed bef
       display-time-format "%H:%M"                      ; Format the time string
       fill-column 80                                   ; Set width for automatic line breaks
       help-window-select t                             ; Focus new help windows when opened
-      indent-tabs-mode nil                             ; Stop using tabs to indent
+      indent-tabs-mode t                               ; Use tabs to indent
       inhibit-startup-screen t                         ; Disable start-up screen
       initial-scratch-message ""                       ; Empty the initial *scratch* buffer
       mouse-yank-at-point t                            ; Yank at point rather than pointer
@@ -73,7 +73,7 @@ The tower of rebellion creeps upon man's world, The unspoken faith displayed bef
       select-enable-clipboard t                        ; Merge system's and Emacs' clipboard
       sentence-end-double-space nil                    ; End a sentence after a dot and a space
       show-help-function nil                           ; Disable help messages
-      show-trailing-whitespace nil                     ; Display trailing whitespaces
+      show-trailing-whitespace t                       ; Display trailing whitespaces
       split-height-threshold nil                       ; Disable vertical window splitting
       split-width-threshold nil                        ; Disable horizontal window splitting
       tab-width 4                                      ; Set width for tabs
@@ -118,6 +118,12 @@ The tower of rebellion creeps upon man's world, The unspoken faith displayed bef
      (add-hook 'focus-out-hook #'garbage-collect)
    #+end_src
    
+   Remove trailing whitespace on save:
+
+   #+begin_src emacs-lisp
+     (add-hook 'before-save-hook 'delete-trailing-whitespace)
+   #+end_src
+   
    Default to utf-8 encoding.
    
    #+begin_src emacs-lisp
@@ -125,6 +131,14 @@ The tower of rebellion creeps upon man's world, The unspoken faith displayed bef
      (set-language-environment "UTF-8")
      (prefer-coding-system 'utf-8)
      (set-terminal-coding-system 'utf-8)
+   #+end_src
+   
+   Screensaver-like behaviour:
+   #+begin_src emacs-lisp
+     (use-package zone
+       :ensure t
+       :config
+       (zone-when-idle 20))
    #+end_src
 
 ** Load =.custom.el=
@@ -475,7 +489,7 @@ The tower of rebellion creeps upon man's world, The unspoken faith displayed bef
       :config
       (evil-escape-mode))
    #+end_src
-  
+
 ** [[https://github.com/emacs-evil/evil-magit][evil-magit]]
 
    Evil keybinding integration in magit.
@@ -530,8 +544,11 @@ The tower of rebellion creeps upon man's world, The unspoken faith displayed bef
        :config
        (general-evil-setup t)
        (define-key evil-motion-state-map " " nil)
-       (general-evil-define-key 'normal 'global
+       ;; (general-evil-define-key 'normal 'global
+       ;;   :prefix "SPC"
+       (general-define-key
          :prefix "SPC"
+         :states 'normal
          ;; Misc
          "SPC" 'counsel-M-x
          "TAB" 'mode-line-other-buffer
@@ -673,7 +690,7 @@ The tower of rebellion creeps upon man's world, The unspoken faith displayed bef
        (setq treemacs-no-png-images t
              treemacs-width 25))
    #+end_src
-
+   
 ** [[https://github.com/bbatsov/projectile][Projectile]]
    
    Project interaction library.
@@ -777,174 +794,186 @@ The tower of rebellion creeps upon man's world, The unspoken faith displayed bef
           web-mode-markup-indent-offset 2))
    #+end_src
 
+** C#
+
+   #+begin_src emacs-lisp
+     (use-package csharp-mode
+       :ensure t)
+   #+end_src
+
 * Language Server Protocol
 ** [[https://github.com/emacs-lsp/lsp-mode][LSP]]
 
    =lsp-mode= aims to provide IDE-like experience by providing optional integration with the most popular Emacs packages like =company=, =flycheck= and =projectile=.
 
    #+begin_src emacs-lisp
-    (use-package lsp-mode
-      :ensure t
-      :general
-      (nmap
-        :prefix "<SPC>"
-        "lF" 'lsp-format-buffer
-        "lR" 'lsp-rename)
-      :hook ((js2-mode        . lsp-deferred)
-             (js-mode         . lsp-deferred)
-             (rjsx-mode       . lsp-deferred)
-             (typescript-mode . lsp-deferred)
-             (rust-mode       . lsp-deferred)
-             (ruby-mode       . lsp-deferred))
-      :commands (lsp lsp-deferred))
+(use-package lsp-mode
+:ensure t
+:general
+(nmap
+:prefix "<SPC>"
+"lF" 'lsp-format-buffer
+"lR" 'lsp-rename)
+:hook ((js2-mode        . lsp-deferred)
+(js-mode         . lsp-deferred)
+(rjsx-mode       . lsp-deferred)
+(typescript-mode . lsp-deferred)
+(rust-mode       . lsp-deferred)
+(ruby-mode       . lsp-deferred))
+:commands (lsp lsp-deferred))
    #+end_src
-   
+
 *** [[https://github.com/emacs-lsp/lsp-ui][LSP-UI]]
-    
+
     Higher level UI modules of =lsp-mode=.
-   
+
     #+begin_src emacs-lisp
-    (use-package lsp-ui
-      :ensure t
-      :after lsp-mode
-      :commands lsp-ui-mode
-      :hook (lsp-mode . lsp-ui-mode)
-      :general
-      (nmap
-        :prefix "<SPC>"
-        "li" 'lsp-ui-peek-find-implementation
-        "lr" 'lsp-ui-peek-find-references
-        "ld" 'lsp-ui-peek-find-definitions
-        "ll" 'lsp-ui-flycheck-list
-        "la" 'lsp-ui-sideline-apply-code-actions)
-      :config
-      (setq lsp-ui-doc-enable t
-            lsp-ui-sideline-enable t
-            lsp-ui-flycheck-enable t
-            lsp-ui-flycheck-live-reporting t
-            lsp-ui-sideline-toggle-symbols-info t
-            lsp-ui-sideline-show-hover t
-            lsp-ui-peek-enable t))
+(use-package lsp-ui
+:ensure t
+:after lsp-mode
+:commands lsp-ui-mode
+:hook (lsp-mode . lsp-ui-mode)
+:general
+(nmap
+:prefix "<SPC>"
+"li" 'lsp-ui-peek-find-implementation
+"lr" 'lsp-ui-peek-find-references
+"ld" 'lsp-ui-peek-find-definitions
+"ll" 'lsp-ui-flycheck-list
+"la" 'lsp-ui-sideline-apply-code-actions)
+:config
+(setq lsp-ui-doc-enable t
+lsp-ui-sideline-enable t
+lsp-ui-flycheck-enable t
+lsp-ui-flycheck-live-reporting t
+lsp-ui-sideline-toggle-symbols-info t
+lsp-ui-sideline-show-hover t
+lsp-ui-peek-enable t))
     #+end_src
 
 * Buffers and Windows
 ** [[https://github.com/deb0ch/emacs-winum][Winum]]
-   
+
    Numbering for buffers, windows and =eyebrowse= workspaces.
 
    #+begin_src emacs-lisp
-     (use-package winum
-       :ensure t
-       :init
-       (setq winum-auto-setup-mode-line nil)
-       :config
-       (winum-mode))
+(use-package winum
+:ensure t
+:init
+(setq winum-auto-setup-mode-line nil)
+:config
+(winum-mode))
    #+end_src
 
 ** [[https://github.com/wasamasa/eyebrowse][Eyebrowse]]
-   
+
    A simple-minded way of managing window configs in emacs.
 
    #+begin_src emacs-lisp
-  (use-package eyebrowse
-    :ensure t
-    :general
-    :config
-    (eyebrowse-mode)
-    (eyebrowse-setup-opinionated-keys))
+(use-package eyebrowse
+:ensure t
+:general
+:config
+(eyebrowse-mode)
+(eyebrowse-setup-opinionated-keys))
    #+end_src
 
 ** Focus on newly created windows
-   
-   #+begin_src emacs-lisp
-      (defun split-and-follow-horizontally ()
-         (interactive)
-         (split-window-below)
-         (balance-windows)
-         (other-window 1))
 
-      (defun split-and-follow-vertically ()
-         (interactive)
-         (split-window-right)
-         (balance-windows)
-         (other-window 1))
+   #+begin_src emacs-lisp
+(defun split-and-follow-horizontally ()
+(interactive)
+(split-window-below)
+(balance-windows)
+(other-window 1))
+
+(defun split-and-follow-vertically ()
+(interactive)
+(split-window-right)
+(balance-windows)
+(other-window 1))
    #+end_src
 
 * Navigation
 ** [[https://github.com/abo-abo/swiper][Ivy]]
-   
+
    =avy= is similar to Vim's easymotion plugin, it provides commands for jumping to visible text using a char-based decision tree.
 
    #+begin_src emacs-lisp
-    (use-package ivy
-      :ensure t
-      :general
-      (nmap
-        :prefix "<SPC>"
-        ";" 'avy-goto-word-1
-        ":" 'avy-goto-char)
-      :config
-      (global-set-key "\C-s" 'swiper)
-      (setq ivy-count-format "(%d/%d) "
-            avy-background t)
-      (ivy-mode))
+(use-package ivy
+:ensure t
+:general
+(nmap
+:prefix "<SPC>"
+";" 'avy-goto-word-1
+":" 'avy-goto-char)
+:config
+(global-set-key "\C-s" 'swiper)
+(setq ivy-count-format "(%d/%d) "
+avy-background t)
+(ivy-mode))
 
-    (use-package ivy-rich
-      :ensure t
-      :after ivy
-      :init
-      (ivy-rich-mode 1)
-      :config
-      (setcdr (assq t ivy-format-functions-alist) #'ivy-format-function-line))
+(use-package ivy-rich
+:ensure t
+:after ivy
+:init
+(ivy-rich-mode 1)
+:config
+(setcdr (assq t ivy-format-functions-alist) #'ivy-format-function-line))
    #+end_src
 
 ** [[https://github.com/abo-abo/swiper][Ivy/Counsel]]
-   
+
    Completion frontend for things such as =M-x find-file=. 
 
    #+begin_src emacs-lisp
-  (use-package counsel
-    :ensure t)
+(use-package counsel
+:ensure t)
    #+end_src
 
 * Editing
 ** [[https://github.com/larstvei/Focus][Focus]]
-   
+
    Dim the font color of text in surrounding paragraphs.
 
    #+begin_src emacs-lisp
-     (use-package focus
-       :defer t
-       :ensure t
-       :general
-       (nmap
-         :prefix "<SPC>"
-         "tf" 'focus-mode
-         "Fp" 'focus-pin
-         "Fu" 'focus-unpin
-         "Fc" 'focus-change-thing))
+(use-package focus
+:defer t
+:ensure t
+:general
+(nmap
+:prefix "<SPC>"
+"tf" 'focus-mode
+"Fp" 'focus-pin
+"Fu" 'focus-unpin
+"Fc" 'focus-change-thing))
    #+end_src
 
 * Templates
 ** [[https://github.com/joaotavora/yasnippet][Yasnippet]]
-   
+
    A snippet template system.
 
    #+begin_src emacs-lisp
-    (use-package yasnippet
-      :ensure t
-      :init
-      (yas-global-mode 1)
-      :config
-      (setq yas-prompt-functions 'yas-ido-prompt))
+     (use-package yasnippet
+       :ensure t
+       :general
+       (nmap
+         :prefix "<SPC>"
+         "yt" 'yas-describe-tables)
+       :init
+       (yas-global-mode 1)
+       :config
+       (setq yas-prompt-functions 'yas-ido-prompt))
    #+end_src
 
 ** [[https://github.com/AndreaCrotti/yasnippet-snippets][Yasnippet/snippets]]
-    
+
    A collection of =yasnippet= snippets for many languages
 
    #+begin_src emacs-lisp
-    (use-package yasnippet-snippets
-      :after yasnippet
-      :ensure t)
+     (use-package yasnippet-snippets
+       :after yasnippet
+       :ensure t)
    #+end_src
+
