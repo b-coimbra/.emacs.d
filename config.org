@@ -172,7 +172,8 @@
   - [[https://github.com/belluzj/fantasque-sans][Fantasque Sans]]
 
   #+begin_src emacs-lisp
-  (set-frame-font "Iosevka 12")
+	;; (set-frame-font "Iosevka 12")
+	(set-frame-font "FantasqueSansMono Nerd Font 12")
   #+end_src
 
 ** Ligatures
@@ -306,10 +307,9 @@
 
    #+begin_src emacs-lisp
 	 (use-package kaolin-themes
-	   :defer t
 	   :ensure t
 	   :config
-	   (load-theme 'kaolin-bubblegum)
+	   (load-theme 'doom-gruvbox)
 	   (setq kaolin-themes-bold t
 			 kaolin-themes-italic t
 			 kaolin-themes-underline t
@@ -322,9 +322,10 @@
 
    #+begin_src emacs-lisp
 	 (use-package doom-themes
+	   :defer t
 	   :ensure t
 	   :config
-	   (load-theme 'doom-gruvbox)
+	   (load-theme 'doom-nord)
 	   (setq doom-themes-enable-bold t
 			 doom-themes-enable-italic t))
    #+end_src
@@ -374,6 +375,7 @@
    #+begin_src emacs-lisp
 	 (use-package doom-modeline
 	   :ensure t
+	   :init (doom-modeline-init)
 	   :config
 	   (setq doom-modeline-major-mode-icon nil
 			 doom-modeline-major-mode-color-icon nil
@@ -382,8 +384,7 @@
 			 doom-modeline-flycheck-icon nil
 			 doom-modeline-checker-simple-format t
 			 doom-modeline-buffer-encoding nil
-			 doom-modeline-height 35)
-	   (doom-modeline-mode))
+			 doom-modeline-height 35))
    #+end_src
 
 * Dashboard
@@ -425,18 +426,18 @@
    Modular in-buffer completion framework.
 
    #+begin_src emacs-lisp
-	(use-package company
-	  :defer 5
-	  :ensure t
-	  :init (global-company-mode)
-	  :config
-	  (add-to-list 'company-backends
-				   '(company-lsp
-					 company-yasnippet
-					 company-capf
-					 company-dabbrev))
-	  (setq company-show-numbers t
-		company-alignip-align-annotations t))
+	 (use-package company
+	   :defer 5
+	   :ensure t
+	   :init (global-company-mode)
+	   :config
+	   (add-to-list 'company-backends
+					'(company-lsp
+					  company-yasnippet
+					  company-capf
+					  company-dabbrev))
+	   (setq company-show-numbers t
+			 company-alignip-align-annotations t))
    #+end_src
 
 ** [[https://github.com/tigersoldier/company-lsp][Company/lsp]]
@@ -946,6 +947,35 @@
    #+begin_src emacs-lisp
 	 (use-package counsel
 	   :ensure t)
+   #+end_src
+
+** [[https://github.com/tumashu/ivy-posframe][Ivy/posframe]]
+
+   Ivy extension to show =M-x= in a popup.
+
+   #+begin_src emacs-lisp
+	 (use-package ivy-posframe
+	   :ensure t
+	   :config
+	   (setq ivy-posframe-min-width 90
+			 ivy-posframe-width 110)
+	   (setq ivy-posframe-display-functions-alist
+			 '((swiper . ivy-display-function-fallback)
+			   (t      . ivy-posframe-display-at-frame-center)))
+	   (ivy-posframe-mode 1))
+   #+end_src
+
+** [[https://github.com/DarthFennec/highlight-indent-guides][Highlight Indent Guides]]
+
+   Indentation highlights via =font-lock=
+
+   #+begin_src emacs-lisp
+	 (use-package highlight-indent-guides
+	   :ensure t
+	   :hook (prog-mode . highlight-indent-guides-mode)
+	   :config
+	   (setq highlight-indent-guides-method 'character
+			 highlight-indent-guides-character ?\|))
    #+end_src
 
 * Editing
