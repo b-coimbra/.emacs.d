@@ -13,6 +13,28 @@
 #+exclude_tags: noexport
 #+creator: Emacs 26.3 (Org mode 9.3.1)
 
+* Table of contents :toc:
+
+  - [[*Introduction][Introduction]]
+  - [[*Bootstrap][Bootstrap]]
+  - [[*Font][Font]]
+  - [[*Themes][Themes]]
+  - [[*Modeline][Modeline]]
+  - [[*Dashboard][Dashboard]]
+  - [[*Auto completion][Auto completion]]
+  - [[*Evil][Evil]]
+  - [[*Keybindings][Keybindings]]
+  - [[*Source Control][Source Control]]
+  - [[*File Management][File Management]]
+  - [[*Project Management][Project Management]]
+  - [[*Syntax Checking][Syntax Checking]]
+  - [[*Language modes][Language modes]]
+  - [[*Language Server Protocol][Language Server Protocol]]
+  - [[*Buffers and Windows][Buffers and Windows]]
+  - [[*Navigation][Navigation]]
+  - [[*Editing][Editing]]
+  - [[*Templates][Templates]]
+
 * Introduction
 
   #+begin_center
@@ -83,7 +105,7 @@
 	  delete-old-versions -1                           ; Delete excess backup versions silently
 	  version-control t                                ; Use version control
 	  ring-bell-function 'ignore                       ; Silent bell when you make a mistake
-	  inhibit-compacting-font-cache t                  ; Faster navigation point (costs more memory)
+	  inhibit-compacting-font-caches t                 ; Faster navigation point (costs more memory)
 	  recentf-mode t                                   ; Keep recent files
 	  make-backup-files nil                            ; Stop creating backup files
 	  display-line-numbers-type 'relative              ; Use relative line numbers
@@ -93,13 +115,13 @@
 	 (delete-selection-mode 1)                         ; Replace region when inserting text
 	 (display-time-mode 1)                             ; Enable time in the mode-line
 	 (global-auto-revert-mode 1)                       ; Automatically revert a buffer when it changes on disk
-	 (fringe-mode '(8 . 0))                               ; Enable fringe on the left for git-gutter-fringe+
+	 (fringe-mode '(8 . 0))                            ; Enable fringe on the left for git-gutter-fringe+
 	 (electric-pair-mode t)                            ; Enable Matching delimeters
 	 (electric-indent-mode t)                          ; Auto indentation
 	 (fset 'yes-or-no-p 'y-or-n-p)                     ; Replace yes/no prompts with y/n
 	 (global-subword-mode 1)                           ; Iterate through CamelCase words
 	 (menu-bar-mode 0)                                 ; Disable the menu bar
-	 (mouse-avoidance-mode 'jump)                    ; Avoid collision of mouse with point
+	 (mouse-avoidance-mode 'jump)                      ; Avoid collision of mouse with point
 	 (put 'downcase-region 'disabled nil)              ; Enable downcase-region
 	 (put 'upcase-region 'disabled nil)                ; Enable upcase-region
    #+end_src
@@ -161,8 +183,9 @@
 	   :defer t
 	   :ensure t
 	   :commands update-packages
+	   :custom
+	   (auto-package-update-delete-old-versions t)
 	   :config
-	   (setq auto-package-update-delete-old-versions t)
 	   (auto-package-update-maybe))
    #+end_src
 
@@ -306,14 +329,16 @@
    Set of eye pleasing themes for GNU Emacs. Supports both GUI and terminal.
 
    #+begin_src emacs-lisp
-	 (use-package kaolin-themes
-	   :ensure t
-	   :config
-	   (load-theme 'doom-gruvbox)
-	   (setq kaolin-themes-bold t
-			 kaolin-themes-italic t
-			 kaolin-themes-underline t
-			 kaolin-themes-distinct-company-scrollbar t))
+	 ;; (use-package kaolin-themes
+	 ;;   :defer t
+	 ;;   :ensure t
+	 ;;   :custom
+	 ;;   (kaolin-themes-bold t)
+	 ;;   (kaolin-themes-italic t)
+	 ;;   (kaolin-themes-underline t)
+	 ;;   (kaolin-themes-distinct-company-scrollbar t)
+	 ;;   :config
+	 ;;   (load-theme 'doom-gruvbox t))
    #+end_src
 
 ** [[https://github.com/hlissner/emacs-doom-themes][Doom themes]]
@@ -322,12 +347,13 @@
 
    #+begin_src emacs-lisp
 	 (use-package doom-themes
-	   :defer t
 	   :ensure t
+	   :custom
+	   (doom-themes-enable-bold t)
+	   (doom-themes-enable-italic t)
 	   :config
-	   (load-theme 'doom-nord)
-	   (setq doom-themes-enable-bold t
-			 doom-themes-enable-italic t))
+	   (load-theme 'kaolin-bubblegum t)
+	   (doom-themes-treemacs-config))
    #+end_src
 
 ** [[https://github.com/domtronn/all-the-icons.el][All the icons]]
@@ -349,22 +375,22 @@
 	 ;;   :ensure t
 	 ;;   :init
 	 ;;   (progn
-	 ;;     (setq spaceline-highlight-face-func 'spaceline-highlight-face-evil-state)
-	 ;;     (setq-default powerline-default-separator 'slant)
-	 ;;     ;; (setq spaceline-separator-dir-left '(right . right))
-	 ;;     )
+	 ;; 	(setq spaceline-highlight-face-func 'spaceline-highlight-face-evil-state)
+	 ;; 	(setq-default powerline-default-separator 'slant)
+	 ;; 	;; (setq spaceline-separator-dir-left '(right . right))
+	 ;; 	)
 	 ;;   :config
 	 ;;   (spaceline-emacs-theme)
 	 ;;   (setq spaceline-buffer-encoding-abbrev-p nil
-	 ;;         spaceline-workspace-number-p t
-	 ;;         spaceline-window-numbers-unicode nil
-	 ;;         spaceline-version-control-p nil
-	 ;;         spaceline-minor-modes-p nil
-	 ;;         spaceline-major-mode-p nil
-	 ;;         spaceline-buffer-size-p t
-	 ;;         spaceline-window-number-p t
-	 ;;         spaceline-buffer-id-p t
-	 ;;         spaceline-buffer-size-p t)
+	 ;; 		spaceline-workspace-number-p t
+	 ;; 		spaceline-window-numbers-unicode nil
+	 ;; 		spaceline-version-control-p nil
+	 ;; 		spaceline-minor-modes-p nil
+	 ;; 		spaceline-major-mode-p nil
+	 ;; 		spaceline-buffer-size-p t
+	 ;; 		spaceline-window-number-p t
+	 ;; 		spaceline-buffer-id-p t
+	 ;; 		spaceline-buffer-size-p t)
 	 ;;   (powerline-reset))
    #+end_src
 
@@ -376,15 +402,15 @@
 	 (use-package doom-modeline
 	   :ensure t
 	   :init (doom-modeline-init)
-	   :config
-	   (setq doom-modeline-major-mode-icon nil
-			 doom-modeline-major-mode-color-icon nil
-			 doom-modeline-icon (display-graphic-p)
-			 doom-modeline-buffer-modification-icon nil
-			 doom-modeline-flycheck-icon nil
-			 doom-modeline-checker-simple-format t
-			 doom-modeline-buffer-encoding nil
-			 doom-modeline-height 35))
+	   :custom
+	   (doom-modeline-major-mode-icon nil)
+	   (doom-modeline-major-mode-color-icon nil)
+	   (doom-modeline-icon (display-graphic-p))
+	   (doom-modeline-buffer-modification-icon nil)
+	   (doom-modeline-flycheck-icon nil)
+	   (doom-modeline-checker-simple-format t)
+	   (doom-modeline-buffer-encoding nil)
+	   (doom-modeline-height 35))
    #+end_src
 
 * Dashboard
@@ -395,27 +421,27 @@
    #+begin_src emacs-lisp
 	 (use-package dashboard
 	   :ensure t
-	   :init
-	   (setq dashboard-banner-logo-title "[M E G U M A C S]"
-			 dashboard-startup-banner (expand-file-name "banners/megumacs.png" user-emacs-directory)
-			 dashboard-footer-messages '("EXPLOOOOOOOOOOSIONNN!")
-			 dashboard-footer-icon (all-the-icons-wicon "meteor" :height 1.1 :v-adjust -0.05 :face 'font-lock-keyword-face)
-			 dashboard-center-content t
-			 dashboard-set-heading-icons t
-			 dashboard-set-file-icons t
-			 dashboard-set-navigator t)
-	   (setq dashboard-navigator-buttons
-			 `(((,(all-the-icons-octicon "octoface" :height 1.1 :v-adjust 0.0)
-				 "Homepage"
-				 "Browse homepage"
-				 (lambda (&rest _) (browse-url "https://github.com/0-l/megumacs")))
-				(,(all-the-icons-faicon "refresh" :height 1.1 :v-adjust 0.0)
-				 "Update"
-				 "Update Megumacs"
-				 (lambda (&rest _) (update-packages)) warning)
-				("⚑" nil
-				 "Report BUG"
-				 (lambda (&rest _) (browse-url "https://github.com/0-l/megumacs/issues/new")) error))))
+	   :custom
+	   (dashboard-banner-logo-title "[M E G U M A C S]")
+	   (dashboard-startup-banner (expand-file-name "banners/megumacs.png" user-emacs-directory))
+	   (dashboard-footer-messages '("EXPLOOOOOOOOOOSIONNN!"))
+	   (dashboard-footer-icon (all-the-icons-wicon "meteor" :height 1.1 :v-adjust -0.05 :face 'font-lock-keyword-face))
+	   (dashboard-center-content t)
+	   (dashboard-set-heading-icons t)
+	   (dashboard-set-file-icons t)
+	   (dashboard-set-navigator t)
+	   (dashboard-navigator-buttons
+		`(((,(all-the-icons-octicon "octoface" :height 1.1 :v-adjust 0.0)
+			"Homepage"
+			"Browse homepage"
+			(lambda (&rest _) (browse-url "https://github.com/0-l/megumacs")))
+		   (,(all-the-icons-faicon "refresh" :height 1.1 :v-adjust 0.0)
+			"Update"
+			"Update Megumacs"
+			(lambda (&rest _) (update-packages)) warning)
+		   ("⚑" nil
+			"Report BUG"
+			(lambda (&rest _) (browse-url "https://github.com/0-l/megumacs/issues/new")) error))))
 	   :config
 	   (dashboard-setup-startup-hook))
    #+end_src
@@ -430,14 +456,15 @@
 	   :defer 5
 	   :ensure t
 	   :init (global-company-mode)
+	   :custom
+	   (company-show-numbers t)
+	   (company-tooltip-align-annotations t)
 	   :config
 	   (add-to-list 'company-backends
 					'(company-lsp
 					  company-yasnippet
 					  company-capf
-					  company-dabbrev))
-	   (setq company-show-numbers t
-			 company-alignip-align-annotations t))
+					  company-dabbrev)))
    #+end_src
 
 ** [[https://github.com/tigersoldier/company-lsp][Company/lsp]]
@@ -445,14 +472,14 @@
    Company completion backend for =lsp-mode=
 
    #+begin_src emacs-lisp
-	(use-package company-lsp
-	  :ensure t
-	  :requires company
-	  :commands company-lsp
-	  :config
-	  (setq company-transformers nil
-			company-lsp-async t
-			company-lsp-cache-candidates nil))
+	 (use-package company-lsp
+	   :ensure t
+	   :requires company
+	   :commands company-lsp
+	   :custom
+	   (company-transformers nil)
+	   (company-lsp-async t)
+	   (company-lsp-cache-candidates nil))
    #+end_src
 
 * Evil
@@ -464,25 +491,25 @@
    Base package for =evil-mode=
 
    #+begin_src emacs-lisp
-	(use-package evil
-	  :ensure t
-	  :init
-	  (setq evil-want-keybinding nil
-			evil-want-C-u-scroll t)
-	  :config
-	  (evil-mode 1))
+	 (use-package evil
+	   :ensure t
+	   :custom
+	   (evil-want-keybinding nil)
+	   (evil-want-C-u-scroll t)
+	   :config
+	   (evil-mode 1))
    #+end_src
 
 ** [[https://github.com/syl20bnr/evil-escape][evil-escape]]
 
    Unfortunately we need a separate package to handle custom <ESC> key sequences.
    #+begin_src emacs-lisp
-	(use-package evil-escape
-	  :ensure t
-	  :init
-	  (setq-default evil-escape-key-sequence "jk")
-	  :config
-	  (evil-escape-mode))
+	 (use-package evil-escape
+	   :ensure t
+	   :custom
+	   (evil-escape-key-sequence "jk")
+	   :config
+	   (evil-escape-mode))
    #+end_src
 
 ** [[https://github.com/emacs-evil/evil-magit][evil-magit]]
@@ -653,12 +680,13 @@
 	 (use-package git-gutter-fringe+
 	   :ensure t
 	   :after git-gutter+
+	   :custom
+	   (git-gutter-fr+-side 'left-fringe)
 	   :config
-	   (git-gutter-fr+-minimal)
-	   (setq git-gutter-fr+-side 'left-fringe))
+	   (git-gutter-fr+-minimal))
    #+end_src
 
-* File management
+* File Management
 ** [[https://github.com/ralesi/ranger.el][Ranger]]
 
    Bringing the goodness of ranger to dired!
@@ -689,10 +717,9 @@
 	   (nmap
 		 :prefix "<SPC>"
 		 "tt" 'treemacs)
-	   :config
-	   (setq treemacs-no-png-images nil
-			 treemacs-width 25)
-	   (doom-themes-treemacs-config))
+	   :custom
+	   (treemacs-no-png-images nil)
+	   (treemacs-width 25))
    #+end_src
 
 ** [[https://github.com/bbatsov/projectile][Projectile]]
@@ -703,9 +730,10 @@
 	 (use-package projectile
 	   :ensure t
 	   :defer t
+	   :custom
+	   (projectile-enable-caching t)
 	   :config
-	   (projectile-mode)
-	   (setq projectile-enable-caching t))
+	   (projectile-mode))
    #+end_src
 
 *** [[https://github.com/ericdanan/counsel-projectile][projectile/counsel]]
@@ -761,11 +789,11 @@
 	Improved Javascript editing mode.
 
 	#+begin_src emacs-lisp
-	 (use-package js2-mode
-	   :ensure t
-	   :init
-	   (setq-default js-indent-level 2
-					 js2-basic-offset 2))
+	  (use-package js2-mode
+		:ensure t
+		:custom
+		(js-indent-level 2)
+		(js2-basic-offset 2))
 	#+end_src
 
 *** [[https://github.com/felipeochoa/rjsx-mode][rjsx-mode]]
@@ -791,11 +819,11 @@
    Web template editing mode.
 
    #+begin_src emacs-lisp
-  (use-package web-mode
-	:ensure t
-	:config
-	(setq web-mode-code-indent-offset 2
-		  web-mode-markup-indent-offset 2))
+	 (use-package web-mode
+	   :ensure t
+	   :custom
+	   (web-mode-code-indent-offset 2)
+	   (web-mode-markup-indent-offset 2))
    #+end_src
 
 ** C#
@@ -859,14 +887,14 @@
 		  "ld" 'lsp-ui-peek-find-definitions
 		  "ll" 'lsp-ui-flycheck-list
 		  "la" 'lsp-ui-sideline-apply-code-actions)
-		:config
-		(setq lsp-ui-doc-enable t
-			  lsp-ui-sideline-enable t
-			  lsp-ui-flycheck-enable t
-			  lsp-ui-flycheck-live-reporting t
-			  lsp-ui-sideline-toggle-symbols-info t
-			  lsp-ui-sideline-show-hover t
-			  lsp-ui-peek-enable t))
+		:custom
+		(lsp-ui-doc-enable t)
+		(lsp-ui-sideline-enable t)
+		(lsp-ui-flycheck-enable t)
+		(lsp-ui-flycheck-live-reporting t)
+		(lsp-ui-sideline-toggle-symbols-info t)
+		(lsp-ui-sideline-show-hover t)
+		(lsp-ui-peek-enable t))
 	#+end_src
 
 * Buffers and Windows
@@ -877,8 +905,8 @@
    #+begin_src emacs-lisp
 	 (use-package winum
 	   :ensure t
-	   :init
-	   (setq winum-auto-setup-mode-line nil)
+	   :custom
+	   (winum-auto-setup-mode-line nil)
 	   :config
 	   (winum-mode))
    #+end_src
@@ -925,10 +953,11 @@
 		 :prefix "<SPC>"
 		 ";" 'avy-goto-word-1
 		 ":" 'avy-goto-char)
+	   :custom
+	   (ivy-count-format "(%d/%d) ")
+	   (avy-background t)
 	   :config
 	   (global-set-key "\C-s" 'swiper)
-	   (setq ivy-count-format "(%d/%d) "
-			 avy-background t)
 	   (ivy-mode))
 
 	 (use-package ivy-rich
@@ -954,15 +983,16 @@
    Ivy extension to show =M-x= in a popup.
 
    #+begin_src emacs-lisp
-	 (use-package ivy-posframe
-	   :ensure t
-	   :config
-	   (setq ivy-posframe-min-width 90
-			 ivy-posframe-width 110)
-	   (setq ivy-posframe-display-functions-alist
-			 '((swiper . ivy-display-function-fallback)
-			   (t      . ivy-posframe-display-at-frame-center)))
-	   (ivy-posframe-mode 1))
+	 ;; (use-package ivy-posframe
+	 ;;   :defer t
+	 ;;   :ensure t
+	 ;;   :config
+	 ;;   (setq ivy-posframe-min-width 90
+	 ;; 		ivy-posframe-width 110)
+	 ;;   (setq ivy-posframe-display-functions-alist
+	 ;; 		'((swiper . ivy-display-function-fallback)
+	 ;; 		  (t      . ivy-posframe-display-at-frame-center)))
+	 ;;   (ivy-posframe-mode 1))
    #+end_src
 
 ** [[https://github.com/DarthFennec/highlight-indent-guides][Highlight Indent Guides]]
@@ -973,9 +1003,9 @@
 	 (use-package highlight-indent-guides
 	   :ensure t
 	   :hook (prog-mode . highlight-indent-guides-mode)
-	   :config
-	   (setq highlight-indent-guides-method 'character
-			 highlight-indent-guides-character ?\|))
+	   :custom
+	   (highlight-indent-guides-method 'character)
+	   (highlight-indent-guides-character ?\|))
    #+end_src
 
 * Editing
@@ -1010,8 +1040,8 @@
 		 "yt" 'yas-describe-tables)
 	   :init
 	   (yas-global-mode 1)
-	   :config
-	   (setq yas-prompt-functions 'yas-ido-prompt))
+	   :custom
+	   (yas-prompt-functions 'yas-ido-prompt))
    #+end_src
 
 ** [[https://github.com/AndreaCrotti/yasnippet-snippets][Yasnippet/snippets]]
