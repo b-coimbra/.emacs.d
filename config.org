@@ -195,8 +195,8 @@
   - [[https://github.com/belluzj/fantasque-sans][Fantasque Sans]]
 
   #+begin_src emacs-lisp
-	;; (set-frame-font "Iosevka 12")
-	(set-frame-font "FantasqueSansMono Nerd Font 12")
+	(set-frame-font "Iosevka 12")
+	;; (set-frame-font "Fantasque Sans Mono 12")
   #+end_src
 
 ** Ligatures
@@ -496,6 +496,8 @@
 	   :custom
 	   (evil-want-keybinding nil)
 	   (evil-want-C-u-scroll t)
+	   :init
+	   (setq evil-want-integration t)
 	   :config
 	   (evil-mode 1))
    #+end_src
@@ -555,6 +557,16 @@
 	  (evil-commentary-mode))
    #+end_src
 
+** [[https://github.com/emacs-evil/evil-collection][evil-collection]]
+
+   #+begin_src emacs-lisp
+	 (use-package evil-collection
+	   :after evil
+	   :ensure t
+	   :config
+	   (evil-collection-init))
+   #+end_src
+
 * Keybindings
 ** [[https://github.com/noctuid/general.el][General]]
 
@@ -589,6 +601,7 @@
 		 "bd" 'kill-this-buffer
 		 "bp" 'previous-buffer
 		 "bn" 'next-buffer
+		 "bN" 'evil-buffer-new
 		 "be" 'erase-buffer
 		 ;; Compiling
 		 "c" 'compile
