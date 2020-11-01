@@ -567,6 +567,18 @@
 	   (evil-collection-init))
    #+end_src
 
+* Org-mode
+
+  Org mode is for keeping notes, maintaining to-do lists, planning projects, authoring documents,
+  computational notebooks, literate programming and more — in a fast and effective plain text system
+
+  #+begin_src emacs-lisp
+	(use-package org
+	  :init
+	  (setq org-startup-folded t)
+	  :ensure t)
+  #+end_src
+
 * Keybindings
 ** [[https://github.com/noctuid/general.el][General]]
 
