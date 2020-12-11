@@ -6,7 +6,7 @@
 #+date: <2020-02-01 Sat>
 #+author: index
 #+email: 0th@protonmail.com
-#+setupfile: https://fniessen.github.io/org-html-themes/setup/theme-readtheorg.setup
+#+setupfile: https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup
 #+startup: inlineimages
 #+language: en
 #+select_tags: export
@@ -202,6 +202,7 @@
 ** Ligatures
 
    Rip off the ligatures from the Fira Code font.
+   Requires installation of the [[https://github.com/tonsky/FiraCode/files/412440/FiraCode-Regular-Symbol.zip][Fira Code Regular Symbol]] font.
 
    #+begin_src emacs-lisp
 	 (set-fontset-font t '(#Xe100 . #Xe16f) "Fira Code Symbol")
@@ -423,7 +424,7 @@
 	   :ensure t
 	   :custom
 	   (dashboard-banner-logo-title "[M E G U M A C S]")
-	   (dashboard-startup-banner (expand-file-name "banners/megumacs.png" user-emacs-directory))
+	   (dashboard-startup-banner (expand-file-name "banners/megumacs3.png" user-emacs-directory))
 	   (dashboard-footer-messages '("EXPLOOOOOOOOOOSIONNN!"))
 	   (dashboard-footer-icon (all-the-icons-wicon "meteor" :height 1.1 :v-adjust -0.05 :face 'font-lock-keyword-face))
 	   (dashboard-center-content t)
