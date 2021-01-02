@@ -19,10 +19,12 @@
   - [[*Bootstrap][Bootstrap]]
   - [[*Font][Font]]
   - [[*Themes][Themes]]
+  - [[*Appearance][Appearance]]
   - [[*Modeline][Modeline]]
   - [[*Dashboard][Dashboard]]
   - [[*Auto completion][Auto completion]]
   - [[*Evil][Evil]]
+  - [[*Org-mode][Org-mode]]
   - [[*Keybindings][Keybindings]]
   - [[*Source Control][Source Control]]
   - [[*File Management][File Management]]
@@ -34,6 +36,7 @@
   - [[*Navigation][Navigation]]
   - [[*Editing][Editing]]
   - [[*Templates][Templates]]
+  - [[*Discord Presence][Discord Presence]]
 
 * Introduction
 
@@ -353,10 +356,11 @@
 	   (doom-themes-enable-bold t)
 	   (doom-themes-enable-italic t)
 	   :config
-	   (load-theme 'kaolin-bubblegum t)
+	   (load-theme 'doom-sourcerer t)
 	   (doom-themes-treemacs-config))
    #+end_src
 
+* Appearance
 ** [[https://github.com/domtronn/all-the-icons.el][All the icons]]
 
    Adds fancy icons to emacs.
@@ -364,6 +368,16 @@
    #+begin_src emacs-lisp
 	 (use-package all-the-icons
 	   :ensure t)
+   #+end_src
+
+** [[https://github.com/hlissner/emacs-solaire-mode][Solaire mode]]
+
+   Gives other windows slightly different background colors (brightness).
+
+   #+begin_src emacs-lisp
+	 (use-package solaire-mode
+	   :ensure t
+	   :hook (after-init . solaire-global-mode))
    #+end_src
 
 * Modeline
@@ -784,14 +798,14 @@
    Modern on-the-fly syntax checking extension.
 
    #+begin_src emacs-lisp
-	(use-package flycheck
-	  :ensure t
-	  :hook (prog-mode . flycheck-mode)
-	  :general
-	  (nmap
-		:prefix "<SPC>"
-		"en" 'flycheck-next-error
-		"ep" 'flycheck-previous-error))
+	 (use-package flycheck
+	   :ensure t
+	   :hook (prog-mode . flycheck-mode)
+	   :general
+	   (nmap
+		 :prefix "<SPC>"
+		 "en" 'flycheck-next-error
+		 "ep" 'flycheck-previous-error))
    #+end_src
 
 * Language Modes
