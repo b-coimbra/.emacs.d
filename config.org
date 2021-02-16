@@ -22,7 +22,7 @@
   - [[*Appearance][Appearance]]
   - [[*Modeline][Modeline]]
   - [[*Dashboard][Dashboard]]
-  - [[*Auto completion][Auto completion]]
+  - [[*Auto Completion][Auto Completion]]
   - [[*Evil][Evil]]
   - [[*Org-mode][Org-mode]]
   - [[*Keybindings][Keybindings]]
@@ -30,7 +30,7 @@
   - [[*File Management][File Management]]
   - [[*Project Management][Project Management]]
   - [[*Syntax Checking][Syntax Checking]]
-  - [[*Language modes][Language modes]]
+  - [[*Language Modes][Language Modes]]
   - [[*Language Server Protocol][Language Server Protocol]]
   - [[*Buffers and Windows][Buffers and Windows]]
   - [[*Navigation][Navigation]]
@@ -65,6 +65,18 @@
   #+end_quote
 
 * Bootstrap
+** Globals
+
+   Global variables to easily customize portions of Megumacs.
+
+   #+begin_src emacs-lisp
+	 (setq
+	  globals--banner-path "banners/blackhole.png" ; Banner image path shown in the dashboard
+	  globals--font        "Iosevka 12"            ; Font family and font size
+	  globals--theme       'doom-sourcerer         ; Theme used by Emacs.
+	  )
+   #+end_src
+
 ** Better defaults
 
    Disable mouse and tooltips:
@@ -195,12 +207,15 @@
 
 * Font
 
+  Font family used by Emacs.
+
+  Nice looking fonts:
+
   - [[https://github.com/be5invis/Iosevka][Iosevka]]
   - [[https://github.com/belluzj/fantasque-sans][Fantasque Sans]]
 
   #+begin_src emacs-lisp
-	(set-frame-font "Iosevka 12")
-	;; (set-frame-font "Fantasque Sans Mono 12")
+	(set-frame-font globals--font)
   #+end_src
 
 ** Ligatures
@@ -357,7 +372,7 @@
 	   (doom-themes-enable-bold t)
 	   (doom-themes-enable-italic t)
 	   :config
-	   (load-theme 'doom-sourcerer t)
+	   (load-theme globals--theme t)
 	   (doom-themes-treemacs-config))
    #+end_src
 
@@ -439,7 +454,7 @@
 	   :ensure t
 	   :custom
 	   (dashboard-banner-logo-title "[M E G U M A C S]")
-	   (dashboard-startup-banner (expand-file-name "banners/megumacs3.png" user-emacs-directory))
+	   (dashboard-startup-banner (expand-file-name globals--banner-path user-emacs-directory))
 	   (dashboard-footer-messages '("EXPLOOOOOOOOOOSIONNN!"))
 	   (dashboard-footer-icon (all-the-icons-wicon "meteor" :height 1.1 :v-adjust -0.05 :face 'font-lock-keyword-face))
 	   (dashboard-center-content t)
