@@ -17,7 +17,12 @@
 
   - [[*Introduction][Introduction]]
   - [[*Bootstrap][Bootstrap]]
+	- [[*Globals][Globals]]
+	- [[*Better defaults][Better defaults]]
+	- [[*Load =.custom.el=][Load =.custom.el=]]
+	- [[*Auto package update][Auto package update]]
   - [[*Font][Font]]
+	- [[*Ligatures][Ligatures]]
   - [[*Themes][Themes]]
   - [[*Appearance][Appearance]]
   - [[*Modeline][Modeline]]
@@ -190,7 +195,7 @@
 	   (load custom-file))
    #+end_src
 
-** Automatically update packages
+** Auto package update
 
    Update packages every week and delete the old versions.
 
@@ -646,6 +651,10 @@
 		 "bn" 'next-buffer
 		 "bN" 'evil-buffer-new
 		 "be" 'erase-buffer
+		 ;; Bookmarks
+		 "B" '(:ignore t :which-key "bookmarks")
+		 "BB" 'bookmark-jump
+		 "Bs" 'bookmark-set
 		 ;; Compiling
 		 "c" 'compile
 		 ;; Errors
