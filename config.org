@@ -135,7 +135,6 @@
 	 (electric-indent-mode t)                          ; Auto indentation
 	 (fset 'yes-or-no-p 'y-or-n-p)                     ; Replace yes/no prompts with y/n
 	 (global-subword-mode 1)                           ; Iterate through CamelCase words
-	 (global-undo-tree-mode 1)                         ; Enable undo-tree
 	 (menu-bar-mode 0)                                 ; Disable the menu bar
 	 (mouse-avoidance-mode 'jump)                      ; Avoid collision of mouse with point
 	 (put 'downcase-region 'disabled nil)              ; Enable downcase-region
@@ -1080,6 +1079,16 @@
 		 "Fp" 'focus-pin
 		 "Fu" 'focus-unpin
 		 "Fc" 'focus-change-thing))
+   #+end_src
+** [[https://elpa.gnu.org/packages/undo-tree.html][Undo-tree]]
+
+   Branching tree of changes made in a file.
+
+   #+begin_src emacs-lisp
+	 (use-package undo-tree
+	   :ensure t
+	   :init
+	   (global-undo-tree-mode))
    #+end_src
 
 * Templates
