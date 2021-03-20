@@ -496,25 +496,9 @@
 	   (company-tooltip-align-annotations t)
 	   :config
 	   (add-to-list 'company-backends
-					'(company-lsp
-					  company-yasnippet
+					'(company-yasnippet
 					  company-capf
 					  company-dabbrev)))
-   #+end_src
-
-** [[https://github.com/tigersoldier/company-lsp][Company/lsp]]
-
-   Company completion backend for =lsp-mode=
-
-   #+begin_src emacs-lisp
-	 (use-package company-lsp
-	   :ensure t
-	   :requires company
-	   :commands company-lsp
-	   :custom
-	   (company-transformers nil)
-	   (company-lsp-async t)
-	   (company-lsp-cache-candidates nil))
    #+end_src
 
 * Evil
@@ -547,17 +531,6 @@
 	   (evil-escape-key-sequence "jk")
 	   :config
 	   (evil-escape-mode))
-   #+end_src
-
-** [[https://github.com/emacs-evil/evil-magit][evil-magit]]
-
-   Evil keybinding integration in magit.
-   #+begin_src emacs-lisp
-	(use-package evil-magit
-	  :ensure t
-	  :after evil magit
-	  :config
-	  (evil-magit-init))
    #+end_src
 
 ** [[https://github.com/emacs-evil/evil-surround][evil-surround]]
