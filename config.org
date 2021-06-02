@@ -576,34 +576,56 @@
    #+end_src
 
 * Org-mode
+** org
 
-  Org mode is for keeping notes, maintaining to-do lists, planning projects, authoring documents,
-  computational notebooks, literate programming and more — in a fast and effective plain text system
+   Org mode is for keeping notes, maintaining to-do lists, planning projects, authoring documents,
+   computational notebooks, literate programming and more — in a fast and effective plain text system
+
+   #+begin_src emacs-lisp
+	 (use-package org
+	   :init
+	   (setq org-startup-folded t)
+	   :ensure t
+	   :config
+	   (setq org-todo-keywords
+			 '((sequence
+				"TODO(t)"
+				"DOING(d!)"
+				"MAYBE(m)"
+				"BLOCKED(b@)"
+				"DONE(D!)"
+				"READ(r)"
+				"ARCHIVED(a!)")))
+	   (setq org-todo-keyword-faces
+			 '(("TODO"     . (:foreground "HotPink3" :weight bold))
+			   ("DOING"    . (:foreground "salmon" :weight bold))
+			   ("BLOCKED"  . (:foreground "DeepPink" :weight bold))
+			   ("MAYBE"    . (:foreground "LightSteelBlue4" :weight bold))
+			   ("DONE"     . (:foreground "SeaGreen3" :weight bold))
+			   ("READ"     . (:foreground "SteelBlue2" :weight bold))
+			   ("ARCHIVED" . (:foreground "LightSlateGrey" :weight bold)))))
+   #+end_src
+
+** calfw-org
+
+   Display org schedules.
 
   #+begin_src emacs-lisp
-	(use-package org
-	  :init
-	  (setq org-startup-folded t)
+	(use-package calfw-org
 	  :ensure t
 	  :config
-	  (setq org-todo-keywords
-			'((sequence
-			   "TODO(t)"
-			   "DOING(d!)"
-			   "MAYBE(m)"
-			   "BLOCKED(b@)"
-			   "DONE(D!)"
-			   "READ(r)"
-			   "ARCHIVED(a!)")))
-	  (setq org-todo-keyword-faces
-			'(("TODO"     . (:foreground "HotPink3" :weight bold))
-			  ("DOING"    . (:foreground "salmon" :weight bold))
-			  ("BLOCKED"  . (:foreground "DeepPink" :weight bold))
-			  ("MAYBE"    . (:foreground "LightSteelBlue4" :weight bold))
-			  ("DONE"     . (:foreground "SeaGreen3" :weight bold))
-			  ("READ"     . (:foreground "SteelBlue2" :weight bold))
-			  ("ARCHIVED" . (:foreground "LightSlateGrey" :weight bold)))))
+	  (setq cfw:org-agenda-schedule-args '(:timestamp :scheduled :deadline)))
   #+end_src
+
+* Calendar
+** [[https://github.com/kiwanami/emacs-calfw/][calfw]]
+
+   This program displays a calendar view in the Emacs buffer.
+
+   #+begin_src emacs-lisp
+	 (use-package calfw
+	   :ensure t)
+   #+end_src
 
 * Keybindings
 ** [[https://github.com/noctuid/general.el][General]]
