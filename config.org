@@ -533,17 +533,6 @@
 	   (evil-escape-mode))
    #+end_src
 
-** [[https://github.com/emacs-evil/evil-magit][evil-magit]]
-
-   Evil keybinding integration in magit.
-   #+begin_src emacs-lisp
-	(use-package evil-magit
-	  :ensure t
-	  :after evil magit
-	  :config
-	  (evil-magit-init))
-   #+end_src
-
 ** [[https://github.com/emacs-evil/evil-surround][evil-surround]]
 
    Useful package for adding, editing or removing all types of surrounding characters (even HTML tags!).
