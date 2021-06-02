@@ -107,7 +107,7 @@
 	  display-time-format "%H:%M"                      ; Format the time string
 	  fill-column 80                                   ; Set width for automatic line breaks
 	  help-window-select t                             ; Focus new help windows when opened
-	  indent-tabs-mode t                               ; Use tabs to indent
+	  indent-tabs-mode nil                             ; Use tabs to indent
 	  inhibit-startup-screen t                         ; Disable start-up screen
 	  initial-scratch-message ""                       ; Empty the initial *scratch* buffer
 	  mouse-yank-at-point t                            ; Yank at point rather than pointer
@@ -487,19 +487,30 @@
    Modular in-buffer completion framework.
 
    #+begin_src emacs-lisp
-	 (use-package company
-	   :defer 5
-	   :ensure t
-	   :init (global-company-mode)
-	   :custom
-	   (company-show-numbers t)
-	   (company-tooltip-align-annotations t)
-	   :config
-	   (add-to-list 'company-backends
-					'(company-yasnippet
-					  company-capf
-					  company-dabbrev)))
+		  (use-package company
+			:defer 5
+			:ensure t
+			:init (global-company-mode)
+			:custom
+			(company-show-numbers t)
+			(company-tooltip-align-annotations t)
+			:config
+			(add-to-list 'company-backends
+						 '(company-yasnippet
+						   company-capf
+						   company-dabbrev
+						   company-jedi)))
    #+end_src
+
+*** [[https://github.com/emacsorphanage/company-jedi][company-jedi]]
+
+	#+begin_src emacs-lisp
+	  (use-package company-jedi
+		:ensure t
+		:config
+		(setq jedi:setup-keys t)
+		(setq jedi:complete-on-dot t))
+	#+end_src
 
 * Evil
 
@@ -582,28 +593,31 @@
    computational notebooks, literate programming and more — in a fast and effective plain text system
 
    #+begin_src emacs-lisp
-	 (use-package org
-	   :init
-	   (setq org-startup-folded t)
-	   :ensure t
-	   :config
-	   (setq org-todo-keywords
-			 '((sequence
-				"TODO(t)"
-				"DOING(d!)"
-				"MAYBE(m)"
-				"BLOCKED(b@)"
-				"DONE(D!)"
-				"READ(r)"
-				"ARCHIVED(a!)")))
-	   (setq org-todo-keyword-faces
-			 '(("TODO"     . (:foreground "HotPink3" :weight bold))
-			   ("DOING"    . (:foreground "salmon" :weight bold))
-			   ("BLOCKED"  . (:foreground "DeepPink" :weight bold))
-			   ("MAYBE"    . (:foreground "LightSteelBlue4" :weight bold))
-			   ("DONE"     . (:foreground "SeaGreen3" :weight bold))
-			   ("READ"     . (:foreground "SteelBlue2" :weight bold))
-			   ("ARCHIVED" . (:foreground "LightSlateGrey" :weight bold)))))
+     (use-package org
+       :init
+       (setq org-startup-folded t)
+       :ensure t
+       :config
+       ;; org-agenda
+       (setq org-agenda-files '("~/dev/scribbles/org/schedule/schedule.org"))
+       ;; org-todo
+       (setq org-todo-keywords
+             '((sequence
+                "TODO(t)"
+                "DOING(d!)"
+                "MAYBE(m)"
+                "BLOCKED(b@)"
+                "DONE(D!)"
+                "READ(r)"
+                "ARCHIVED(a!)")))
+       (setq org-todo-keyword-faces
+             '(("TODO"     . (:foreground "HotPink3" :weight bold))
+               ("DOING"    . (:foreground "salmon" :weight bold))
+               ("BLOCKED"  . (:foreground "DeepPink" :weight bold))
+               ("MAYBE"    . (:foreground "LightSteelBlue4" :weight bold))
+               ("DONE"     . (:foreground "SeaGreen3" :weight bold))
+               ("READ"     . (:foreground "SteelBlue2" :weight bold))
+               ("ARCHIVED" . (:foreground "LightSlateGrey" :weight bold)))))
    #+end_src
 
 ** calfw-org
@@ -616,6 +630,15 @@
 	  :config
 	  (setq cfw:org-agenda-schedule-args '(:timestamp :scheduled :deadline)))
   #+end_src
+
+** [[https://github.com/hniksic/emacs-htmlize][htmlize]]
+
+   Used for exporting source code with syntax highlighting.
+
+   #+begin_src emacs-lisp
+     (use-package htmlize
+       :ensure t)
+   #+end_src
 
 * Calendar
 ** [[https://github.com/kiwanami/emacs-calfw/][calfw]]
@@ -633,85 +656,86 @@
    More convenient key definitions.
 
    #+begin_src emacs-lisp
-	 (use-package general
-	   :ensure t
-	   :config
-	   (general-evil-setup t)
-	   (define-key evil-motion-state-map " " nil)
-	   ;; (general-evil-define-key 'normal 'global
-	   ;;   :prefix "SPC"
-	   (general-define-key
-		 :prefix "SPC"
-		 :states 'normal
-		 ;; Misc
-		 "SPC" 'counsel-M-x
-		 "TAB" 'mode-line-other-buffer
-		 "." 'xref-find-definitions
-		 "," 'xref-pop-marker-stack
-		 "'" 'eshell
-		 "qq" 'evil-quit
-		 "s" 'swiper
-		 ;; Applications
-		 "a" '(:ignore t :which-key "applications")
-		 "au" 'undo-tree-visualize
-		 "aU" 'update-packages
-		 ;; Buffers
-		 "b" '(:ignore t :which-key "buffers")
-		 "bb" 'counsel-switch-buffer
-		 "bd" 'kill-this-buffer
-		 "bp" 'previous-buffer
-		 "bn" 'next-buffer
-		 "bN" 'evil-buffer-new
-		 "be" 'erase-buffer
-		 ;; Bookmarks
-		 "B" '(:ignore t :which-key "bookmarks")
-		 "BB" 'bookmark-jump
-		 "Bs" 'bookmark-set
-		 ;; Compiling
-		 "c" 'compile
-		 ;; Errors
-		 "e" '(:ignore t :which-key "errors")
-		 ;; Files
-		 "f" '(:ignore t :which-key "file")
-		 "ff" 'find-file
-		 "fr" 'counsel-recentf
-		 "fs" 'save-buffer
-		 "fS" 'evil-write-all
-		 "fR" 'rename-file
-		 "fb" 'ranger-show-bookmarks
-		 ;; Focus
-		 "F" '(:ignore t :which-key "focus")
-		 ;; LSP
-		 "l" '(:ignore t :which-key "language")
-		 ;; Projects
-		 "p" '(:ignore t :which-key "project")
-		 ;; Toggles
-		 "t" '(:ignore t :which-key "toggles")
-		 "tn" 'display-line-numbers-mode
-		 "tL" 'visual-line-mode
-		 "tu" 'lsp-ui-mode
-		 ;; Themes
-		 "T" '(:ignore t :which-key "themes")
-		 "Ts" 'counsel-load-theme
-		 ;; Windows
-		 "w" '(:ignore t :which-key "window")
-		 "wm" 'delete-other-windows
-		 "wf" 'delete-other-windows
-		 "wj" 'evil-window-down
-		 "wk" 'evil-window-up
-		 "wl" 'evil-window-right
-		 "wh" 'evil-window-left
-		 ;; "ws" 'evil-window-split
-		 ;; "wv" 'evil-window-vsplit
-		 "ws" 'split-and-follow-horizontally
-		 "wv" 'split-and-follow-vertically
-		 "wd" 'evil-window-delete
-		 "wc" 'evil-window-delete
-		 "wH" 'evil-window-move-far-left
-		 "wL" 'evil-window-move-far-right
-		 "wK" 'evil-window-move-very-top
-		 "wJ" 'evil-window-move-very-bottom
-		 "w=" 'balance-windows))
+     (use-package general
+       :ensure t
+       :config
+       (general-evil-setup t)
+       (define-key evil-motion-state-map " " nil)
+       ;; (general-evil-define-key 'normal 'global
+       ;;   :prefix "SPC"
+       (general-define-key
+         :prefix "SPC"
+         :states 'normal
+         ;; Misc
+         "SPC" 'counsel-M-x
+         "TAB" 'mode-line-other-buffer
+         "." 'xref-find-definitions
+         "," 'xref-pop-marker-stack
+         "'" 'eshell
+         "qq" 'evil-quit
+         "s" 'swiper
+         ;; Applications
+         "a" '(:ignore t :which-key "applications")
+         "au" 'undo-tree-visualize
+         "aU" 'update-packages
+         "ac" 'cfw:open-org-calendar
+         ;; Buffers
+         "b" '(:ignore t :which-key "buffers")
+         "bb" 'counsel-switch-buffer
+         "bd" 'kill-this-buffer
+         "bp" 'previous-buffer
+         "bn" 'next-buffer
+         "bN" 'evil-buffer-new
+         "be" 'erase-buffer
+         ;; Bookmarks
+         "B" '(:ignore t :which-key "bookmarks")
+         "BB" 'bookmark-jump
+         "Bs" 'bookmark-set
+         ;; Compiling
+         "c" 'compile
+         ;; Errors
+         "e" '(:ignore t :which-key "errors")
+         ;; Files
+         "f" '(:ignore t :which-key "file")
+         "ff" 'find-file
+         "fr" 'counsel-recentf
+         "fs" 'save-buffer
+         "fS" 'evil-write-all
+         "fR" 'rename-file
+         "fb" 'ranger-show-bookmarks
+         ;; Focus
+         "F" '(:ignore t :which-key "focus")
+         ;; LSP
+         "l" '(:ignore t :which-key "language")
+         ;; Projects
+         "p" '(:ignore t :which-key "project")
+         ;; Toggles
+         "t" '(:ignore t :which-key "toggles")
+         "tn" 'display-line-numbers-mode
+         "tL" 'visual-line-mode
+         "tu" 'lsp-ui-mode
+         ;; Themes
+         "T" '(:ignore t :which-key "themes")
+         "Ts" 'counsel-load-theme
+         ;; Windows
+         "w" '(:ignore t :which-key "window")
+         "wm" 'delete-other-windows
+         "wf" 'delete-other-windows
+         "wj" 'evil-window-down
+         "wk" 'evil-window-up
+         "wl" 'evil-window-right
+         "wh" 'evil-window-left
+         ;; "ws" 'evil-window-split
+         ;; "wv" 'evil-window-vsplit
+         "ws" 'split-and-follow-horizontally
+         "wv" 'split-and-follow-vertically
+         "wd" 'evil-window-delete
+         "wc" 'evil-window-delete
+         "wH" 'evil-window-move-far-left
+         "wL" 'evil-window-move-far-right
+         "wK" 'evil-window-move-very-top
+         "wJ" 'evil-window-move-very-bottom
+         "w=" 'balance-windows))
    #+end_src
 
 ** [[https://github.com/justbur/emacs-which-key][Which-key]]
@@ -924,6 +948,14 @@
 	   :ensure t)
    #+end_src
 
+** Python
+
+   #+begin_src emacs-lisp
+	 (use-package python-mode
+	   :ensure t
+	   :hook (python-mode-hook . jedi:setup))
+   #+end_src
+
 * Language Server Protocol
 ** [[https://github.com/emacs-lsp/lsp-mode][LSP]]
 
@@ -942,9 +974,11 @@
 			  (rjsx-mode       . lsp-deferred)
 			  (typescript-mode . lsp-deferred)
 			  (rust-mode       . lsp-deferred)
-			  (ruby-mode       . lsp-deferred)
-			  (python-mode     . lsp-deferred))
-	   :commands (lsp lsp-deferred))
+			  (python-mode     . lsp-deferred)
+			  (ruby-mode       . lsp-deferred))
+	   :commands (lsp lsp-deferred)
+	   :config
+	   (setq lsp-enable-completion-at-point t))
    #+end_src
 
 *** [[https://github.com/emacs-lsp/lsp-ui][LSP-UI]]
