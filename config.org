@@ -469,7 +469,7 @@
 		`(((,(all-the-icons-octicon "octoface" :height 1.1 :v-adjust 0.0)
 			"Homepage"
 			"Browse homepage"
-			(lambda (&rest _) (browse-url "https://github.com/0-l/megumacs")))
+			(lambda (&rest _) (browse-url "https://github.com/b-coimbra/megumacs")))
 		   (,(all-the-icons-faicon "refresh" :height 1.1 :v-adjust 0.0)
 			"Update"
 			"Update Megumacs"
@@ -496,25 +496,9 @@
 	   (company-tooltip-align-annotations t)
 	   :config
 	   (add-to-list 'company-backends
-					'(company-lsp
-					  company-yasnippet
+					'(company-yasnippet
 					  company-capf
 					  company-dabbrev)))
-   #+end_src
-
-** [[https://github.com/tigersoldier/company-lsp][Company/lsp]]
-
-   Company completion backend for =lsp-mode=
-
-   #+begin_src emacs-lisp
-	 (use-package company-lsp
-	   :ensure t
-	   :requires company
-	   :commands company-lsp
-	   :custom
-	   (company-transformers nil)
-	   (company-lsp-async t)
-	   (company-lsp-cache-candidates nil))
    #+end_src
 
 * Evil
@@ -611,7 +595,25 @@
 	(use-package org
 	  :init
 	  (setq org-startup-folded t)
-	  :ensure t)
+	  :ensure t
+	  :config
+	  (setq org-todo-keywords
+			'((sequence
+			   "TODO(t)"
+			   "DOING(d!)"
+			   "MAYBE(m)"
+			   "BLOCKED(b@)"
+			   "DONE(D!)"
+			   "READ(r)"
+			   "ARCHIVED(a!)")))
+	  (setq org-todo-keyword-faces
+			'(("TODO"     . (:foreground "HotPink3" :weight bold))
+			  ("DOING"    . (:foreground "salmon" :weight bold))
+			  ("BLOCKED"  . (:foreground "DeepPink" :weight bold))
+			  ("MAYBE"    . (:foreground "LightSteelBlue4" :weight bold))
+			  ("DONE"     . (:foreground "SeaGreen3" :weight bold))
+			  ("READ"     . (:foreground "SteelBlue2" :weight bold))
+			  ("ARCHIVED" . (:foreground "LightSlateGrey" :weight bold)))))
   #+end_src
 
 * Keybindings
@@ -929,7 +931,8 @@
 			  (rjsx-mode       . lsp-deferred)
 			  (typescript-mode . lsp-deferred)
 			  (rust-mode       . lsp-deferred)
-			  (ruby-mode       . lsp-deferred))
+			  (ruby-mode       . lsp-deferred)
+			  (python-mode     . lsp-deferred))
 	   :commands (lsp lsp-deferred))
    #+end_src
 
