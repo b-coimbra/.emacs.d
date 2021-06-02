@@ -75,11 +75,11 @@
    Global variables to easily customize portions of Megumacs.
 
    #+begin_src emacs-lisp
-	 (setq
-	  globals--banner-path "banners/blackhole.png" ; Banner image path shown in the dashboard
-	  globals--font        "Iosevka 12"            ; Font family and font size
-	  globals--theme       'doom-sourcerer         ; Theme used by Emacs.
-	  )
+     (setq
+      globals--banner-path  "banners/blackhole.png"         ; Banner image path shown in the dashboard
+      globals--font         "Iosevka 12"                    ; Font family and font size
+      globals--theme        'doom-sourcerer                 ; Theme used by Emacs.
+      )
    #+end_src
 
 ** Better defaults
@@ -598,8 +598,6 @@
        (setq org-startup-folded t)
        :ensure t
        :config
-       ;; org-agenda
-       (setq org-agenda-files '("~/dev/scribbles/org/schedule/schedule.org"))
        ;; org-todo
        (setq org-todo-keywords
              '((sequence
