@@ -209,6 +209,16 @@
 	   (auto-package-update-maybe))
    #+end_src
 
+** No littering
+
+   Keep =~/.emacs.d= clean.
+
+   #+begin_src emacs-lisp
+     (use-package no-littering
+       :ensure t
+       :demand t)
+   #+end_src
+
 * Font
 
   Font family used by Emacs.
