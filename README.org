@@ -9,7 +9,7 @@ The entire config file can be viewed from [[https://b-coimbra.github.io/megumacs
   Clone this repo into your *.emacs.d*:
 
   #+begin_src sh
-  $ git clone https://github.com/0-l/megumacs.git ~/.emacs.d --recurse-submodules
+  $ git clone https://github.com/b-coimbra/megumacs.git ~/.emacs.d --recurse-submodules
   #+end_src
 
 ** Font
