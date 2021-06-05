@@ -32,4 +32,4 @@ The entire config file can be viewed from [[https://b-coimbra.github.io/megumacs
 
 * Screenshots
 
-  [[./screenshots/screenshot1.png]]
+  [[./var/screenshots/screenshot1.png]]

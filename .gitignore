@@ -1,11 +1,13 @@
-/**
+/*
+var/*
 
 !.gitignore
 
-!banners/
-!banners/**
-!screenshots/
-!screenshots/**
+!var/
+!var/banners
+!/var/banners/**
+!/var/screenshots/
+!/var/screenshots/**
 !.config
 !README.org
 !README.html

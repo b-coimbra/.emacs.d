@@ -5,7 +5,7 @@
 #+title: MEGUMACS
 #+date: <2020-02-01 Sat>
 #+author: index
-#+email: 0th@protonmail.com
+#+email: me@metaphoric.dev
 #+setupfile: https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup
 #+startup: inlineimages
 #+language: en
@@ -46,7 +46,7 @@
 * Introduction
 
   #+begin_center
-  [[./banners/megumacs2.png]]
+  [[./var/banners/megumacs2.png]]
   #+end_center
 
   #+begin_quote
@@ -76,7 +76,7 @@
 
    #+begin_src emacs-lisp
      (setq
-      globals--banner-path  "banners/blackhole.png"         ; Banner image path shown in the dashboard
+      globals--banner-path  "var/banners/blackhole.png"         ; Banner image path shown in the dashboard
       globals--font         "Iosevka 12"                    ; Font family and font size
       globals--theme        'doom-sourcerer                 ; Theme used by Emacs.
       )
@@ -189,7 +189,7 @@
    loaded, if existing.
 
    #+begin_src emacs-lisp
-	 (setq-default custom-file (expand-file-name ".custom.el" user-emacs-directory))
+	 (setq-default custom-file (no-littering-expand-etc-file-name ".custom.el"))
 	 (when (file-exists-p custom-file)
 	   (load custom-file))
    #+end_src
