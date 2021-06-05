@@ -2,7 +2,7 @@
 #+AUTHOR: index
 #+SETUPFILE: https://fniessen.github.io/org-html-themes/setup/theme-readtheorg.setup
 
-The entire config file can be viewed from [[https://b-coimbra.github.io/megumacs/config.html][here]] in HTML format.
+The entire config file can be viewed from [[https://b-coimbra.github.io/megumacs/var/config.html][here]] in HTML format.
 
 * Installation
 

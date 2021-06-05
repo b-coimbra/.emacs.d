@@ -76,7 +76,7 @@
 
    #+begin_src emacs-lisp
      (setq
-      globals--banner-path  "var/banners/blackhole.png"         ; Banner image path shown in the dashboard
+      globals--banner-path  "var/banners/blackhole.png"     ; Banner image path shown in the dashboard
       globals--font         "Iosevka 12"                    ; Font family and font size
       globals--theme        'doom-sourcerer                 ; Theme used by Emacs.
       )
