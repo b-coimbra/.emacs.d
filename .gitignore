@@ -1,5 +1,6 @@
 /*
 var/*
+etc/*
 
 !.gitignore
 
@@ -9,6 +10,8 @@ var/*
 !/var/banners/**
 !/var/screenshots/
 !/var/screenshots/**
+!/etc/
+!/etc/themes
 !.config
 !README.org
 !README.html
