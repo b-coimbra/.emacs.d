@@ -3,9 +3,9 @@ var/*
 etc/*
 
 !.gitignore
+!config.html
 
 !var/
-!var/config.html
 !var/banners
 !/var/banners/**
 !/var/screenshots/
