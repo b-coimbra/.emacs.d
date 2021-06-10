@@ -644,6 +644,10 @@
        (setq org-startup-folded t)
        :ensure t
        :config
+       ;; prettify
+       (setq org-hide-macro-markers t
+             org-hide-emphasis-markers t
+             org-startup-indented t)
        ;; org archive
        (setq org-archive-location (concat "archive/"
                                           (format-time-string "%Y-%m" (current-time))
@@ -804,14 +808,15 @@
    General source control package. Has a nice interface for every git operation there is.
 
    #+begin_src emacs-lisp
-	 (use-package magit
-	   :ensure t
-	   :general
-	   (nmap
-		 :prefix "<SPC>"
-		 "g" '(nil :which-key "magit")
-		 "gs" 'magit-status
-		 "gb" 'magit-blame))
+     (use-package magit
+       :ensure t
+       :defer 3
+       :general
+       (nmap
+         :prefix "<SPC>"
+         "g" '(nil :which-key "magit")
+         "gs" 'magit-status
+         "gb" 'magit-blame))
    #+end_src
 
 ** [[https://github.com/syohex/emacs-git-gutter-fringe][Git Gutter]]
