@@ -199,7 +199,7 @@
    loaded, if existing.
 
    #+begin_src emacs-lisp
-	 (setq-default custom-file (no-littering-expand-etc-file-name ".custom.el"))
+	 (setq-default custom-file (expand-file-name "etc/.custom.el" user-emacs-directory))
 	 (when (file-exists-p custom-file)
 	   (load custom-file))
    #+end_src
