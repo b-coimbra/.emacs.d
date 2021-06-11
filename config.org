@@ -646,7 +646,10 @@
        :config
        ;; prettify
        (setq org-hide-macro-markers t
-             org-hide-emphasis-markers t)
+             org-hide-emphasis-markers t
+             org-adapt-indentation t
+             org-hide-leading-stars t
+             org-odd-levels-only t)
        ;; org archive
        (setq org-archive-location (concat "archive/"
                                           (format-time-string "%Y-%m" (current-time))
