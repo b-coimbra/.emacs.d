@@ -1,17 +1,15 @@
 /*
-var/*
 etc/*
 
 !.gitignore
 !config.html
 
-!var/
-!var/banners
-!/var/banners/**
-!/var/screenshots/
-!/var/screenshots/**
-!/etc/
+!etc/
 !/etc/themes
+!etc/banners
+!/etc/banners/**
+!/etc/screenshots/
+!/etc/screenshots/**
 !.config
 !README.org
 !README.html

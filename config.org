@@ -56,7 +56,7 @@
 * Introduction
 
   #+begin_center
-  [[./var/banners/megumacs2.png]]
+  [[./etc/banners/megumacs2.png]]
   #+end_center
 
   #+begin_quote
@@ -86,9 +86,9 @@
 
    #+begin_src emacs-lisp
      (setq
-      globals--banner-path  "var/banners/blackhole.png"     ; Banner image path shown in the dashboard
+      globals--banner-path  "etc/banners/megumacs.png"     ; Banner image path shown in the dashboard
       globals--font         "Iosevka 12"                    ; Font family and font size
-      globals--theme        'doom-sourcerer                 ; Theme used by Emacs.
+      globals--theme        'megumacs                 ; Theme used by Emacs.
       )
    #+end_src
 
@@ -394,6 +394,24 @@
    #+end_src
 
 * Themes
+** [[https://github.com/jasonm23/autothemer][Autothemer]]
+
+   Conveniently create Emacs themes.
+
+   #+begin_src emacs-lisp
+     (use-package autothemer
+       :ensure t)
+   #+end_src
+
+** Custom themes
+
+   Loads custom themes from Github using Quelpa.
+
+   #+begin_src emacs-lisp
+     ; (use-package everforest-theme
+     ;  :quelpa (everforest-theme :fetcher github :repo "b-coimbra/everforest.el"))
+   #+end_src
+
 ** [[https://github.com/ogdenwebb/emacs-kaolin-themes][Kaolin themes]]
 
    Set of eye pleasing themes for GNU Emacs. Supports both GUI and terminal.
