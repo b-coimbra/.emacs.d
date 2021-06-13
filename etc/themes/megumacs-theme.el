@@ -62,6 +62,12 @@
         `(doom-modeline-evil-normal-state ((t (:foreground "#ff69b4"))))
         `(doom-modeline-bar ((t (:background "#ff69b4" :foreground "#ff69b4"))))
         `(doom-modeline-bar-active ((t (:background "#ff69b4" :foreground "#ff69b4"))))
+        `(doom-modeline-info ((t (:foreground "#ff69b4" :bold t))))
+        `(doom-modeline-lsp-success ((t (:foreground "#ff69b4" :bold t))))
+        `(doom-modeline-repl-success ((t (:foreground "#ff69b4" :bold t))))
+        `(flycheck-fringe-info ((t (:foreground "#ff69b4" :bold t))))
+        `(flycheck-error-list-info ((t (:foreground "#ff69b4" :bold t))))
+        `(lsp-installation-buffer-face ((t (:foreground "#ff69b4" :bold t))))
         `(evil-mc-cursor-bar-face ((t (:background "#ff69b4" :foreground "#ff69b4"))))
     `(font-lock-negation-char-face ((,class (:foreground ,const))))
 	`(font-lock-reference-face ((,class (:foreground ,const))))
@@ -77,7 +83,7 @@
         `(region ((,class (:background ,fg1 :foreground ,bg1))))
         `(highlight ((,class (:foreground ,fg3 :background ,bg3))))
 	`(hl-line ((,class (:background  ,bg2))))
-	`(fringe ((,class (:background nil))))
+	`(fringe ((,class (:background nil :foreground ,bg4))))
     `(window-divider ((((class color) (min-colors 16777215)) (:foreground "#302c29")) (((class color) (min-colors 255)) (:foreground "#4e4e4e"))))
 	`(cursor ((,class (:background ,bg3))))
         `(show-paren-match-face ((,class (:background ,warning))))
@@ -258,7 +264,7 @@
     (custom-theme-set-faces
      'megumacs
      `(line-number ((t (:inherit fringe))))
-     `(line-number-current-line ((t (:inherit fringe :foreground "white" :weight bold))))))
+     `(line-number-current-line ((t (:inherit fringe :foreground ,keyword :weight bold))))))
   ;; emacs >= 27.1
   (when (>= emacs-major-version 27)
     (custom-theme-set-faces
