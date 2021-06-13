@@ -425,6 +425,15 @@
 	   :hook (after-init . solaire-global-mode))
    #+end_src
 
+** [[https://elpa.gnu.org/packages/rainbow-mode.html][Rainbow-mode]]
+
+   Colorize color names in buffers.
+
+   #+begin_src emacs-lisp
+     (use-package rainbow-mode
+       :ensure t)
+   #+end_src
+
 * Modeline
 ** [[https://github.com/TheBB/spaceline][Spaceline]]
 
