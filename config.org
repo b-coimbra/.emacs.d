@@ -4,7 +4,7 @@
 #+options: tasks:t tex:t timestamp:t title:t toc:t todo:t |:t
 #+title: MEGUMACS
 #+date: <2020-02-01 Sat>
-#+author: index
+#+author: b-coimbra
 #+email: me@metaphoric.dev
 #+setupfile: https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup
 #+html_head_extra: <meta property="og:title" content="Megumacs" />
