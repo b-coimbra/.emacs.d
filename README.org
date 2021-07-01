@@ -6,7 +6,7 @@
 
 * Preview
 
-  The entire config file can be viewed from [[https://b-coimbra.github.io/megumacs/config.html][here]] in HTML format.
+  The entire config file can be viewed from [[https://emacs.metaphoric.dev][here]] in HTML format.
 
 * Installation
 
