@@ -48,8 +48,8 @@
    #+begin_src emacs-lisp
      (setq
       globals--banner-path  "etc/banners/megumacs.png"     ; Banner image path shown in the dashboard
-      globals--font         "Iosevka 12"                    ; Font family and font size
-      globals--theme        'megumacs                 ; Theme used by Emacs.
+      globals--font         "Iosevka 12"                   ; Font family and font size
+      globals--theme        'megumacs                      ; Theme used by Emacs.
       )
    #+end_src
 
@@ -933,11 +933,13 @@
 	Improved Javascript editing mode.
 
 	#+begin_src emacs-lisp
-	  (use-package js2-mode
-		:ensure t
-		:custom
-		(js-indent-level 2)
-		(js2-basic-offset 2))
+      (use-package js2-mode
+        :ensure t
+        :custom
+        (js-indent-level 2)
+        (js2-basic-offset 2)
+        :init
+        (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode)))
 	#+end_src
 
 *** [[https://github.com/felipeochoa/rjsx-mode][rjsx-mode]]
@@ -1189,6 +1191,19 @@
 	   :ensure t
 	   :init
 	   (global-undo-tree-mode))
+   #+end_src
+** [[https://github.com/gregsexton/origami.el][Origami]]
+
+   A text folding minor mode for Emacs.
+   With this minor mode enabled, you can collapse and expand regions of text.
+
+   #+begin_src emacs-lisp
+     (use-package origami
+       :ensure t
+       :hook ((js2-mode        . origami-mode)
+              (js-mode         . origami-mode)
+              (typescript-mode . origami-mode)
+              (rust-mode       . origami-mode)))
    #+end_src
 
 * Templates
