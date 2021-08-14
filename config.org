@@ -49,7 +49,7 @@
      (setq
       globals--banner-path  "etc/banners/megumacs.png"     ; Banner image path shown in the dashboard
       globals--font         "Iosevka 12"                   ; Font family and font size
-      globals--theme        'kaolin-aurora                 ; Theme used by Emacs.
+      globals--theme        'doom-gruvbox                  ; Theme used by Emacs.
       )
    #+end_src
 
@@ -68,53 +68,53 @@
    General better defaults:
 
    #+begin_src emacs-lisp
-	 (setq-default
-	  ad-redefinition-action 'accept                   ; Silence warnings for redefinition
-	  auto-window-vscroll nil                          ; Lighten vertical scroll
-	  confirm-kill-emacs 'yes-or-no-p                  ; Confirm before exiting Emacs
-	  cursor-in-non-selected-windows nil               ; Hide the cursor in inactive windows
-	  delete-by-moving-to-trash t                      ; Delete files to trash
-	  display-time-default-load-average nil            ; Don't display load average
-	  display-time-format "%H:%M"                      ; Format the time string
-	  fill-column 80                                   ; Set width for automatic line breaks
-	  help-window-select t                             ; Focus new help windows when opened
-	  indent-tabs-mode nil                             ; Use tabs to indent
-	  inhibit-startup-screen t                         ; Disable start-up screen
-	  initial-scratch-message ""                       ; Empty the initial *scratch* buffer
-	  mouse-yank-at-point t                            ; Yank at point rather than pointer
-	  ns-use-srgb-colorspace nil                       ; Don't use sRGB colors
-	  select-enable-clipboard t                        ; Merge system's and Emacs' clipboard
-	  sentence-end-double-space nil                    ; End a sentence after a dot and a space
-	  show-help-function nil                           ; Disable help messages
-	  show-trailing-whitespace t                       ; Display trailing whitespaces
-	  split-height-threshold nil                       ; Disable vertical window splitting
-	  split-width-threshold nil                        ; Disable horizontal window splitting
-	  tab-width 4                                      ; Set width for tabs
-	  uniquify-buffer-name-style 'forward              ; Uniquify buffer names
-	  window-combination-resize t                      ; Resize windows proportionally
-	  x-stretch-cursor t                               ; Stretch cursor to the glyph width
-	  delete-old-versions -1                           ; Delete excess backup versions silently
-	  version-control t                                ; Use version control
-	  ring-bell-function 'ignore                       ; Silent bell when you make a mistake
-	  inhibit-compacting-font-caches t                 ; Faster navigation point (costs more memory)
-	  recentf-mode t                                   ; Keep recent files
-	  make-backup-files nil                            ; Stop creating backup files
-	  display-line-numbers-type 'relative              ; Use relative line numbers
-	  vc-follow-symlinks t)                            ; Don't ask for confirmation when opening symlinked file
-	 (cd "~/")                                         ; Move to the user directory
-	 (global-display-line-numbers-mode t)              ; Enable line numbers globally
-	 (delete-selection-mode 1)                         ; Replace region when inserting text
-	 (display-time-mode 1)                             ; Enable time in the mode-line
-	 (global-auto-revert-mode 1)                       ; Automatically revert a buffer when it changes on disk
-	 (fringe-mode '(8 . 0))                            ; Enable fringe on the left for git-gutter-fringe+
-	 (electric-pair-mode t)                            ; Enable Matching delimeters
-	 (electric-indent-mode t)                          ; Auto indentation
-	 (fset 'yes-or-no-p 'y-or-n-p)                     ; Replace yes/no prompts with y/n
-	 (global-subword-mode 1)                           ; Iterate through CamelCase words
-	 (menu-bar-mode 0)                                 ; Disable the menu bar
-	 (mouse-avoidance-mode 'jump)                      ; Avoid collision of mouse with point
-	 (put 'downcase-region 'disabled nil)              ; Enable downcase-region
-	 (put 'upcase-region 'disabled nil)                ; Enable upcase-region
+     (setq-default
+      ad-redefinition-action 'accept                   ; Silence warnings for redefinition
+      auto-window-vscroll nil                          ; Lighten vertical scroll
+      confirm-kill-emacs 'yes-or-no-p                  ; Confirm before exiting Emacs
+      cursor-in-non-selected-windows nil               ; Hide the cursor in inactive windows
+      delete-by-moving-to-trash t                      ; Delete files to trash
+      display-time-default-load-average nil            ; Don't display load average
+      display-time-format "%H:%M"                      ; Format the time string
+      fill-column 80                                   ; Set width for automatic line breaks
+      help-window-select t                             ; Focus new help windows when opened
+      indent-tabs-mode nil                             ; Use tabs to indent
+      inhibit-startup-screen t                         ; Disable start-up screen
+      initial-scratch-message ""                       ; Empty the initial *scratch* buffer
+      mouse-yank-at-point t                            ; Yank at point rather than pointer
+      ns-use-srgb-colorspace nil                       ; Don't use sRGB colors
+      select-enable-clipboard t                        ; Merge system's and Emacs' clipboard
+      sentence-end-double-space nil                    ; End a sentence after a dot and a space
+      show-help-function nil                           ; Disable help messages
+      show-trailing-whitespace t                       ; Display trailing whitespaces
+      split-height-threshold nil                       ; Disable vertical window splitting
+      split-width-threshold nil                        ; Disable horizontal window splitting
+      tab-width 4                                      ; Set width for tabs
+      uniquify-buffer-name-style 'forward              ; Uniquify buffer names
+      window-combination-resize t                      ; Resize windows proportionally
+      x-stretch-cursor t                               ; Stretch cursor to the glyph width
+      delete-old-versions -1                           ; Delete excess backup versions silently
+      version-control t                                ; Use version control
+      ring-bell-function 'ignore                       ; Silent bell when you make a mistake
+      inhibit-compacting-font-caches t                 ; Faster navigation point (costs more memory)
+      recentf-mode t                                   ; Keep recent files
+      make-backup-files nil                            ; Stop creating backup files
+      display-line-numbers-type 'relative              ; Use relative line numbers
+      vc-follow-symlinks t)                            ; Don't ask for confirmation when opening symlinked file
+     (cd "~/")                                         ; Move to the user directory
+     (global-display-line-numbers-mode t)              ; Enable line numbers globally
+     (delete-selection-mode 1)                         ; Replace region when inserting text
+     (display-time-mode 1)                             ; Enable time in the mode-line
+     (global-auto-revert-mode 1)                       ; Automatically revert a buffer when it changes on disk
+     (fringe-mode '(8 . 0))                            ; Enable fringe on the left for git-gutter-fringe+
+     (electric-pair-mode t)                            ; Enable Matching delimeters
+     (electric-indent-mode t)                          ; Auto indentation
+     (fset 'yes-or-no-p 'y-or-n-p)                     ; Replace yes/no prompts with y/n
+     (global-subword-mode 1)                           ; Iterate through CamelCase words
+     (menu-bar-mode 0)                                 ; Disable the menu bar
+     (mouse-avoidance-mode 'jump)                      ; Avoid collision of mouse with point
+     (put 'downcase-region 'disabled nil)              ; Enable downcase-region
+     (put 'upcase-region 'disabled nil)                ; Enable upcase-region
    #+end_src
 
    Enable fullscreen.
@@ -395,14 +395,15 @@
    An opinionated pack of modern color-themes
 
    #+begin_src emacs-lisp
-	 (use-package doom-themes
-	   :ensure t
-	   :custom
-	   (doom-themes-enable-bold t)
-	   (doom-themes-enable-italic t)
-	   :config
-	   (load-theme globals--theme t)
-	   (doom-themes-treemacs-config))
+     (use-package doom-themes
+       :ensure t
+       :custom
+       (doom-themes-enable-bold t)
+       (doom-themes-enable-italic t)
+       (doom-themes-treemacs-enable-variable-pitch nil)
+       :config
+       (load-theme globals--theme t)
+       (doom-themes-treemacs-config))
    #+end_src
 
 * Appearance
@@ -767,8 +768,6 @@
          "wk" 'evil-window-up
          "wl" 'evil-window-right
          "wh" 'evil-window-left
-         ;; "ws" 'evil-window-split
-         ;; "wv" 'evil-window-vsplit
          "ws" 'split-and-follow-horizontally
          "wv" 'split-and-follow-vertically
          "wd" 'evil-window-delete
@@ -1097,6 +1096,24 @@
 	   :config
 	   (eyebrowse-mode)
 	   (eyebrowse-setup-opinionated-keys))
+   #+end_src
+
+** [[https://www.emacswiki.org/emacs/WindMove][windmove]]
+
+   Windmove is used for moving buffers to other windows.
+
+   #+begin_src emacs-lisp
+     (use-package windmove
+       :ensure t
+       :general
+       (nmap
+         :prefix "<SPC>"
+         "wH" 'windmove-swap-states-left
+         "wL" 'windmove-swap-states-right
+         "wK" 'windmove-swap-states-up
+         "wJ" 'windmove-swap-states-down)
+       :init
+       (windmove-default-keybindings))
    #+end_src
 
 ** Focus on newly created windows
