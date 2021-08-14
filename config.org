@@ -49,7 +49,7 @@
      (setq
       globals--banner-path  "etc/banners/megumacs.png"     ; Banner image path shown in the dashboard
       globals--font         "Iosevka 12"                   ; Font family and font size
-      globals--theme        'megumacs                      ; Theme used by Emacs.
+      globals--theme        'kaolin-aurora                 ; Theme used by Emacs.
       )
    #+end_src
 
@@ -854,16 +854,34 @@
    A tree layout file explorer.
 
    #+begin_src emacs-lisp
-	 (use-package treemacs
-	   :ensure t
-	   :defer t
-	   :general
-	   (nmap
-		 :prefix "<SPC>"
-		 "tt" 'treemacs)
-	   :custom
-	   (treemacs-no-png-images nil)
-	   (treemacs-width 25))
+     (use-package treemacs
+       :ensure t
+       :defer t
+       :general
+       (nmap
+         :prefix "<SPC>"
+         "tt" 'treemacs)
+       :custom
+       (treemacs-no-png-images nil)
+       (treemacs-width 35))
+   #+end_src
+
+   =treemacs-evil= must be installed and loaded if you use evil.
+   The keybindings and the cursor will not be setup properly otherwise.
+   It’ll also enable navigation with j/k instead of n/p.
+
+   #+begin_src emacs-lisp
+     (use-package treemacs-evil
+       :ensure t)
+   #+end_src
+
+   =treemacs-magit= is a small utility package to fill the small gaps left
+   by using filewatch-mode and git-mode in conjunction with magit:
+   it will inform treemacs about (un)staging of files and commits happening in magit.
+
+   #+begin_src emacs-lisp
+     (use-package treemacs-magit
+       :ensure t)
    #+end_src
 
 ** [[https://github.com/bbatsov/projectile][Projectile]]
