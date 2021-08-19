@@ -47,9 +47,9 @@
 
    #+begin_src emacs-lisp
      (setq
-      globals--banner-path  "etc/banners/megumacs.png"     ; Banner image path shown in the dashboard
-      globals--font         "Iosevka 12"                   ; Font family and font size
-      globals--theme        'doom-gruvbox                  ; Theme used by Emacs.
+      globals--banner-path  "etc/banners/megumacs.png" ; Banner image path shown in the dashboard
+      globals--font         "Iosevka 12"               ; Font family and font size
+      globals--theme        'doom-spacegrey            ; Theme used by Emacs.
       )
    #+end_src
 
@@ -223,6 +223,7 @@
   Nice looking fonts:
 
   - [[https://github.com/be5invis/Iosevka][Iosevka]]
+  - [[https://github.com/tonsky/FiraCode][Fira Code]]
   - [[https://github.com/belluzj/fantasque-sans][Fantasque Sans]]
 
   #+begin_src emacs-lisp
@@ -522,22 +523,28 @@
    Modular in-buffer completion framework.
 
    #+begin_src emacs-lisp
-		  (use-package company
-			:defer 5
-			:ensure t
-			:init (global-company-mode)
-			:custom
-			(company-show-numbers t)
-			(company-tooltip-align-annotations t)
-			:config
-			(add-to-list 'company-backends
-						 '(company-yasnippet
-						   company-capf
-						   company-dabbrev
-						   company-jedi)))
+     (use-package company
+       :defer 0.5
+       :ensure t
+       :delight
+       :init (global-company-mode)
+       :custom
+       (company-begin-commands '(self-insert-command))
+       (company-minimum-prefix-length 2)
+       (company-idle-delay 0.1)
+       (company-show-numbers t)
+       (company-tooltip-align-annotations t)
+       :config
+       (add-to-list 'company-backends
+                    '(company-yasnippet
+                      company-capf
+                      company-dabbrev
+                      company-jedi)))
    #+end_src
 
 *** [[https://github.com/emacsorphanage/company-jedi][company-jedi]]
+
+    Company backend for Python jedi.
 
 	#+begin_src emacs-lisp
 	  (use-package company-jedi
@@ -1170,23 +1177,6 @@
 	   :ensure t)
    #+end_src
 
-** [[https://github.com/tumashu/ivy-posframe][Ivy/posframe]]
-
-   Ivy extension to show =M-x= in a popup.
-
-   #+begin_src emacs-lisp
-	 ;; (use-package ivy-posframe
-	 ;;   :defer t
-	 ;;   :ensure t
-	 ;;   :config
-	 ;;   (setq ivy-posframe-min-width 90
-	 ;; 		ivy-posframe-width 110)
-	 ;;   (setq ivy-posframe-display-functions-alist
-	 ;; 		'((swiper . ivy-display-function-fallback)
-	 ;; 		  (t      . ivy-posframe-display-at-frame-center)))
-	 ;;   (ivy-posframe-mode 1))
-   #+end_src
-
 ** [[https://github.com/DarthFennec/highlight-indent-guides][Highlight Indent Guides]]
 
    Indentation highlights via =font-lock=
@@ -1257,6 +1247,24 @@
 	   (yas-global-mode 1)
 	   :custom
 	   (yas-prompt-functions 'yas-ido-prompt))
+   #+end_src
+
+   Solve conflicts between company-mode and yasnippet-mode.
+
+   #+begin_src emacs-lisp
+     (defun company-yasnippet-or-completion ()
+       "Solve company yasnippet conflicts."
+       (interactive)
+       (let ((yas-fallback-behavior
+              (apply 'company-complete-common nil)))
+         (yas-expand)))
+
+     (add-hook 'company-mode-hook
+               (lambda ()
+                 (substitute-key-definition
+                  'company-complete-common
+                  'company-yasnippet-or-completion
+                  company-active-map)))
    #+end_src
 
 ** [[https://github.com/AndreaCrotti/yasnippet-snippets][Yasnippet/snippets]]
