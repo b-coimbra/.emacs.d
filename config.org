@@ -365,15 +365,6 @@
        :ensure t)
    #+end_src
 
-** Custom themes
-
-   Loads custom themes from Github using Quelpa.
-
-   #+begin_src emacs-lisp
-     ; (use-package everforest-theme
-     ;  :quelpa (everforest-theme :fetcher github :repo "b-coimbra/everforest.el"))
-   #+end_src
-
 ** [[https://github.com/ogdenwebb/emacs-kaolin-themes][Kaolin themes]]
 
    Set of eye pleasing themes for GNU Emacs. Supports both GUI and terminal.
@@ -405,6 +396,14 @@
        :config
        (load-theme globals--theme t)
        (doom-themes-treemacs-config))
+   #+end_src
+
+** Theme customization
+
+   Persistent theme customization.
+
+   #+begin_src emacs-lisp
+     (set-face-attribute 'font-lock-keyword-face nil :weight 'bold)
    #+end_src
 
 * Appearance
