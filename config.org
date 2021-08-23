@@ -562,15 +562,16 @@
    Base package for =evil-mode=
 
    #+begin_src emacs-lisp
-	 (use-package evil
-	   :ensure t
-	   :custom
-	   (evil-want-keybinding nil)
-	   (evil-want-C-u-scroll t)
-	   :init
-	   (setq evil-want-integration t)
-	   :config
-	   (evil-mode 1))
+     (use-package evil
+       :ensure t
+       :custom
+       (evil-want-keybinding nil)
+       (evil-want-C-u-scroll t)
+       (evil-want-C-i-jump nil)
+       :init
+       (setq evil-want-integration t)
+       :config
+       (evil-mode 1))
    #+end_src
 
 ** [[https://github.com/syl20bnr/evil-escape][evil-escape]]
