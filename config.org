@@ -2,11 +2,12 @@
 #+options: broken-links:nil c:nil creator:nil d:(not "LOGBOOK") date:t e:t
 #+options: email:nil f:t inline:t num:t p:nil pri:nil prop:nil stat:t tags:t
 #+options: tasks:t tex:t timestamp:t title:t toc:t todo:t |:t
-#+title: MEGUMACS
+#+title: MEGUMACS @dotfiles @emacs
+#+subtitle: Doom-like emacs config with a teensy tiny fragment of weebness.
 #+date: <2020-02-01 Sat>
 #+author: b-coimbra
 #+email: me@metaphoric.dev
-#+setupfile: https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup
+#+SETUPFILE: https://b-coimbra.github.io/org-scribbler-theme/scribbler.setup
 #+html_head_extra: <meta property="og:title" content="Megumacs" />
 #+html_head_extra: <meta property="og:type" content="website" />
 #+html_head_extra: <meta property="og:description" content="Doom-like emacs config" />
@@ -536,8 +537,11 @@
        :config
        (add-to-list 'company-backends
                     '(company-yasnippet
+                      company-files
+                      company-keywords
                       company-capf
                       company-dabbrev
+                      company-dabbrev-code
                       company-jedi)))
    #+end_src
 
