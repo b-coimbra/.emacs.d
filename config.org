@@ -5,7 +5,7 @@
 #+title: MEGUMACS @dotfiles @emacs
 #+subtitle: Doom-like emacs config with a teensy tiny fragment of weebness.
 #+date: <2020-02-01 Sat>
-#+author: b-coimbra
+#+author: Bruno Coimbra (b-coimbra)
 #+email: me@metaphoric.dev
 #+SETUPFILE: https://b-coimbra.github.io/org-scribbler-theme/scribbler.setup
 #+html_head_extra: <meta property="og:title" content="Megumacs" />
@@ -50,7 +50,7 @@
      (setq
       globals--banner-path  "etc/banners/megumacs.png" ; Banner image path shown in the dashboard
       globals--font         "Iosevka 12"               ; Font family and font size
-      globals--theme        'doom-spacegrey            ; Theme used by Emacs.
+      globals--theme        'gruvbox-custom            ; Theme used by Emacs.
       )
    #+end_src
 
@@ -839,6 +839,19 @@
 	   :config
 	   (git-gutter-fr+-minimal))
    #+end_src
+
+* Encryption
+
+  Interface for GPG, setup for transparent encryption and decryption:
+
+  #+begin_src emacs-lisp
+    (use-package epa-file
+      :ensure nil
+      :config
+      (setq epa-file-encrypt-to '("b-coimbra@hotmail.com"))
+      :custom
+      (epa-file-select-keys 'silent))
+  #+end_src
 
 * File Management
 ** [[https://github.com/ralesi/ranger.el][Ranger]]
