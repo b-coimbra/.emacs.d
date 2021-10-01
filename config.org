@@ -34,11 +34,13 @@
   #+begin_center
   *[M E G U M A C S]*
 
-  [[https://github.com/b-coimbra/megumacs][*Github*]] | [[https://emacs.metaphoric.dev/config.org][*Source*]]
+  [[https://github.com/b-coimbra/.emacs.d][*Github*]] | [[https://emacs.metaphoric.dev/config.org][*Source*]]
   #+end_center
 
   #+begin_quote
   The tower of rebellion creeps upon man's world, The unspoken faith displayed before me, The time has come! Now, awaken from your slumber, and by my madness, be wrought!
+
+  -- Megumin
   #+end_quote
 
 * Bootstrap
@@ -505,14 +507,14 @@
 		`(((,(all-the-icons-octicon "octoface" :height 1.1 :v-adjust 0.0)
 			"Homepage"
 			"Browse homepage"
-			(lambda (&rest _) (browse-url "https://github.com/b-coimbra/megumacs")))
+			(lambda (&rest _) (browse-url "https://github.com/b-coimbra/.emacs.d")))
 		   (,(all-the-icons-faicon "refresh" :height 1.1 :v-adjust 0.0)
 			"Update"
 			"Update Megumacs"
 			(lambda (&rest _) (update-packages)) warning)
 		   ("⚑" nil
 			"Report BUG"
-			(lambda (&rest _) (browse-url "https://github.com/0-l/megumacs/issues/new")) error))))
+			(lambda (&rest _) (browse-url "https://github.com/b-coimbra/.emacs.d/issues/new")) error))))
 	   :config
 	   (dashboard-setup-startup-hook))
    #+end_src
@@ -1229,10 +1231,10 @@
    Branching tree of changes made in a file.
 
    #+begin_src emacs-lisp
-	 (use-package undo-tree
-	   :ensure t
-	   :init
-	   (global-undo-tree-mode))
+     (use-package undo-tree
+       :ensure t
+       :init
+       (global-undo-tree-mode))
    #+end_src
 ** [[https://github.com/gregsexton/origami.el][Origami]]
 
