@@ -51,7 +51,7 @@
    #+begin_src emacs-lisp
      (setq
       globals--banner-path  "etc/banners/megumacs.png" ; Banner image path shown in the dashboard
-      globals--font         "Iosevka 12"               ; Font family and font size
+      globals--font         "Fantasque Sans Mono 11"   ; Font family and font size
       globals--theme        'gruvbox-custom            ; Theme used by Emacs.
       )
    #+end_src
@@ -225,9 +225,9 @@
 
   Nice looking fonts:
 
-  - [[https://github.com/be5invis/Iosevka][Iosevka]]
-  - [[https://github.com/tonsky/FiraCode][Fira Code]]
-  - [[https://github.com/belluzj/fantasque-sans][Fantasque Sans]]
+  - [[https://github.com/be5invis/Iosevka][Iosevka]] (size 12)
+  - [[https://github.com/tonsky/FiraCode][Fira Code]] (size 12)
+  - [[https://github.com/belluzj/fantasque-sans][Fantasque Sans]] (size 11)
 
   #+begin_src emacs-lisp
 	(set-frame-font globals--font)
@@ -436,6 +436,16 @@
    #+begin_src emacs-lisp
      (use-package rainbow-mode
        :ensure t)
+   #+end_src
+
+** [[https://github.com/Fanael/rainbow-delimiters][Rainbow delimeters]]
+
+   "Rainbow parentheses"-like mode which highlights delimiters such as parentheses, brackets or braces according to their depth.
+
+   #+begin_src emacs-lisp
+     (use-package rainbow-delimeters
+       :ensure t
+       :hook (prog-mode . rainbow-delimiters-mode))
    #+end_src
 
 * Modeline
@@ -674,6 +684,18 @@
                ("DONE"     . (:foreground "SeaGreen3" :weight bold))
                ("READ"     . (:foreground "SteelBlue2" :weight bold))
                ("ARCHIVED" . (:foreground "LightSlateGrey" :weight bold)))))
+   #+end_src
+** [[https://github.com/yjwen/org-reveal][ox-reveal]]
+
+   Reveal.js presentation back-end for org export engine.
+
+   #+begin_src emacs-lisp
+     (use-package ox-reveal
+       :ensure t
+       :init
+       (load-library "ox-reveal")
+       :custom
+       (setq org-reveal-root "https://cdn.jsdelivr.net/npm/reveal.js"))
    #+end_src
 
 ** calfw-org
