@@ -438,12 +438,12 @@
        :ensure t)
    #+end_src
 
-** [[https://github.com/Fanael/rainbow-delimiters][Rainbow delimeters]]
+** [[https://github.com/Fanael/rainbow-delimiters][Rainbow delimiters]]
 
    "Rainbow parentheses"-like mode which highlights delimiters such as parentheses, brackets or braces according to their depth.
 
    #+begin_src emacs-lisp
-     (use-package rainbow-delimeters
+     (use-package rainbow-delimiters
        :ensure t
        :hook (prog-mode . rainbow-delimiters-mode))
    #+end_src
