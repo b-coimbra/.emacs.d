@@ -118,6 +118,7 @@
      (mouse-avoidance-mode 'jump)                      ; Avoid collision of mouse with point
      (put 'downcase-region 'disabled nil)              ; Enable downcase-region
      (put 'upcase-region 'disabled nil)                ; Enable upcase-region
+     (show-paren-mode 1)                               ; Highlight matching parenthesis
    #+end_src
 
    Enable fullscreen.
@@ -401,6 +402,14 @@
        (doom-themes-treemacs-config))
    #+end_src
 
+** [[https://github.com/rougier/nano-theme][Nano Theme]]
+
+   #+begin_src emacs-lisp
+     (use-package nano-theme
+       :ensure t
+       :defer t)
+   #+end_src
+
 ** Theme customization
 
    Persistent theme customization.
@@ -502,31 +511,32 @@
    An extensible emacs startup screen showing you what’s most important.
 
    #+begin_src emacs-lisp
-	 (use-package dashboard
-	   :ensure t
-	   :custom
-	   (dashboard-banner-logo-title "[M E G U M A C S]")
-	   (dashboard-startup-banner (expand-file-name globals--banner-path user-emacs-directory))
-	   (dashboard-footer-messages '("EXPLOOOOOOOOOOSIONNN!"))
-	   (dashboard-footer-icon (all-the-icons-wicon "meteor" :height 1.1 :v-adjust -0.05 :face 'font-lock-keyword-face))
-	   (dashboard-center-content t)
-	   (dashboard-set-heading-icons t)
-	   (dashboard-set-file-icons t)
-	   (dashboard-set-navigator t)
-	   (dashboard-navigator-buttons
-		`(((,(all-the-icons-octicon "octoface" :height 1.1 :v-adjust 0.0)
-			"Homepage"
-			"Browse homepage"
-			(lambda (&rest _) (browse-url "https://github.com/b-coimbra/.emacs.d")))
-		   (,(all-the-icons-faicon "refresh" :height 1.1 :v-adjust 0.0)
-			"Update"
-			"Update Megumacs"
-			(lambda (&rest _) (update-packages)) warning)
-		   ("⚑" nil
-			"Report BUG"
-			(lambda (&rest _) (browse-url "https://github.com/b-coimbra/.emacs.d/issues/new")) error))))
-	   :config
-	   (dashboard-setup-startup-hook))
+     (use-package dashboard
+       :ensure t
+       :custom
+       (dashboard-banner-logo-title "[M E G U M A C S]")
+       (dashboard-startup-banner (expand-file-name globals--banner-path user-emacs-directory))
+       (dashboard-footer-messages '("EXPLOOOOOOOOOOSIONNN!"))
+       (dashboard-footer-icon (all-the-icons-wicon "meteor" :height 1.1 :v-adjust -0.05 :face 'font-lock-keyword-face))
+       (dashboard-center-content t)
+       (dashboard-set-heading-icons t)
+       (dashboard-page-separator "\n\f\n")
+       (dashboard-set-file-icons t)
+       (dashboard-set-navigator t)
+       (dashboard-navigator-buttons
+        `(((,(all-the-icons-octicon "octoface" :height 1.1 :v-adjust 0.0)
+            "Homepage"
+            "Browse homepage"
+            (lambda (&rest _) (browse-url "https://github.com/b-coimbra/.emacs.d")))
+           (,(all-the-icons-faicon "refresh" :height 1.1 :v-adjust 0.0)
+            "Update"
+            "Update Megumacs"
+            (lambda (&rest _) (update-packages)) warning)
+           (,(all-the-icons-faicon "flag" :height 1.1 :v-adjust 0.0) nil
+            "Report a BUG"
+            (lambda (&rest _) (browse-url "https://github.com/b-coimbra/.emacs.d/issues/new")) error))))
+       :config
+       (dashboard-setup-startup-hook))
    #+end_src
 
 * Auto Completion
@@ -692,8 +702,8 @@
    #+begin_src emacs-lisp
      (use-package ox-reveal
        :ensure t
-       :init
-       (load-library "ox-reveal")
+       :defer 3
+       :after org
        :custom
        (setq org-reveal-root "https://cdn.jsdelivr.net/npm/reveal.js"))
    #+end_src

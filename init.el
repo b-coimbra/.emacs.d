@@ -23,7 +23,15 @@
   (unless (package-installed-p 'use-package)
     (package-refresh-contents)
     (package-install 'use-package))
+
   (require 'use-package)
+
+  ;; install missing packages automatically
+  (when (not package-archive-contents)
+    (package-refresh-contents))
+
+  (when (not (package-installed-p 'use-package))
+    (package-install 'use-package))
 
   ;; Use latest Org
   (use-package org :ensure org-plus-contrib)
