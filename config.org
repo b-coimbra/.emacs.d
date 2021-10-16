@@ -229,6 +229,7 @@
   - [[https://github.com/be5invis/Iosevka][Iosevka]] (size 12)
   - [[https://github.com/tonsky/FiraCode][Fira Code]] (size 12)
   - [[https://github.com/belluzj/fantasque-sans][Fantasque Sans]] (size 11)
+  - [[https://www.jetbrains.com/lp/mono/][JetBrains Mono]] (size 10, 11)
 
   #+begin_src emacs-lisp
 	(set-frame-font globals--font)
