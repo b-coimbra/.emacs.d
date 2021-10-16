@@ -521,7 +521,7 @@
        (dashboard-footer-icon (all-the-icons-wicon "meteor" :height 1.1 :v-adjust -0.05 :face 'font-lock-keyword-face))
        (dashboard-center-content t)
        (dashboard-set-heading-icons t)
-       (dashboard-page-separator "\n\f\n")
+       ;; (dashboard-page-separator "\n\f\n")
        (dashboard-set-file-icons t)
        (dashboard-set-navigator t)
        (dashboard-navigator-buttons
