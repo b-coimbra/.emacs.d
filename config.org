@@ -13,10 +13,10 @@
 #+html_head_extra: <meta property="og:description" content="Doom-like emacs config" />
 #+html_head_extra: <meta property="og:url" content="https://emacs.metaphoric.dev" />
 #+html_head_extra: <meta property="og:site_name" content="metaphoric.dev" />
-#+html_head_extra: <meta property="og:image" content="http://emacs.metaphoric.dev/etc/banners/megumacs2.png" />
+#+html_head_extra: <meta property="og:image" content="http://emacs.metaphoric.dev/etc/banners/megumacs-icon.png" />
 #+html_head_extra: <meta property="og:image:type" content="image/png" />
-#+html_head_extra: <meta property="og:image:width" content="1200" />
-#+html_head_extra: <meta property="og:image:height" content="627" />
+#+html_head_extra: <meta property="og:image:width" content="680" />
+#+html_head_extra: <meta property="og:image:height" content="675" />
 #+html_head_extra: <meta name="theme-color" content="#FF69B4" />
 #+startup: inlineimages
 #+language: en
@@ -103,7 +103,8 @@
       recentf-mode t                                   ; Keep recent files
       make-backup-files nil                            ; Stop creating backup files
       display-line-numbers-type 'relative              ; Use relative line numbers
-      vc-follow-symlinks t)                            ; Don't ask for confirmation when opening symlinked file
+      vc-follow-symlinks t
+      frame-inhibit-implied-resize nil)                            ; Don't ask for confirmation when opening symlinked file
      (cd "~/")                                         ; Move to the user directory
      (global-display-line-numbers-mode t)              ; Enable line numbers globally
      (delete-selection-mode 1)                         ; Replace region when inserting text
@@ -218,6 +219,15 @@
      (use-package no-littering
        :ensure t
        :demand t)
+   #+end_src
+
+** Performance
+
+   #+begin_src emacs-lisp
+     (use-package gcmh
+       :ensure t
+       :config
+       (gcmh-mode 1))
    #+end_src
 
 * Font
@@ -1234,12 +1244,13 @@
    Indentation highlights via =font-lock=
 
    #+begin_src emacs-lisp
-	 (use-package highlight-indent-guides
-	   :ensure t
-	   :hook (prog-mode . highlight-indent-guides-mode)
-	   :custom
-	   (highlight-indent-guides-method 'character)
-	   (highlight-indent-guides-character ?\|))
+     (use-package highlight-indent-guides
+       :defer t
+       :ensure t
+       ;; :hook (prog-mode . highlight-indent-guides-mode)
+       :custom
+       (highlight-indent-guides-method 'character)
+       (highlight-indent-guides-character ?\|))
    #+end_src
 
 * Editing
@@ -1335,8 +1346,11 @@
    Discord rich presence for emacs.
 
    #+begin_src emacs-lisp
-	 (use-package elcord
-	   :ensure t
-	   :init
-	   (elcord-mode))
+     (use-package elcord
+       :ensure t
+       :init
+       (elcord-mode)
+       :config
+       (setq elcord-client-id "903078200886853665")
+       (setq elcord-editor-icon "megumacs-icon"))
    #+end_src

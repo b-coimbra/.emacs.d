@@ -6,7 +6,17 @@
 
 ;;; Code:
 
-(let ((gc-cons-threshold most-positive-fixnum))
+(let ((gc-cons-threshold most-positive-fixnum)
+      (gc-cons-percentage 0.6))
+
+  ;; Silence compiler warnings as they can be pretty disruptive
+  (if (boundp 'comp-deferred-compilation)
+      (setq comp-deferred-compilation nil)
+    (setq native-comp-deferred-compilation nil))
+  ;; In noninteractive sessions, prioritize non-byte-compiled source files to
+  ;; prevent the use of stale byte-code. Otherwise, it saves us a little IO time
+  ;; to skip the mtime checks on every *.elc file.
+  (setq load-prefer-newer noninteractive)
 
   ;; Set repositories
   (require 'package)
