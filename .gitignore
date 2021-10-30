@@ -3,6 +3,7 @@ etc/*
 
 !.gitignore
 !config.html
+!tags.json
 
 !etc/
 !docs/
