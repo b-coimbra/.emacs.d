@@ -813,6 +813,7 @@
          "tn" 'display-line-numbers-mode
          "tL" 'visual-line-mode
          "tu" 'lsp-ui-mode
+         "ti" 'highlight-indent-guides-mode
          ;; Themes
          "T" '(:ignore t :which-key "themes")
          "Ts" 'counsel-load-theme
