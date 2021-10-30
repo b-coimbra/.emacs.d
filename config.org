@@ -22,7 +22,7 @@
 #+language: en
 #+select_tags: export
 #+exclude_tags: noexport
-#+export_file_name: index.html
+#+export_file_name: docs/index.html
 #+creator: Emacs 26.3 (Org mode 9.3.1)
 
 * Introduction

@@ -1,0 +1,14 @@
+{
+  "tags": [
+    {
+      "name": "dotfiles",
+      "color": "#afa6ea",
+      "files": [""]
+    },
+    {
+      "name": "emacs",
+      "color": "#fdd262",
+      "files": [""]
+    }
+  ]
+}

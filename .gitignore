@@ -5,6 +5,7 @@ etc/*
 !config.html
 
 !etc/
+!docs/
 !/etc/themes
 !etc/banners
 !/etc/banners/**
