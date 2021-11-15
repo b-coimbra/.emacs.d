@@ -17,7 +17,7 @@
 #+html_head_extra: <meta property="og:image:type" content="image/png" />
 #+html_head_extra: <meta property="og:image:width" content="680" />
 #+html_head_extra: <meta property="og:image:height" content="675" />
-#+html_head_extra: <meta name="theme-color" content="#FF69B4" />
+#+html_head_extra: <meta name="theme-color" content="#61122D" />
 #+startup: inlineimages
 #+language: en
 #+select_tags: export
@@ -42,6 +42,12 @@
 
   -- Megumin
   #+end_quote
+
+* Installation
+
+  1. Clone into *.emacs.d*: =$ git clone https://github.com/b-coimbra/.emacs.d.git ~/.emacs.d=
+  2. Install [[https://github.com/domtronn/all-the-icons.el][all-the-icons]] fonts: =M-x all-the-icons-install-fonts=
+  3. Install [[https://github.com/emacs-lsp/lsp-mode#supported-languages][language servers]]
 
 * Bootstrap
 ** Globals
