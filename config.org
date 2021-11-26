@@ -6,7 +6,7 @@
 #+subtitle: Doom-like emacs config with a teensy tiny fragment of weebness.
 #+date: <2020-02-01 Sat>
 #+author: Bruno Coimbra (b-coimbra)
-#+email: me@metaphoric.dev
+#+email: me@asynch.dev
 #+SETUPFILE: https://b-coimbra.github.io/org-scribbler-theme/scribbler.setup
 #+html_head_extra: <meta property="og:title" content="Megumacs" />
 #+html_head_extra: <meta property="og:type" content="website" />
@@ -234,6 +234,14 @@
        :ensure t
        :config
        (gcmh-mode 1))
+   #+end_src
+
+** Utilities
+
+   #+begin_src emacs-lisp
+     (defun open-config-file ()
+       (interactive)
+       (find-file (expand-file-name "config.org" user-emacs-directory)))
    #+end_src
 
 * Font
@@ -530,6 +538,8 @@
    #+begin_src emacs-lisp
      (use-package dashboard
        :ensure t
+       :init
+       (add-hook 'dashboard-mode-hook (lambda () (setq show-trailing-whitespace nil)))
        :custom
        (dashboard-banner-logo-title "[M E G U M A C S]")
        (dashboard-startup-banner (expand-file-name globals--banner-path user-emacs-directory))
@@ -541,17 +551,35 @@
        (dashboard-set-file-icons t)
        (dashboard-set-navigator t)
        (dashboard-navigator-buttons
-        `(((,(all-the-icons-octicon "octoface" :height 1.1 :v-adjust 0.0)
+        `(
+          ;; Links
+          ((,(all-the-icons-octicon "octoface" :height 1.1 :v-adjust 0.0)
             "Homepage"
             "Browse homepage"
-            (lambda (&rest _) (browse-url "https://github.com/b-coimbra/.emacs.d")))
+            (lambda (&rest _) (browse-url "https://github.com/b-coimbra/.emacs.d")) nil "" " |")
            (,(all-the-icons-faicon "refresh" :height 1.1 :v-adjust 0.0)
             "Update"
             "Update Megumacs"
-            (lambda (&rest _) (update-packages)) warning)
+            (lambda (&rest _) (update-packages)) warning "" " |")
            (,(all-the-icons-faicon "flag" :height 1.1 :v-adjust 0.0) nil
             "Report a BUG"
-            (lambda (&rest _) (browse-url "https://github.com/b-coimbra/.emacs.d/issues/new")) error))))
+            (lambda (&rest _) (browse-url "https://github.com/b-coimbra/.emacs.d/issues/new")) error "" ""))
+          ;; Empty line
+          (("" "\n" "" nil nil "" ""))
+          ;; Keybindings
+          ((,(all-the-icons-octicon "file-text" :height 1.1 :v-adjust -0.1)
+            " Open file" nil
+            (lambda (&rest _) (find-file)) nil "" "            SPC f f"))
+          ((,(all-the-icons-octicon "file-directory" :height 1.0 :v-adjust -0.1)
+            " Open project" nil
+            (lambda (&rest _) (counsel-projectile-switch-project)) nil "" "         SPC p p"))
+          ((,(all-the-icons-octicon "three-bars" :height 1.1 :v-adjust -0.1)
+            " File explorer" nil
+            (lambda (&rest _) (counsel-projectile-switch-project)) nil "" "        SPC t t"))
+          ((,(all-the-icons-octicon "settings" :height 0.9 :v-adjust -0.1)
+            " Open settings" nil
+            (lambda (&rest _) (open-config-file)) nil "" "        SPC f P"))
+          ))
        :config
        (dashboard-setup-startup-hook))
    #+end_src
@@ -808,6 +836,7 @@
          "fS" 'evil-write-all
          "fR" 'rename-file
          "fb" 'ranger-show-bookmarks
+         "fP" 'open-config-file
          ;; Focus
          "F" '(:ignore t :which-key "focus")
          ;; LSP
@@ -1075,15 +1104,17 @@
 ** [[https://github.com/davazp/graphql-mode][GraphQL]]
 
    #+begin_src emacs-lisp
-	 (use-package graphql-mode
-	   :ensure t)
+     (use-package graphql-mode
+       :defer t
+       :ensure t)
    #+end_src
 
 ** [[https://github.com/AdamNiederer/vue-mode][Vue]]
 
    #+begin_src emacs-lisp
-	 (use-package vue-mode
-	   :ensure t)
+     (use-package vue-mode
+       :defer t
+       :ensure t)
    #+end_src
 
 ** Python
