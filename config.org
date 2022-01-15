@@ -993,13 +993,13 @@
    Project interaction library.
 
    #+begin_src emacs-lisp
-	 (use-package projectile
-	   :ensure t
-	   :defer t
-	   :custom
-	   (projectile-enable-caching t)
-	   :config
-	   (projectile-mode))
+     (use-package projectile
+       :ensure t
+       :defer t
+       :custom
+       (projectile-enable-caching t)
+       :config
+       (projectile-mode))
    #+end_src
 
 *** [[https://github.com/ericdanan/counsel-projectile][projectile/counsel]]
@@ -1007,15 +1007,16 @@
 	=ivy= UI for Projectile.
 
 	#+begin_src emacs-lisp
-	 (use-package counsel-projectile
-	   :ensure t
-	   :general
-	   (nmap
-		 :prefix "<SPC>"
-		 "pp" 'counsel-projectile-switch-project
-		 "pf" 'counsel-projectile-find-file
-		 "ps" 'counsel-projectile-git-grep
-		 "pd" 'counsel-projectile-find-dir))
+      (use-package counsel-projectile
+        :ensure t
+        :general
+        (nmap
+          :prefix "<SPC>"
+          "pp" 'counsel-projectile-switch-project
+          "pf" 'counsel-projectile-find-file
+          "ps" 'counsel-projectile-git-grep
+          "pd" 'counsel-projectile-find-dir
+          "pR" 'projectile-replace))
 	#+end_src
 
 * Syntax Checking
