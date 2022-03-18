@@ -2,8 +2,8 @@
 #+options: broken-links:nil c:nil creator:nil d:(not "LOGBOOK") date:t e:t
 #+options: email:nil f:t inline:t num:t p:nil pri:nil prop:nil stat:t tags:t
 #+options: tasks:t tex:t timestamp:t title:t toc:t todo:t |:t
-#+title: Emacs @dotfiles @emacs
-#+subtitle: Doom-like emacs config
+#+title: MEGUMACS @dotfiles @emacs
+#+subtitle: Doom-like emacs config with a teensy tiny piece of weebness.
 #+date: <2020-02-01 Sat>
 #+author: Bruno Coimbra (b-coimbra)
 #+email: me@asynch.dev
@@ -28,19 +28,19 @@
 * Introduction
 
   #+begin_center
-  [[./etc/banners/blackhole.png]]
+  [[./etc/banners/megumacs2.png]]
   #+end_center
 
   #+begin_center
-  *[E M A C S]*
+  *[M E G U M A C S]*
 
   [[https://github.com/b-coimbra/.emacs.d][*Github*]] | [[https://emacs.metaphoric.dev/config.org][*Source*]]
   #+end_center
 
   #+begin_quote
-  I use Emacs, which might be thought of as a thermonuclear word processor.\n
+  The tower of rebellion creeps upon man's world, The unspoken faith displayed before me, The time has come! Now, awaken from your slumber, and by my madness, be wrought!
 
-  -- Neal Stephenson, In the Beginning… was the Command Line
+  -- Megumin
   #+end_quote
 
 * Installation
