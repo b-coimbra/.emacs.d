@@ -2,8 +2,8 @@
 #+options: broken-links:nil c:nil creator:nil d:(not "LOGBOOK") date:t e:t
 #+options: email:nil f:t inline:t num:t p:nil pri:nil prop:nil stat:t tags:t
 #+options: tasks:t tex:t timestamp:t title:t toc:t todo:t |:t
-#+title: MEGUMACS @dotfiles @emacs
-#+subtitle: Doom-like emacs config with a teensy tiny fragment of weebness.
+#+title: Emacs @dotfiles @emacs
+#+subtitle: Doom-like emacs config
 #+date: <2020-02-01 Sat>
 #+author: Bruno Coimbra (b-coimbra)
 #+email: me@asynch.dev
@@ -28,19 +28,19 @@
 * Introduction
 
   #+begin_center
-  [[./etc/banners/megumacs2.png]]
+  [[./etc/banners/blackhole.png]]
   #+end_center
 
   #+begin_center
-  *[M E G U M A C S]*
+  *[E M A C S]*
 
   [[https://github.com/b-coimbra/.emacs.d][*Github*]] | [[https://emacs.metaphoric.dev/config.org][*Source*]]
   #+end_center
 
   #+begin_quote
-  The tower of rebellion creeps upon man's world, The unspoken faith displayed before me, The time has come! Now, awaken from your slumber, and by my madness, be wrought!
+  I use Emacs, which might be thought of as a thermonuclear word processor.\n
 
-  -- Megumin
+  -- Neal Stephenson, In the Beginning… was the Command Line
   #+end_quote
 
 * Installation
@@ -401,16 +401,17 @@
    Set of eye pleasing themes for GNU Emacs. Supports both GUI and terminal.
 
    #+begin_src emacs-lisp
-	 ;; (use-package kaolin-themes
-	 ;;   :defer t
-	 ;;   :ensure t
-	 ;;   :custom
-	 ;;   (kaolin-themes-bold t)
-	 ;;   (kaolin-themes-italic t)
-	 ;;   (kaolin-themes-underline t)
-	 ;;   (kaolin-themes-distinct-company-scrollbar t)
-	 ;;   :config
-	 ;;   (load-theme 'doom-gruvbox t))
+     (use-package kaolin-themes
+       :defer t
+       :ensure t
+       :custom
+       (kaolin-themes-bold t)
+       (kaolin-themes-italic t)
+       (kaolin-themes-underline t)
+       (kaolin-themes-distinct-company-scrollbar t)
+       :config
+       ;; (load-theme 'doom-gruvbox t)
+       )
    #+end_src
 
 ** [[https://github.com/hlissner/emacs-doom-themes][Doom themes]]
@@ -490,27 +491,27 @@
    Powerline theme from Spacemacs.
 
    #+begin_src emacs-lisp
-	 ;; (use-package spaceline
-	 ;;   :ensure t
-	 ;;   :init
-	 ;;   (progn
-	 ;; 	(setq spaceline-highlight-face-func 'spaceline-highlight-face-evil-state)
-	 ;; 	(setq-default powerline-default-separator 'slant)
-	 ;; 	;; (setq spaceline-separator-dir-left '(right . right))
-	 ;; 	)
-	 ;;   :config
-	 ;;   (spaceline-emacs-theme)
-	 ;;   (setq spaceline-buffer-encoding-abbrev-p nil
-	 ;; 		spaceline-workspace-number-p t
-	 ;; 		spaceline-window-numbers-unicode nil
-	 ;; 		spaceline-version-control-p nil
-	 ;; 		spaceline-minor-modes-p nil
-	 ;; 		spaceline-major-mode-p nil
-	 ;; 		spaceline-buffer-size-p t
-	 ;; 		spaceline-window-number-p t
-	 ;; 		spaceline-buffer-id-p t
-	 ;; 		spaceline-buffer-size-p t)
-	 ;;   (powerline-reset))
+     ;; (use-package spaceline
+     ;;   :ensure t
+     ;;   :init
+     ;;   (progn
+     ;;     (setq spaceline-highlight-face-func 'spaceline-highlight-face-evil-state)
+     ;;     (setq-default powerline-default-separator 'slant)
+     ;;     ;; (setq spaceline-separator-dir-left '(right . right))
+     ;;     )
+     ;;   :config
+     ;;   (spaceline-emacs-theme)
+     ;;   (setq spaceline-buffer-encoding-abbrev-p nil
+     ;;         spaceline-workspace-number-p t
+     ;;         spaceline-window-numbers-unicode nil
+     ;;         spaceline-version-control-p nil
+     ;;         spaceline-minor-modes-p nil
+     ;;         spaceline-major-mode-p nil
+     ;;         spaceline-buffer-size-p t
+     ;;         spaceline-window-number-p t
+     ;;         spaceline-buffer-id-p t
+     ;;         spaceline-bufFer-size-p t)
+     ;;   (powerline-reset))
    #+end_src
 
 ** [[https://github.com/seagle0128/doom-modeline][Doom-modeline]]
@@ -518,18 +519,18 @@
    A fancy and fast mode-line inpsired by minimalism design.
 
    #+begin_src emacs-lisp
-	 (use-package doom-modeline
-	   :ensure t
-	   :init (doom-modeline-init)
-	   :custom
-	   (doom-modeline-major-mode-icon nil)
-	   (doom-modeline-major-mode-color-icon nil)
-	   (doom-modeline-icon (display-graphic-p))
-	   (doom-modeline-buffer-modification-icon nil)
-	   (doom-modeline-flycheck-icon nil)
-	   (doom-modeline-checker-simple-format t)
-	   (doom-modeline-buffer-encoding nil)
-	   (doom-modeline-height 35))
+     (use-package doom-modeline
+       :ensure t
+       :init (doom-modeline-init)
+       :custom
+       (doom-modeline-major-mode-icon nil)
+       (doom-modeline-major-mode-color-icon nil)
+       (doom-modeline-icon (display-graphic-p))
+       (doom-modeline-buffer-modification-icon nil)
+       (doom-modeline-flycheck-icon nil)
+       (doom-modeline-checker-simple-format t)
+       (doom-modeline-buffer-encoding nil)
+       (doom-modeline-height 35))
    #+end_src
 
 * Dashboard
@@ -569,8 +570,8 @@
           ;; Empty line
           (("" "\n" "" nil nil "" ""))
           ;; Keybindings
-          ((,(all-the-icons-octicon "file-text" :height 1.1 :v-adjust -0.1)
-            " Open file" nil
+          ((,(all-the-icons-octicon "search" :height 0.9 :v-adjust -0.1)
+            " Find file" nil
             (lambda (&rest _) (find-file)) nil "" "            SPC f f"))
           ((,(all-the-icons-octicon "file-directory" :height 1.0 :v-adjust -0.1)
             " Open project" nil
