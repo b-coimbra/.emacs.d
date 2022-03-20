@@ -550,7 +550,7 @@
           ;; Keybindings
           ((,(all-the-icons-octicon "search" :height 0.9 :v-adjust -0.1)
             " Find file" nil
-            (lambda (&rest _) (find-file)) nil "" "            SPC f f"))
+            (lambda (&rest _) (counsel-find-file)) nil "" "            SPC f f"))
           ((,(all-the-icons-octicon "file-directory" :height 1.0 :v-adjust -0.1)
             " Open project" nil
             (lambda (&rest _) (counsel-projectile-switch-project)) nil "" "         SPC p p"))
@@ -589,8 +589,7 @@
                       company-keywords
                       company-capf
                       company-dabbrev
-                      company-dabbrev-code
-                      company-jedi)))
+                      company-dabbrev-code)))
    #+end_src
 
 *** [[https://github.com/emacsorphanage/company-jedi][company-jedi]]
@@ -599,8 +598,10 @@
 
     #+begin_src emacs-lisp
       (use-package company-jedi
-        :ensure t
+        :straight t
         :after company
+        :init
+        (add-to-list 'company-backends 'company-jedi)
         :config
         (setq jedi:setup-keys t)
         (setq jedi:complete-on-dot t))

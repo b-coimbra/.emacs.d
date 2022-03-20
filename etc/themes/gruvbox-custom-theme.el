@@ -98,6 +98,7 @@
  '(widget-documentation ((((class color) (min-colors 16777215)) (:foreground "#79740e")) (((class color) (min-colors 255)) (:foreground "#878700"))))
  '(widget-field ((((class color) (min-colors 16777215)) (:foreground "#fdf4c1" :background "#504945")) (((class color) (min-colors 255)) (:foreground "#ffffaf" :background "#4e4e4e"))))
  '(widget-single-line-field ((((class color) (min-colors 16777215)) (:foreground "#fdf4c1" :background "#504945")) (((class color) (min-colors 255)) (:foreground "#ffffaf" :background "#4e4e4e"))))
- '(default ((t (:background "#1d1f21" :foreground "#fdf4c1")))))
+ '(default ((t (:background "#1d1f21" :foreground "#fdf4c1"))))
+ '(org-meta-line ((t (:inherit font-lock-comment-face)))))
 
 (provide-theme 'gruvbox-custom)
