@@ -193,30 +193,12 @@
    #+begin_src emacs-lisp
 	 (use-package auto-package-update
 	   :defer t
-	   :ensure t
+	   :straight t
 	   :commands update-packages
 	   :custom
 	   (auto-package-update-delete-old-versions t)
 	   :config
 	   (auto-package-update-maybe))
-   #+end_src
-
-** Quelpa
-
-   Build and install your Emacs Lisp packages on-the-fly and directly from source.
-
-   #+begin_src emacs-lisp
-     (use-package quelpa
-       :ensure t)
-   #+end_src
-
-*** [[https://github.com/quelpa/quelpa-use-package][quelpa-use-package]]
-
-   Quelpa handler for use-package:
-
-   #+begin_src emacs-lisp
-     (use-package quelpa-use-package
-       :ensure t)
    #+end_src
 
 ** No littering
@@ -225,7 +207,7 @@
 
    #+begin_src emacs-lisp
      (use-package no-littering
-       :ensure t
+       :straight t
        :demand t)
    #+end_src
 
@@ -233,7 +215,7 @@
 
    #+begin_src emacs-lisp
      (use-package gcmh
-       :ensure t
+       :straight t
        :config
        (gcmh-mode 1))
    #+end_src
@@ -258,7 +240,8 @@
   - [[https://www.jetbrains.com/lp/mono/][JetBrains Mono]] (size 10, 11)
 
   #+begin_src emacs-lisp
-	(set-frame-font globals--font)
+    (set-face-attribute 'default nil :font globals--font)
+    (set-frame-font globals--font nil t)
   #+end_src
 
 ** Ligatures
@@ -393,7 +376,7 @@
 
    #+begin_src emacs-lisp
      (use-package autothemer
-       :ensure t)
+       :straight t)
    #+end_src
 
 ** [[https://github.com/ogdenwebb/emacs-kaolin-themes][Kaolin themes]]
@@ -403,7 +386,7 @@
    #+begin_src emacs-lisp
      (use-package kaolin-themes
        :defer t
-       :ensure t
+       :straight t
        :custom
        (kaolin-themes-bold t)
        (kaolin-themes-italic t)
@@ -420,7 +403,7 @@
 
    #+begin_src emacs-lisp
      (use-package doom-themes
-       :ensure t
+       :straight t
        :custom
        (doom-themes-enable-bold t)
        (doom-themes-enable-italic t)
@@ -428,14 +411,6 @@
        :config
        (load-theme globals--theme t)
        (doom-themes-treemacs-config))
-   #+end_src
-
-** [[https://github.com/rougier/nano-theme][Nano Theme]]
-
-   #+begin_src emacs-lisp
-     (use-package nano-theme
-       :ensure t
-       :defer t)
    #+end_src
 
 ** Theme customization
@@ -453,7 +428,7 @@
 
    #+begin_src emacs-lisp
 	 (use-package all-the-icons
-	   :ensure t)
+	   :straight t)
    #+end_src
 
 ** [[https://github.com/hlissner/emacs-solaire-mode][Solaire mode]]
@@ -462,7 +437,7 @@
 
    #+begin_src emacs-lisp
 	 (use-package solaire-mode
-	   :ensure t
+	   :straight t
 	   :hook (after-init . solaire-global-mode))
    #+end_src
 
@@ -472,7 +447,10 @@
 
    #+begin_src emacs-lisp
      (use-package rainbow-mode
-       :ensure t)
+       :straight t
+       :hook prog-mode
+       :config
+       (rainbow-mode))
    #+end_src
 
 ** [[https://github.com/Fanael/rainbow-delimiters][Rainbow delimiters]]
@@ -481,7 +459,7 @@
 
    #+begin_src emacs-lisp
      (use-package rainbow-delimiters
-       :ensure t
+       :straight t
        :hook (prog-mode . rainbow-delimiters-mode))
    #+end_src
 
@@ -492,7 +470,7 @@
 
    #+begin_src emacs-lisp
      ;; (use-package spaceline
-     ;;   :ensure t
+     ;;   :straight t
      ;;   :init
      ;;   (progn
      ;;     (setq spaceline-highlight-face-func 'spaceline-highlight-face-evil-state)
@@ -520,7 +498,7 @@
 
    #+begin_src emacs-lisp
      (use-package doom-modeline
-       :ensure t
+       :straight t
        :init (doom-modeline-init)
        :custom
        (doom-modeline-major-mode-icon nil)
@@ -540,7 +518,7 @@
 
    #+begin_src emacs-lisp
      (use-package dashboard
-       :ensure t
+       :straight t
        :init
        (add-hook 'dashboard-mode-hook (lambda () (setq show-trailing-whitespace nil)))
        :custom
@@ -595,7 +573,7 @@
    #+begin_src emacs-lisp
      (use-package company
        :defer 0.5
-       :ensure t
+       :straight t
        :delight
        :init (global-company-mode)
        :custom
@@ -619,13 +597,14 @@
 
     Company backend for Python jedi.
 
-	#+begin_src emacs-lisp
-	  (use-package company-jedi
-		:ensure t
-		:config
-		(setq jedi:setup-keys t)
-		(setq jedi:complete-on-dot t))
-	#+end_src
+    #+begin_src emacs-lisp
+      (use-package company-jedi
+        :ensure t
+        :after company
+        :config
+        (setq jedi:setup-keys t)
+        (setq jedi:complete-on-dot t))
+    #+end_src
 
 * Evil
 
@@ -637,7 +616,7 @@
 
    #+begin_src emacs-lisp
      (use-package evil
-       :ensure t
+       :straight t
        :custom
        (evil-want-keybinding nil)
        (evil-want-C-u-scroll t)
@@ -652,54 +631,64 @@
 
    Unfortunately we need a separate package to handle custom <ESC> key sequences.
    #+begin_src emacs-lisp
-	 (use-package evil-escape
-	   :ensure t
-	   :custom
-	   (evil-escape-key-sequence "jk")
-	   :config
-	   (evil-escape-mode))
+     (use-package evil-escape
+       :straight t
+       :custom
+       (evil-escape-key-sequence "jk")
+       :config
+       (evil-escape-mode))
    #+end_src
 
 ** [[https://github.com/emacs-evil/evil-surround][evil-surround]]
 
    Useful package for adding, editing or removing all types of surrounding characters (even HTML tags!).
    #+begin_src emacs-lisp
-	(use-package evil-surround
-	  :ensure t
-	  :after evil
-	  :config
-	  (global-evil-surround-mode 1))
+     (use-package evil-surround
+       :straight t
+       :after evil
+       :config
+       (global-evil-surround-mode 1))
    #+end_src
 
 ** [[https://github.com/gabesoft/evil-mc][evil-mc]]
 
    Multiple cursors implementation for evil-mode.
    #+begin_src emacs-lisp
-	(use-package evil-mc
-	  :ensure t
-	  :after evil
-	  :init
-	  (global-evil-mc-mode 1))
+     (use-package evil-mc
+       :straight t
+       :after evil
+       :init
+       (global-evil-mc-mode 1))
    #+end_src
 
 ** [[https://github.com/linktohack/evil-commentary][evil-commentary]]
 
    Evil bindings for commenting out chunks of code.
    #+begin_src emacs-lisp
-	(use-package evil-commentary
-	  :ensure t
-	  :config
-	  (evil-commentary-mode))
+     (use-package evil-commentary
+       :straight t
+       :config
+       (evil-commentary-mode))
    #+end_src
 
 ** [[https://github.com/emacs-evil/evil-collection][evil-collection]]
 
    #+begin_src emacs-lisp
-	 (use-package evil-collection
-	   :after evil
-	   :ensure t
-	   :config
-	   (evil-collection-init))
+     (use-package evil-collection
+       :after evil
+       :straight t
+       :config
+       (evil-collection-init))
+   #+end_src
+
+* Calendar
+** [[https://github.com/kiwanami/emacs-calfw/][calfw]]
+
+   This program displays a calendar view in the Emacs buffer.
+
+   #+begin_src emacs-lisp
+     (use-package calfw
+       :straight t)
    #+end_src
 
 * Org-mode
@@ -712,7 +701,7 @@
      (use-package org
        :init
        (setq org-startup-folded t)
-       :ensure t
+       :straight t
        :config
        ;; prettify
        (setq org-hide-macro-markers t
@@ -724,6 +713,17 @@
        (setq org-archive-location (concat "archive/"
                                           (format-time-string "%Y-%m" (current-time))
                                           "_%s_archive::"))
+       ;; org modules
+       (setq org-modules '(ol-w3m
+                           ol-bbdb
+                           ol-bibtex
+                           ol-docview
+                           ol-gnus
+                           ol-info
+                           ol-irc
+                           ol-mhe
+                           ol-rmail
+                           ol-eww))
        ;; org-todo
        (setq org-todo-keywords
              '((sequence
@@ -743,13 +743,23 @@
                ("READ"     . (:foreground "SteelBlue2" :weight bold))
                ("ARCHIVED" . (:foreground "LightSlateGrey" :weight bold)))))
    #+end_src
+
+** [[https://github.com/emacsmirror/org-contrib][org-contrib]]
+
+   Unmaintained add-ons for org-mode.
+
+   #+begin_src emacs-lisp
+     ;; (use-package org-contrib
+     ;;   :straight t)
+   #+end_src
+
 ** [[https://github.com/yjwen/org-reveal][ox-reveal]]
 
    Reveal.js presentation back-end for org export engine.
 
    #+begin_src emacs-lisp
      (use-package ox-reveal
-       :ensure t
+       :straight t
        :defer 3
        :after org
        :custom
@@ -760,12 +770,12 @@
 
    Display org schedules.
 
-  #+begin_src emacs-lisp
-	(use-package calfw-org
-	  :ensure t
-	  :config
-	  (setq cfw:org-agenda-schedule-args '(:timestamp :scheduled :deadline)))
-  #+end_src
+   #+begin_src emacs-lisp
+     (use-package calfw-org
+       :straight t
+       :config
+       (setq cfw:org-agenda-schedule-args '(:timestamp :scheduled :deadline)))
+   #+end_src
 
 ** [[https://github.com/hniksic/emacs-htmlize][htmlize]]
 
@@ -773,17 +783,7 @@
 
    #+begin_src emacs-lisp
      (use-package htmlize
-       :ensure t)
-   #+end_src
-
-* Calendar
-** [[https://github.com/kiwanami/emacs-calfw/][calfw]]
-
-   This program displays a calendar view in the Emacs buffer.
-
-   #+begin_src emacs-lisp
-	 (use-package calfw
-	   :ensure t)
+       :straight t)
    #+end_src
 
 * Keybindings
@@ -793,85 +793,85 @@
 
    #+begin_src emacs-lisp
      (use-package general
-       :ensure t
+       :straight t
        :config
        (general-evil-setup t)
        (define-key evil-motion-state-map " " nil)
        ;; (general-evil-define-key 'normal 'global
        ;;   :prefix "SPC"
        (general-define-key
-         :prefix "SPC"
-         :states 'normal
-         ;; Misc
-         "SPC" 'counsel-M-x
-         "TAB" 'mode-line-other-buffer
-         "." 'xref-find-definitions
-         "," 'xref-pop-marker-stack
-         "'" 'eshell
-         "qq" 'evil-quit
-         "s" 'swiper
-         ;; Applications
-         "a" '(:ignore t :which-key "applications")
-         "au" 'undo-tree-visualize
-         "aU" 'update-packages
-         "ac" 'cfw:open-org-calendar
-         ;; Buffers
-         "b" '(:ignore t :which-key "buffers")
-         "bb" 'counsel-switch-buffer
-         "bd" 'kill-this-buffer
-         "bp" 'previous-buffer
-         "bn" 'next-buffer
-         "bN" 'evil-buffer-new
-         "be" 'erase-buffer
-         ;; Bookmarks
-         "B" '(:ignore t :which-key "bookmarks")
-         "BB" 'bookmark-jump
-         "Bs" 'bookmark-set
-         ;; Compiling
-         "c" 'compile
-         ;; Errors
-         "e" '(:ignore t :which-key "errors")
-         ;; Files
-         "f" '(:ignore t :which-key "file")
-         "ff" 'find-file
-         "fr" 'counsel-recentf
-         "fs" 'save-buffer
-         "fS" 'evil-write-all
-         "fR" 'rename-file
-         "fb" 'ranger-show-bookmarks
-         "fP" 'open-config-file
-         ;; Focus
-         "F" '(:ignore t :which-key "focus")
-         ;; LSP
-         "l" '(:ignore t :which-key "language")
-         ;; Projects
-         "p" '(:ignore t :which-key "project")
-         ;; Toggles
-         "t" '(:ignore t :which-key "toggles")
-         "tn" 'display-line-numbers-mode
-         "tL" 'visual-line-mode
-         "tu" 'lsp-ui-mode
-         "ti" 'highlight-indent-guides-mode
-         ;; Themes
-         "T" '(:ignore t :which-key "themes")
-         "Ts" 'counsel-load-theme
-         ;; Windows
-         "w" '(:ignore t :which-key "window")
-         "wm" 'delete-other-windows
-         "wf" 'delete-other-windows
-         "wj" 'evil-window-down
-         "wk" 'evil-window-up
-         "wl" 'evil-window-right
-         "wh" 'evil-window-left
-         "ws" 'split-and-follow-horizontally
-         "wv" 'split-and-follow-vertically
-         "wd" 'evil-window-delete
-         "wc" 'evil-window-delete
-         "wH" 'evil-window-move-far-left
-         "wL" 'evil-window-move-far-right
-         "wK" 'evil-window-move-very-top
-         "wJ" 'evil-window-move-very-bottom
-         "w=" 'balance-windows))
+        :prefix "SPC"
+        :states 'normal
+        ;; Misc
+        "SPC" 'counsel-M-x
+        "TAB" 'mode-line-other-buffer
+        "." 'xref-find-definitions
+        "," 'xref-pop-marker-stack
+        "'" 'eshell
+        "qq" 'evil-quit
+        "s" 'swiper
+        ;; Applications
+        "a" '(:ignore t :which-key "applications")
+        "au" 'undo-tree-visualize
+        "aU" 'update-packages
+        "ac" 'cfw:open-org-calendar
+        ;; Buffers
+        "b" '(:ignore t :which-key "buffers")
+        "bb" 'counsel-switch-buffer
+        "bd" 'kill-this-buffer
+        "bp" 'previous-buffer
+        "bn" 'next-buffer
+        "bN" 'evil-buffer-new
+        "be" 'erase-buffer
+        ;; Bookmarks
+        "B" '(:ignore t :which-key "bookmarks")
+        "BB" 'bookmark-jump
+        "Bs" 'bookmark-set
+        ;; Compiling
+        "c" 'compile
+        ;; Errors
+        "e" '(:ignore t :which-key "errors")
+        ;; Files
+        "f" '(:ignore t :which-key "file")
+        "ff" 'find-file
+        "fr" 'counsel-recentf
+        "fs" 'save-buffer
+        "fS" 'evil-write-all
+        "fR" 'rename-file
+        "fb" 'ranger-show-bookmarks
+        "fP" 'open-config-file
+        ;; Focus
+        "F" '(:ignore t :which-key "focus")
+        ;; LSP
+        "l" '(:ignore t :which-key "language")
+        ;; Projects
+        "p" '(:ignore t :which-key "project")
+        ;; Toggles
+        "t" '(:ignore t :which-key "toggles")
+        "tn" 'display-line-numbers-mode
+        "tL" 'visual-line-mode
+        "tu" 'lsp-ui-mode
+        "ti" 'highlight-indent-guides-mode
+        ;; Themes
+        "T" '(:ignore t :which-key "themes")
+        "Ts" 'counsel-load-theme
+        ;; Windows
+        "w" '(:ignore t :which-key "window")
+        "wm" 'delete-other-windows
+        "wf" 'delete-other-windows
+        "wj" 'evil-window-down
+        "wk" 'evil-window-up
+        "wl" 'evil-window-right
+        "wh" 'evil-window-left
+        "ws" 'split-and-follow-horizontally
+        "wv" 'split-and-follow-vertically
+        "wd" 'evil-window-delete
+        "wc" 'evil-window-delete
+        "wH" 'evil-window-move-far-left
+        "wL" 'evil-window-move-far-right
+        "wK" 'evil-window-move-very-top
+        "wJ" 'evil-window-move-very-bottom
+        "w=" 'balance-windows))
    #+end_src
 
 ** [[https://github.com/justbur/emacs-which-key][Which-key]]
@@ -879,11 +879,11 @@
    Package that displays available keybindings in a popup.
 
    #+begin_src emacs-lisp
-	(use-package which-key
-	  :defer 5
-	  :ensure t
-	  :config
-	  (which-key-mode))
+     (use-package which-key
+       :defer 5
+       :straight t
+       :config
+       (which-key-mode))
    #+end_src
 
 * Source Control
@@ -893,7 +893,7 @@
 
    #+begin_src emacs-lisp
      (use-package magit
-       :ensure t
+       :straight t
        :defer 3
        :general
        (nmap
@@ -908,20 +908,20 @@
    Commit diff and other repo informations. Has the capability to stage hunks and what-not.
 
    #+begin_src emacs-lisp
-	  (use-package git-gutter+
-		:ensure t
-		:config
-		(global-git-gutter+-mode))
+     (use-package git-gutter+
+       :straight t
+       :config
+       (global-git-gutter+-mode))
    #+end_src
 
    #+begin_src emacs-lisp
-	 (use-package git-gutter-fringe+
-	   :ensure t
-	   :after git-gutter+
-	   :custom
-	   (git-gutter-fr+-side 'left-fringe)
-	   :config
-	   (git-gutter-fr+-minimal))
+     (use-package git-gutter-fringe+
+       :straight t
+       :after git-gutter+
+       :custom
+       (git-gutter-fr+-side 'left-fringe)
+       :config
+       (git-gutter-fr+-minimal))
    #+end_src
 
 * Encryption
@@ -943,16 +943,16 @@
    Bringing the goodness of ranger to dired!
 
    #+begin_src emacs-lisp
-	 (use-package ranger
-	   :ensure t
-	   :defer t
-	   :general
-	   (nmap
-		 :prefix "SPC"
-		 "ar" 'ranger
-		 "ad" 'deer)
-	   :config
-	   (ranger-override-dired-mode t))
+     (use-package ranger
+       :straight t
+       :defer t
+       :general
+       (nmap
+         :prefix "SPC"
+         "ar" 'ranger
+         "ad" 'deer)
+       :config
+       (ranger-override-dired-mode t))
    #+end_src
 
 * Project Management
@@ -962,7 +962,7 @@
 
    #+begin_src emacs-lisp
      (use-package treemacs
-       :ensure t
+       :straight t
        :defer t
        :general
        (nmap
@@ -979,7 +979,7 @@
 
    #+begin_src emacs-lisp
      (use-package treemacs-evil
-       :ensure t)
+       :straight t)
    #+end_src
 
    =treemacs-magit= is a small utility package to fill the small gaps left
@@ -988,7 +988,7 @@
 
    #+begin_src emacs-lisp
      (use-package treemacs-magit
-       :ensure t)
+       :straight t)
    #+end_src
 
 ** [[https://github.com/bbatsov/projectile][Projectile]]
@@ -997,7 +997,7 @@
 
    #+begin_src emacs-lisp
      (use-package projectile
-       :ensure t
+       :straight t
        :defer t
        :custom
        (projectile-enable-caching t)
@@ -1007,11 +1007,11 @@
 
 *** [[https://github.com/ericdanan/counsel-projectile][projectile/counsel]]
 
-	=ivy= UI for Projectile.
+    =ivy= UI for Projectile.
 
-	#+begin_src emacs-lisp
+    #+begin_src emacs-lisp
       (use-package counsel-projectile
-        :ensure t
+        :straight t
         :general
         (nmap
           :prefix "<SPC>"
@@ -1020,7 +1020,7 @@
           "ps" 'counsel-projectile-git-grep
           "pd" 'counsel-projectile-find-dir
           "pR" 'projectile-replace))
-	#+end_src
+    #+end_src
 
 * Syntax Checking
 ** [[https://github.com/flycheck/flycheck][Flycheck]]
@@ -1028,62 +1028,62 @@
    Modern on-the-fly syntax checking extension.
 
    #+begin_src emacs-lisp
-	 (use-package flycheck
-	   :ensure t
-	   :hook (prog-mode . flycheck-mode)
-	   :general
-	   (nmap
-		 :prefix "<SPC>"
-		 "en" 'flycheck-next-error
-		 "ep" 'flycheck-previous-error))
+     (use-package flycheck
+       :straight t
+       :hook (prog-mode . flycheck-mode)
+       :general
+       (nmap
+         :prefix "<SPC>"
+         "en" 'flycheck-next-error
+         "ep" 'flycheck-previous-error))
    #+end_src
 
 * Language Modes
 ** [[https://github.com/rust-lang/rust-mode][Rust]]
 
    #+begin_src emacs-lisp
-	(use-package rust-mode
-	  :ensure t)
+     (use-package rust-mode
+       :straight t)
    #+end_src
 
 ** Ruby
 
    #+begin_src emacs-lisp
-	 (use-package ruby-mode
-	   :ensure t)
+     (use-package ruby-mode
+       :straight t)
    #+end_src
 
 ** Javascript
 *** [[https://github.com/mooz/js2-mode][js2-mode]]
 
-	Improved Javascript editing mode.
+    Improved Javascript editing mode.
 
-	#+begin_src emacs-lisp
+    #+begin_src emacs-lisp
       (use-package js2-mode
-        :ensure t
+        :straight t
         :custom
         (js-indent-level 2)
         (js2-basic-offset 2)
         :init
         (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode)))
-	#+end_src
+    #+end_src
 
 *** [[https://github.com/felipeochoa/rjsx-mode][rjsx-mode]]
 
-	A JSX major mode.
+    A JSX major mode.
 
-	#+begin_src emacs-lisp
-	 (use-package rjsx-mode
-	   :ensure t)
-	#+end_src
+    #+begin_src emacs-lisp
+      (use-package rjsx-mode
+        :straight t)
+    #+end_src
 
 ** [[https://github.com/emacs-typescript/typescript.el][Typescript]]
 
    TypeScript support for Emacs.
 
    #+begin_src emacs-lisp
-	 (use-package typescript-mode
-	   :ensure t)
+     (use-package typescript-mode
+       :straight t)
    #+end_src
 
 ** [[https://github.com/fxbois/web-mode][Web]]
@@ -1091,18 +1091,18 @@
    Web template editing mode.
 
    #+begin_src emacs-lisp
-	 (use-package web-mode
-	   :ensure t
-	   :custom
-	   (web-mode-code-indent-offset 2)
-	   (web-mode-markup-indent-offset 2))
+     (use-package web-mode
+       :straight t
+       :custom
+       (web-mode-code-indent-offset 2)
+       (web-mode-markup-indent-offset 2))
    #+end_src
 
 ** C#
 
    #+begin_src emacs-lisp
-	 (use-package csharp-mode
-	   :ensure t)
+     (use-package csharp-mode
+       :straight t)
    #+end_src
 
 ** [[https://github.com/davazp/graphql-mode][GraphQL]]
@@ -1110,7 +1110,7 @@
    #+begin_src emacs-lisp
      (use-package graphql-mode
        :defer t
-       :ensure t)
+       :straight t)
    #+end_src
 
 ** [[https://github.com/AdamNiederer/vue-mode][Vue]]
@@ -1118,15 +1118,15 @@
    #+begin_src emacs-lisp
      (use-package vue-mode
        :defer t
-       :ensure t)
+       :straight t)
    #+end_src
 
 ** Python
 
    #+begin_src emacs-lisp
-	 (use-package python-mode
-	   :ensure t
-	   :hook (python-mode-hook . jedi:setup))
+     (use-package python-mode
+       :straight t
+       :hook (python-mode-hook . jedi:setup))
    #+end_src
 
 * Language Server Protocol
@@ -1135,52 +1135,52 @@
    =lsp-mode= aims to provide IDE-like experience by providing optional integration with the most popular Emacs packages like =company=, =flycheck= and =projectile=.
 
    #+begin_src emacs-lisp
-	 (use-package lsp-mode
-	   :ensure t
-	   :general
-	   (nmap
-		 :prefix "<SPC>"
-		 "lF" 'lsp-format-buffer
-		 "lR" 'lsp-rename)
-	   :hook ((js2-mode        . lsp-deferred)
-			  (js-mode         . lsp-deferred)
-			  (rjsx-mode       . lsp-deferred)
-			  (typescript-mode . lsp-deferred)
-			  (rust-mode       . lsp-deferred)
-			  (python-mode     . lsp-deferred)
-			  (ruby-mode       . lsp-deferred))
-	   :commands (lsp lsp-deferred)
-	   :config
-	   (setq lsp-enable-completion-at-point t))
+     (use-package lsp-mode
+       :straight t
+       :general
+       (nmap
+         :prefix "<SPC>"
+         "lF" 'lsp-format-buffer
+         "lR" 'lsp-rename)
+       :hook ((js2-mode        . lsp-deferred)
+              (js-mode         . lsp-deferred)
+              (rjsx-mode       . lsp-deferred)
+              (typescript-mode . lsp-deferred)
+              (rust-mode       . lsp-deferred)
+              (python-mode     . lsp-deferred)
+              (ruby-mode       . lsp-deferred))
+       :commands (lsp lsp-deferred)
+       :config
+       (setq lsp-enable-completion-at-point t))
    #+end_src
 
 *** [[https://github.com/emacs-lsp/lsp-ui][LSP-UI]]
 
-	Higher level UI modules of =lsp-mode=.
+    Higher level UI modules of =lsp-mode=.
 
-	#+begin_src emacs-lisp
-	  (use-package lsp-ui
-		:ensure t
-		:after lsp-mode
-		:commands lsp-ui-mode
-		:hook (lsp-mode . lsp-ui-mode)
-		:general
-		(nmap
-		  :prefix "<SPC>"
-		  "li" 'lsp-ui-peek-find-implementation
-		  "lr" 'lsp-ui-peek-find-references
-		  "ld" 'lsp-ui-peek-find-definitions
-		  "ll" 'lsp-ui-flycheck-list
-		  "la" 'lsp-ui-sideline-apply-code-actions)
-		:custom
-		(lsp-ui-doc-enable t)
-		(lsp-ui-sideline-enable t)
-		(lsp-ui-flycheck-enable t)
-		(lsp-ui-flycheck-live-reporting t)
-		(lsp-ui-sideline-toggle-symbols-info t)
-		(lsp-ui-sideline-show-hover t)
-		(lsp-ui-peek-enable t))
-	#+end_src
+    #+begin_src emacs-lisp
+      (use-package lsp-ui
+        :straight t
+        :after lsp-mode
+        :commands lsp-ui-mode
+        :hook (lsp-mode . lsp-ui-mode)
+        :general
+        (nmap
+          :prefix "<SPC>"
+          "li" 'lsp-ui-peek-find-implementation
+          "lr" 'lsp-ui-peek-find-references
+          "ld" 'lsp-ui-peek-find-definitions
+          "ll" 'lsp-ui-flycheck-list
+          "la" 'lsp-ui-sideline-apply-code-actions)
+        :custom
+        (lsp-ui-doc-enable t)
+        (lsp-ui-sideline-enable t)
+        (lsp-ui-flycheck-enable t)
+        (lsp-ui-flycheck-live-reporting t)
+        (lsp-ui-sideline-toggle-symbols-info t)
+        (lsp-ui-sideline-show-hover t)
+        (lsp-ui-peek-enable t))
+    #+end_src
 
 * Buffers and Windows
 ** [[https://github.com/deb0ch/emacs-winum][Winum]]
@@ -1188,12 +1188,12 @@
    Numbering for buffers, windows and =eyebrowse= workspaces.
 
    #+begin_src emacs-lisp
-	 (use-package winum
-	   :ensure t
-	   :custom
-	   (winum-auto-setup-mode-line nil)
-	   :config
-	   (winum-mode))
+     (use-package winum
+       :straight t
+       :custom
+       (winum-auto-setup-mode-line nil)
+       :config
+       (winum-mode))
    #+end_src
 
 ** [[https://github.com/wasamasa/eyebrowse][Eyebrowse]]
@@ -1201,12 +1201,12 @@
    A simple-minded way of managing window configs in emacs.
 
    #+begin_src emacs-lisp
-	 (use-package eyebrowse
-	   :ensure t
-	   :general
-	   :config
-	   (eyebrowse-mode)
-	   (eyebrowse-setup-opinionated-keys))
+     (use-package eyebrowse
+       :straight t
+       :general
+       :config
+       (eyebrowse-mode)
+       (eyebrowse-setup-opinionated-keys))
    #+end_src
 
 ** [[https://www.emacswiki.org/emacs/WindMove][windmove]]
@@ -1215,7 +1215,7 @@
 
    #+begin_src emacs-lisp
      (use-package windmove
-       :ensure t
+       :straight t
        :general
        (nmap
          :prefix "<SPC>"
@@ -1230,17 +1230,17 @@
 ** Focus on newly created windows
 
    #+begin_src emacs-lisp
-	 (defun split-and-follow-horizontally ()
-	   (interactive)
-	   (split-window-below)
-	   (balance-windows)
-	   (other-window 1))
+     (defun split-and-follow-horizontally ()
+       (interactive)
+       (split-window-below)
+       (balance-windows)
+       (other-window 1))
 
-	 (defun split-and-follow-vertically ()
-	   (interactive)
-	   (split-window-right)
-	   (balance-windows)
-	   (other-window 1))
+     (defun split-and-follow-vertically ()
+       (interactive)
+       (split-window-right)
+       (balance-windows)
+       (other-window 1))
    #+end_src
 
 * Navigation
@@ -1249,27 +1249,27 @@
    =avy= is similar to Vim's easymotion plugin, it provides commands for jumping to visible text using a char-based decision tree.
 
    #+begin_src emacs-lisp
-	 (use-package ivy
-	   :ensure t
-	   :general
-	   (nmap
-		 :prefix "<SPC>"
-		 ";" 'avy-goto-word-1
-		 ":" 'avy-goto-char)
-	   :custom
-	   (ivy-count-format "(%d/%d) ")
-	   (avy-background t)
-	   :config
-	   (global-set-key "\C-s" 'swiper)
-	   (ivy-mode))
+     (use-package ivy
+       :straight t
+       :general
+       (nmap
+         :prefix "<SPC>"
+         ";" 'avy-goto-word-1
+         ":" 'avy-goto-char)
+       :custom
+       (ivy-count-format "(%d/%d) ")
+       (avy-background t)
+       :config
+       (global-set-key "\C-s" 'swiper)
+       (ivy-mode))
 
-	 (use-package ivy-rich
-	   :ensure t
-	   :after ivy
-	   :init
-	   (ivy-rich-mode 1)
-	   :config
-	   (setcdr (assq t ivy-format-functions-alist) #'ivy-format-function-line))
+     (use-package ivy-rich
+       :straight t
+       :after ivy
+       :init
+       (ivy-rich-mode 1)
+       :config
+       (setcdr (assq t ivy-format-functions-alist) #'ivy-format-function-line))
    #+end_src
 
 ** [[https://github.com/abo-abo/swiper][Ivy/Counsel]]
@@ -1277,8 +1277,8 @@
    Completion frontend for things such as =M-x find-file=.
 
    #+begin_src emacs-lisp
-	 (use-package counsel
-	   :ensure t)
+     (use-package counsel
+       :straight t)
    #+end_src
 
 ** [[https://github.com/DarthFennec/highlight-indent-guides][Highlight Indent Guides]]
@@ -1288,7 +1288,7 @@
    #+begin_src emacs-lisp
      (use-package highlight-indent-guides
        :defer t
-       :ensure t
+       :straight t
        ;; :hook (prog-mode . highlight-indent-guides-mode)
        :custom
        (highlight-indent-guides-method 'character)
@@ -1301,16 +1301,16 @@
    Dim the font color of text in surrounding paragraphs.
 
    #+begin_src emacs-lisp
-	 (use-package focus
-	   :defer t
-	   :ensure t
-	   :general
-	   (nmap
-		 :prefix "<SPC>"
-		 "tf" 'focus-mode
-		 "Fp" 'focus-pin
-		 "Fu" 'focus-unpin
-		 "Fc" 'focus-change-thing))
+     (use-package focus
+       :defer t
+       :straight t
+       :general
+       (nmap
+         :prefix "<SPC>"
+         "tf" 'focus-mode
+         "Fp" 'focus-pin
+         "Fu" 'focus-unpin
+         "Fc" 'focus-change-thing))
    #+end_src
 ** [[https://elpa.gnu.org/packages/undo-tree.html][Undo-tree]]
 
@@ -1318,9 +1318,11 @@
 
    #+begin_src emacs-lisp
      (use-package undo-tree
-       :ensure t
+       :straight t
        :init
-       (global-undo-tree-mode))
+       (global-undo-tree-mode)
+       :config
+       (setq undo-tree-auto-save-history nil))
    #+end_src
 ** [[https://github.com/gregsexton/origami.el][Origami]]
 
@@ -1329,7 +1331,7 @@
 
    #+begin_src emacs-lisp
      (use-package origami
-       :ensure t
+       :straight t
        :hook ((js2-mode        . origami-mode)
               (js-mode         . origami-mode)
               (typescript-mode . origami-mode)
@@ -1342,16 +1344,16 @@
    A snippet template system.
 
    #+begin_src emacs-lisp
-	 (use-package yasnippet
-	   :ensure t
-	   :general
-	   (nmap
-		 :prefix "<SPC>"
-		 "yt" 'yas-describe-tables)
-	   :init
-	   (yas-global-mode 1)
-	   :custom
-	   (yas-prompt-functions 'yas-ido-prompt))
+     (use-package yasnippet
+       :straight t
+       :general
+       (nmap
+         :prefix "<SPC>"
+         "yt" 'yas-describe-tables)
+       :init
+       (yas-global-mode 1)
+       :custom
+       (yas-prompt-functions 'yas-ido-prompt))
    #+end_src
 
    Solve conflicts between company-mode and yasnippet-mode.
@@ -1377,9 +1379,9 @@
    A collection of =yasnippet= snippets for many languages
 
    #+begin_src emacs-lisp
-	 (use-package yasnippet-snippets
-	   :after yasnippet
-	   :ensure t)
+     (use-package yasnippet-snippets
+       :after yasnippet
+       :straight t)
    #+end_src
 
 * Discord Presence
@@ -1389,7 +1391,7 @@
 
    #+begin_src emacs-lisp
      (use-package elcord
-       :ensure t
+       :straight t
        :init
        (elcord-mode)
        :config
