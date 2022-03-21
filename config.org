@@ -206,7 +206,6 @@
 
    #+begin_src emacs-lisp
 	 (use-package auto-package-update
-	   :defer t
 	   :straight t
 	   :commands update-packages
 	   :custom
@@ -229,6 +228,7 @@
 
    #+begin_src emacs-lisp
      (use-package gcmh
+       :demand t
        :straight t
        :config
        (gcmh-mode 1))
@@ -425,7 +425,6 @@
 
    #+begin_src emacs-lisp
      (use-package kaolin-themes
-       :defer t
        :straight t
        :custom
        (kaolin-themes-bold t)
@@ -444,6 +443,7 @@
    #+begin_src emacs-lisp
      (use-package doom-themes
        :straight t
+       :demand t
        :custom
        (doom-themes-enable-bold t)
        (doom-themes-enable-italic t)
@@ -559,6 +559,7 @@
    #+begin_src emacs-lisp
      (use-package dashboard
        :straight t
+       :demand t
        :init
        (add-hook 'dashboard-mode-hook (lambda () (setq show-trailing-whitespace nil)))
        :custom
@@ -658,6 +659,7 @@
    #+begin_src emacs-lisp
      (use-package evil
        :straight t
+	   :demand t
        :custom
        (evil-want-keybinding nil)
        (evil-want-C-u-scroll t)
@@ -674,6 +676,7 @@
    #+begin_src emacs-lisp
      (use-package evil-escape
        :straight t
+       :defer 1
        :custom
        (evil-escape-key-sequence "jk")
        :config
@@ -686,6 +689,7 @@
    #+begin_src emacs-lisp
      (use-package evil-surround
        :straight t
+       :defer 2
        :after evil
        :config
        (global-evil-surround-mode 1))
@@ -708,6 +712,7 @@
    #+begin_src emacs-lisp
      (use-package evil-commentary
        :straight t
+       :defer 2
        :config
        (evil-commentary-mode))
    #+end_src
@@ -717,6 +722,7 @@
    #+begin_src emacs-lisp
      (use-package evil-collection
        :after evil
+	   :demand t
        :straight t
        :config
        (evil-collection-init))
@@ -814,6 +820,7 @@
    #+begin_src emacs-lisp
      (use-package calfw-org
        :straight t
+       :defer 2
        :config
        (setq cfw:org-agenda-schedule-args '(:timestamp :scheduled :deadline)))
    #+end_src
@@ -835,6 +842,7 @@
    #+begin_src emacs-lisp
      (use-package general
        :straight t
+	   :demand t
        :config
        (general-evil-setup t)
        (define-key evil-motion-state-map " " nil)
@@ -951,6 +959,7 @@
    #+begin_src emacs-lisp
      (use-package git-gutter+
        :straight t
+       :defer 3
        :config
        (global-git-gutter+-mode))
    #+end_src
@@ -959,6 +968,7 @@
      (use-package git-gutter-fringe+
        :straight t
        :after git-gutter+
+       :defer 3
        :custom
        (git-gutter-fr+-side 'left-fringe)
        :config
@@ -986,7 +996,6 @@
    #+begin_src emacs-lisp
      (use-package ranger
        :straight t
-       :defer t
        :general
        (nmap
          :prefix "SPC"
@@ -1004,7 +1013,6 @@
    #+begin_src emacs-lisp
      (use-package treemacs
        :straight t
-       :defer t
        :general
        (nmap
          :prefix "<SPC>"
@@ -1039,7 +1047,6 @@
    #+begin_src emacs-lisp
      (use-package projectile
        :straight t
-       :defer t
        :custom
        (projectile-enable-caching t)
        :config
@@ -1150,7 +1157,6 @@
 
    #+begin_src emacs-lisp
      (use-package graphql-mode
-       :defer t
        :straight t)
    #+end_src
 
@@ -1158,7 +1164,6 @@
 
    #+begin_src emacs-lisp
      (use-package vue-mode
-       :defer t
        :straight t)
    #+end_src
 
@@ -1231,6 +1236,7 @@
    #+begin_src emacs-lisp
      (use-package winum
        :straight t
+       :defer 0.5
        :custom
        (winum-auto-setup-mode-line nil)
        :config
@@ -1244,6 +1250,7 @@
    #+begin_src emacs-lisp
      (use-package eyebrowse
        :straight t
+       :defer 2
        :general
        :config
        (eyebrowse-mode)
@@ -1292,6 +1299,7 @@
    #+begin_src emacs-lisp
      (use-package ivy
        :straight t
+       :defer 1
        :general
        (nmap
          :prefix "<SPC>"
@@ -1328,7 +1336,6 @@
 
    #+begin_src emacs-lisp
      (use-package highlight-indent-guides
-       :defer t
        :straight t
        ;; :hook (prog-mode . highlight-indent-guides-mode)
        :custom
@@ -1343,7 +1350,6 @@
 
    #+begin_src emacs-lisp
      (use-package focus
-       :defer t
        :straight t
        :general
        (nmap
@@ -1433,9 +1439,9 @@
    #+begin_src emacs-lisp
      (use-package elcord
        :straight t
-       :init
-       (elcord-mode)
+       :defer 5
        :config
        (setq elcord-client-id "903078200886853665")
-       (setq elcord-editor-icon "megumacs-icon"))
+       (setq elcord-editor-icon "megumacs-icon")
+       (elcord-mode))
    #+end_src

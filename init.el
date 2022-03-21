@@ -51,6 +51,9 @@
   ;; Make use-package use straight.el instead of package.el
   (straight-use-package 'use-package)
 
+  ;; Defer the loading of all packages, override with ":demand t"
+  (setq use-package-always-defer t)
+
   ;; Prevent package.el loading packages prior to their init-file loading.
   (setq package-enable-at-startup nil)
 
