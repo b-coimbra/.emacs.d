@@ -48,7 +48,8 @@
   1. Clone into *.emacs.d*: =$ git clone https://github.com/b-coimbra/.emacs.d.git ~/.emacs.d=
   2. Install [[https://github.com/domtronn/all-the-icons.el][all-the-icons]] fonts: =M-x all-the-icons-install-fonts=
   3. Install [[https://github.com/tonsky/FiraCode/files/412440/FiraCode-Regular-Symbol.zip][ligatures font]] (*Fira Code Regular Symbol*)
-  4. Install [[https://github.com/emacs-lsp/lsp-mode#supported-languages][language servers]] manually or with =M-x lsp-install-server=
+  4. Install [[https://github.com/googlefonts/noto-emoji][emoji font]] (*Noto Emoji*) for Linux
+  5. Install [[https://github.com/emacs-lsp/lsp-mode#supported-languages][language servers]] manually or with =M-x lsp-install-server=
 
 * Bootstrap
 ** Globals
@@ -59,7 +60,7 @@
      (setq
       globals--banner-path  "etc/banners/megumacs.png" ; Banner image path shown in the dashboard
       globals--font         "Fantasque Sans Mono 11"   ; Font family and font size
-      globals--theme        'gruvbox-custom            ; Theme used by Emacs.
+      globals--theme        'mirwood                   ; Theme used by Emacs.
       globals--email        "b-coimbra@hotmail.com"    ; Email for GPG encryption
       )
    #+end_src
@@ -111,8 +112,9 @@
       recentf-mode t                                   ; Keep recent files
       make-backup-files nil                            ; Stop creating backup files
       display-line-numbers-type 'relative              ; Use relative line numbers
-      vc-follow-symlinks t
-      frame-inhibit-implied-resize nil)                            ; Don't ask for confirmation when opening symlinked file
+      vc-follow-symlinks t                             ; When the symlink points to a version-controlled file
+      use-default-font-for-symbols nil                 ; Do not use the frame font when rendering emojis
+      frame-inhibit-implied-resize nil)                ; Don't ask for confirmation when opening symlinked file
      (cd "~/")                                         ; Move to the user directory
      (global-display-line-numbers-mode t)              ; Enable line numbers globally
      (delete-selection-mode 1)                         ; Replace region when inserting text
@@ -369,6 +371,22 @@
 			   #'add-fira-code-symbol-keywords)
    #+end_src
 
+** Emoji
+
+   Set up emoji rendering, requires installation of the [[https://github.com/googlefonts/noto-emoji][Noto Emoji]] font for Linux.
+
+   #+begin_src emacs-lisp
+     ;; Default Windows emoji font
+     (when (member "Segoe UI Emoji" (font-family-list))
+       (set-fontset-font t 'symbol (font-spec :family "Segoe UI Emoji") nil 'prepend)
+       (set-fontset-font "fontset-default" '(#xFE00 . #xFE0F) "Segoe UI Emoji"))
+
+     ;; Linux emoji font
+     (when (member "Noto Color Emoji" (font-family-list))
+       (set-fontset-font t 'symbol (font-spec :family "Noto Color Emoji") nil 'prepend)
+       (set-fontset-font "fontset-default" '(#xFE00 . #xFE0F) "Noto Color Emoji"))
+   #+end_src
+
 * Themes
 ** [[https://github.com/jasonm23/autothemer][Autothemer]]
 
@@ -377,6 +395,16 @@
    #+begin_src emacs-lisp
      (use-package autothemer
        :straight t)
+   #+end_src
+
+** [[https://github.com/b-coimbra/emacs-mirwood-theme][Mirwood theme]]
+
+   A pleaseant theme with earthy colors.
+
+   #+begin_src emacs-lisp
+     (straight-use-package
+      '(emacs-mirwood-theme :type git :host github
+                            :repo "b-coimbra/emacs-mirwood-theme"))
    #+end_src
 
 ** [[https://github.com/ogdenwebb/emacs-kaolin-themes][Kaolin themes]]
@@ -427,8 +455,8 @@
    Adds fancy icons to emacs.
 
    #+begin_src emacs-lisp
-	 (use-package all-the-icons
-	   :straight t)
+     (use-package all-the-icons
+       :straight t)
    #+end_src
 
 ** [[https://github.com/hlissner/emacs-solaire-mode][Solaire mode]]
@@ -436,9 +464,9 @@
    Gives other windows slightly different background colors (brightness).
 
    #+begin_src emacs-lisp
-	 (use-package solaire-mode
-	   :straight t
-	   :hook (after-init . solaire-global-mode))
+     (use-package solaire-mode
+       :straight t
+       :hook (after-init . solaire-global-mode))
    #+end_src
 
 ** [[https://elpa.gnu.org/packages/rainbow-mode.html][Rainbow-mode]]
