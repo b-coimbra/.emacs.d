@@ -6,7 +6,7 @@
 #+subtitle: Doom-like emacs config with a teensy tiny piece of weebness.
 #+date: <2020-02-01 Sat>
 #+author: Bruno Coimbra (b-coimbra)
-#+email: me@asynch.dev
+#+email: me@metaphoric.dev
 #+SETUPFILE: https://b-coimbra.github.io/org-scribbler-theme/scribbler.setup
 #+html_head_extra: <meta property="og:title" content="Megumacs" />
 #+html_head_extra: <meta property="og:type" content="website" />
@@ -178,6 +178,18 @@
 	 (setq-default custom-file (expand-file-name "etc/.custom.el" user-emacs-directory))
 	 (when (file-exists-p custom-file)
 	   (load custom-file))
+   #+end_src
+
+** Load =userconfig.el=
+
+   Whenever the base =config.org= file is updated, all the custom user settings are wiped out.
+
+   To prevent this, the user may define permanent settings in the =userconfig.org= file.
+
+   #+begin_src emacs-lisp
+     (setq-default userconfig-file (expand-file-name "userconfig.el" user-emacs-directory))
+     (when (file-exists-p userconfig-file)
+       (load userconfig-file))
    #+end_src
 
 ** Load custom themes

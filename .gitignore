@@ -4,6 +4,8 @@ etc/*
 !.gitignore
 !index.html
 !tags.json
+!userconfig.org
+!userconfig.el
 
 !etc/
 !docs/

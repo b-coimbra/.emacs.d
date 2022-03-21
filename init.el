@@ -59,6 +59,12 @@
 
   ;; Tangle configuration
   (org-babel-load-file (expand-file-name "config.org" user-emacs-directory))
+
+  ;; Tangle user configuration
+  (let ((userconfig-location (expand-file-name "userconfig.org" user-emacs-directory)))
+    (when (file-exists-p userconfig-location)
+      (org-babel-load-file userconfig-location)))
+
   (garbage-collect))
 
 ;;; init.el ends here

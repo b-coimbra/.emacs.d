@@ -38,6 +38,12 @@
 
    ~SPC T s~ to cycle through the available themes.
 
+** Customization
+
+   Create a =userconfig.org= file in the =.emacs.d= directory and add your custom settings there (in "emacs-lisp" org-mode code blocks).
+
+   You may also edit the =config.org= file directly, but your custom settings might be wiped out in case of an update.
+
 ** Keybindings
 
    Keybindings defined by =general.el=
