@@ -810,7 +810,9 @@
        :defer 3
        :after org
        :custom
-       (setq org-reveal-root "https://cdn.jsdelivr.net/npm/reveal.js"))
+       (setq org-reveal-root "https://cdn.jsdelivr.net/npm/reveal.js")
+       (setq org-reveal-klipsify-src t) ; Evaluate code
+       )
    #+end_src
 
 ** calfw-org
