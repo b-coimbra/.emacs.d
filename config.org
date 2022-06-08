@@ -844,7 +844,7 @@
    #+begin_src emacs-lisp
      (use-package general
        :straight t
-	   :demand t
+       :demand t
        :config
        (general-evil-setup t)
        (define-key evil-motion-state-map " " nil)
@@ -864,7 +864,7 @@
         ;; Applications
         "a" '(:ignore t :which-key "applications")
         "au" 'undo-tree-visualize
-        "aU" 'update-packages
+        "aU" 'straight-pull-all
         "ac" 'cfw:open-org-calendar
         ;; Buffers
         "b" '(:ignore t :which-key "buffers")
