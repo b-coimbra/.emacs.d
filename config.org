@@ -722,6 +722,7 @@
    #+begin_src emacs-lisp
      (use-package evil-collection
        :after evil
+	   :demand t
        :straight t
        :config
        (evil-collection-init))
