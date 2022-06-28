@@ -1,8 +1,7 @@
 #+TITLE: MEGUMACS
-#+AUTHOR: index
-#+SETUPFILE: https://fniessen.github.io/org-html-themes/setup/theme-readtheorg.setup
+#+AUTHOR: Bruno Coimbra
 
-[[./etc/screenshots/screenshot2.png]]
+[[./etc/screenshots/screenshot3.png]]
 
 * Preview
 
@@ -13,21 +12,21 @@
   Clone this repo into your *.emacs.d*:
 
   #+begin_src sh
-  $ git clone https://github.com/b-coimbra/.emacs.d.git ~/.emacs.d --recurse-submodules
+    $ git clone https://github.com/b-coimbra/.emacs.d.git ~/.emacs.d --recurse-submodules
   #+end_src
 
 ** Font
 
-  The font currently set in the config is [[https://github.com/be5invis/Iosevka][Iosevka]].
+   The font currently set in the config is [[https://github.com/be5invis/Iosevka][Iosevka]].
 
-  To install the ligatures, the [[https://github.com/tonsky/FiraCode/issues/211#issuecomment-239058632][FiraCode Regular Symbol]] font is needed.
+   To install the ligatures, the [[https://github.com/tonsky/FiraCode/issues/211#issuecomment-239058632][FiraCode Regular Symbol]] font is needed.
 
 ** Icons
 
    If you care about fancy icons, install the fonts provided by [[https://github.com/domtronn/all-the-icons.el][all the icons]]:
 
    #+begin_src emacs-lisp
-   M-x all-the-icons-install-fonts
+     M-x all-the-icons-install-fonts
    #+end_src
 
 ** Syntax checking/linting
@@ -48,75 +47,73 @@
 
    Keybindings defined by =general.el=
 
-   | Key     | Command                            |
-   |---------+------------------------------------|
-   | =SPC SPC= | ~counsel-M-x~                        |
-   | =SPC TAB= | ~mode-line-other-buffer~             |
-   | =SPC .=   | ~xref-find-definitions~              |
-   | =SPC ,=   | ~xref-pop-marker-stack~              |
-   | =SPC '=   | ~eshell~                             |
-   | =SPC q q= | ~evil-quit~                          |
-   | =SPC s=   | ~swiper~                             |
-   | =SPC a u= | ~undo-tree-visualize~                |
-   | =SPC a U= | ~update-packages~                    |
-   | =SPC a c= | ~cfw:open-org-calendar~              |
-   | =SPC b b= | ~counsel-switch-buffer~              |
-   | =SPC b d= | ~kill-this-buffer~                   |
-   | =SPC b p= | ~previous-buffer~                    |
-   | =SPC b n= | ~next-buffer~                        |
-   | =SPC b N= | ~evil-buffer-new~                    |
-   | =SPC b e= | ~erase-buffer~                       |
-   | =SPC B B= | ~bookmark-jump~                      |
-   | =SPC B s= | ~bookmark-set~                       |
-   | =SPC c=   | ~compile~                            |
-   | =SPC f f= | ~find-file~                          |
-   | =SPC f r= | ~counsel-recentf~                    |
-   | =SPC f s= | ~save-buffer~                        |
-   | =SPC f S= | ~evil-write-all~                     |
-   | =SPC f R= | ~rename-file~                        |
-   | =SPC f b= | ~ranger-show-bookmarks~              |
-   | =SPC t n= | ~display-line-numbers-mode~          |
-   | =SPC t L= | ~visual-line-mode~                   |
-   | =SPC t u= | ~lsp-ui-mode~                        |
-   | =SPC T s= | ~counsel-load-theme~                 |
-   | =SPC w m= | ~delete-other-windows~               |
-   | =SPC w f= | ~delete-other-windows~               |
-   | =SPC w j= | ~evil-window-down~                   |
-   | =SPC w k= | ~evil-window-up~                     |
-   | =SPC w l= | ~evil-window-right~                  |
-   | =SPC w h= | ~evil-window-left~                   |
-   | =SPC w s= | ~split-and-follow-horizontally~      |
-   | =SPC w v= | ~split-and-follow-vertically~        |
-   | =SPC w d= | ~evil-window-delete~                 |
-   | =SPC w c= | ~evil-window-delete~                 |
-   | =SPC w H= | ~evil-window-move-far-left~          |
-   | =SPC w L= | ~evil-window-move-far-right~         |
-   | =SPC w K= | ~evil-window-move-very-top~          |
-   | =SPC w J= | ~evil-window-move-very-bottom~       |
-   | =SPC w == | ~balance-windows~                    |
-   | =SPC g=   | ~nil~                                |
-   | =SPC g s= | ~magit-status~                       |
-   | =SPC g b= | ~magit-blame~                        |
-   | =SPC a r= | ~ranger~                             |
-   | =SPC a d= | ~deer~                               |
-   | =SPC t t= | ~treemacs~                           |
-   | =SPC p p= | ~counsel-projectile-switch-project~  |
-   | =SPC p f= | ~counsel-projectile-find-file~       |
-   | =SPC p s= | ~counsel-projectile-git-grep~        |
-   | =SPC p d= | ~counsel-projectile-find-dir~        |
-   | =SPC e n= | ~flycheck-next-error~                |
-   | =SPC e p= | ~flycheck-previous-error~            |
-   | =SPC l F= | ~lsp-format-buffer~                  |
-   | =SPC l R= | ~lsp-rename~                         |
-   | =SPC ;=   | ~avy-goto-word-1~                    |
-   | =SPC :=   | ~avy-goto-char~                      |
-   | =SPC t f= | ~focus-mode~                         |
-   | =SPC F p= | ~focus-pin~                          |
-   | =SPC F u= | ~focus-unpin~                        |
-   | =SPC F c= | ~focus-change-thing~                 |
-   | =SPC y t= | ~yas-describe-tables~                |
-   | =SPC l i= | ~lsp-ui-peek-find-implementation~    |
-   | =SPC l r= | ~lsp-ui-peek-find-references~        |
-   | =SPC l d= | ~lsp-ui-peek-find-definitions~       |
-   | =SPC l l= | ~lsp-ui-flycheck-list~               |
-   | =SPC l a= | ~lsp-ui-sideline-apply-code-actions~ |
+   | key     | command                           |
+   |---------+-----------------------------------+
+   | =SPC SPC= | ~counsel-M-x~                       |
+   | =SPC TAB= | ~mode-line-other-buffer~            |
+   | =SPC .=   | ~xref-find-definitions~             |
+   | =SPC ,=   | ~xref-pop-marker-stack~             |
+   | =SPC '=   | ~eshell~                            |
+   | =SPC q q= | ~evil-quit~                         |
+   | =SPC s=   | ~swiper~                            |
+   | =SPC a u= | ~undo-tree-visualize~               |
+   | =SPC a U= | ~straight-pull-all~                 |
+   | =SPC a c= | ~cfw:open-org-calendar~             |
+   | =SPC b b= | ~counsel-switch-buffer~             |
+   | =SPC b d= | ~kill-this-buffer~                  |
+   | =SPC b p= | ~previous-buffer~                   |
+   | =SPC b n= | ~next-buffer~                       |
+   | =SPC b N= | ~evil-buffer-new~                   |
+   | =SPC b e= | ~erase-buffer~                      |
+   | =SPC B B= | ~bookmark-jump~                     |
+   | =SPC B s= | ~bookmark-set~                      |
+   | =SPC c=   | ~compile~                           |
+   | =SPC f f= | ~find-file~                         |
+   | =SPC f r= | ~counsel-recentf~                   |
+   | =SPC f s= | ~save-buffer~                       |
+   | =SPC f S= | ~evil-write-all~                    |
+   | =SPC f R= | ~rename-file~                       |
+   | =SPC f b= | ~ranger-show-bookmarks~             |
+   | =SPC f P= | ~open-config-file~                  |
+   | =SPC t n= | ~display-line-numbers-mode~         |
+   | =SPC t L= | ~visual-line-mode~                  |
+   | =SPC t u= | ~lsp-ui-mode~                       |
+   | =SPC t i= | ~highlight-indent-guides-mode~      |
+   | =SPC T s= | ~counsel-load-theme~                |
+   | =SPC w m= | ~delete-other-windows~              |
+   | =SPC w f= | ~delete-other-windows~              |
+   | =SPC w j= | ~evil-window-down~                  |
+   | =SPC w k= | ~evil-window-up~                    |
+   | =SPC w l= | ~evil-window-right~                 |
+   | =SPC w h= | ~evil-window-left~                  |
+   | =SPC w s= | ~split-and-follow-horizontally~     |
+   | =SPC w v= | ~split-and-follow-vertically~       |
+   | =SPC w d= | ~evil-window-delete~                |
+   | =SPC w c= | ~evil-window-delete~                |
+   | =SPC w == | ~balance-windows~                   |
+   | =SPC g=   | ~nil~                               |
+   | =SPC g s= | ~magit-status~                      |
+   | =SPC g b= | ~magit-blame~                       |
+   | =SPC a r= | ~ranger~                            |
+   | =SPC a d= | ~deer~                              |
+   | =SPC t t= | ~treemacs~                          |
+   | =SPC p p= | ~counsel-projectile-switch-project~ |
+   | =SPC p f= | ~counsel-projectile-find-file~      |
+   | =SPC p s= | ~counsel-projectile-git-grep~       |
+   | =SPC p d= | ~counsel-projectile-find-dir~       |
+   | =SPC p R= | ~projectile-replace~                |
+   | =SPC e n= | ~flycheck-next-error~               |
+   | =SPC e p= | ~flycheck-previous-error~           |
+   | =SPC l F= | ~lsp-format-buffer~                 |
+   | =SPC l R= | ~lsp-rename~                        |
+   | =SPC w H= | ~windmove-swap-states-left~         |
+   | =SPC w L= | ~windmove-swap-states-right~        |
+   | =SPC w K= | ~windmove-swap-states-up~           |
+   | =SPC w J= | ~windmove-swap-states-down~         |
+   | =SPC ;=   | ~avy-goto-word-1~                   |
+   | =SPC :=   | ~avy-goto-char~                     |
+   | =SPC t f= | ~focus-mode~                        |
+   | =SPC F p= | ~focus-pin~                         |
+   | =SPC F u= | ~focus-unpin~                       |
+   | =SPC F c= | ~focus-change-thing~                |
+   | =SPC y t= | ~yas-describe-tables~               |
