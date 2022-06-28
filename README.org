@@ -39,9 +39,21 @@
 
 ** Customization
 
-   Create a =userconfig.org= file in the =.emacs.d= directory and add your custom settings there (in "emacs-lisp" org-mode code blocks).
+   Create a =config.org= file in the =.emacs.d= directory and add your custom settings there (in "emacs-lisp" org-mode code blocks). Example:
 
-   You may also edit the =config.org= file directly, but your custom settings might be wiped out in case of an update.
+   #+begin_src org
+     ,* Custom settings
+
+       Redefine global settings.
+
+       ,#+begin_src emacs-lisp
+         (setq globals--theme 'doom-ayu-dark
+               globals--font "Iosevka 12"
+               globals--banner-path "/etc/banners/blackhole.png")
+       ,#+end_src
+   #+end_src
+
+   You may also edit the =core.org= file directly, but your custom settings might be wiped out in case of an update.
 
 ** Keybindings
 

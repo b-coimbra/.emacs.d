@@ -60,11 +60,11 @@
   ;; Install org-mode
   (straight-use-package 'org)
 
-  ;; Tangle configuration
-  (org-babel-load-file (expand-file-name "config.org" user-emacs-directory))
+  ;; Tangle core configuration
+  (org-babel-load-file (expand-file-name "core.org" user-emacs-directory))
 
   ;; Tangle user configuration
-  (let ((userconfig-location (expand-file-name "userconfig.org" user-emacs-directory)))
+  (let ((userconfig-location (expand-file-name "config.org" user-emacs-directory)))
     (when (file-exists-p userconfig-location)
       (org-babel-load-file userconfig-location)))
 
