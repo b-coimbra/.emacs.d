@@ -539,7 +539,7 @@
    #+begin_src emacs-lisp
      (use-package doom-modeline
        :straight t
-       :init (doom-modeline-init)
+       :init (doom-modeline-mode)
        :custom
        (doom-modeline-major-mode-icon nil)
        (doom-modeline-major-mode-color-icon nil)
