@@ -203,20 +203,6 @@
      (add-to-list 'custom-theme-load-path (expand-file-name "etc/themes/" user-emacs-directory))
    #+end_src
 
-** Auto package update
-
-   Update packages every week and delete the old versions.
-
-   #+begin_src emacs-lisp
-     (use-package auto-package-update
-       :straight t
-       :commands update-packages
-       :custom
-       (auto-package-update-delete-old-versions t)
-       :config
-       (auto-package-update-maybe))
-   #+end_src
-
 ** No littering
 
    Keep =~/.emacs.d= clean.
