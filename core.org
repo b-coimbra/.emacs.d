@@ -34,11 +34,13 @@
   #+begin_center
   *[M E G U M A C S]*
 
+  （めぐマックス）
+
   [[https://github.com/b-coimbra/.emacs.d][*Github*]] | [[https://emacs.metaphoric.dev/core.org][*Source*]]
   #+end_center
 
   #+begin_quote
-  The tower of rebellion creeps upon man's world, The unspoken faith displayed before me, The time has come! Now, awaken from your slumber, and by my madness, be wrought!
+  Ex-PLOSION~!
 
   -- Megumin
   #+end_quote
@@ -62,6 +64,7 @@
       globals--font         "Fantasque Sans Mono 11"   ; Font family and font size
       globals--theme        'mirwood                   ; Theme used by Emacs.
       globals--email        "b-coimbra@hotmail.com"    ; Email for GPG encryption
+      globals--leader-key   "<SPC>"                    ; Leader prefix key used for most bindings
       )
    #+end_src
 
@@ -70,11 +73,11 @@
    Disable mouse and tooltips:
 
    #+begin_src emacs-lisp
-	 (when window-system
-	   (blink-cursor-mode 0) ; Disable the cursor blinking
-	   (scroll-bar-mode 0)   ; Disable the scroll bar
-	   (tool-bar-mode 0)     ; Disable the tool bar
-	   (tooltip-mode 0))     ; Disable the tooltips
+     (when window-system
+       (blink-cursor-mode 0) ; Disable the cursor blinking
+       (scroll-bar-mode 0)   ; Disable the scroll bar
+       (tool-bar-mode 0)     ; Disable the tool bar
+       (tooltip-mode 0))     ; Disable the tooltips
    #+end_src
 
    General better defaults:
@@ -135,30 +138,30 @@
    Enable fullscreen.
 
    #+begin_src emacs-lisp
-	 (if (eq window-system 'ns)
-		 (toggle-frame-maximized)
-	   (toggle-frame-fullscreen))
+     (if (eq window-system 'ns)
+         (toggle-frame-maximized)
+       (toggle-frame-fullscreen))
    #+end_src
 
    Garbage collection on focus-out, Emacs /should/ feel snappier.
 
    #+begin_src emacs-lisp
-	 (add-hook 'focus-out-hook #'garbage-collect)
+     (add-hook 'focus-out-hook #'garbage-collect)
    #+end_src
 
    Remove trailing whitespace on save:
 
    #+begin_src emacs-lisp
-	 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+     (add-hook 'before-save-hook 'delete-trailing-whitespace)
    #+end_src
 
    Default to utf-8 encoding.
 
    #+begin_src emacs-lisp
-	 (set-default-coding-systems 'utf-8)
-	 (set-language-environment "UTF-8")
-	 (prefer-coding-system 'utf-8)
-	 (set-terminal-coding-system 'utf-8)
+     (set-default-coding-systems 'utf-8)
+     (set-language-environment "UTF-8")
+     (prefer-coding-system 'utf-8)
+     (set-terminal-coding-system 'utf-8)
    #+end_src
 
 ** Load =.custom.el=
@@ -175,9 +178,9 @@
    loaded, if existing.
 
    #+begin_src emacs-lisp
-	 (setq-default custom-file (expand-file-name "etc/.custom.el" user-emacs-directory))
-	 (when (file-exists-p custom-file)
-	   (load custom-file))
+     (setq-default custom-file (expand-file-name "etc/.custom.el" user-emacs-directory))
+     (when (file-exists-p custom-file)
+       (load custom-file))
    #+end_src
 
 ** Load =config.el=
@@ -205,13 +208,13 @@
    Update packages every week and delete the old versions.
 
    #+begin_src emacs-lisp
-	 (use-package auto-package-update
-	   :straight t
-	   :commands update-packages
-	   :custom
-	   (auto-package-update-delete-old-versions t)
-	   :config
-	   (auto-package-update-maybe))
+     (use-package auto-package-update
+       :straight t
+       :commands update-packages
+       :custom
+       (auto-package-update-delete-old-versions t)
+       :config
+       (auto-package-update-maybe))
    #+end_src
 
 ** No littering
@@ -264,123 +267,123 @@
    Requires installation of the [[https://github.com/tonsky/FiraCode/files/412440/FiraCode-Regular-Symbol.zip][Fira Code Regular Symbol]] font.
 
    #+begin_src emacs-lisp
-	 (set-fontset-font t '(#Xe100 . #Xe16f) "Fira Code Symbol")
+     (set-fontset-font t '(#Xe100 . #Xe16f) "Fira Code Symbol")
 
-	 (defconst fira-code-font-lock-keywords-alist
-	   (mapcar (lambda (regex-char-pair)
-				 `(,(car regex-char-pair)
-				   (0 (prog1 ()
-						(compose-region (match-beginning 1)
-										(match-end 1)
-										;; The first argument to concat is a string containing a literal tab
-										,(concat "	" (list (decode-char 'ucs (cadr regex-char-pair)))))))))
-			   '(("\\(www\\)"                   #Xe100)
-				 ("[^/]\\(\\*\\*\\)[^/]"        #Xe101)
-				 ("\\(\\*\\*\\*\\)"             #Xe102)
-				 ("\\(\\*\\*/\\)"               #Xe103)
-				 ("\\(\\*>\\)"                  #Xe104)
-				 ("[^*]\\(\\*/\\)"              #Xe105)
-				 ("\\(\\\\\\\\\\)"              #Xe106)
-				 ("\\(\\\\\\\\\\\\\\)"          #Xe107)
-				 ("\\({-\\)"                    #Xe108)
-				 ("\\(!!\\)"                    #Xe10d)
-				 ("\\(!=\\)"                    #Xe10e)
-				 ("\\(!==\\)"                   #Xe10f)
-				 ("\\(-}\\)"                    #Xe110)
-				 ("\\(--\\)"                    #Xe111)
-				 ("\\(---\\)"                   #Xe112)
-				 ("\\(-->\\)"                   #Xe113)
-				 ("[^-]\\(->\\)"                #Xe114)
-				 ("\\(->>\\)"                   #Xe115)
-				 ("\\(-<\\)"                    #Xe116)
-				 ("\\(-<<\\)"                   #Xe117)
-				 ("\\(-~\\)"                    #Xe118)
-				 ("\\(#{\\)"                    #Xe119)
-				 ("\\(#\\[\\)"                  #Xe11a)
-				 ("\\(##\\)"                    #Xe11b)
-				 ("\\(###\\)"                   #Xe11c)
-				 ("\\(####\\)"                  #Xe11d)
-				 ("\\(#(\\)"                    #Xe11e)
-				 ("\\(#\\?\\)"                  #Xe11f)
-				 ("\\(#_\\)"                    #Xe120)
-				 ("\\(#_(\\)"                   #Xe121)
-				 ("\\(\\.=\\)"                  #Xe123)
-				 ("\\(\\?=\\)"                  #Xe127)
-				 ("\\(\\?\\?\\)"                #Xe128)
-				 ("\\(;;\\)"                    #Xe129)
-				 ("\\(/\\*\\)"                  #Xe12a)
-				 ("\\(/\\*\\*\\)"               #Xe12b)
-				 ("\\(/=\\)"                    #Xe12c)
-				 ("\\(/==\\)"                   #Xe12d)
-				 ("\\(/>\\)"                    #Xe12e)
-				 ("\\(//\\)"                    #Xe12f)
-				 ("\\(///\\)"                   #Xe130)
-				 ("\\(&&\\)"                    #Xe131)
-				 ("\\(||\\)"                    #Xe132)
-				 ("\\(||=\\)"                   #Xe133)
-				 ("[^|]\\(|=\\)"                #Xe134)
-				 ("\\(|>\\)"                    #Xe135)
-				 ("\\(\\^=\\)"                  #Xe136)
-				 ("\\(\\$>\\)"                  #Xe137)
-				 ("\\(\\+\\+\\)"                #Xe138)
-				 ("\\(\\+\\+\\+\\)"             #Xe139)
-				 ("\\(\\+>\\)"                  #Xe13a)
-				 ("\\(=:=\\)"                   #Xe13b)
-				 ("[^!/]\\(==\\)[^>]"           #Xe13c)
-				 ("\\(===\\)"                   #Xe13d)
-				 ("\\(==>\\)"                   #Xe13e)
-				 ("[^=]\\(=>\\)"                #Xe13f)
-				 ("\\(=>>\\)"                   #Xe140)
-				 ("\\(<=\\)"                    #Xe141)
-				 ("\\(=<<\\)"                   #Xe142)
-				 ("\\(=/=\\)"                   #Xe143)
-				 ("\\(>-\\)"                    #Xe144)
-				 ("\\(>=\\)"                    #Xe145)
-				 ("\\(>=>\\)"                   #Xe146)
-				 ("[^-=]\\(>>\\)"               #Xe147)
-				 ("\\(>>-\\)"                   #Xe148)
-				 ("\\(>>=\\)"                   #Xe149)
-				 ("\\(>>>\\)"                   #Xe14a)
-				 ("\\(<\\*\\)"                  #Xe14b)
-				 ("\\(<\\*>\\)"                 #Xe14c)
-				 ("\\(<|\\)"                    #Xe14d)
-				 ("\\(<|>\\)"                   #Xe14e)
-				 ("\\(<\\$\\)"                  #Xe14f)
-				 ("\\(<\\$>\\)"                 #Xe150)
-				 ("\\(<!--\\)"                  #Xe151)
-				 ("\\(<-\\)"                    #Xe152)
-				 ("\\(<--\\)"                   #Xe153)
-				 ("\\(<->\\)"                   #Xe154)
-				 ("\\(<\\+\\)"                  #Xe155)
-				 ("\\(<\\+>\\)"                 #Xe156)
-				 ("\\(<=\\)"                    #Xe157)
-				 ("\\(<==\\)"                   #Xe158)
-				 ("\\(<=>\\)"                   #Xe159)
-				 ("\\(<=<\\)"                   #Xe15a)
-				 ("\\(<>\\)"                    #Xe15b)
-				 ("[^-=]\\(<<\\)"               #Xe15c)
-				 ("\\(<<-\\)"                   #Xe15d)
-				 ("\\(<<=\\)"                   #Xe15e)
-				 ("\\(<<<\\)"                   #Xe15f)
-				 ("\\(<~\\)"                    #Xe160)
-				 ("\\(<~~\\)"                   #Xe161)
-				 ("\\(</\\)"                    #Xe162)
-				 ("\\(</>\\)"                   #Xe163)
-				 ("\\(~@\\)"                    #Xe164)
-				 ("\\(~-\\)"                    #Xe165)
-				 ("\\(~=\\)"                    #Xe166)
-				 ("\\(~>\\)"                    #Xe167)
-				 ("[^<]\\(~~\\)"                #Xe168)
-				 ("\\(~~>\\)"                   #Xe169)
-				 ("\\(%%\\)"                    #Xe16a)
-				 ("[^\\+<>]\\(\\+\\)[^\\+<>]"   #Xe16d)
-				 ("[^\\*/<>]\\(\\*\\)[^\\*/<>]" #Xe16f))))
+     (defconst fira-code-font-lock-keywords-alist
+       (mapcar (lambda (regex-char-pair)
+                 `(,(car regex-char-pair)
+                   (0 (prog1 ()
+                        (compose-region (match-beginning 1)
+                                        (match-end 1)
+                                        ;; The first argument to concat is a string containing a literal tab
+                                        ,(concat "	" (list (decode-char 'ucs (cadr regex-char-pair)))))))))
+               '(("\\(www\\)"                   #Xe100)
+                 ("[^/]\\(\\*\\*\\)[^/]"        #Xe101)
+                 ("\\(\\*\\*\\*\\)"             #Xe102)
+                 ("\\(\\*\\*/\\)"               #Xe103)
+                 ("\\(\\*>\\)"                  #Xe104)
+                 ("[^*]\\(\\*/\\)"              #Xe105)
+                 ("\\(\\\\\\\\\\)"              #Xe106)
+                 ("\\(\\\\\\\\\\\\\\)"          #Xe107)
+                 ("\\({-\\)"                    #Xe108)
+                 ("\\(!!\\)"                    #Xe10d)
+                 ("\\(!=\\)"                    #Xe10e)
+                 ("\\(!==\\)"                   #Xe10f)
+                 ("\\(-}\\)"                    #Xe110)
+                 ("\\(--\\)"                    #Xe111)
+                 ("\\(---\\)"                   #Xe112)
+                 ("\\(-->\\)"                   #Xe113)
+                 ("[^-]\\(->\\)"                #Xe114)
+                 ("\\(->>\\)"                   #Xe115)
+                 ("\\(-<\\)"                    #Xe116)
+                 ("\\(-<<\\)"                   #Xe117)
+                 ("\\(-~\\)"                    #Xe118)
+                 ("\\(#{\\)"                    #Xe119)
+                 ("\\(#\\[\\)"                  #Xe11a)
+                 ("\\(##\\)"                    #Xe11b)
+                 ("\\(###\\)"                   #Xe11c)
+                 ("\\(####\\)"                  #Xe11d)
+                 ("\\(#(\\)"                    #Xe11e)
+                 ("\\(#\\?\\)"                  #Xe11f)
+                 ("\\(#_\\)"                    #Xe120)
+                 ("\\(#_(\\)"                   #Xe121)
+                 ("\\(\\.=\\)"                  #Xe123)
+                 ("\\(\\?=\\)"                  #Xe127)
+                 ("\\(\\?\\?\\)"                #Xe128)
+                 ("\\(;;\\)"                    #Xe129)
+                 ("\\(/\\*\\)"                  #Xe12a)
+                 ("\\(/\\*\\*\\)"               #Xe12b)
+                 ("\\(/=\\)"                    #Xe12c)
+                 ("\\(/==\\)"                   #Xe12d)
+                 ("\\(/>\\)"                    #Xe12e)
+                 ("\\(//\\)"                    #Xe12f)
+                 ("\\(///\\)"                   #Xe130)
+                 ("\\(&&\\)"                    #Xe131)
+                 ("\\(||\\)"                    #Xe132)
+                 ("\\(||=\\)"                   #Xe133)
+                 ("[^|]\\(|=\\)"                #Xe134)
+                 ("\\(|>\\)"                    #Xe135)
+                 ("\\(\\^=\\)"                  #Xe136)
+                 ("\\(\\$>\\)"                  #Xe137)
+                 ("\\(\\+\\+\\)"                #Xe138)
+                 ("\\(\\+\\+\\+\\)"             #Xe139)
+                 ("\\(\\+>\\)"                  #Xe13a)
+                 ("\\(=:=\\)"                   #Xe13b)
+                 ("[^!/]\\(==\\)[^>]"           #Xe13c)
+                 ("\\(===\\)"                   #Xe13d)
+                 ("\\(==>\\)"                   #Xe13e)
+                 ("[^=]\\(=>\\)"                #Xe13f)
+                 ("\\(=>>\\)"                   #Xe140)
+                 ("\\(<=\\)"                    #Xe141)
+                 ("\\(=<<\\)"                   #Xe142)
+                 ("\\(=/=\\)"                   #Xe143)
+                 ("\\(>-\\)"                    #Xe144)
+                 ("\\(>=\\)"                    #Xe145)
+                 ("\\(>=>\\)"                   #Xe146)
+                 ("[^-=]\\(>>\\)"               #Xe147)
+                 ("\\(>>-\\)"                   #Xe148)
+                 ("\\(>>=\\)"                   #Xe149)
+                 ("\\(>>>\\)"                   #Xe14a)
+                 ("\\(<\\*\\)"                  #Xe14b)
+                 ("\\(<\\*>\\)"                 #Xe14c)
+                 ("\\(<|\\)"                    #Xe14d)
+                 ("\\(<|>\\)"                   #Xe14e)
+                 ("\\(<\\$\\)"                  #Xe14f)
+                 ("\\(<\\$>\\)"                 #Xe150)
+                 ("\\(<!--\\)"                  #Xe151)
+                 ("\\(<-\\)"                    #Xe152)
+                 ("\\(<--\\)"                   #Xe153)
+                 ("\\(<->\\)"                   #Xe154)
+                 ("\\(<\\+\\)"                  #Xe155)
+                 ("\\(<\\+>\\)"                 #Xe156)
+                 ("\\(<=\\)"                    #Xe157)
+                 ("\\(<==\\)"                   #Xe158)
+                 ("\\(<=>\\)"                   #Xe159)
+                 ("\\(<=<\\)"                   #Xe15a)
+                 ("\\(<>\\)"                    #Xe15b)
+                 ("[^-=]\\(<<\\)"               #Xe15c)
+                 ("\\(<<-\\)"                   #Xe15d)
+                 ("\\(<<=\\)"                   #Xe15e)
+                 ("\\(<<<\\)"                   #Xe15f)
+                 ("\\(<~\\)"                    #Xe160)
+                 ("\\(<~~\\)"                   #Xe161)
+                 ("\\(</\\)"                    #Xe162)
+                 ("\\(</>\\)"                   #Xe163)
+                 ("\\(~@\\)"                    #Xe164)
+                 ("\\(~-\\)"                    #Xe165)
+                 ("\\(~=\\)"                    #Xe166)
+                 ("\\(~>\\)"                    #Xe167)
+                 ("[^<]\\(~~\\)"                #Xe168)
+                 ("\\(~~>\\)"                   #Xe169)
+                 ("\\(%%\\)"                    #Xe16a)
+                 ("[^\\+<>]\\(\\+\\)[^\\+<>]"   #Xe16d)
+                 ("[^\\*/<>]\\(\\*\\)[^\\*/<>]" #Xe16f))))
 
-	 (defun add-fira-code-symbol-keywords ()
-	   (font-lock-add-keywords nil fira-code-font-lock-keywords-alist))
+     (defun add-fira-code-symbol-keywords ()
+       (font-lock-add-keywords nil fira-code-font-lock-keywords-alist))
 
-	 (add-hook 'prog-mode-hook
-			   #'add-fira-code-symbol-keywords)
+     (add-hook 'prog-mode-hook
+               #'add-fira-code-symbol-keywords)
    #+end_src
 
 ** Emoji
@@ -425,15 +428,13 @@
 
    #+begin_src emacs-lisp
      (use-package kaolin-themes
+       :defer 5
        :straight t
        :custom
        (kaolin-themes-bold t)
        (kaolin-themes-italic t)
        (kaolin-themes-underline t)
-       (kaolin-themes-distinct-company-scrollbar t)
-       :config
-       ;; (load-theme 'doom-gruvbox t)
-       )
+       (kaolin-themes-distinct-company-scrollbar t))
    #+end_src
 
 ** [[https://github.com/hlissner/emacs-doom-themes][Doom themes]]
@@ -504,34 +505,6 @@
    #+end_src
 
 * Modeline
-** [[https://github.com/TheBB/spaceline][Spaceline]]
-
-   Powerline theme from Spacemacs.
-
-   #+begin_src emacs-lisp
-     ;; (use-package spaceline
-     ;;   :straight t
-     ;;   :init
-     ;;   (progn
-     ;;     (setq spaceline-highlight-face-func 'spaceline-highlight-face-evil-state)
-     ;;     (setq-default powerline-default-separator 'slant)
-     ;;     ;; (setq spaceline-separator-dir-left '(right . right))
-     ;;     )
-     ;;   :config
-     ;;   (spaceline-emacs-theme)
-     ;;   (setq spaceline-buffer-encoding-abbrev-p nil
-     ;;         spaceline-workspace-number-p t
-     ;;         spaceline-window-numbers-unicode nil
-     ;;         spaceline-version-control-p nil
-     ;;         spaceline-minor-modes-p nil
-     ;;         spaceline-major-mode-p nil
-     ;;         spaceline-buffer-size-p t
-     ;;         spaceline-window-number-p t
-     ;;         spaceline-buffer-id-p t
-     ;;         spaceline-bufFer-size-p t)
-     ;;   (powerline-reset))
-   #+end_src
-
 ** [[https://github.com/seagle0128/doom-modeline][Doom-modeline]]
 
    A fancy and fast mode-line inpsired by minimalism design.
@@ -549,6 +522,35 @@
        (doom-modeline-checker-simple-format t)
        (doom-modeline-buffer-encoding nil)
        (doom-modeline-height 35))
+   #+end_src
+
+** [[https://github.com/TheBB/spaceline][Spaceline]]
+
+   Powerline theme from Spacemacs.
+
+   #+begin_src emacs-lisp
+     (use-package spaceline
+       :disabled t
+       :straight t
+       :init
+       (progn
+         (setq spaceline-highlight-face-func 'spaceline-highlight-face-evil-state)
+         (setq-default powerline-default-separator 'slant)
+         ;; (setq spaceline-separator-dir-left '(right . right))
+         )
+       :config
+       (spaceline-emacs-theme)
+       (setq spaceline-buffer-encoding-abbrev-p nil
+             spaceline-workspace-number-p t
+             spaceline-window-numbers-unicode nil
+             spaceline-version-control-p nil
+             spaceline-minor-modes-p nil
+             spaceline-major-mode-p nil
+             spaceline-buffer-size-p t
+             spaceline-window-number-p t
+             spaceline-buffer-id-p t
+             spaceline-bufFer-size-p t)
+       (powerline-reset))
    #+end_src
 
 * Dashboard
@@ -659,7 +661,7 @@
    #+begin_src emacs-lisp
      (use-package evil
        :straight t
-	   :demand t
+       :demand t
        :custom
        (evil-want-keybinding nil)
        (evil-want-C-u-scroll t)
@@ -722,7 +724,7 @@
    #+begin_src emacs-lisp
      (use-package evil-collection
        :after evil
-	   :demand t
+       :demand t
        :straight t
        :config
        (evil-collection-init))
@@ -848,81 +850,95 @@
        :config
        (general-evil-setup t)
        (define-key evil-motion-state-map " " nil)
-       ;; (general-evil-define-key 'normal 'global
-       ;;   :prefix "SPC"
-       (general-define-key
-        :prefix "SPC"
-        :states 'normal
-        ;; Misc
-        "SPC" 'counsel-M-x
-        "TAB" 'mode-line-other-buffer
-        "." 'xref-find-definitions
-        "," 'xref-pop-marker-stack
-        "'" 'eshell
-        "qq" 'evil-quit
-        "s" 'swiper
-        ;; Applications
-        "a" '(:ignore t :which-key "applications")
-        "au" 'undo-tree-visualize
-        "aU" 'straight-pull-all
-        "ac" 'cfw:open-org-calendar
-        ;; Buffers
-        "b" '(:ignore t :which-key "buffers")
-        "bb" 'counsel-switch-buffer
-        "bd" 'kill-this-buffer
-        "bp" 'previous-buffer
-        "bn" 'next-buffer
-        "bN" 'evil-buffer-new
-        "be" 'erase-buffer
-        ;; Bookmarks
-        "B" '(:ignore t :which-key "bookmarks")
-        "BB" 'bookmark-jump
-        "Bs" 'bookmark-set
-        ;; Compiling
-        "c" 'compile
-        ;; Errors
-        "e" '(:ignore t :which-key "errors")
-        ;; Files
-        "f" '(:ignore t :which-key "file")
-        "ff" 'find-file
-        "fr" 'counsel-recentf
-        "fs" 'save-buffer
-        "fS" 'evil-write-all
-        "fR" 'rename-file
-        "fb" 'ranger-show-bookmarks
-        "fP" 'open-config-file
-        ;; Focus
-        "F" '(:ignore t :which-key "focus")
-        ;; LSP
-        "l" '(:ignore t :which-key "language")
-        ;; Projects
-        "p" '(:ignore t :which-key "project")
-        ;; Toggles
-        "t" '(:ignore t :which-key "toggles")
-        "tn" 'display-line-numbers-mode
-        "tL" 'visual-line-mode
-        "tu" 'lsp-ui-mode
-        "ti" 'highlight-indent-guides-mode
-        ;; Themes
-        "T" '(:ignore t :which-key "themes")
-        "Ts" 'counsel-load-theme
-        ;; Windows
-        "w" '(:ignore t :which-key "window")
-        "wm" 'delete-other-windows
-        "wf" 'delete-other-windows
-        "wj" 'evil-window-down
-        "wk" 'evil-window-up
-        "wl" 'evil-window-right
-        "wh" 'evil-window-left
-        "ws" 'split-and-follow-horizontally
-        "wv" 'split-and-follow-vertically
-        "wd" 'evil-window-delete
-        "wc" 'evil-window-delete
-        "wH" 'evil-window-move-far-left
-        "wL" 'evil-window-move-far-right
-        "wK" 'evil-window-move-very-top
-        "wJ" 'evil-window-move-very-bottom
-        "w=" 'balance-windows))
+       (general-create-definer leader-def :prefix globals--leader-key)
+       (leader-def
+         :states 'normal
+         ;; Misc
+         "TAB" 'mode-line-other-buffer
+         "." 'xref-find-definitions
+         "," 'xref-pop-marker-stack
+         "'" 'eshell
+         "qq" 'evil-quit
+
+         ;; Applications
+         "a" '(:ignore t :which-key "applications")
+         "au" 'undo-tree-visualize
+         "aU" 'straight-pull-all
+         "ac" 'cfw:open-org-calendar
+
+         ;; Buffers
+         "b" '(:ignore t :which-key "buffers")
+         "bb" 'counsel-switch-buffer
+         "bd" 'kill-this-buffer
+         "bp" 'previous-buffer
+         "bn" 'next-buffer
+         "bN" 'evil-buffer-new
+         "be" 'erase-buffer
+
+         ;; Bookmarks
+         "B" '(:ignore t :which-key "bookmarks")
+         "BB" 'bookmark-jump
+         "Bs" 'bookmark-set
+
+         ;; Compiling
+         "c" 'compile
+
+         ;; Errors
+         "e" '(:ignore t :which-key "errors")
+
+         ;; Files
+         "f" '(:ignore t :which-key "file")
+         "ff" 'find-file
+         "fs" 'save-buffer
+         "fS" 'evil-write-all
+         "fR" 'rename-file
+         "fb" 'ranger-show-bookmarks
+         "fP" 'open-config-file
+
+         ;; Focus
+         "F" '(:ignore t :which-key "focus")
+
+         ;; LSP
+         "l" '(:ignore t :which-key "language")
+
+         ;; Projects
+         "p" '(:ignore t :which-key "project")
+
+         ;; Toggles
+         "t" '(:ignore t :which-key "toggles")
+         "tn" 'display-line-numbers-mode
+         "tL" 'visual-line-mode
+         "tu" 'lsp-ui-mode
+         "ti" 'highlight-indent-guides-mode
+
+         ;; Themes
+         "T" '(:ignore t :which-key "themes")
+
+         ;; Windows
+         "w" '(:ignore t :which-key "window")
+         "wm" 'delete-other-windows
+         "wf" 'delete-other-windows
+         "wj" 'evil-window-down
+         "wk" 'evil-window-up
+         "wl" 'evil-window-right
+         "wh" 'evil-window-left
+         "ws" 'split-and-follow-horizontally
+         "wv" 'split-and-follow-vertically
+         "wd" 'evil-window-delete
+         "wc" 'evil-window-delete
+         "wH" 'evil-window-move-far-left
+         "wL" 'evil-window-move-far-right
+         "wK" 'evil-window-move-very-top
+         "wJ" 'evil-window-move-very-bottom
+         "w=" 'balance-windows
+
+         ;; Help
+         "h" '(:ignore t :which-key "help")
+         "hk" 'describe-key
+         "hv" 'describe-variable
+         "hf" 'describe-function
+         "hK" 'general-describe-keybindings
+         ))
    #+end_src
 
 ** [[https://github.com/justbur/emacs-which-key][Which-key]]
@@ -948,7 +964,7 @@
        :defer 3
        :general
        (nmap
-         :prefix "<SPC>"
+         :prefix globals--leader-key
          "g" '(nil :which-key "magit")
          "gs" 'magit-status
          "gb" 'magit-blame))
@@ -1000,7 +1016,7 @@
        :straight t
        :general
        (nmap
-         :prefix "SPC"
+         :prefix globals--leader-key
          "ar" 'ranger
          "ad" 'deer)
        :config
@@ -1017,7 +1033,7 @@
        :straight t
        :general
        (nmap
-         :prefix "<SPC>"
+         :prefix globals--leader-key
          "tt" 'treemacs)
        :custom
        (treemacs-no-png-images nil)
@@ -1064,12 +1080,13 @@
         :straight t
         :general
         (nmap
-          :prefix "<SPC>"
+          :prefix globals--leader-key
           "pp" 'counsel-projectile-switch-project
           "pf" 'counsel-projectile-find-file
-          "ps" 'counsel-projectile-git-grep
           "pd" 'counsel-projectile-find-dir
-          "pR" 'projectile-replace))
+          "pg" 'counsel-projectile-git-grep
+          "pR" 'projectile-replace
+          "ps" 'projectile-save-project-buffers))
     #+end_src
 
 * Syntax Checking
@@ -1083,12 +1100,15 @@
        :hook (prog-mode . flycheck-mode)
        :general
        (nmap
-         :prefix "<SPC>"
+         :prefix globals--leader-key
          "en" 'flycheck-next-error
          "ep" 'flycheck-previous-error))
    #+end_src
 
 * Language Modes
+
+  Base language packages.
+
 ** [[https://github.com/rust-lang/rust-mode][Rust]]
 
    #+begin_src emacs-lisp
@@ -1096,17 +1116,14 @@
        :straight t)
    #+end_src
 
-** Ruby
+** [[https://www.emacswiki.org/emacs/RubyMode][Ruby]]
 
    #+begin_src emacs-lisp
      (use-package ruby-mode
        :straight t)
    #+end_src
 
-** Javascript
-*** [[https://github.com/mooz/js2-mode][js2-mode]]
-
-    Improved Javascript editing mode.
+** [[https://github.com/mooz/js2-mode][Javascript]]
 
     #+begin_src emacs-lisp
       (use-package js2-mode
@@ -1118,9 +1135,7 @@
         (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode)))
     #+end_src
 
-*** [[https://github.com/felipeochoa/rjsx-mode][rjsx-mode]]
-
-    A JSX major mode.
+** [[https://github.com/felipeochoa/rjsx-mode][RSJX]]
 
     #+begin_src emacs-lisp
       (use-package rjsx-mode
@@ -1129,16 +1144,12 @@
 
 ** [[https://github.com/emacs-typescript/typescript.el][Typescript]]
 
-   TypeScript support for Emacs.
-
    #+begin_src emacs-lisp
      (use-package typescript-mode
        :straight t)
    #+end_src
 
 ** [[https://github.com/fxbois/web-mode][Web]]
-
-   Web template editing mode.
 
    #+begin_src emacs-lisp
      (use-package web-mode
@@ -1148,28 +1159,7 @@
        (web-mode-markup-indent-offset 2))
    #+end_src
 
-** C#
-
-   #+begin_src emacs-lisp
-     (use-package csharp-mode
-       :straight t)
-   #+end_src
-
-** [[https://github.com/davazp/graphql-mode][GraphQL]]
-
-   #+begin_src emacs-lisp
-     (use-package graphql-mode
-       :straight t)
-   #+end_src
-
-** [[https://github.com/AdamNiederer/vue-mode][Vue]]
-
-   #+begin_src emacs-lisp
-     (use-package vue-mode
-       :straight t)
-   #+end_src
-
-** Python
+** [[https://github.com/emacsmirror/python-mode][Python]]
 
    #+begin_src emacs-lisp
      (use-package python-mode
@@ -1187,7 +1177,7 @@
        :straight t
        :general
        (nmap
-         :prefix "<SPC>"
+         :prefix globals--leader-key
          "lF" 'lsp-format-buffer
          "lR" 'lsp-rename)
        :hook ((js2-mode        . lsp-deferred)
@@ -1214,7 +1204,7 @@
         :hook (lsp-mode . lsp-ui-mode)
         :general
         (nmap
-          :prefix "<SPC>"
+          :prefix globals--leader-key
           "li" 'lsp-ui-peek-find-implementation
           "lr" 'lsp-ui-peek-find-references
           "ld" 'lsp-ui-peek-find-definitions
@@ -1268,7 +1258,7 @@
        :straight t
        :general
        (nmap
-         :prefix "<SPC>"
+         :prefix globals--leader-key
          "wH" 'windmove-swap-states-left
          "wL" 'windmove-swap-states-right
          "wK" 'windmove-swap-states-up
@@ -1304,7 +1294,8 @@
        :defer 1
        :general
        (nmap
-         :prefix "<SPC>"
+         :prefix globals--leader-key
+         "s" 'swiper
          ";" 'avy-goto-word-1
          ":" 'avy-goto-char)
        :custom
@@ -1329,7 +1320,13 @@
 
    #+begin_src emacs-lisp
      (use-package counsel
-       :straight t)
+       :straight t
+       :general
+       (nmap
+         :prefix globals--leader-key
+         "SPC" 'counsel-M-x
+         "fr" 'counsel-recentf
+         "Ts" 'counsel-load-theme))
    #+end_src
 
 ** [[https://github.com/DarthFennec/highlight-indent-guides][Highlight Indent Guides]]
@@ -1355,7 +1352,7 @@
        :straight t
        :general
        (nmap
-         :prefix "<SPC>"
+         :prefix globals--leader-key
          "tf" 'focus-mode
          "Fp" 'focus-pin
          "Fu" 'focus-unpin
@@ -1397,7 +1394,7 @@
        :straight t
        :general
        (nmap
-         :prefix "<SPC>"
+         :prefix globals--leader-key
          "yt" 'yas-describe-tables)
        :init
        (yas-global-mode 1)
