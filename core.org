@@ -3,7 +3,7 @@
 #+options: email:nil f:t inline:t num:t p:nil pri:nil prop:nil stat:t tags:t
 #+options: tasks:t tex:t timestamp:t title:t toc:t todo:t |:t
 #+title: MEGUMACS @dotfiles @emacs
-#+subtitle: Doom-like emacs config with a teensy tiny piece of weebness.
+#+subtitle: Doom-like emacs config with a teensy tiny bit of weeb.
 #+date: <2020-02-01 Sat>
 #+author: Bruno Coimbra (b-coimbra)
 #+email: me@metaphoric.dev
@@ -34,15 +34,15 @@
   #+begin_center
   *[M E G U M A C S]*
 
-  （めぐマックス）
+  (めぐマックス)
 
   [[https://github.com/b-coimbra/.emacs.d][*Github*]] | [[https://emacs.metaphoric.dev/core.org][*Source*]]
   #+end_center
 
   #+begin_quote
-  Ex-PLOSION~!
+  An infinite number of monkeys typing into GNU Emacs would never make a good program.
 
-  -- Megumin
+  -- Linus Torvalds
   #+end_quote
 
 * Installation
@@ -748,6 +748,8 @@
        (setq org-archive-location (concat "archive/"
                                           (format-time-string "%Y-%m" (current-time))
                                           "_%s_archive::"))
+       ;; org persist
+       (setq org-persist-directory (concat user-emacs-directory "var/org/persist/"))
        ;; org modules
        (setq org-modules '(ol-w3m
                            ol-bbdb

@@ -9,123 +9,120 @@
 
 * Installation
 
-  Clone this repo into your *.emacs.d*:
-
-  #+begin_src sh
-    $ git clone https://github.com/b-coimbra/.emacs.d.git ~/.emacs.d --recurse-submodules
-  #+end_src
-
-** Font
-
-   The font currently set in the config is [[https://github.com/be5invis/Iosevka][Iosevka]].
-
-   To install the ligatures, the [[https://github.com/tonsky/FiraCode/issues/211#issuecomment-239058632][FiraCode Regular Symbol]] font is needed.
-
-** Icons
-
-   If you care about fancy icons, install the fonts provided by [[https://github.com/domtronn/all-the-icons.el][all the icons]]:
-
-   #+begin_src emacs-lisp
-     M-x all-the-icons-install-fonts
-   #+end_src
+  1. Clone into *.emacs.d*: =$ git clone https://github.com/b-coimbra/.emacs.d.git ~/.emacs.d=
+  2. Install [[https://github.com/domtronn/all-the-icons.el][all-the-icons]] fonts: =M-x all-the-icons-install-fonts=
+  3. Install [[https://github.com/tonsky/FiraCode/files/412440/FiraCode-Regular-Symbol.zip][ligatures font]] (*Fira Code Regular Symbol*)
+  4. Install [[https://github.com/googlefonts/noto-emoji][emoji font]] (*Noto Emoji*) for Linux
+  5. Install [[https://github.com/emacs-lsp/lsp-mode#supported-languages][language servers]] manually or with =M-x lsp-install-server=
 
 ** Syntax checking/linting
 
-   Most IDE-like features are provided by the [[https://github.com/emacs-lsp/lsp-mode][LSP]] package. For it to work properly, you need to install the appropriate [[https://github.com/emacs-lsp/lsp-mode#supported-languages][language servers]].
+   Most IDE-like features are provided by the [[https://github.com/emacs-lsp/lsp-mode][LSP]] package.
+   For it to work properly, you must install the appropriate [[https://github.com/emacs-lsp/lsp-mode#supported-languages][language servers]] according to your use-case.
 
-** Themes
+* Themes
 
-   ~SPC T s~ to cycle through the available themes.
+  ~SPC T s~ to cycle through the available themes.
 
-** Customization
+* Customization
 
-   Create a =config.org= file in the =.emacs.d= directory and add your custom settings there (in "emacs-lisp" org-mode code blocks). Example:
+  Create a =config.org= file in the =.emacs.d= directory for your custom user settings (in "emacs-lisp" org-mode code blocks). Example:
 
-   #+begin_src org
-     ,* Custom settings
+  #+begin_src org
+    ,* Custom settings
 
-       Redefine global settings.
+      Redefine global settings.
 
-       ,#+begin_src emacs-lisp
-         (setq globals--theme 'doom-ayu-dark
-               globals--font "Iosevka 12"
-               globals--banner-path "/etc/banners/blackhole.png")
-       ,#+end_src
-   #+end_src
+      ,#+begin_src emacs-lisp
+        (setq globals--theme 'doom-ayu-dark
+              globals--font "Iosevka 12"
+              globals--banner-path "/etc/banners/blackhole.png")
+      ,#+end_src
+  #+end_src
 
-   You may also edit the =core.org= file directly, but your custom settings might be wiped out in case of an update.
+  You may also edit the =core.org= file directly, but your custom settings might be wiped out in case of an update.
 
-** Keybindings
+* Keybindings (~SPC h K~)
 
    Keybindings defined by =general.el=
 
-   | key     | command                           |
-   |---------+-----------------------------------+
-   | =SPC SPC= | ~counsel-M-x~                       |
-   | =SPC TAB= | ~mode-line-other-buffer~            |
-   | =SPC .=   | ~xref-find-definitions~             |
-   | =SPC ,=   | ~xref-pop-marker-stack~             |
-   | =SPC '=   | ~eshell~                            |
-   | =SPC q q= | ~evil-quit~                         |
-   | =SPC s=   | ~swiper~                            |
-   | =SPC a u= | ~undo-tree-visualize~               |
-   | =SPC a U= | ~straight-pull-all~                 |
-   | =SPC a c= | ~cfw:open-org-calendar~             |
-   | =SPC b b= | ~counsel-switch-buffer~             |
-   | =SPC b d= | ~kill-this-buffer~                  |
-   | =SPC b p= | ~previous-buffer~                   |
-   | =SPC b n= | ~next-buffer~                       |
-   | =SPC b N= | ~evil-buffer-new~                   |
-   | =SPC b e= | ~erase-buffer~                      |
-   | =SPC B B= | ~bookmark-jump~                     |
-   | =SPC B s= | ~bookmark-set~                      |
-   | =SPC c=   | ~compile~                           |
-   | =SPC f f= | ~find-file~                         |
-   | =SPC f r= | ~counsel-recentf~                   |
-   | =SPC f s= | ~save-buffer~                       |
-   | =SPC f S= | ~evil-write-all~                    |
-   | =SPC f R= | ~rename-file~                       |
-   | =SPC f b= | ~ranger-show-bookmarks~             |
-   | =SPC f P= | ~open-config-file~                  |
-   | =SPC t n= | ~display-line-numbers-mode~         |
-   | =SPC t L= | ~visual-line-mode~                  |
-   | =SPC t u= | ~lsp-ui-mode~                       |
-   | =SPC t i= | ~highlight-indent-guides-mode~      |
-   | =SPC T s= | ~counsel-load-theme~                |
-   | =SPC w m= | ~delete-other-windows~              |
-   | =SPC w f= | ~delete-other-windows~              |
-   | =SPC w j= | ~evil-window-down~                  |
-   | =SPC w k= | ~evil-window-up~                    |
-   | =SPC w l= | ~evil-window-right~                 |
-   | =SPC w h= | ~evil-window-left~                  |
-   | =SPC w s= | ~split-and-follow-horizontally~     |
-   | =SPC w v= | ~split-and-follow-vertically~       |
-   | =SPC w d= | ~evil-window-delete~                |
-   | =SPC w c= | ~evil-window-delete~                |
-   | =SPC w == | ~balance-windows~                   |
-   | =SPC g=   | ~nil~                               |
-   | =SPC g s= | ~magit-status~                      |
-   | =SPC g b= | ~magit-blame~                       |
-   | =SPC a r= | ~ranger~                            |
-   | =SPC a d= | ~deer~                              |
-   | =SPC t t= | ~treemacs~                          |
-   | =SPC p p= | ~counsel-projectile-switch-project~ |
-   | =SPC p f= | ~counsel-projectile-find-file~      |
-   | =SPC p s= | ~counsel-projectile-git-grep~       |
-   | =SPC p d= | ~counsel-projectile-find-dir~       |
-   | =SPC p R= | ~projectile-replace~                |
-   | =SPC e n= | ~flycheck-next-error~               |
-   | =SPC e p= | ~flycheck-previous-error~           |
-   | =SPC l F= | ~lsp-format-buffer~                 |
-   | =SPC l R= | ~lsp-rename~                        |
-   | =SPC w H= | ~windmove-swap-states-left~         |
-   | =SPC w L= | ~windmove-swap-states-right~        |
-   | =SPC w K= | ~windmove-swap-states-up~           |
-   | =SPC w J= | ~windmove-swap-states-down~         |
-   | =SPC ;=   | ~avy-goto-word-1~                   |
-   | =SPC :=   | ~avy-goto-char~                     |
-   | =SPC t f= | ~focus-mode~                        |
-   | =SPC F p= | ~focus-pin~                         |
-   | =SPC F u= | ~focus-unpin~                       |
-   | =SPC F c= | ~focus-change-thing~                |
-   | =SPC y t= | ~yas-describe-tables~               |
+   | key     | command                            |
+   |---------+------------------------------------|
+   | =SPC TAB= | ~mode-line-other-buffer~             |
+   | =SPC .=   | ~xref-find-definitions~              |
+   | =SPC ,=   | ~xref-pop-marker-stack~              |
+   | =SPC '=   | ~eshell~                             |
+   | =SPC q q= | ~evil-quit~                          |
+   | =SPC a u= | ~undo-tree-visualize~                |
+   | =SPC a U= | ~straight-pull-all~                  |
+   | =SPC a c= | ~cfw:open-org-calendar~              |
+   | =SPC b b= | ~counsel-switch-buffer~              |
+   | =SPC b d= | ~kill-this-buffer~                   |
+   | =SPC b p= | ~previous-buffer~                    |
+   | =SPC b n= | ~next-buffer~                        |
+   | =SPC b N= | ~evil-buffer-new~                    |
+   | =SPC b e= | ~erase-buffer~                       |
+   | =SPC B B= | ~bookmark-jump~                      |
+   | =SPC B s= | ~bookmark-set~                       |
+   | =SPC c=   | ~compile~                            |
+   | =SPC f f= | ~find-file~                          |
+   | =SPC f s= | ~save-buffer~                        |
+   | =SPC f S= | ~evil-write-all~                     |
+   | =SPC f R= | ~rename-file~                        |
+   | =SPC f b= | ~ranger-show-bookmarks~              |
+   | =SPC f P= | ~open-config-file~                   |
+   | =SPC t n= | ~display-line-numbers-mode~          |
+   | =SPC t L= | ~visual-line-mode~                   |
+   | =SPC t u= | ~lsp-ui-mode~                        |
+   | =SPC t i= | ~highlight-indent-guides-mode~       |
+   | =SPC w m= | ~delete-other-windows~               |
+   | =SPC w f= | ~delete-other-windows~               |
+   | =SPC w j= | ~evil-window-down~                   |
+   | =SPC w k= | ~evil-window-up~                     |
+   | =SPC w l= | ~evil-window-right~                  |
+   | =SPC w h= | ~evil-window-left~                   |
+   | =SPC w s= | ~split-and-follow-horizontally~      |
+   | =SPC w v= | ~split-and-follow-vertically~        |
+   | =SPC w d= | ~evil-window-delete~                 |
+   | =SPC w c= | ~evil-window-delete~                 |
+   | =SPC w == | ~balance-windows~                    |
+   | =SPC h k= | ~describe-key~                       |
+   | =SPC h v= | ~describe-variable~                  |
+   | =SPC h f= | ~describe-function~                  |
+   | =SPC h K= | ~general-describe-keybindings~       |
+   | =SPC g=   | ~nil~                                |
+   | =SPC g s= | ~magit-status~                       |
+   | =SPC g b= | ~magit-blame~                        |
+   | =SPC a r= | ~ranger~                             |
+   | =SPC a d= | ~deer~                               |
+   | =SPC t t= | ~treemacs~                           |
+   | =SPC p p= | ~counsel-projectile-switch-project~  |
+   | =SPC p f= | ~counsel-projectile-find-file~       |
+   | =SPC p d= | ~counsel-projectile-find-dir~        |
+   | =SPC p g= | ~counsel-projectile-git-grep~        |
+   | =SPC p R= | ~projectile-replace~                 |
+   | =SPC p s= | ~projectile-save-project-buffers~    |
+   | =SPC e n= | ~flycheck-next-error~                |
+   | =SPC e p= | ~flycheck-previous-error~            |
+   | =SPC l F= | ~lsp-format-buffer~                  |
+   | =SPC l R= | ~lsp-rename~                         |
+   | =SPC w H= | ~windmove-swap-states-left~          |
+   | =SPC w L= | ~windmove-swap-states-right~         |
+   | =SPC w K= | ~windmove-swap-states-up~            |
+   | =SPC w J= | ~windmove-swap-states-down~          |
+   | =SPC s=   | ~swiper~                             |
+   | =SPC ;=   | ~avy-goto-word-1~                    |
+   | =SPC :=   | ~avy-goto-char~                      |
+   | =SPC SPC= | ~counsel-M-x~                        |
+   | =SPC f r= | ~counsel-recentf~                    |
+   | =SPC T s= | ~counsel-load-theme~                 |
+   | =SPC t f= | ~focus-mode~                         |
+   | =SPC F p= | ~focus-pin~                          |
+   | =SPC F u= | ~focus-unpin~                        |
+   | =SPC F c= | ~focus-change-thing~                 |
+   | =SPC y t= | ~yas-describe-tables~                |
+   | =SPC l i= | ~lsp-ui-peek-find-implementation~    |
+   | =SPC l r= | ~lsp-ui-peek-find-references~        |
+   | =SPC l d= | ~lsp-ui-peek-find-definitions~       |
+   | =SPC l l= | ~lsp-ui-flycheck-list~               |
+   | =SPC l a= | ~lsp-ui-sideline-apply-code-actions~ |
