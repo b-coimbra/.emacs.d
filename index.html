@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-07-04 seg 21:17 -->
+<!-- 2022-07-10 dom 08:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>MEGUMACS @dotfiles @emacs</title>
@@ -219,174 +219,173 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org79da5f7">Introduction</a></li>
-<li><a href="#org79972e3">Installation</a></li>
-<li><a href="#org97b1df9">Bootstrap</a>
+<li><a href="#orgdc655ed">Introduction</a></li>
+<li><a href="#org62841a3">Installation</a></li>
+<li><a href="#orgbfd99d5">Bootstrap</a>
 <ul>
-<li><a href="#org2372f7b">Globals</a></li>
-<li><a href="#orgad566ed">Better defaults</a></li>
-<li><a href="#org78601ac">Load <code>.custom.el</code></a></li>
-<li><a href="#org7d70c78">Load <code>config.el</code></a></li>
-<li><a href="#org2ebdbc0">Load custom themes</a></li>
-<li><a href="#org1bca34a">No littering</a></li>
-<li><a href="#org048473f">Performance</a></li>
-<li><a href="#org4d21575">Utilities</a></li>
+<li><a href="#org403a0bd">Globals</a></li>
+<li><a href="#org32412e8">Better defaults</a></li>
+<li><a href="#orgb9aee91">Load <code>.custom.el</code></a></li>
+<li><a href="#org21aec79">Load <code>config.el</code></a></li>
+<li><a href="#orge0e75cd">Load custom themes</a></li>
+<li><a href="#org73dd209">No littering</a></li>
+<li><a href="#org2fea1c0">Performance</a></li>
+<li><a href="#org4d78d83">Utilities</a></li>
 </ul>
 </li>
-<li><a href="#orga367fc1">Font</a>
+<li><a href="#org02539ad">Font</a>
 <ul>
-<li><a href="#org74fb692">Ligatures</a></li>
-<li><a href="#orgd19cecb">Emoji</a></li>
+<li><a href="#orge9364c3">Ligatures</a></li>
+<li><a href="#orgd8b55ff">Emoji</a></li>
 </ul>
 </li>
-<li><a href="#org94a7448">Themes</a>
+<li><a href="#org6df0a76">Themes</a>
 <ul>
-<li><a href="#org5ff61fa">Autothemer</a></li>
-<li><a href="#orgeead943">Mirwood theme</a></li>
-<li><a href="#org8dc3989">Kaolin themes</a></li>
-<li><a href="#org8659c16">Doom themes</a></li>
-<li><a href="#org0c1f9dd">Theme customization</a></li>
+<li><a href="#org9cc90d7">Autothemer</a></li>
+<li><a href="#org548bbd0">Mirwood theme</a></li>
+<li><a href="#org39ae8b9">Kaolin themes</a></li>
+<li><a href="#orge8e4bc6">Doom themes</a></li>
+<li><a href="#org2b78e60">Theme customization</a></li>
 </ul>
 </li>
-<li><a href="#orgd99ef29">Appearance</a>
+<li><a href="#orgff8db67">Appearance</a>
 <ul>
-<li><a href="#org662d43a">All the icons</a></li>
-<li><a href="#orga262d87">Solaire mode</a></li>
-<li><a href="#org0d3f2ec">Rainbow-mode</a></li>
-<li><a href="#org0431586">Rainbow delimiters</a></li>
+<li><a href="#orgbda982c">All the icons</a></li>
+<li><a href="#orgbd46eff">Solaire mode</a></li>
+<li><a href="#orgbc51876">Rainbow-mode</a></li>
+<li><a href="#org11c881d">Rainbow delimiters</a></li>
 </ul>
 </li>
-<li><a href="#org51d659a">Modeline</a>
+<li><a href="#org76cadc8">Modeline</a>
 <ul>
-<li><a href="#orge3017ee">Doom-modeline</a></li>
-<li><a href="#org00283f9">Spaceline</a></li>
+<li><a href="#org3726235">Doom-modeline</a></li>
+<li><a href="#org902e389">Spaceline</a></li>
 </ul>
 </li>
-<li><a href="#org12fbf81">Dashboard</a>
+<li><a href="#org74c03b6">Dashboard</a>
 <ul>
-<li><a href="#orgfa38fc0">emacs-dashboard</a></li>
+<li><a href="#orgf2b82f4">emacs-dashboard</a></li>
 </ul>
 </li>
-<li><a href="#orgd81ac01">Auto Completion</a>
+<li><a href="#org03ed436">Auto Completion</a>
 <ul>
-<li><a href="#orgb06157c">Company</a></li>
-<li><a href="#orgd7c3d63">company-jedi</a></li>
+<li><a href="#orgd6434b6">Company</a></li>
+<li><a href="#org0d3cede">company-jedi</a></li>
 </ul>
 </li>
-<li><a href="#org3b8b3f9">Evil</a>
+<li><a href="#org7ecae1a">Evil</a>
 <ul>
-<li><a href="#org92acfa7">evil-mode</a></li>
-<li><a href="#orgf1441aa">evil-escape</a></li>
-<li><a href="#orge89b2e0">evil-surround</a></li>
-<li><a href="#org4e2f516">evil-mc</a></li>
-<li><a href="#orgb8be539">evil-commentary</a></li>
-<li><a href="#orge20eaad">evil-collection</a></li>
+<li><a href="#orgdea4247">evil-mode</a></li>
+<li><a href="#org0f0e945">evil-escape</a></li>
+<li><a href="#org6726b29">evil-surround</a></li>
+<li><a href="#orge55cfe7">evil-mc</a></li>
+<li><a href="#org730ea58">evil-commentary</a></li>
+<li><a href="#org758acc4">evil-collection</a></li>
 </ul>
 </li>
-<li><a href="#org9187920">Calendar</a>
+<li><a href="#org268c615">Calendar</a>
 <ul>
-<li><a href="#orgf42700d">calfw</a></li>
+<li><a href="#org2687308">calfw</a></li>
 </ul>
 </li>
-<li><a href="#org30c4341">Org-mode</a>
+<li><a href="#org4ce0485">Org-mode</a>
 <ul>
-<li><a href="#org321be80">org</a></li>
-<li><a href="#orgefde7d7">org-contrib</a></li>
-<li><a href="#orgfc6b73a">ox-reveal</a></li>
-<li><a href="#org53f3241">calfw-org</a></li>
-<li><a href="#org6ce1fb6">htmlize</a></li>
+<li><a href="#org5fd9f8f">org</a></li>
+<li><a href="#orgd8a7df2">ox-reveal</a></li>
+<li><a href="#orgac09ed0">calfw-org</a></li>
+<li><a href="#org7be7346">htmlize</a></li>
 </ul>
 </li>
-<li><a href="#org75154fb">Keybindings</a>
+<li><a href="#orgecf9eea">Keybindings</a>
 <ul>
-<li><a href="#org351464c">General</a></li>
-<li><a href="#org12aad98">Which-key</a></li>
+<li><a href="#orgd5d6a26">General</a></li>
+<li><a href="#org8955017">Which-key</a></li>
 </ul>
 </li>
-<li><a href="#orgc15efc5">Source Control</a>
+<li><a href="#orgee49910">Source Control</a>
 <ul>
-<li><a href="#orgb0305f3">Magit</a></li>
-<li><a href="#org2133b0c">Git Gutter</a></li>
+<li><a href="#orgf95982e">Magit</a></li>
+<li><a href="#org2d1ae10">Git Gutter</a></li>
 </ul>
 </li>
-<li><a href="#org53111d9">Encryption</a></li>
-<li><a href="#org7462f15">File Management</a>
+<li><a href="#org59332b1">Encryption</a></li>
+<li><a href="#orgb208c17">File Management</a>
 <ul>
-<li><a href="#orgbcf9b1c">Ranger</a></li>
+<li><a href="#org49adcca">Ranger</a></li>
 </ul>
 </li>
-<li><a href="#org1c59e90">Project Management</a>
+<li><a href="#org37bcd6a">Project Management</a>
 <ul>
-<li><a href="#org14585c6">Treemacs</a></li>
-<li><a href="#orgc28b04e">Projectile</a></li>
-<li><a href="#orga7f6a0e">projectile/counsel</a></li>
+<li><a href="#org8744c99">Treemacs</a></li>
+<li><a href="#orgbb5df68">Projectile</a></li>
+<li><a href="#org3725908">projectile/counsel</a></li>
 </ul>
 </li>
-<li><a href="#org43c77db">Syntax Checking</a>
+<li><a href="#orgea22223">Syntax Checking</a>
 <ul>
-<li><a href="#orgcdc94c5">Flycheck</a></li>
+<li><a href="#orgc458b9a">Flycheck</a></li>
 </ul>
 </li>
-<li><a href="#org7e71d45">Language Modes</a>
+<li><a href="#org57862fd">Language Modes</a>
 <ul>
-<li><a href="#org3c99140">Rust</a></li>
-<li><a href="#org0b1b6d1">Ruby</a></li>
-<li><a href="#orge3bec06">Javascript</a></li>
-<li><a href="#orgd5c537c">RSJX</a></li>
-<li><a href="#orgaf949ed">Typescript</a></li>
-<li><a href="#orgc0d60b0">Web</a></li>
-<li><a href="#orgc03a34f">Python</a></li>
+<li><a href="#orgabc64b9">Rust</a></li>
+<li><a href="#orgcde47d4">Ruby</a></li>
+<li><a href="#org29df9ab">Javascript</a></li>
+<li><a href="#orgdba5f70">RSJX</a></li>
+<li><a href="#org6774608">Typescript</a></li>
+<li><a href="#orgf6b5ce5">Web</a></li>
+<li><a href="#org7abf672">Python</a></li>
 </ul>
 </li>
-<li><a href="#org0b0315b">Language Server Protocol</a>
+<li><a href="#orgf84e614">Language Server Protocol</a>
 <ul>
-<li><a href="#orgbf04995">LSP</a></li>
-<li><a href="#org14d52d2">LSP-UI</a></li>
+<li><a href="#org3e3a2f7">LSP</a></li>
+<li><a href="#org19978d6">LSP-UI</a></li>
 </ul>
 </li>
-<li><a href="#org34b5020">Buffers and Windows</a>
+<li><a href="#org3f52dd4">Buffers and Windows</a>
 <ul>
-<li><a href="#org0cd7833">Winum</a></li>
-<li><a href="#orgbf23ccd">Eyebrowse</a></li>
-<li><a href="#org55c0def">windmove</a></li>
-<li><a href="#org23dec21">Focus on newly created windows</a></li>
+<li><a href="#org30b8808">Winum</a></li>
+<li><a href="#org953ef7c">Eyebrowse</a></li>
+<li><a href="#org6e57871">windmove</a></li>
+<li><a href="#org52112d4">Focus on newly created windows</a></li>
 </ul>
 </li>
-<li><a href="#orgc88835d">Navigation</a>
+<li><a href="#orgd790e86">Navigation</a>
 <ul>
-<li><a href="#org9e7f598">Ivy</a></li>
-<li><a href="#org9af4d90">Ivy/Counsel</a></li>
-<li><a href="#org809e2f1">Highlight Indent Guides</a></li>
+<li><a href="#org146b3c9">Ivy</a></li>
+<li><a href="#orge797730">Ivy/Counsel</a></li>
+<li><a href="#org33602de">Highlight Indent Guides</a></li>
 </ul>
 </li>
-<li><a href="#orgcb94956">Editing</a>
+<li><a href="#org5e68e34">Editing</a>
 <ul>
-<li><a href="#org9a5c853">Focus</a></li>
-<li><a href="#org33a85ec">Undo-tree</a></li>
-<li><a href="#org6f9c977">Origami</a></li>
+<li><a href="#org575ccb6">Focus</a></li>
+<li><a href="#org40bc81f">Undo-tree</a></li>
+<li><a href="#orgd9933bb">Origami</a></li>
 </ul>
 </li>
-<li><a href="#org3a26acf">Templates</a>
+<li><a href="#org2c912ca">Templates</a>
 <ul>
-<li><a href="#orgc24420b">Yasnippet</a></li>
-<li><a href="#org11447e9">Yasnippet/snippets</a></li>
+<li><a href="#org64504fb">Yasnippet</a></li>
+<li><a href="#org9411331">Yasnippet/snippets</a></li>
 </ul>
 </li>
-<li><a href="#orgde24aed">Discord Presence</a>
+<li><a href="#orgccc6f13">Discord Presence</a>
 <ul>
-<li><a href="#org51518e8">elcord</a></li>
+<li><a href="#org235b791">elcord</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org79da5f7" class="outline-2">
-<h2 id="org79da5f7">Introduction</h2>
-<div class="outline-text-2" id="text-org79da5f7">
+<div id="outline-container-orgdc655ed" class="outline-2">
+<h2 id="orgdc655ed">Introduction</h2>
+<div class="outline-text-2" id="text-orgdc655ed">
 <div class="org-center">
 
-<div id="org5a68d06" class="figure">
+<div id="org6569e13" class="figure">
 <p><img src="./etc/banners/megumacs2.png" alt="megumacs2.png" />
 </p>
 </div>
@@ -418,26 +417,26 @@ An infinite number of monkeys typing into GNU Emacs would never make a good prog
 </div>
 </div>
 
-<div id="outline-container-org79972e3" class="outline-2">
-<h2 id="org79972e3">Installation</h2>
-<div class="outline-text-2" id="text-org79972e3">
+<div id="outline-container-org62841a3" class="outline-2">
+<h2 id="org62841a3">Installation</h2>
+<div class="outline-text-2" id="text-org62841a3">
 <ol class="org-ol">
 <li>Clone into <b>.emacs.d</b>: <code>$ git clone https://github.com/b-coimbra/.emacs.d.git ~/.emacs.d</code></li>
 <li>Install <a href="https://github.com/domtronn/all-the-icons.el">all-the-icons</a> fonts: <code>M-x all-the-icons-install-fonts</code></li>
-<li>Install <a href="https://github.com/tonsky/FiraCode/files/412440/FiraCode-Regular-Symbol.zip">ligatures font</a> (<b>Fira Code Regular Symbol</b>)</li>
+<li>Install <a href="https://github.com/tonsky/FiraCode/files/412440/FiraCode-Regular-Symbol.zip">ligatures</a> font (<b>Fira Code Symbol</b>): <code>M-x fira-code-mode-install-fonts</code></li>
 <li>Install <a href="https://github.com/googlefonts/noto-emoji">emoji font</a> (<b>Noto Emoji</b>) for Linux</li>
 <li>Install <a href="https://github.com/emacs-lsp/lsp-mode#supported-languages">language servers</a> manually or with <code>M-x lsp-install-server</code></li>
 </ol>
 </div>
 </div>
 
-<div id="outline-container-org97b1df9" class="outline-2">
-<h2 id="org97b1df9">Bootstrap</h2>
-<div class="outline-text-2" id="text-org97b1df9">
+<div id="outline-container-orgbfd99d5" class="outline-2">
+<h2 id="orgbfd99d5">Bootstrap</h2>
+<div class="outline-text-2" id="text-orgbfd99d5">
 </div>
-<div id="outline-container-org2372f7b" class="outline-3">
-<h3 id="org2372f7b">Globals</h3>
-<div class="outline-text-3" id="text-org2372f7b">
+<div id="outline-container-org403a0bd" class="outline-3">
+<h3 id="org403a0bd">Globals</h3>
+<div class="outline-text-3" id="text-org403a0bd">
 <p>
 Global variables to easily customize portions of Megumacs.
 </p>
@@ -455,9 +454,9 @@ Global variables to easily customize portions of Megumacs.
 </div>
 </div>
 
-<div id="outline-container-orgad566ed" class="outline-3">
-<h3 id="orgad566ed">Better defaults</h3>
-<div class="outline-text-3" id="text-orgad566ed">
+<div id="outline-container-org32412e8" class="outline-3">
+<h3 id="org32412e8">Better defaults</h3>
+<div class="outline-text-3" id="text-org32412e8">
 <p>
 Disable mouse and tooltips:
 </p>
@@ -572,9 +571,9 @@ Default to utf-8 encoding.
 </div>
 </div>
 
-<div id="outline-container-org78601ac" class="outline-3">
-<h3 id="org78601ac">Load <code>.custom.el</code></h3>
-<div class="outline-text-3" id="text-org78601ac">
+<div id="outline-container-orgb9aee91" class="outline-3">
+<h3 id="orgb9aee91">Load <code>.custom.el</code></h3>
+<div class="outline-text-3" id="text-orgb9aee91">
 <p>
 One is able to use the customization interface that is bundled within Emacs. It
 is meant to help people who are not familiar with Emacs Lisp in the
@@ -599,9 +598,9 @@ loaded, if existing.
 </div>
 </div>
 
-<div id="outline-container-org7d70c78" class="outline-3">
-<h3 id="org7d70c78">Load <code>config.el</code></h3>
-<div class="outline-text-3" id="text-org7d70c78">
+<div id="outline-container-org21aec79" class="outline-3">
+<h3 id="org21aec79">Load <code>config.el</code></h3>
+<div class="outline-text-3" id="text-org21aec79">
 <p>
 Whenever the base <code>core.org</code> file is updated, all the custom user settings are wiped out.
 </p>
@@ -619,9 +618,9 @@ To prevent this, the user may define permanent settings in the <code>config.org<
 </div>
 </div>
 
-<div id="outline-container-org2ebdbc0" class="outline-3">
-<h3 id="org2ebdbc0">Load custom themes</h3>
-<div class="outline-text-3" id="text-org2ebdbc0">
+<div id="outline-container-orge0e75cd" class="outline-3">
+<h3 id="orge0e75cd">Load custom themes</h3>
+<div class="outline-text-3" id="text-orge0e75cd">
 <p>
 Custom themes location.
 </p>
@@ -633,9 +632,9 @@ Custom themes location.
 </div>
 </div>
 
-<div id="outline-container-org1bca34a" class="outline-3">
-<h3 id="org1bca34a">No littering</h3>
-<div class="outline-text-3" id="text-org1bca34a">
+<div id="outline-container-org73dd209" class="outline-3">
+<h3 id="org73dd209">No littering</h3>
+<div class="outline-text-3" id="text-org73dd209">
 <p>
 Keep <code>~/.emacs.d</code> clean.
 </p>
@@ -649,9 +648,9 @@ Keep <code>~/.emacs.d</code> clean.
 </div>
 </div>
 
-<div id="outline-container-org048473f" class="outline-3">
-<h3 id="org048473f">Performance</h3>
-<div class="outline-text-3" id="text-org048473f">
+<div id="outline-container-org2fea1c0" class="outline-3">
+<h3 id="org2fea1c0">Performance</h3>
+<div class="outline-text-3" id="text-org2fea1c0">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #8c8c8c;">(</span><span style="color: #cc6666; font-weight: bold;">use-package</span> <span style="color: #d3869b;">gcmh</span>
   <span style="color: #fe8019;">:demand</span> t
@@ -663,9 +662,9 @@ Keep <code>~/.emacs.d</code> clean.
 </div>
 </div>
 
-<div id="outline-container-org4d21575" class="outline-3">
-<h3 id="org4d21575">Utilities</h3>
-<div class="outline-text-3" id="text-org4d21575">
+<div id="outline-container-org4d78d83" class="outline-3">
+<h3 id="org4d78d83">Utilities</h3>
+<div class="outline-text-3" id="text-org4d78d83">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #8c8c8c;">(</span><span style="color: #cc6666; font-weight: bold;">defun</span> <span style="color: #777777;">open-config-file</span> <span style="color: #93a8c6;">()</span>
   <span style="color: #93a8c6;">(</span><span style="color: #cc6666; font-weight: bold;">interactive</span><span style="color: #93a8c6;">)</span>
@@ -676,9 +675,9 @@ Keep <code>~/.emacs.d</code> clean.
 </div>
 </div>
 
-<div id="outline-container-orga367fc1" class="outline-2">
-<h2 id="orga367fc1">Font</h2>
-<div class="outline-text-2" id="text-orga367fc1">
+<div id="outline-container-org02539ad" class="outline-2">
+<h2 id="org02539ad">Font</h2>
+<div class="outline-text-2" id="text-org02539ad">
 <p>
 Font family used by Emacs.
 </p>
@@ -701,140 +700,32 @@ Nice looking fonts:
 </div>
 </div>
 
-<div id="outline-container-org74fb692" class="outline-3">
-<h3 id="org74fb692">Ligatures</h3>
-<div class="outline-text-3" id="text-org74fb692">
+<div id="outline-container-orge9364c3" class="outline-3">
+<h3 id="orge9364c3">Ligatures</h3>
+<div class="outline-text-3" id="text-orge9364c3">
 <p>
-Rip off the ligatures from the Fira Code font.
-Requires installation of the <a href="https://github.com/tonsky/FiraCode/files/412440/FiraCode-Regular-Symbol.zip">Fira Code Regular Symbol</a> font.
+Rip off <b>only</b> the ligatures from the Fira Code font using the <a href="https://github.com/jming422/fira-code-mode">fira-code-mode</a> minor mode.
+</p>
+
+<p>
+Requires installation of the <a href="https://github.com/tonsky/FiraCode/files/412440/FiraCode-Regular-Symbol.zip">Fira Code Regular Symbol</a> font with <code>M-x fira-code-mode-install-fonts</code>
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #8c8c8c;">(</span>set-fontset-font t '<span style="color: #93a8c6;">(</span>#Xe100 . #Xe16f<span style="color: #93a8c6;">)</span> <span style="color: #476562;">"Fira Code Symbol"</span><span style="color: #8c8c8c;">)</span>
-
-<span style="color: #8c8c8c;">(</span><span style="color: #cc6666; font-weight: bold;">defconst</span> <span style="color: #83a598;">fira-code-font-lock-keywords-alist</span>
-  <span style="color: #93a8c6;">(</span>mapcar <span style="color: #b0b1a3;">(</span><span style="color: #cc6666; font-weight: bold;">lambda</span> <span style="color: #97b098;">(</span>regex-char-pair<span style="color: #97b098;">)</span>
-            `<span style="color: #97b098;">(</span>,<span style="color: #aebed8;">(</span>car regex-char-pair<span style="color: #aebed8;">)</span>
-              <span style="color: #aebed8;">(</span>0 <span style="color: #b0b0b3;">(</span><span style="color: #cc6666; font-weight: bold;">prog1</span> <span style="color: #90a890;">()</span>
-                   <span style="color: #90a890;">(</span>compose-region <span style="color: #a2b6da;">(</span>match-beginning 1<span style="color: #a2b6da;">)</span>
-                                   <span style="color: #a2b6da;">(</span>match-end 1<span style="color: #a2b6da;">)</span>
-                                   <span style="color: #423a35;">;; </span><span style="color: #7c6f64;">The first argument to concat is a string containing a literal tab</span>
-                                   ,<span style="color: #a2b6da;">(</span>concat <span style="color: #476562;">"   "</span> <span style="color: #9cb6ad;">(</span>list <span style="color: #8c8c8c;">(</span>decode-char 'ucs <span style="color: #93a8c6;">(</span>cadr regex-char-pair<span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span><span style="color: #9cb6ad;">)</span><span style="color: #a2b6da;">)</span><span style="color: #90a890;">)</span><span style="color: #b0b0b3;">)</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span>
-          '<span style="color: #b0b1a3;">(</span><span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">www</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                   #Xe100<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"[</span><span style="color: #cc6666;">^</span><span style="color: #476562;">/]</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">\\*\\*</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">[</span><span style="color: #cc6666;">^</span><span style="color: #476562;">/]"</span>        #Xe101<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">\\*\\*\\*</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>             #Xe102<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">\\*\\*/</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>               #Xe103<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">\\*&gt;</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                  #Xe104<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"[</span><span style="color: #cc6666;">^</span><span style="color: #476562;">*]</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">\\*/</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>              #Xe105<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">\\\\\\\\</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>              #Xe106<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">\\\\\\\\\\\\</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>          #Xe107<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">{-</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                    #Xe108<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">!!</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                    #Xe10d<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">!=</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                    #Xe10e<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">!==</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                   #Xe10f<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">-}</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                    #Xe110<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">--</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                    #Xe111<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">---</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                   #Xe112<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">--&gt;</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                   #Xe113<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"[</span><span style="color: #cc6666;">^</span><span style="color: #476562;">-]</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">-&gt;</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                #Xe114<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">-&gt;&gt;</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                   #Xe115<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">-&lt;</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                    #Xe116<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">-&lt;&lt;</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                   #Xe117<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">-~</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                    #Xe118<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">#{</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                    #Xe119<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">#\\[</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                  #Xe11a<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">##</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                    #Xe11b<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">###</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                   #Xe11c<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">####</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                  #Xe11d<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">#(</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                    #Xe11e<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">#\\?</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                  #Xe11f<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">#_</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                    #Xe120<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">#_(</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                   #Xe121<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">\\.=</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                  #Xe123<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">\\?=</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                  #Xe127<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">\\?\\?</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                #Xe128<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">;;</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                    #Xe129<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">/\\*</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                  #Xe12a<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">/\\*\\*</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>               #Xe12b<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">/=</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                    #Xe12c<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">/==</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                   #Xe12d<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">/&gt;</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                    #Xe12e<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">//</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                    #Xe12f<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">///</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                   #Xe130<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">&amp;&amp;</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                    #Xe131<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">||</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                    #Xe132<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">||=</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                   #Xe133<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"[</span><span style="color: #cc6666;">^</span><span style="color: #476562;">|]</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">|=</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                #Xe134<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">|&gt;</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                    #Xe135<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">\\^=</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                  #Xe136<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">\\$&gt;</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                  #Xe137<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">\\+\\+</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                #Xe138<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">\\+\\+\\+</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>             #Xe139<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">\\+&gt;</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                  #Xe13a<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">=:=</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                   #Xe13b<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"[</span><span style="color: #cc6666;">^</span><span style="color: #476562;">!/]</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">==</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">[</span><span style="color: #cc6666;">^</span><span style="color: #476562;">&gt;]"</span>           #Xe13c<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">===</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                   #Xe13d<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">==&gt;</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                   #Xe13e<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"[</span><span style="color: #cc6666;">^</span><span style="color: #476562;">=]</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">=&gt;</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                #Xe13f<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">=&gt;&gt;</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                   #Xe140<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">&lt;=</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                    #Xe141<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">=&lt;&lt;</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                   #Xe142<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">=/=</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                   #Xe143<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">&gt;-</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                    #Xe144<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">&gt;=</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                    #Xe145<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">&gt;=&gt;</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                   #Xe146<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"[</span><span style="color: #cc6666;">^</span><span style="color: #476562;">-=]</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">&gt;&gt;</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>               #Xe147<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">&gt;&gt;-</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                   #Xe148<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">&gt;&gt;=</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                   #Xe149<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">&gt;&gt;&gt;</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                   #Xe14a<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">&lt;\\*</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                  #Xe14b<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">&lt;\\*&gt;</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                 #Xe14c<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">&lt;|</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                    #Xe14d<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">&lt;|&gt;</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                   #Xe14e<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">&lt;\\$</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                  #Xe14f<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">&lt;\\$&gt;</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                 #Xe150<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">&lt;!--</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                  #Xe151<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">&lt;-</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                    #Xe152<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">&lt;--</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                   #Xe153<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">&lt;-&gt;</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                   #Xe154<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">&lt;\\+</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                  #Xe155<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">&lt;\\+&gt;</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                 #Xe156<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">&lt;=</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                    #Xe157<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">&lt;==</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                   #Xe158<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">&lt;=&gt;</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                   #Xe159<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">&lt;=&lt;</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                   #Xe15a<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">&lt;&gt;</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                    #Xe15b<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"[</span><span style="color: #cc6666;">^</span><span style="color: #476562;">-=]</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">&lt;&lt;</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>               #Xe15c<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">&lt;&lt;-</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                   #Xe15d<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">&lt;&lt;=</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                   #Xe15e<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">&lt;&lt;&lt;</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                   #Xe15f<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">&lt;~</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                    #Xe160<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">&lt;~~</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                   #Xe161<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">&lt;/</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                    #Xe162<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">&lt;/&gt;</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                   #Xe163<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">~@</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                    #Xe164<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">~-</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                    #Xe165<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">~=</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                    #Xe166<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">~&gt;</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                    #Xe167<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"[</span><span style="color: #cc6666;">^</span><span style="color: #476562;">&lt;]</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">~~</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                #Xe168<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">~~&gt;</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                   #Xe169<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">%%</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">"</span>                    #Xe16a<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"[</span><span style="color: #cc6666;">^</span><span style="color: #476562;">\\+&lt;&gt;]</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">\\+</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">[</span><span style="color: #cc6666;">^</span><span style="color: #476562;">\\+&lt;&gt;]"</span>   #Xe16d<span style="color: #97b098;">)</span>
-            <span style="color: #97b098;">(</span><span style="color: #476562;">"[</span><span style="color: #cc6666;">^</span><span style="color: #476562;">\\*/&lt;&gt;]</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">(</span><span style="color: #476562;">\\*</span><span style="color: #476562;">\\</span><span style="color: #476562; font-weight: bold;">)</span><span style="color: #476562;">[</span><span style="color: #cc6666;">^</span><span style="color: #476562;">\\*/&lt;&gt;]"</span> #Xe16f<span style="color: #97b098;">)</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
-
-<span style="color: #8c8c8c;">(</span><span style="color: #cc6666; font-weight: bold;">defun</span> <span style="color: #777777;">add-fira-code-symbol-keywords</span> <span style="color: #93a8c6;">()</span>
-  <span style="color: #93a8c6;">(</span>font-lock-add-keywords nil fira-code-font-lock-keywords-alist<span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
-
-<span style="color: #8c8c8c;">(</span>add-hook 'prog-mode-hook
-          #'add-fira-code-symbol-keywords<span style="color: #8c8c8c;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #8c8c8c;">(</span><span style="color: #cc6666; font-weight: bold;">use-package</span> <span style="color: #d3869b;">fira-code-mode</span>
+  <span style="color: #fe8019;">:straight</span> t
+  <span style="color: #fe8019;">:demand</span> t
+  <span style="color: #fe8019;">:hook</span> prog-mode
+  <span style="color: #fe8019;">:custom</span> <span style="color: #93a8c6;">(</span>fira-code-mode-disabled-ligatures '<span style="color: #b0b1a3;">(</span><span style="color: #476562;">"[]"</span> <span style="color: #476562;">":"</span> <span style="color: #476562;">"x"</span><span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span>
+  <span style="color: #fe8019;">:config</span> <span style="color: #93a8c6;">(</span>fira-code-mode-set-font<span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgd19cecb" class="outline-3">
-<h3 id="orgd19cecb">Emoji</h3>
-<div class="outline-text-3" id="text-orgd19cecb">
+<div id="outline-container-orgd8b55ff" class="outline-3">
+<h3 id="orgd8b55ff">Emoji</h3>
+<div class="outline-text-3" id="text-orgd8b55ff">
 <p>
 Set up emoji rendering, requires installation of the <a href="https://github.com/googlefonts/noto-emoji">Noto Emoji</a> font for Linux.
 </p>
@@ -855,13 +746,13 @@ Set up emoji rendering, requires installation of the <a href="https://github.com
 </div>
 </div>
 
-<div id="outline-container-org94a7448" class="outline-2">
-<h2 id="org94a7448">Themes</h2>
-<div class="outline-text-2" id="text-org94a7448">
+<div id="outline-container-org6df0a76" class="outline-2">
+<h2 id="org6df0a76">Themes</h2>
+<div class="outline-text-2" id="text-org6df0a76">
 </div>
-<div id="outline-container-org5ff61fa" class="outline-3">
-<h3 id="org5ff61fa"><a href="https://github.com/jasonm23/autothemer">Autothemer</a></h3>
-<div class="outline-text-3" id="text-org5ff61fa">
+<div id="outline-container-org9cc90d7" class="outline-3">
+<h3 id="org9cc90d7"><a href="https://github.com/jasonm23/autothemer">Autothemer</a></h3>
+<div class="outline-text-3" id="text-org9cc90d7">
 <p>
 Conveniently create Emacs themes.
 </p>
@@ -874,9 +765,9 @@ Conveniently create Emacs themes.
 </div>
 </div>
 
-<div id="outline-container-orgeead943" class="outline-3">
-<h3 id="orgeead943"><a href="https://github.com/b-coimbra/emacs-mirwood-theme">Mirwood theme</a></h3>
-<div class="outline-text-3" id="text-orgeead943">
+<div id="outline-container-org548bbd0" class="outline-3">
+<h3 id="org548bbd0"><a href="https://github.com/b-coimbra/emacs-mirwood-theme">Mirwood theme</a></h3>
+<div class="outline-text-3" id="text-org548bbd0">
 <p>
 A pleaseant theme with earthy colors.
 </p>
@@ -890,9 +781,9 @@ A pleaseant theme with earthy colors.
 </div>
 </div>
 
-<div id="outline-container-org8dc3989" class="outline-3">
-<h3 id="org8dc3989"><a href="https://github.com/ogdenwebb/emacs-kaolin-themes">Kaolin themes</a></h3>
-<div class="outline-text-3" id="text-org8dc3989">
+<div id="outline-container-org39ae8b9" class="outline-3">
+<h3 id="org39ae8b9"><a href="https://github.com/ogdenwebb/emacs-kaolin-themes">Kaolin themes</a></h3>
+<div class="outline-text-3" id="text-org39ae8b9">
 <p>
 Set of eye pleasing themes for GNU Emacs. Supports both GUI and terminal.
 </p>
@@ -911,9 +802,9 @@ Set of eye pleasing themes for GNU Emacs. Supports both GUI and terminal.
 </div>
 </div>
 
-<div id="outline-container-org8659c16" class="outline-3">
-<h3 id="org8659c16"><a href="https://github.com/hlissner/emacs-doom-themes">Doom themes</a></h3>
-<div class="outline-text-3" id="text-org8659c16">
+<div id="outline-container-orge8e4bc6" class="outline-3">
+<h3 id="orge8e4bc6"><a href="https://github.com/hlissner/emacs-doom-themes">Doom themes</a></h3>
+<div class="outline-text-3" id="text-orge8e4bc6">
 <p>
 An opinionated pack of modern color-themes
 </p>
@@ -934,9 +825,9 @@ An opinionated pack of modern color-themes
 </div>
 </div>
 
-<div id="outline-container-org0c1f9dd" class="outline-3">
-<h3 id="org0c1f9dd">Theme customization</h3>
-<div class="outline-text-3" id="text-org0c1f9dd">
+<div id="outline-container-org2b78e60" class="outline-3">
+<h3 id="org2b78e60">Theme customization</h3>
+<div class="outline-text-3" id="text-org2b78e60">
 <p>
 Persistent theme customization.
 </p>
@@ -949,13 +840,13 @@ Persistent theme customization.
 </div>
 </div>
 
-<div id="outline-container-orgd99ef29" class="outline-2">
-<h2 id="orgd99ef29">Appearance</h2>
-<div class="outline-text-2" id="text-orgd99ef29">
+<div id="outline-container-orgff8db67" class="outline-2">
+<h2 id="orgff8db67">Appearance</h2>
+<div class="outline-text-2" id="text-orgff8db67">
 </div>
-<div id="outline-container-org662d43a" class="outline-3">
-<h3 id="org662d43a"><a href="https://github.com/domtronn/all-the-icons.el">All the icons</a></h3>
-<div class="outline-text-3" id="text-org662d43a">
+<div id="outline-container-orgbda982c" class="outline-3">
+<h3 id="orgbda982c"><a href="https://github.com/domtronn/all-the-icons.el">All the icons</a></h3>
+<div class="outline-text-3" id="text-orgbda982c">
 <p>
 Adds fancy icons to emacs.
 </p>
@@ -968,9 +859,9 @@ Adds fancy icons to emacs.
 </div>
 </div>
 
-<div id="outline-container-orga262d87" class="outline-3">
-<h3 id="orga262d87"><a href="https://github.com/hlissner/emacs-solaire-mode">Solaire mode</a></h3>
-<div class="outline-text-3" id="text-orga262d87">
+<div id="outline-container-orgbd46eff" class="outline-3">
+<h3 id="orgbd46eff"><a href="https://github.com/hlissner/emacs-solaire-mode">Solaire mode</a></h3>
+<div class="outline-text-3" id="text-orgbd46eff">
 <p>
 Gives other windows slightly different background colors (brightness).
 </p>
@@ -984,9 +875,9 @@ Gives other windows slightly different background colors (brightness).
 </div>
 </div>
 
-<div id="outline-container-org0d3f2ec" class="outline-3">
-<h3 id="org0d3f2ec"><a href="https://elpa.gnu.org/packages/rainbow-mode.html">Rainbow-mode</a></h3>
-<div class="outline-text-3" id="text-org0d3f2ec">
+<div id="outline-container-orgbc51876" class="outline-3">
+<h3 id="orgbc51876"><a href="https://elpa.gnu.org/packages/rainbow-mode.html">Rainbow-mode</a></h3>
+<div class="outline-text-3" id="text-orgbc51876">
 <p>
 Colorize color names in buffers.
 </p>
@@ -1002,9 +893,9 @@ Colorize color names in buffers.
 </div>
 </div>
 
-<div id="outline-container-org0431586" class="outline-3">
-<h3 id="org0431586"><a href="https://github.com/Fanael/rainbow-delimiters">Rainbow delimiters</a></h3>
-<div class="outline-text-3" id="text-org0431586">
+<div id="outline-container-org11c881d" class="outline-3">
+<h3 id="org11c881d"><a href="https://github.com/Fanael/rainbow-delimiters">Rainbow delimiters</a></h3>
+<div class="outline-text-3" id="text-org11c881d">
 <p>
 "Rainbow parentheses"-like mode which highlights delimiters such as parentheses, brackets or braces according to their depth.
 </p>
@@ -1019,13 +910,13 @@ Colorize color names in buffers.
 </div>
 </div>
 
-<div id="outline-container-org51d659a" class="outline-2">
-<h2 id="org51d659a">Modeline</h2>
-<div class="outline-text-2" id="text-org51d659a">
+<div id="outline-container-org76cadc8" class="outline-2">
+<h2 id="org76cadc8">Modeline</h2>
+<div class="outline-text-2" id="text-org76cadc8">
 </div>
-<div id="outline-container-orge3017ee" class="outline-3">
-<h3 id="orge3017ee"><a href="https://github.com/seagle0128/doom-modeline">Doom-modeline</a></h3>
-<div class="outline-text-3" id="text-orge3017ee">
+<div id="outline-container-org3726235" class="outline-3">
+<h3 id="org3726235"><a href="https://github.com/seagle0128/doom-modeline">Doom-modeline</a></h3>
+<div class="outline-text-3" id="text-org3726235">
 <p>
 A fancy and fast mode-line inpsired by minimalism design.
 </p>
@@ -1048,9 +939,9 @@ A fancy and fast mode-line inpsired by minimalism design.
 </div>
 </div>
 
-<div id="outline-container-org00283f9" class="outline-3">
-<h3 id="org00283f9"><a href="https://github.com/TheBB/spaceline">Spaceline</a></h3>
-<div class="outline-text-3" id="text-org00283f9">
+<div id="outline-container-org902e389" class="outline-3">
+<h3 id="org902e389"><a href="https://github.com/TheBB/spaceline">Spaceline</a></h3>
+<div class="outline-text-3" id="text-org902e389">
 <p>
 Powerline theme from Spacemacs.
 </p>
@@ -1063,7 +954,6 @@ Powerline theme from Spacemacs.
   <span style="color: #93a8c6;">(</span><span style="color: #cc6666; font-weight: bold;">progn</span>
     <span style="color: #b0b1a3;">(</span><span style="color: #cc6666; font-weight: bold;">setq</span> spaceline-highlight-face-func 'spaceline-highlight-face-evil-state<span style="color: #b0b1a3;">)</span>
     <span style="color: #b0b1a3;">(</span><span style="color: #cc6666; font-weight: bold;">setq-default</span> powerline-default-separator 'slant<span style="color: #b0b1a3;">)</span>
-    <span style="color: #423a35;">;; </span><span style="color: #7c6f64;">(setq spaceline-separator-dir-left '(right . right))</span>
     <span style="color: #93a8c6;">)</span>
   <span style="color: #fe8019;">:config</span>
   <span style="color: #93a8c6;">(</span>spaceline-emacs-theme<span style="color: #93a8c6;">)</span>
@@ -1084,13 +974,13 @@ Powerline theme from Spacemacs.
 </div>
 </div>
 
-<div id="outline-container-org12fbf81" class="outline-2">
-<h2 id="org12fbf81">Dashboard</h2>
-<div class="outline-text-2" id="text-org12fbf81">
+<div id="outline-container-org74c03b6" class="outline-2">
+<h2 id="org74c03b6">Dashboard</h2>
+<div class="outline-text-2" id="text-org74c03b6">
 </div>
-<div id="outline-container-orgfa38fc0" class="outline-3">
-<h3 id="orgfa38fc0"><a href="https://github.com/emacs-dashboard/emacs-dashboard">emacs-dashboard</a></h3>
-<div class="outline-text-3" id="text-orgfa38fc0">
+<div id="outline-container-orgf2b82f4" class="outline-3">
+<h3 id="orgf2b82f4"><a href="https://github.com/emacs-dashboard/emacs-dashboard">emacs-dashboard</a></h3>
+<div class="outline-text-3" id="text-orgf2b82f4">
 <p>
 An extensible emacs startup screen showing you what’s most important.
 </p>
@@ -1108,7 +998,6 @@ An extensible emacs startup screen showing you what’s most important.
   <span style="color: #93a8c6;">(</span>dashboard-footer-icon <span style="color: #b0b1a3;">(</span>all-the-icons-wicon <span style="color: #476562;">"meteor"</span> <span style="color: #fe8019;">:height</span> 1.1 <span style="color: #fe8019;">:v-adjust</span> -0.05 <span style="color: #fe8019;">:face</span> 'font-lock-keyword-face<span style="color: #b0b1a3;">)</span><span style="color: #93a8c6;">)</span>
   <span style="color: #93a8c6;">(</span>dashboard-center-content t<span style="color: #93a8c6;">)</span>
   <span style="color: #93a8c6;">(</span>dashboard-set-heading-icons t<span style="color: #93a8c6;">)</span>
-  <span style="color: #423a35;">;; </span><span style="color: #7c6f64;">(dashboard-page-separator "\n\f\n")</span>
   <span style="color: #93a8c6;">(</span>dashboard-set-file-icons t<span style="color: #93a8c6;">)</span>
   <span style="color: #93a8c6;">(</span>dashboard-set-navigator t<span style="color: #93a8c6;">)</span>
   <span style="color: #93a8c6;">(</span>dashboard-navigator-buttons
@@ -1125,8 +1014,10 @@ An extensible emacs startup screen showing you what’s most important.
       <span style="color: #aebed8;">(</span>,<span style="color: #b0b0b3;">(</span>all-the-icons-faicon <span style="color: #476562;">"flag"</span> <span style="color: #fe8019;">:height</span> 1.1 <span style="color: #fe8019;">:v-adjust</span> 0.0<span style="color: #b0b0b3;">)</span> nil
        <span style="color: #476562;">"Report a BUG"</span>
        <span style="color: #b0b0b3;">(</span><span style="color: #cc6666; font-weight: bold;">lambda</span> <span style="color: #90a890;">(</span><span style="color: #d3869b;">&amp;rest</span> _<span style="color: #90a890;">)</span> <span style="color: #90a890;">(</span>browse-url <span style="color: #476562;">"https://github.com/b-coimbra/.emacs.d/issues/new"</span><span style="color: #90a890;">)</span><span style="color: #b0b0b3;">)</span> error <span style="color: #476562;">""</span> <span style="color: #476562;">""</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span>
+
      <span style="color: #423a35;">;; </span><span style="color: #7c6f64;">Empty line</span>
      <span style="color: #97b098;">(</span><span style="color: #aebed8;">(</span><span style="color: #476562;">""</span> <span style="color: #476562;">"\n"</span> <span style="color: #476562;">""</span> nil nil <span style="color: #476562;">""</span> <span style="color: #476562;">""</span><span style="color: #aebed8;">)</span><span style="color: #97b098;">)</span>
+
      <span style="color: #423a35;">;; </span><span style="color: #7c6f64;">Keybindings</span>
      <span style="color: #97b098;">(</span><span style="color: #aebed8;">(</span>,<span style="color: #b0b0b3;">(</span>all-the-icons-octicon <span style="color: #476562;">"search"</span> <span style="color: #fe8019;">:height</span> 0.9 <span style="color: #fe8019;">:v-adjust</span> -0.1<span style="color: #b0b0b3;">)</span>
        <span style="color: #476562;">" Find file"</span> nil
@@ -1149,13 +1040,13 @@ An extensible emacs startup screen showing you what’s most important.
 </div>
 </div>
 
-<div id="outline-container-orgd81ac01" class="outline-2">
-<h2 id="orgd81ac01">Auto Completion</h2>
-<div class="outline-text-2" id="text-orgd81ac01">
+<div id="outline-container-org03ed436" class="outline-2">
+<h2 id="org03ed436">Auto Completion</h2>
+<div class="outline-text-2" id="text-org03ed436">
 </div>
-<div id="outline-container-orgb06157c" class="outline-3">
-<h3 id="orgb06157c"><a href="https://github.com/company-mode/company-mode">Company</a></h3>
-<div class="outline-text-3" id="text-orgb06157c">
+<div id="outline-container-orgd6434b6" class="outline-3">
+<h3 id="orgd6434b6"><a href="https://github.com/company-mode/company-mode">Company</a></h3>
+<div class="outline-text-3" id="text-orgd6434b6">
 <p>
 Modular in-buffer completion framework.
 </p>
@@ -1184,9 +1075,9 @@ Modular in-buffer completion framework.
 </div>
 </div>
 
-<div id="outline-container-orgd7c3d63" class="outline-3">
-<h3 id="orgd7c3d63"><a href="https://github.com/emacsorphanage/company-jedi">company-jedi</a></h3>
-<div class="outline-text-3" id="text-orgd7c3d63">
+<div id="outline-container-org0d3cede" class="outline-3">
+<h3 id="org0d3cede"><a href="https://github.com/emacsorphanage/company-jedi">company-jedi</a></h3>
+<div class="outline-text-3" id="text-org0d3cede">
 <p>
 Company backend for Python jedi.
 </p>
@@ -1207,17 +1098,17 @@ Company backend for Python jedi.
 </div>
 </div>
 
-<div id="outline-container-org3b8b3f9" class="outline-2">
-<h2 id="org3b8b3f9">Evil</h2>
-<div class="outline-text-2" id="text-org3b8b3f9">
+<div id="outline-container-org7ecae1a" class="outline-2">
+<h2 id="org7ecae1a">Evil</h2>
+<div class="outline-text-2" id="text-org7ecae1a">
 <p>
 Evil is an extensible vi layer for Emacs. It emulates the main features of Vim, and provides facilities for writing custom extensions.
 </p>
 </div>
 
-<div id="outline-container-org92acfa7" class="outline-3">
-<h3 id="org92acfa7"><a href="https://github.com/emacs-evil/evil">evil-mode</a></h3>
-<div class="outline-text-3" id="text-org92acfa7">
+<div id="outline-container-orgdea4247" class="outline-3">
+<h3 id="orgdea4247"><a href="https://github.com/emacs-evil/evil">evil-mode</a></h3>
+<div class="outline-text-3" id="text-orgdea4247">
 <p>
 Base package for <code>evil-mode</code>
 </p>
@@ -1239,9 +1130,9 @@ Base package for <code>evil-mode</code>
 </div>
 </div>
 
-<div id="outline-container-orgf1441aa" class="outline-3">
-<h3 id="orgf1441aa"><a href="https://github.com/syl20bnr/evil-escape">evil-escape</a></h3>
-<div class="outline-text-3" id="text-orgf1441aa">
+<div id="outline-container-org0f0e945" class="outline-3">
+<h3 id="org0f0e945"><a href="https://github.com/syl20bnr/evil-escape">evil-escape</a></h3>
+<div class="outline-text-3" id="text-org0f0e945">
 <p>
 Unfortunately we need a separate package to handle custom &lt;ESC&gt; key sequences.
 </p>
@@ -1258,9 +1149,9 @@ Unfortunately we need a separate package to handle custom &lt;ESC&gt; key sequen
 </div>
 </div>
 
-<div id="outline-container-orge89b2e0" class="outline-3">
-<h3 id="orge89b2e0"><a href="https://github.com/emacs-evil/evil-surround">evil-surround</a></h3>
-<div class="outline-text-3" id="text-orge89b2e0">
+<div id="outline-container-org6726b29" class="outline-3">
+<h3 id="org6726b29"><a href="https://github.com/emacs-evil/evil-surround">evil-surround</a></h3>
+<div class="outline-text-3" id="text-org6726b29">
 <p>
 Useful package for adding, editing or removing all types of surrounding characters (even HTML tags!).
 </p>
@@ -1276,9 +1167,9 @@ Useful package for adding, editing or removing all types of surrounding characte
 </div>
 </div>
 
-<div id="outline-container-org4e2f516" class="outline-3">
-<h3 id="org4e2f516"><a href="https://github.com/gabesoft/evil-mc">evil-mc</a></h3>
-<div class="outline-text-3" id="text-org4e2f516">
+<div id="outline-container-orge55cfe7" class="outline-3">
+<h3 id="orge55cfe7"><a href="https://github.com/gabesoft/evil-mc">evil-mc</a></h3>
+<div class="outline-text-3" id="text-orge55cfe7">
 <p>
 Multiple cursors implementation for evil-mode.
 </p>
@@ -1293,9 +1184,9 @@ Multiple cursors implementation for evil-mode.
 </div>
 </div>
 
-<div id="outline-container-orgb8be539" class="outline-3">
-<h3 id="orgb8be539"><a href="https://github.com/linktohack/evil-commentary">evil-commentary</a></h3>
-<div class="outline-text-3" id="text-orgb8be539">
+<div id="outline-container-org730ea58" class="outline-3">
+<h3 id="org730ea58"><a href="https://github.com/linktohack/evil-commentary">evil-commentary</a></h3>
+<div class="outline-text-3" id="text-org730ea58">
 <p>
 Evil bindings for commenting out chunks of code.
 </p>
@@ -1310,9 +1201,9 @@ Evil bindings for commenting out chunks of code.
 </div>
 </div>
 
-<div id="outline-container-orge20eaad" class="outline-3">
-<h3 id="orge20eaad"><a href="https://github.com/emacs-evil/evil-collection">evil-collection</a></h3>
-<div class="outline-text-3" id="text-orge20eaad">
+<div id="outline-container-org758acc4" class="outline-3">
+<h3 id="org758acc4"><a href="https://github.com/emacs-evil/evil-collection">evil-collection</a></h3>
+<div class="outline-text-3" id="text-org758acc4">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #8c8c8c;">(</span><span style="color: #cc6666; font-weight: bold;">use-package</span> <span style="color: #d3869b;">evil-collection</span>
   <span style="color: #fe8019;">:after</span> evil
@@ -1326,13 +1217,13 @@ Evil bindings for commenting out chunks of code.
 </div>
 </div>
 
-<div id="outline-container-org9187920" class="outline-2">
-<h2 id="org9187920">Calendar</h2>
-<div class="outline-text-2" id="text-org9187920">
+<div id="outline-container-org268c615" class="outline-2">
+<h2 id="org268c615">Calendar</h2>
+<div class="outline-text-2" id="text-org268c615">
 </div>
-<div id="outline-container-orgf42700d" class="outline-3">
-<h3 id="orgf42700d"><a href="https://github.com/kiwanami/emacs-calfw/">calfw</a></h3>
-<div class="outline-text-3" id="text-orgf42700d">
+<div id="outline-container-org2687308" class="outline-3">
+<h3 id="org2687308"><a href="https://github.com/kiwanami/emacs-calfw/">calfw</a></h3>
+<div class="outline-text-3" id="text-org2687308">
 <p>
 This program displays a calendar view in the Emacs buffer.
 </p>
@@ -1346,13 +1237,13 @@ This program displays a calendar view in the Emacs buffer.
 </div>
 </div>
 
-<div id="outline-container-org30c4341" class="outline-2">
-<h2 id="org30c4341">Org-mode</h2>
-<div class="outline-text-2" id="text-org30c4341">
+<div id="outline-container-org4ce0485" class="outline-2">
+<h2 id="org4ce0485">Org-mode</h2>
+<div class="outline-text-2" id="text-org4ce0485">
 </div>
-<div id="outline-container-org321be80" class="outline-3">
-<h3 id="org321be80">org</h3>
-<div class="outline-text-3" id="text-org321be80">
+<div id="outline-container-org5fd9f8f" class="outline-3">
+<h3 id="org5fd9f8f">org</h3>
+<div class="outline-text-3" id="text-org5fd9f8f">
 <p>
 Org mode is for keeping notes, maintaining to-do lists, planning projects, authoring documents,
 computational notebooks, literate programming and more — in a fast and effective plain text system
@@ -1410,24 +1301,9 @@ computational notebooks, literate programming and more — in a fast and effecti
 </div>
 </div>
 
-<div id="outline-container-orgefde7d7" class="outline-3">
-<h3 id="orgefde7d7"><a href="https://github.com/emacsmirror/org-contrib">org-contrib</a></h3>
-<div class="outline-text-3" id="text-orgefde7d7">
-<p>
-Unmaintained add-ons for org-mode.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #423a35;">;; </span><span style="color: #7c6f64;">(use-package org-contrib</span>
-<span style="color: #423a35;">;;   </span><span style="color: #7c6f64;">:straight t)</span>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgfc6b73a" class="outline-3">
-<h3 id="orgfc6b73a"><a href="https://github.com/yjwen/org-reveal">ox-reveal</a></h3>
-<div class="outline-text-3" id="text-orgfc6b73a">
+<div id="outline-container-orgd8a7df2" class="outline-3">
+<h3 id="orgd8a7df2"><a href="https://github.com/yjwen/org-reveal">ox-reveal</a></h3>
+<div class="outline-text-3" id="text-orgd8a7df2">
 <p>
 Reveal.js presentation back-end for org export engine.
 </p>
@@ -1446,9 +1322,9 @@ Reveal.js presentation back-end for org export engine.
 </div>
 </div>
 
-<div id="outline-container-org53f3241" class="outline-3">
-<h3 id="org53f3241">calfw-org</h3>
-<div class="outline-text-3" id="text-org53f3241">
+<div id="outline-container-orgac09ed0" class="outline-3">
+<h3 id="orgac09ed0">calfw-org</h3>
+<div class="outline-text-3" id="text-orgac09ed0">
 <p>
 Display org schedules.
 </p>
@@ -1464,9 +1340,9 @@ Display org schedules.
 </div>
 </div>
 
-<div id="outline-container-org6ce1fb6" class="outline-3">
-<h3 id="org6ce1fb6"><a href="https://github.com/hniksic/emacs-htmlize">htmlize</a></h3>
-<div class="outline-text-3" id="text-org6ce1fb6">
+<div id="outline-container-org7be7346" class="outline-3">
+<h3 id="org7be7346"><a href="https://github.com/hniksic/emacs-htmlize">htmlize</a></h3>
+<div class="outline-text-3" id="text-org7be7346">
 <p>
 Used for exporting source code with syntax highlighting.
 </p>
@@ -1480,13 +1356,13 @@ Used for exporting source code with syntax highlighting.
 </div>
 </div>
 
-<div id="outline-container-org75154fb" class="outline-2">
-<h2 id="org75154fb">Keybindings</h2>
-<div class="outline-text-2" id="text-org75154fb">
+<div id="outline-container-orgecf9eea" class="outline-2">
+<h2 id="orgecf9eea">Keybindings</h2>
+<div class="outline-text-2" id="text-orgecf9eea">
 </div>
-<div id="outline-container-org351464c" class="outline-3">
-<h3 id="org351464c"><a href="https://github.com/noctuid/general.el">General</a></h3>
-<div class="outline-text-3" id="text-org351464c">
+<div id="outline-container-orgd5d6a26" class="outline-3">
+<h3 id="orgd5d6a26"><a href="https://github.com/noctuid/general.el">General</a></h3>
+<div class="outline-text-3" id="text-orgd5d6a26">
 <p>
 More convenient key definitions.
 </p>
@@ -1592,9 +1468,9 @@ More convenient key definitions.
 </div>
 </div>
 
-<div id="outline-container-org12aad98" class="outline-3">
-<h3 id="org12aad98"><a href="https://github.com/justbur/emacs-which-key">Which-key</a></h3>
-<div class="outline-text-3" id="text-org12aad98">
+<div id="outline-container-org8955017" class="outline-3">
+<h3 id="org8955017"><a href="https://github.com/justbur/emacs-which-key">Which-key</a></h3>
+<div class="outline-text-3" id="text-org8955017">
 <p>
 Package that displays available keybindings in a popup.
 </p>
@@ -1611,13 +1487,13 @@ Package that displays available keybindings in a popup.
 </div>
 </div>
 
-<div id="outline-container-orgc15efc5" class="outline-2">
-<h2 id="orgc15efc5">Source Control</h2>
-<div class="outline-text-2" id="text-orgc15efc5">
+<div id="outline-container-orgee49910" class="outline-2">
+<h2 id="orgee49910">Source Control</h2>
+<div class="outline-text-2" id="text-orgee49910">
 </div>
-<div id="outline-container-orgb0305f3" class="outline-3">
-<h3 id="orgb0305f3"><a href="https://github.com/magit/magit">Magit</a></h3>
-<div class="outline-text-3" id="text-orgb0305f3">
+<div id="outline-container-orgf95982e" class="outline-3">
+<h3 id="orgf95982e"><a href="https://github.com/magit/magit">Magit</a></h3>
+<div class="outline-text-3" id="text-orgf95982e">
 <p>
 General source control package. Has a nice interface for every git operation there is.
 </p>
@@ -1637,9 +1513,9 @@ General source control package. Has a nice interface for every git operation the
 </div>
 </div>
 
-<div id="outline-container-org2133b0c" class="outline-3">
-<h3 id="org2133b0c"><a href="https://github.com/syohex/emacs-git-gutter-fringe">Git Gutter</a></h3>
-<div class="outline-text-3" id="text-org2133b0c">
+<div id="outline-container-org2d1ae10" class="outline-3">
+<h3 id="org2d1ae10"><a href="https://github.com/syohex/emacs-git-gutter-fringe">Git Gutter</a></h3>
+<div class="outline-text-3" id="text-org2d1ae10">
 <p>
 Commit diff and other repo informations. Has the capability to stage hunks and what-not.
 </p>
@@ -1668,9 +1544,9 @@ Commit diff and other repo informations. Has the capability to stage hunks and w
 </div>
 </div>
 
-<div id="outline-container-org53111d9" class="outline-2">
-<h2 id="org53111d9">Encryption</h2>
-<div class="outline-text-2" id="text-org53111d9">
+<div id="outline-container-org59332b1" class="outline-2">
+<h2 id="org59332b1">Encryption</h2>
+<div class="outline-text-2" id="text-org59332b1">
 <p>
 Interface for GPG, setup for transparent encryption and decryption:
 </p>
@@ -1687,13 +1563,13 @@ Interface for GPG, setup for transparent encryption and decryption:
 </div>
 </div>
 
-<div id="outline-container-org7462f15" class="outline-2">
-<h2 id="org7462f15">File Management</h2>
-<div class="outline-text-2" id="text-org7462f15">
+<div id="outline-container-orgb208c17" class="outline-2">
+<h2 id="orgb208c17">File Management</h2>
+<div class="outline-text-2" id="text-orgb208c17">
 </div>
-<div id="outline-container-orgbcf9b1c" class="outline-3">
-<h3 id="orgbcf9b1c"><a href="https://github.com/ralesi/ranger.el">Ranger</a></h3>
-<div class="outline-text-3" id="text-orgbcf9b1c">
+<div id="outline-container-org49adcca" class="outline-3">
+<h3 id="org49adcca"><a href="https://github.com/ralesi/ranger.el">Ranger</a></h3>
+<div class="outline-text-3" id="text-org49adcca">
 <p>
 Bringing the goodness of ranger to dired!
 </p>
@@ -1714,13 +1590,13 @@ Bringing the goodness of ranger to dired!
 </div>
 </div>
 
-<div id="outline-container-org1c59e90" class="outline-2">
-<h2 id="org1c59e90">Project Management</h2>
-<div class="outline-text-2" id="text-org1c59e90">
+<div id="outline-container-org37bcd6a" class="outline-2">
+<h2 id="org37bcd6a">Project Management</h2>
+<div class="outline-text-2" id="text-org37bcd6a">
 </div>
-<div id="outline-container-org14585c6" class="outline-3">
-<h3 id="org14585c6"><a href="https://github.com/Alexander-Miller/treemacs">Treemacs</a></h3>
-<div class="outline-text-3" id="text-org14585c6">
+<div id="outline-container-org8744c99" class="outline-3">
+<h3 id="org8744c99"><a href="https://github.com/Alexander-Miller/treemacs">Treemacs</a></h3>
+<div class="outline-text-3" id="text-org8744c99">
 <p>
 A tree layout file explorer.
 </p>
@@ -1764,9 +1640,9 @@ it will inform treemacs about (un)staging of files and commits happening in magi
 </div>
 </div>
 
-<div id="outline-container-orgc28b04e" class="outline-3">
-<h3 id="orgc28b04e"><a href="https://github.com/bbatsov/projectile">Projectile</a></h3>
-<div class="outline-text-3" id="text-orgc28b04e">
+<div id="outline-container-orgbb5df68" class="outline-3">
+<h3 id="orgbb5df68"><a href="https://github.com/bbatsov/projectile">Projectile</a></h3>
+<div class="outline-text-3" id="text-orgbb5df68">
 <p>
 Project interaction library.
 </p>
@@ -1782,9 +1658,9 @@ Project interaction library.
 </div>
 </div>
 
-<div id="outline-container-orga7f6a0e" class="outline-3">
-<h3 id="orga7f6a0e"><a href="https://github.com/ericdanan/counsel-projectile">projectile/counsel</a></h3>
-<div class="outline-text-3" id="text-orga7f6a0e">
+<div id="outline-container-org3725908" class="outline-3">
+<h3 id="org3725908"><a href="https://github.com/ericdanan/counsel-projectile">projectile/counsel</a></h3>
+<div class="outline-text-3" id="text-org3725908">
 <p>
 <code>ivy</code> UI for Projectile.
 </p>
@@ -1808,13 +1684,13 @@ Project interaction library.
 </div>
 </div>
 
-<div id="outline-container-org43c77db" class="outline-2">
-<h2 id="org43c77db">Syntax Checking</h2>
-<div class="outline-text-2" id="text-org43c77db">
+<div id="outline-container-orgea22223" class="outline-2">
+<h2 id="orgea22223">Syntax Checking</h2>
+<div class="outline-text-2" id="text-orgea22223">
 </div>
-<div id="outline-container-orgcdc94c5" class="outline-3">
-<h3 id="orgcdc94c5"><a href="https://github.com/flycheck/flycheck">Flycheck</a></h3>
-<div class="outline-text-3" id="text-orgcdc94c5">
+<div id="outline-container-orgc458b9a" class="outline-3">
+<h3 id="orgc458b9a"><a href="https://github.com/flycheck/flycheck">Flycheck</a></h3>
+<div class="outline-text-3" id="text-orgc458b9a">
 <p>
 Modern on-the-fly syntax checking extension.
 </p>
@@ -1834,17 +1710,17 @@ Modern on-the-fly syntax checking extension.
 </div>
 </div>
 
-<div id="outline-container-org7e71d45" class="outline-2">
-<h2 id="org7e71d45">Language Modes</h2>
-<div class="outline-text-2" id="text-org7e71d45">
+<div id="outline-container-org57862fd" class="outline-2">
+<h2 id="org57862fd">Language Modes</h2>
+<div class="outline-text-2" id="text-org57862fd">
 <p>
 Base language packages.
 </p>
 </div>
 
-<div id="outline-container-org3c99140" class="outline-3">
-<h3 id="org3c99140"><a href="https://github.com/rust-lang/rust-mode">Rust</a></h3>
-<div class="outline-text-3" id="text-org3c99140">
+<div id="outline-container-orgabc64b9" class="outline-3">
+<h3 id="orgabc64b9"><a href="https://github.com/rust-lang/rust-mode">Rust</a></h3>
+<div class="outline-text-3" id="text-orgabc64b9">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #8c8c8c;">(</span><span style="color: #cc6666; font-weight: bold;">use-package</span> <span style="color: #d3869b;">rust-mode</span>
   <span style="color: #fe8019;">:straight</span> t<span style="color: #8c8c8c;">)</span>
@@ -1853,9 +1729,9 @@ Base language packages.
 </div>
 </div>
 
-<div id="outline-container-org0b1b6d1" class="outline-3">
-<h3 id="org0b1b6d1"><a href="https://www.emacswiki.org/emacs/RubyMode">Ruby</a></h3>
-<div class="outline-text-3" id="text-org0b1b6d1">
+<div id="outline-container-orgcde47d4" class="outline-3">
+<h3 id="orgcde47d4"><a href="https://www.emacswiki.org/emacs/RubyMode">Ruby</a></h3>
+<div class="outline-text-3" id="text-orgcde47d4">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #8c8c8c;">(</span><span style="color: #cc6666; font-weight: bold;">use-package</span> <span style="color: #d3869b;">ruby-mode</span>
   <span style="color: #fe8019;">:straight</span> t<span style="color: #8c8c8c;">)</span>
@@ -1864,9 +1740,9 @@ Base language packages.
 </div>
 </div>
 
-<div id="outline-container-orge3bec06" class="outline-3">
-<h3 id="orge3bec06"><a href="https://github.com/mooz/js2-mode">Javascript</a></h3>
-<div class="outline-text-3" id="text-orge3bec06">
+<div id="outline-container-org29df9ab" class="outline-3">
+<h3 id="org29df9ab"><a href="https://github.com/mooz/js2-mode">Javascript</a></h3>
+<div class="outline-text-3" id="text-org29df9ab">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #8c8c8c;">(</span><span style="color: #cc6666; font-weight: bold;">use-package</span> <span style="color: #d3869b;">js2-mode</span>
   <span style="color: #fe8019;">:straight</span> t
@@ -1880,9 +1756,9 @@ Base language packages.
 </div>
 </div>
 
-<div id="outline-container-orgd5c537c" class="outline-3">
-<h3 id="orgd5c537c"><a href="https://github.com/felipeochoa/rjsx-mode">RSJX</a></h3>
-<div class="outline-text-3" id="text-orgd5c537c">
+<div id="outline-container-orgdba5f70" class="outline-3">
+<h3 id="orgdba5f70"><a href="https://github.com/felipeochoa/rjsx-mode">RSJX</a></h3>
+<div class="outline-text-3" id="text-orgdba5f70">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #8c8c8c;">(</span><span style="color: #cc6666; font-weight: bold;">use-package</span> <span style="color: #d3869b;">rjsx-mode</span>
   <span style="color: #fe8019;">:straight</span> t<span style="color: #8c8c8c;">)</span>
@@ -1891,9 +1767,9 @@ Base language packages.
 </div>
 </div>
 
-<div id="outline-container-orgaf949ed" class="outline-3">
-<h3 id="orgaf949ed"><a href="https://github.com/emacs-typescript/typescript.el">Typescript</a></h3>
-<div class="outline-text-3" id="text-orgaf949ed">
+<div id="outline-container-org6774608" class="outline-3">
+<h3 id="org6774608"><a href="https://github.com/emacs-typescript/typescript.el">Typescript</a></h3>
+<div class="outline-text-3" id="text-org6774608">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #8c8c8c;">(</span><span style="color: #cc6666; font-weight: bold;">use-package</span> <span style="color: #d3869b;">typescript-mode</span>
   <span style="color: #fe8019;">:straight</span> t<span style="color: #8c8c8c;">)</span>
@@ -1902,9 +1778,9 @@ Base language packages.
 </div>
 </div>
 
-<div id="outline-container-orgc0d60b0" class="outline-3">
-<h3 id="orgc0d60b0"><a href="https://github.com/fxbois/web-mode">Web</a></h3>
-<div class="outline-text-3" id="text-orgc0d60b0">
+<div id="outline-container-orgf6b5ce5" class="outline-3">
+<h3 id="orgf6b5ce5"><a href="https://github.com/fxbois/web-mode">Web</a></h3>
+<div class="outline-text-3" id="text-orgf6b5ce5">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #8c8c8c;">(</span><span style="color: #cc6666; font-weight: bold;">use-package</span> <span style="color: #d3869b;">web-mode</span>
   <span style="color: #fe8019;">:straight</span> t
@@ -1916,9 +1792,9 @@ Base language packages.
 </div>
 </div>
 
-<div id="outline-container-orgc03a34f" class="outline-3">
-<h3 id="orgc03a34f"><a href="https://github.com/emacsmirror/python-mode">Python</a></h3>
-<div class="outline-text-3" id="text-orgc03a34f">
+<div id="outline-container-org7abf672" class="outline-3">
+<h3 id="org7abf672"><a href="https://github.com/emacsmirror/python-mode">Python</a></h3>
+<div class="outline-text-3" id="text-org7abf672">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #8c8c8c;">(</span><span style="color: #cc6666; font-weight: bold;">use-package</span> <span style="color: #d3869b;">python-mode</span>
   <span style="color: #fe8019;">:straight</span> t
@@ -1929,13 +1805,13 @@ Base language packages.
 </div>
 </div>
 
-<div id="outline-container-org0b0315b" class="outline-2">
-<h2 id="org0b0315b">Language Server Protocol</h2>
-<div class="outline-text-2" id="text-org0b0315b">
+<div id="outline-container-orgf84e614" class="outline-2">
+<h2 id="orgf84e614">Language Server Protocol</h2>
+<div class="outline-text-2" id="text-orgf84e614">
 </div>
-<div id="outline-container-orgbf04995" class="outline-3">
-<h3 id="orgbf04995"><a href="https://github.com/emacs-lsp/lsp-mode">LSP</a></h3>
-<div class="outline-text-3" id="text-orgbf04995">
+<div id="outline-container-org3e3a2f7" class="outline-3">
+<h3 id="org3e3a2f7"><a href="https://github.com/emacs-lsp/lsp-mode">LSP</a></h3>
+<div class="outline-text-3" id="text-org3e3a2f7">
 <p>
 <code>lsp-mode</code> aims to provide IDE-like experience by providing optional integration with the most popular Emacs packages like <code>company</code>, <code>flycheck</code> and <code>projectile</code>.
 </p>
@@ -1962,9 +1838,9 @@ Base language packages.
 </div>
 </div>
 
-<div id="outline-container-org14d52d2" class="outline-3">
-<h3 id="org14d52d2"><a href="https://github.com/emacs-lsp/lsp-ui">LSP-UI</a></h3>
-<div class="outline-text-3" id="text-org14d52d2">
+<div id="outline-container-org19978d6" class="outline-3">
+<h3 id="org19978d6"><a href="https://github.com/emacs-lsp/lsp-ui">LSP-UI</a></h3>
+<div class="outline-text-3" id="text-org19978d6">
 <p>
 Higher level UI modules of <code>lsp-mode</code>.
 </p>
@@ -1998,13 +1874,13 @@ Higher level UI modules of <code>lsp-mode</code>.
 </div>
 </div>
 
-<div id="outline-container-org34b5020" class="outline-2">
-<h2 id="org34b5020">Buffers and Windows</h2>
-<div class="outline-text-2" id="text-org34b5020">
+<div id="outline-container-org3f52dd4" class="outline-2">
+<h2 id="org3f52dd4">Buffers and Windows</h2>
+<div class="outline-text-2" id="text-org3f52dd4">
 </div>
-<div id="outline-container-org0cd7833" class="outline-3">
-<h3 id="org0cd7833"><a href="https://github.com/deb0ch/emacs-winum">Winum</a></h3>
-<div class="outline-text-3" id="text-org0cd7833">
+<div id="outline-container-org30b8808" class="outline-3">
+<h3 id="org30b8808"><a href="https://github.com/deb0ch/emacs-winum">Winum</a></h3>
+<div class="outline-text-3" id="text-org30b8808">
 <p>
 Numbering for buffers, windows and <code>eyebrowse</code> workspaces.
 </p>
@@ -2022,9 +1898,9 @@ Numbering for buffers, windows and <code>eyebrowse</code> workspaces.
 </div>
 </div>
 
-<div id="outline-container-orgbf23ccd" class="outline-3">
-<h3 id="orgbf23ccd"><a href="https://github.com/wasamasa/eyebrowse">Eyebrowse</a></h3>
-<div class="outline-text-3" id="text-orgbf23ccd">
+<div id="outline-container-org953ef7c" class="outline-3">
+<h3 id="org953ef7c"><a href="https://github.com/wasamasa/eyebrowse">Eyebrowse</a></h3>
+<div class="outline-text-3" id="text-org953ef7c">
 <p>
 A simple-minded way of managing window configs in emacs.
 </p>
@@ -2042,9 +1918,9 @@ A simple-minded way of managing window configs in emacs.
 </div>
 </div>
 
-<div id="outline-container-org55c0def" class="outline-3">
-<h3 id="org55c0def"><a href="https://www.emacswiki.org/emacs/WindMove">windmove</a></h3>
-<div class="outline-text-3" id="text-org55c0def">
+<div id="outline-container-org6e57871" class="outline-3">
+<h3 id="org6e57871"><a href="https://www.emacswiki.org/emacs/WindMove">windmove</a></h3>
+<div class="outline-text-3" id="text-org6e57871">
 <p>
 Windmove is used for moving buffers to other windows.
 </p>
@@ -2066,9 +1942,9 @@ Windmove is used for moving buffers to other windows.
 </div>
 </div>
 
-<div id="outline-container-org23dec21" class="outline-3">
-<h3 id="org23dec21">Focus on newly created windows</h3>
-<div class="outline-text-3" id="text-org23dec21">
+<div id="outline-container-org52112d4" class="outline-3">
+<h3 id="org52112d4">Focus on newly created windows</h3>
+<div class="outline-text-3" id="text-org52112d4">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #8c8c8c;">(</span><span style="color: #cc6666; font-weight: bold;">defun</span> <span style="color: #777777;">split-and-follow-horizontally</span> <span style="color: #93a8c6;">()</span>
   <span style="color: #93a8c6;">(</span><span style="color: #cc6666; font-weight: bold;">interactive</span><span style="color: #93a8c6;">)</span>
@@ -2087,13 +1963,13 @@ Windmove is used for moving buffers to other windows.
 </div>
 </div>
 
-<div id="outline-container-orgc88835d" class="outline-2">
-<h2 id="orgc88835d">Navigation</h2>
-<div class="outline-text-2" id="text-orgc88835d">
+<div id="outline-container-orgd790e86" class="outline-2">
+<h2 id="orgd790e86">Navigation</h2>
+<div class="outline-text-2" id="text-orgd790e86">
 </div>
-<div id="outline-container-org9e7f598" class="outline-3">
-<h3 id="org9e7f598"><a href="https://github.com/abo-abo/swiper">Ivy</a></h3>
-<div class="outline-text-3" id="text-org9e7f598">
+<div id="outline-container-org146b3c9" class="outline-3">
+<h3 id="org146b3c9"><a href="https://github.com/abo-abo/swiper">Ivy</a></h3>
+<div class="outline-text-3" id="text-org146b3c9">
 <p>
 <code>avy</code> is similar to Vim's easymotion plugin, it provides commands for jumping to visible text using a char-based decision tree.
 </p>
@@ -2127,9 +2003,9 @@ Windmove is used for moving buffers to other windows.
 </div>
 </div>
 
-<div id="outline-container-org9af4d90" class="outline-3">
-<h3 id="org9af4d90"><a href="https://github.com/abo-abo/swiper">Ivy/Counsel</a></h3>
-<div class="outline-text-3" id="text-org9af4d90">
+<div id="outline-container-orge797730" class="outline-3">
+<h3 id="orge797730"><a href="https://github.com/abo-abo/swiper">Ivy/Counsel</a></h3>
+<div class="outline-text-3" id="text-orge797730">
 <p>
 Completion frontend for things such as <code>M-x find-file</code>.
 </p>
@@ -2148,9 +2024,9 @@ Completion frontend for things such as <code>M-x find-file</code>.
 </div>
 </div>
 
-<div id="outline-container-org809e2f1" class="outline-3">
-<h3 id="org809e2f1"><a href="https://github.com/DarthFennec/highlight-indent-guides">Highlight Indent Guides</a></h3>
-<div class="outline-text-3" id="text-org809e2f1">
+<div id="outline-container-org33602de" class="outline-3">
+<h3 id="org33602de"><a href="https://github.com/DarthFennec/highlight-indent-guides">Highlight Indent Guides</a></h3>
+<div class="outline-text-3" id="text-org33602de">
 <p>
 Indentation highlights via <code>font-lock</code>
 </p>
@@ -2158,7 +2034,6 @@ Indentation highlights via <code>font-lock</code>
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #8c8c8c;">(</span><span style="color: #cc6666; font-weight: bold;">use-package</span> <span style="color: #d3869b;">highlight-indent-guides</span>
   <span style="color: #fe8019;">:straight</span> t
-  <span style="color: #423a35;">;; </span><span style="color: #7c6f64;">:hook (prog-mode . highlight-indent-guides-mode)</span>
   <span style="color: #fe8019;">:custom</span>
   <span style="color: #93a8c6;">(</span>highlight-indent-guides-method 'character<span style="color: #93a8c6;">)</span>
   <span style="color: #93a8c6;">(</span>highlight-indent-guides-character ?\|<span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
@@ -2168,13 +2043,13 @@ Indentation highlights via <code>font-lock</code>
 </div>
 </div>
 
-<div id="outline-container-orgcb94956" class="outline-2">
-<h2 id="orgcb94956">Editing</h2>
-<div class="outline-text-2" id="text-orgcb94956">
+<div id="outline-container-org5e68e34" class="outline-2">
+<h2 id="org5e68e34">Editing</h2>
+<div class="outline-text-2" id="text-org5e68e34">
 </div>
-<div id="outline-container-org9a5c853" class="outline-3">
-<h3 id="org9a5c853"><a href="https://github.com/larstvei/Focus">Focus</a></h3>
-<div class="outline-text-3" id="text-org9a5c853">
+<div id="outline-container-org575ccb6" class="outline-3">
+<h3 id="org575ccb6"><a href="https://github.com/larstvei/Focus">Focus</a></h3>
+<div class="outline-text-3" id="text-org575ccb6">
 <p>
 Dim the font color of text in surrounding paragraphs.
 </p>
@@ -2193,9 +2068,9 @@ Dim the font color of text in surrounding paragraphs.
 </div>
 </div>
 </div>
-<div id="outline-container-org33a85ec" class="outline-3">
-<h3 id="org33a85ec"><a href="https://elpa.gnu.org/packages/undo-tree.html">Undo-tree</a></h3>
-<div class="outline-text-3" id="text-org33a85ec">
+<div id="outline-container-org40bc81f" class="outline-3">
+<h3 id="org40bc81f"><a href="https://elpa.gnu.org/packages/undo-tree.html">Undo-tree</a></h3>
+<div class="outline-text-3" id="text-org40bc81f">
 <p>
 Branching tree of changes made in a file.
 </p>
@@ -2211,9 +2086,9 @@ Branching tree of changes made in a file.
 </div>
 </div>
 </div>
-<div id="outline-container-org6f9c977" class="outline-3">
-<h3 id="org6f9c977"><a href="https://github.com/gregsexton/origami.el">Origami</a></h3>
-<div class="outline-text-3" id="text-org6f9c977">
+<div id="outline-container-orgd9933bb" class="outline-3">
+<h3 id="orgd9933bb"><a href="https://github.com/gregsexton/origami.el">Origami</a></h3>
+<div class="outline-text-3" id="text-orgd9933bb">
 <p>
 A text folding minor mode for Emacs.
 With this minor mode enabled, you can collapse and expand regions of text.
@@ -2232,13 +2107,13 @@ With this minor mode enabled, you can collapse and expand regions of text.
 </div>
 </div>
 
-<div id="outline-container-org3a26acf" class="outline-2">
-<h2 id="org3a26acf">Templates</h2>
-<div class="outline-text-2" id="text-org3a26acf">
+<div id="outline-container-org2c912ca" class="outline-2">
+<h2 id="org2c912ca">Templates</h2>
+<div class="outline-text-2" id="text-org2c912ca">
 </div>
-<div id="outline-container-orgc24420b" class="outline-3">
-<h3 id="orgc24420b"><a href="https://github.com/joaotavora/yasnippet">Yasnippet</a></h3>
-<div class="outline-text-3" id="text-orgc24420b">
+<div id="outline-container-org64504fb" class="outline-3">
+<h3 id="org64504fb"><a href="https://github.com/joaotavora/yasnippet">Yasnippet</a></h3>
+<div class="outline-text-3" id="text-org64504fb">
 <p>
 A snippet template system.
 </p>
@@ -2280,9 +2155,9 @@ Solve conflicts between company-mode and yasnippet-mode.
 </div>
 </div>
 
-<div id="outline-container-org11447e9" class="outline-3">
-<h3 id="org11447e9"><a href="https://github.com/AndreaCrotti/yasnippet-snippets">Yasnippet/snippets</a></h3>
-<div class="outline-text-3" id="text-org11447e9">
+<div id="outline-container-org9411331" class="outline-3">
+<h3 id="org9411331"><a href="https://github.com/AndreaCrotti/yasnippet-snippets">Yasnippet/snippets</a></h3>
+<div class="outline-text-3" id="text-org9411331">
 <p>
 A collection of <code>yasnippet</code> snippets for many languages
 </p>
@@ -2297,13 +2172,13 @@ A collection of <code>yasnippet</code> snippets for many languages
 </div>
 </div>
 
-<div id="outline-container-orgde24aed" class="outline-2">
-<h2 id="orgde24aed">Discord Presence</h2>
-<div class="outline-text-2" id="text-orgde24aed">
+<div id="outline-container-orgccc6f13" class="outline-2">
+<h2 id="orgccc6f13">Discord Presence</h2>
+<div class="outline-text-2" id="text-orgccc6f13">
 </div>
-<div id="outline-container-org51518e8" class="outline-3">
-<h3 id="org51518e8"><a href="https://github.com/Mstrodl/elcord">elcord</a></h3>
-<div class="outline-text-3" id="text-org51518e8">
+<div id="outline-container-org235b791" class="outline-3">
+<h3 id="org235b791"><a href="https://github.com/Mstrodl/elcord">elcord</a></h3>
+<div class="outline-text-3" id="text-org235b791">
 <p>
 Discord rich presence for emacs.
 </p>
@@ -2325,7 +2200,7 @@ Discord rich presence for emacs.
 <div id="postamble" class="status">
 <p class="date">Date: 2020-02-01 sáb 00:00</p>
 <p class="author">Author: Bruno Coimbra (b-coimbra)</p>
-<p class="date">Created: 2022-07-04 seg 21:17</p>
+<p class="date">Created: 2022-07-10 dom 08:29</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
