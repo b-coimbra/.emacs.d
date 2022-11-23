@@ -538,12 +538,13 @@
      (use-package evil
        :straight t
        :demand t
+       :init
+       (setq
+        evil-want-keybinding nil
+        evil-want-integration t)
        :custom
-       (evil-want-keybinding nil)
        (evil-want-C-u-scroll t)
        (evil-want-C-i-jump nil)
-       :init
-       (setq evil-want-integration t)
        :config
        (evil-mode 1))
    #+end_src
@@ -915,7 +916,9 @@
 
    #+begin_src emacs-lisp
      (use-package treemacs-evil
-       :straight t)
+       :straight t
+       :demand t
+       :after treemacs evil)
    #+end_src
 
    =treemacs-magit= is a small utility package to fill the small gaps left
