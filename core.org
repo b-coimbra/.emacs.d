@@ -458,7 +458,7 @@
            (,(all-the-icons-faicon "refresh" :height 1.1 :v-adjust 0.0)
             "Update"
             "Update Megumacs"
-            (lambda (&rest _) (update-packages)) warning "" " |")
+            (lambda (&rest _) (straight-pull-all)) warning "" " |")
            (,(all-the-icons-faicon "flag" :height 1.1 :v-adjust 0.0) nil
             "Report a BUG"
             (lambda (&rest _) (browse-url "https://github.com/b-coimbra/.emacs.d/issues/new")) error "" ""))
