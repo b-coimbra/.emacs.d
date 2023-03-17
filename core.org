@@ -538,12 +538,12 @@
      (use-package evil
        :straight t
        :demand t
+       :init
+       (setq evil-want-keybinding nil
+             evil-want-integration t)
        :custom
-       (evil-want-keybinding nil)
        (evil-want-C-u-scroll t)
        (evil-want-C-i-jump nil)
-       :init
-       (setq evil-want-integration t)
        :config
        (evil-mode 1))
    #+end_src
@@ -599,9 +599,11 @@
 
    #+begin_src emacs-lisp
      (use-package evil-collection
-       :after evil
-       :demand t
        :straight t
+       :demand t
+       :after evil
+       :custom
+       (evil-collection-minibuffer-setup t)
        :config
        (evil-collection-init))
    #+end_src
@@ -625,7 +627,8 @@
    #+begin_src emacs-lisp
      (use-package org
        :init
-       (setq org-startup-folded t)
+       (setq org-startup-folded t
+             org-element-use-cache nil)
        :straight t
        :config
        ;; prettify
@@ -900,6 +903,7 @@
    #+begin_src emacs-lisp
      (use-package treemacs
        :straight t
+       :after evil
        :general
        (nmap
          :prefix globals--leader-key
@@ -915,6 +919,7 @@
 
    #+begin_src emacs-lisp
      (use-package treemacs-evil
+       :after evil
        :straight t)
    #+end_src
 
