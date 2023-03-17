@@ -458,7 +458,7 @@
            (,(all-the-icons-faicon "refresh" :height 1.1 :v-adjust 0.0)
             "Update"
             "Update Megumacs"
-            (lambda (&rest _) (update-packages)) warning "" " |")
+            (lambda (&rest _) (straight-pull-all)) warning "" " |")
            (,(all-the-icons-faicon "flag" :height 1.1 :v-adjust 0.0) nil
             "Report a BUG"
             (lambda (&rest _) (browse-url "https://github.com/b-coimbra/.emacs.d/issues/new")) error "" ""))
@@ -539,8 +539,14 @@
        :straight t
        :demand t
        :init
+<<<<<<< HEAD
        (setq evil-want-keybinding nil
              evil-want-integration t)
+=======
+       (setq
+        evil-want-keybinding nil
+        evil-want-integration t)
+>>>>>>> origin/master
        :custom
        (evil-want-C-u-scroll t)
        (evil-want-C-i-jump nil)
@@ -919,8 +925,14 @@
 
    #+begin_src emacs-lisp
      (use-package treemacs-evil
+<<<<<<< HEAD
        :after evil
        :straight t)
+=======
+       :straight t
+       :demand t
+       :after treemacs evil)
+>>>>>>> origin/master
    #+end_src
 
    =treemacs-magit= is a small utility package to fill the small gaps left
