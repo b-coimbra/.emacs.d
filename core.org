@@ -539,17 +539,12 @@
        :straight t
        :demand t
        :init
-<<<<<<< HEAD
        (setq evil-want-keybinding nil
              evil-want-integration t)
-=======
-       (setq
-        evil-want-keybinding nil
-        evil-want-integration t)
->>>>>>> origin/master
        :custom
        (evil-want-C-u-scroll t)
        (evil-want-C-i-jump nil)
+       (evil-set-undo-system 'undo-redo)
        :config
        (evil-mode 1))
    #+end_src
@@ -925,14 +920,9 @@
 
    #+begin_src emacs-lisp
      (use-package treemacs-evil
-<<<<<<< HEAD
-       :after evil
-       :straight t)
-=======
        :straight t
        :demand t
        :after treemacs evil)
->>>>>>> origin/master
    #+end_src
 
    =treemacs-magit= is a small utility package to fill the small gaps left
@@ -1177,7 +1167,7 @@
    #+begin_src emacs-lisp
      (use-package ivy
        :straight t
-       :defer 1
+       :demand t
        :general
        (nmap
          :prefix globals--leader-key
@@ -1207,6 +1197,7 @@
    #+begin_src emacs-lisp
      (use-package counsel
        :straight t
+       :after avy
        :general
        (nmap
          :prefix globals--leader-key
