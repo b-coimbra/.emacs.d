@@ -1197,7 +1197,7 @@
    #+begin_src emacs-lisp
      (use-package counsel
        :straight t
-       :after avy
+       :after ivy
        :general
        (nmap
          :prefix globals--leader-key
