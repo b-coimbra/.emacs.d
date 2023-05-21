@@ -609,6 +609,19 @@
        (evil-collection-init))
    #+end_src
 
+** [[https://github.com/Andrew-William-Smith/evil-fringe-mark/][evil-fringe-mark]]
+
+   #+begin_src emacs-lisp
+     (use-package evil-fringe-mark
+       :straight t
+       :after evil
+       :hook prog-mode
+       :custom
+       (setq-default evil-fringe-mark-show-special t)
+       :config
+       (evil-fringe-mark-mode))
+   #+end_src
+
 * Calendar
 ** [[https://github.com/kiwanami/emacs-calfw/][calfw]]
 
