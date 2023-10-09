@@ -395,6 +395,7 @@
        (doom-modeline-major-mode-icon nil)
        (doom-modeline-major-mode-color-icon nil)
        (doom-modeline-icon (display-graphic-p))
+       (doom-modeline-modal-modern-icon nil)
        (doom-modeline-buffer-modification-icon nil)
        (doom-modeline-flycheck-icon nil)
        (doom-modeline-checker-simple-format t)
