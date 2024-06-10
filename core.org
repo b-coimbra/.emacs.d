@@ -547,9 +547,9 @@
        :custom
        (evil-want-C-u-scroll t)
        (evil-want-C-i-jump nil)
-       (evil-set-undo-system 'undo-redo)
        :config
-       (evil-mode 1))
+       (evil-mode 1)
+       (evil-set-undo-system 'undo-redo))
    #+end_src
 
 ** [[https://github.com/syl20bnr/evil-escape][evil-escape]]
