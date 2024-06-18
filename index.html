@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-06-09 Sun 22:14 -->
+<!-- 2024-06-18 Tue 13:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>MEGUMACS @dotfiles @emacs</title>
@@ -219,172 +219,174 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgd776ea2">Introduction</a></li>
-<li><a href="#orgd59a710">Installation</a></li>
-<li><a href="#org2d25490">Bootstrap</a>
+<li><a href="#org0664075">Introduction</a></li>
+<li><a href="#org55985aa">Installation</a></li>
+<li><a href="#org4c98e60">Bootstrap</a>
 <ul>
-<li><a href="#orgae2b250">Globals</a></li>
-<li><a href="#orgf2567ac">Better defaults</a></li>
-<li><a href="#orgb9b84d6">Load <code>.custom.el</code></a></li>
-<li><a href="#org168cd18">Load <code>config.el</code></a></li>
-<li><a href="#orga4362f1">Load custom themes</a></li>
-<li><a href="#orgdf96e59">No littering</a></li>
-<li><a href="#orgf2632c5">Performance</a></li>
-<li><a href="#org8b3a7d0">Utilities</a></li>
+<li><a href="#org254962c">Globals</a></li>
+<li><a href="#org9f51572">Better defaults</a></li>
+<li><a href="#orgada5c11">Load <code>.custom.el</code></a></li>
+<li><a href="#org15b1fd3">Load <code>config.el</code></a></li>
+<li><a href="#org1213ae4">Load custom themes</a></li>
+<li><a href="#org5ab1412">No littering</a></li>
+<li><a href="#orgc4db1d3">Performance</a></li>
+<li><a href="#org353a253">Utilities</a></li>
 </ul>
 </li>
-<li><a href="#orge46fcf1">Font</a>
+<li><a href="#orgc2bb35b">Font</a>
 <ul>
-<li><a href="#org3c78d66">Ligatures</a></li>
-<li><a href="#org623c86a">Emoji</a></li>
+<li><a href="#orga417de2">Ligatures</a></li>
+<li><a href="#org8605b48">Emoji</a></li>
 </ul>
 </li>
-<li><a href="#org9541089">Themes</a>
+<li><a href="#org384adc1">Themes</a>
 <ul>
-<li><a href="#org43a4565">Autothemer</a></li>
-<li><a href="#org4d91f63">Mirwood theme</a></li>
-<li><a href="#org7b6fc17">Kaolin themes</a></li>
-<li><a href="#orge54cd10">Doom themes</a></li>
-<li><a href="#org97ccbfe">Theme customization</a></li>
+<li><a href="#org5c733b7">Autothemer</a></li>
+<li><a href="#org3828249">Mirwood theme</a></li>
+<li><a href="#org673fb29">Kaolin themes</a></li>
+<li><a href="#org4e3f862">Doom themes</a></li>
+<li><a href="#org49ff0a0">Theme customization</a></li>
 </ul>
 </li>
-<li><a href="#org9de48f8">Appearance</a>
+<li><a href="#org3a882de">Appearance</a>
 <ul>
-<li><a href="#org7a18712">Nerd icons</a></li>
-<li><a href="#org83f0341">Solaire mode</a></li>
-<li><a href="#org510db46">Rainbow-mode</a></li>
-<li><a href="#orgdd031d2">Rainbow delimiters</a></li>
+<li><a href="#orgd9b3762">Nerd icons</a></li>
+<li><a href="#org3a98439">Solaire mode</a></li>
+<li><a href="#org04813e8">Rainbow-mode</a></li>
+<li><a href="#org9398c0d">Rainbow delimiters</a></li>
+<li><a href="#orgc0c3bf9">All the icons</a></li>
 </ul>
 </li>
-<li><a href="#org552cc6c">Modeline</a>
+<li><a href="#org1b53ce4">Modeline</a>
 <ul>
-<li><a href="#org813f5ff">Doom-modeline</a></li>
-<li><a href="#orge53d38c">Spaceline</a></li>
+<li><a href="#orgf5a077f">Doom-modeline</a></li>
+<li><a href="#org7709497">Spaceline</a></li>
 </ul>
 </li>
-<li><a href="#org2f5a694">Dashboard</a>
+<li><a href="#org04a9a05">Dashboard</a>
 <ul>
-<li><a href="#org8ef7779">emacs-dashboard</a></li>
+<li><a href="#orgea8d9c1">emacs-dashboard</a></li>
 </ul>
 </li>
-<li><a href="#orga283b70">Auto Completion</a>
+<li><a href="#org28bea12">Auto Completion</a>
 <ul>
-<li><a href="#org6bd239b">Company</a></li>
-<li><a href="#org26c3512">company-jedi</a></li>
+<li><a href="#orgf0cad36">Company</a></li>
+<li><a href="#org5600202">company-jedi</a></li>
 </ul>
 </li>
-<li><a href="#org2660e8f">Evil</a>
+<li><a href="#org99f32e5">Evil</a>
 <ul>
-<li><a href="#orga14fff4">evil-mode</a></li>
-<li><a href="#org9a7bedb">evil-escape</a></li>
-<li><a href="#org7f62049">evil-surround</a></li>
-<li><a href="#orge118fb1">evil-mc</a></li>
-<li><a href="#orgb40e27c">evil-commentary</a></li>
-<li><a href="#orge517c9b">evil-collection</a></li>
+<li><a href="#org5b0c4a7">evil-mode</a></li>
+<li><a href="#orgaebee25">evil-escape</a></li>
+<li><a href="#org02d60a4">evil-surround</a></li>
+<li><a href="#orgb9d0145">evil-mc</a></li>
+<li><a href="#orgded2c19">evil-commentary</a></li>
+<li><a href="#orga167cec">evil-collection</a></li>
+<li><a href="#orgb3faa63">evil-fringe-mark</a></li>
 </ul>
 </li>
-<li><a href="#org0eb8b8c">Calendar</a>
+<li><a href="#orgd60104f">Calendar</a>
 <ul>
-<li><a href="#org0dccc94">calfw</a></li>
+<li><a href="#org26be822">calfw</a></li>
 </ul>
 </li>
-<li><a href="#orgb29a9df">Org-mode</a>
+<li><a href="#org25ed78d">Org-mode</a>
 <ul>
-<li><a href="#orgef47d65">org</a></li>
-<li><a href="#orgf779b20">ox-reveal</a></li>
-<li><a href="#org753a583">calfw-org</a></li>
-<li><a href="#org201ac10">htmlize</a></li>
+<li><a href="#org3c5366e">org</a></li>
+<li><a href="#org4a05672">ox-reveal</a></li>
+<li><a href="#org5ffdaf4">calfw-org</a></li>
+<li><a href="#orgeb662a3">htmlize</a></li>
 </ul>
 </li>
-<li><a href="#org52a1b10">Keybindings</a>
+<li><a href="#org8bfed7a">Keybindings</a>
 <ul>
-<li><a href="#org2ef93b7">General</a></li>
-<li><a href="#org06ffe75">Which-key</a></li>
+<li><a href="#org9f31d29">General</a></li>
+<li><a href="#org7e224ae">Which-key</a></li>
 </ul>
 </li>
-<li><a href="#orgea1b7a0">Source Control</a>
+<li><a href="#orgb210f10">Source Control</a>
 <ul>
-<li><a href="#org6f2f49d">Magit</a></li>
-<li><a href="#org7fc3356">Git Gutter</a></li>
+<li><a href="#org10e048b">Magit</a></li>
+<li><a href="#org55e6050">Git Gutter</a></li>
 </ul>
 </li>
-<li><a href="#orgc986a5a">Encryption</a></li>
-<li><a href="#org524fda2">File Management</a>
+<li><a href="#org7e1e8ac">Encryption</a></li>
+<li><a href="#org327cf16">File Management</a>
 <ul>
-<li><a href="#org9069c6f">Ranger</a></li>
+<li><a href="#org39d9173">Ranger</a></li>
 </ul>
 </li>
-<li><a href="#orgdfb8c29">Project Management</a>
+<li><a href="#org427d1d3">Project Management</a>
 <ul>
-<li><a href="#org9308b88">Treemacs</a></li>
-<li><a href="#org2fab732">Projectile</a></li>
-<li><a href="#org089e1e8">projectile/counsel</a></li>
+<li><a href="#orgdacd0e1">Treemacs</a></li>
+<li><a href="#orgb724432">Projectile</a></li>
+<li><a href="#org272efd3">projectile/counsel</a></li>
 </ul>
 </li>
-<li><a href="#orgf275603">Syntax Checking</a>
+<li><a href="#org8b22ed9">Syntax Checking</a>
 <ul>
-<li><a href="#orgf6cce11">Flycheck</a></li>
+<li><a href="#org2e9f752">Flycheck</a></li>
 </ul>
 </li>
-<li><a href="#org99ee193">Language Modes</a>
+<li><a href="#org667b4d0">Language Modes</a>
 <ul>
-<li><a href="#orgdae2697">Rust</a></li>
-<li><a href="#org2197e06">Ruby</a></li>
-<li><a href="#orgbaea031">Javascript</a></li>
-<li><a href="#org2a3cd30">RSJX</a></li>
-<li><a href="#org88053ad">Typescript</a></li>
-<li><a href="#org9d0a872">Web</a></li>
-<li><a href="#org4b72394">Python</a></li>
+<li><a href="#org7a5408c">Rust</a></li>
+<li><a href="#org9ae37fb">Ruby</a></li>
+<li><a href="#org55fe5f9">Javascript</a></li>
+<li><a href="#org48832a0">RSJX</a></li>
+<li><a href="#org1eaed47">Typescript</a></li>
+<li><a href="#org6f35fee">Web</a></li>
+<li><a href="#org7ff5582">Python</a></li>
 </ul>
 </li>
-<li><a href="#orgff9e23f">Language Server Protocol</a>
+<li><a href="#org087dcef">Language Server Protocol</a>
 <ul>
-<li><a href="#org4c09c71">LSP</a></li>
-<li><a href="#org1287af5">LSP-UI</a></li>
+<li><a href="#org40ba5f4">LSP</a></li>
+<li><a href="#org3f13a20">LSP-UI</a></li>
 </ul>
 </li>
-<li><a href="#org07c11bb">Buffers and Windows</a>
+<li><a href="#org98a8f21">Buffers and Windows</a>
 <ul>
-<li><a href="#orgbb08919">Winum</a></li>
-<li><a href="#org7731488">Eyebrowse</a></li>
-<li><a href="#org6004bbb">windmove</a></li>
-<li><a href="#org8de0d33">Focus on newly created windows</a></li>
+<li><a href="#org54c2ddb">Winum</a></li>
+<li><a href="#orgdd19eb0">Eyebrowse</a></li>
+<li><a href="#org8d99c33">windmove</a></li>
+<li><a href="#orgada27ff">Focus on newly created windows</a></li>
 </ul>
 </li>
-<li><a href="#org5e3fbca">Navigation</a>
+<li><a href="#org207e731">Navigation</a>
 <ul>
-<li><a href="#orgbe364b6">Ivy</a></li>
-<li><a href="#org5f2a664">Ivy/Counsel</a></li>
-<li><a href="#orga8c9b79">Highlight Indent Guides</a></li>
+<li><a href="#orgd259c52">Ivy</a></li>
+<li><a href="#org0b4f183">Ivy/Counsel</a></li>
+<li><a href="#orgd5aacdb">Highlight Indent Guides</a></li>
 </ul>
 </li>
-<li><a href="#org6176425">Editing</a>
+<li><a href="#org8ee8672">Editing</a>
 <ul>
-<li><a href="#org98028f4">Focus</a></li>
-<li><a href="#org5c5628f">Undo-tree</a></li>
-<li><a href="#org9fab1b6">Origami</a></li>
+<li><a href="#org5436b44">Focus</a></li>
+<li><a href="#org05bd3d9">Undo-tree</a></li>
+<li><a href="#org26c97af">Origami</a></li>
 </ul>
 </li>
-<li><a href="#orgfa41d37">Templates</a>
+<li><a href="#org53d1208">Templates</a>
 <ul>
-<li><a href="#org0c47b97">Yasnippet</a></li>
-<li><a href="#org9321d39">Yasnippet/snippets</a></li>
+<li><a href="#org57329c5">Yasnippet</a></li>
+<li><a href="#orgeade018">Yasnippet/snippets</a></li>
 </ul>
 </li>
-<li><a href="#org1afe61a">Discord Presence</a>
+<li><a href="#orgd6aa1f3">Discord Presence</a>
 <ul>
-<li><a href="#orgf669540">elcord</a></li>
+<li><a href="#org19d5d9a">elcord</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgd776ea2" class="outline-2">
-<h2 id="orgd776ea2">Introduction</h2>
-<div class="outline-text-2" id="text-orgd776ea2">
+<div id="outline-container-org0664075" class="outline-2">
+<h2 id="org0664075">Introduction</h2>
+<div class="outline-text-2" id="text-org0664075">
 <div class="org-center">
 
-<div id="org3f853e2" class="figure">
+<div id="org2b0f6f0" class="figure">
 <p><img src="./etc/banners/megumacs2.png" alt="megumacs2.png" />
 </p>
 </div>
@@ -415,9 +417,9 @@ An infinite number of monkeys typing into GNU Emacs would never make a good prog
 </blockquote>
 </div>
 </div>
-<div id="outline-container-orgd59a710" class="outline-2">
-<h2 id="orgd59a710">Installation</h2>
-<div class="outline-text-2" id="text-orgd59a710">
+<div id="outline-container-org55985aa" class="outline-2">
+<h2 id="org55985aa">Installation</h2>
+<div class="outline-text-2" id="text-org55985aa">
 <ol class="org-ol">
 <li>Clone into <b>.emacs.d</b>: <code>$ git clone https://github.com/b-coimbra/.emacs.d.git ~/.emacs.d</code></li>
 <li>Install <a href="https://github.com/rainstormstudio/nerd-icons.el/">nerd-icons</a> fonts: <code>M-x nerd-icons-install-fonts</code></li>
@@ -427,13 +429,13 @@ An infinite number of monkeys typing into GNU Emacs would never make a good prog
 </ol>
 </div>
 </div>
-<div id="outline-container-org2d25490" class="outline-2">
-<h2 id="org2d25490">Bootstrap</h2>
-<div class="outline-text-2" id="text-org2d25490">
+<div id="outline-container-org4c98e60" class="outline-2">
+<h2 id="org4c98e60">Bootstrap</h2>
+<div class="outline-text-2" id="text-org4c98e60">
 </div>
-<div id="outline-container-orgae2b250" class="outline-3">
-<h3 id="orgae2b250">Globals</h3>
-<div class="outline-text-3" id="text-orgae2b250">
+<div id="outline-container-org254962c" class="outline-3">
+<h3 id="org254962c">Globals</h3>
+<div class="outline-text-3" id="text-org254962c">
 <p>
 Global variables to easily customize portions of Megumacs.
 </p>
@@ -450,9 +452,9 @@ Global variables to easily customize portions of Megumacs.
 </div>
 </div>
 </div>
-<div id="outline-container-orgf2567ac" class="outline-3">
-<h3 id="orgf2567ac">Better defaults</h3>
-<div class="outline-text-3" id="text-orgf2567ac">
+<div id="outline-container-org9f51572" class="outline-3">
+<h3 id="org9f51572">Better defaults</h3>
+<div class="outline-text-3" id="text-org9f51572">
 <p>
 Disable mouse and tooltips:
 </p>
@@ -566,9 +568,9 @@ Default to utf-8 encoding.
 </div>
 </div>
 </div>
-<div id="outline-container-orgb9b84d6" class="outline-3">
-<h3 id="orgb9b84d6">Load <code>.custom.el</code></h3>
-<div class="outline-text-3" id="text-orgb9b84d6">
+<div id="outline-container-orgada5c11" class="outline-3">
+<h3 id="orgada5c11">Load <code>.custom.el</code></h3>
+<div class="outline-text-3" id="text-orgada5c11">
 <p>
 One is able to use the customization interface that is bundled within Emacs. It
 is meant to help people who are not familiar with Emacs Lisp in the
@@ -592,9 +594,9 @@ loaded, if existing.
 </div>
 </div>
 </div>
-<div id="outline-container-org168cd18" class="outline-3">
-<h3 id="org168cd18">Load <code>config.el</code></h3>
-<div class="outline-text-3" id="text-org168cd18">
+<div id="outline-container-org15b1fd3" class="outline-3">
+<h3 id="org15b1fd3">Load <code>config.el</code></h3>
+<div class="outline-text-3" id="text-org15b1fd3">
 <p>
 Whenever the base <code>core.org</code> file is updated, all the custom user settings are wiped out.
 </p>
@@ -611,9 +613,9 @@ To prevent this, the user may define permanent settings in the <code>config.org<
 </div>
 </div>
 </div>
-<div id="outline-container-orga4362f1" class="outline-3">
-<h3 id="orga4362f1">Load custom themes</h3>
-<div class="outline-text-3" id="text-orga4362f1">
+<div id="outline-container-org1213ae4" class="outline-3">
+<h3 id="org1213ae4">Load custom themes</h3>
+<div class="outline-text-3" id="text-org1213ae4">
 <p>
 Custom themes location.
 </p>
@@ -624,9 +626,9 @@ Custom themes location.
 </div>
 </div>
 </div>
-<div id="outline-container-orgdf96e59" class="outline-3">
-<h3 id="orgdf96e59">No littering</h3>
-<div class="outline-text-3" id="text-orgdf96e59">
+<div id="outline-container-org5ab1412" class="outline-3">
+<h3 id="org5ab1412">No littering</h3>
+<div class="outline-text-3" id="text-org5ab1412">
 <p>
 Keep <code>~/.emacs.d</code> clean.
 </p>
@@ -639,9 +641,9 @@ Keep <code>~/.emacs.d</code> clean.
 </div>
 </div>
 </div>
-<div id="outline-container-orgf2632c5" class="outline-3">
-<h3 id="orgf2632c5">Performance</h3>
-<div class="outline-text-3" id="text-orgf2632c5">
+<div id="outline-container-orgc4db1d3" class="outline-3">
+<h3 id="orgc4db1d3">Performance</h3>
+<div class="outline-text-3" id="text-orgc4db1d3">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #8c8c8c;">(</span><span style="color: #cc6666; font-weight: bold;">use-package</span> <span style="color: #d3869b;">gcmh</span>
   <span style="color: #fe8019;">:demand</span> t
@@ -652,9 +654,9 @@ Keep <code>~/.emacs.d</code> clean.
 </div>
 </div>
 </div>
-<div id="outline-container-org8b3a7d0" class="outline-3">
-<h3 id="org8b3a7d0">Utilities</h3>
-<div class="outline-text-3" id="text-org8b3a7d0">
+<div id="outline-container-org353a253" class="outline-3">
+<h3 id="org353a253">Utilities</h3>
+<div class="outline-text-3" id="text-org353a253">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #8c8c8c;">(</span><span style="color: #cc6666; font-weight: bold;">defun</span> <span style="color: #777777;">open-config-file</span> <span style="color: #93a8c6;">()</span>
   <span style="color: #93a8c6;">(</span><span style="color: #cc6666; font-weight: bold;">interactive</span><span style="color: #93a8c6;">)</span>
@@ -664,9 +666,9 @@ Keep <code>~/.emacs.d</code> clean.
 </div>
 </div>
 </div>
-<div id="outline-container-orge46fcf1" class="outline-2">
-<h2 id="orge46fcf1">Font</h2>
-<div class="outline-text-2" id="text-orge46fcf1">
+<div id="outline-container-orgc2bb35b" class="outline-2">
+<h2 id="orgc2bb35b">Font</h2>
+<div class="outline-text-2" id="text-orgc2bb35b">
 <p>
 Font family used by Emacs.
 </p>
@@ -688,9 +690,9 @@ Nice looking fonts:
 </pre>
 </div>
 </div>
-<div id="outline-container-org3c78d66" class="outline-3">
-<h3 id="org3c78d66">Ligatures</h3>
-<div class="outline-text-3" id="text-org3c78d66">
+<div id="outline-container-orga417de2" class="outline-3">
+<h3 id="orga417de2">Ligatures</h3>
+<div class="outline-text-3" id="text-orga417de2">
 <p>
 Rip off <b>only</b> the ligatures from the Fira Code font using the <a href="https://github.com/jming422/fira-code-mode">fira-code-mode</a> minor mode.
 </p>
@@ -710,9 +712,9 @@ Requires installation of the <a href="https://github.com/tonsky/FiraCode/files/4
 </div>
 </div>
 </div>
-<div id="outline-container-org623c86a" class="outline-3">
-<h3 id="org623c86a">Emoji</h3>
-<div class="outline-text-3" id="text-org623c86a">
+<div id="outline-container-org8605b48" class="outline-3">
+<h3 id="org8605b48">Emoji</h3>
+<div class="outline-text-3" id="text-org8605b48">
 <p>
 Set up emoji rendering, requires installation of the <a href="https://github.com/googlefonts/noto-emoji">Noto Emoji</a> font for Linux.
 </p>
@@ -732,13 +734,13 @@ Set up emoji rendering, requires installation of the <a href="https://github.com
 </div>
 </div>
 </div>
-<div id="outline-container-org9541089" class="outline-2">
-<h2 id="org9541089">Themes</h2>
-<div class="outline-text-2" id="text-org9541089">
+<div id="outline-container-org384adc1" class="outline-2">
+<h2 id="org384adc1">Themes</h2>
+<div class="outline-text-2" id="text-org384adc1">
 </div>
-<div id="outline-container-org43a4565" class="outline-3">
-<h3 id="org43a4565"><a href="https://github.com/jasonm23/autothemer">Autothemer</a></h3>
-<div class="outline-text-3" id="text-org43a4565">
+<div id="outline-container-org5c733b7" class="outline-3">
+<h3 id="org5c733b7"><a href="https://github.com/jasonm23/autothemer">Autothemer</a></h3>
+<div class="outline-text-3" id="text-org5c733b7">
 <p>
 Conveniently create Emacs themes.
 </p>
@@ -750,9 +752,9 @@ Conveniently create Emacs themes.
 </div>
 </div>
 </div>
-<div id="outline-container-org4d91f63" class="outline-3">
-<h3 id="org4d91f63"><a href="https://github.com/b-coimbra/emacs-mirwood-theme">Mirwood theme</a></h3>
-<div class="outline-text-3" id="text-org4d91f63">
+<div id="outline-container-org3828249" class="outline-3">
+<h3 id="org3828249"><a href="https://github.com/b-coimbra/emacs-mirwood-theme">Mirwood theme</a></h3>
+<div class="outline-text-3" id="text-org3828249">
 <p>
 A pleaseant theme with earthy colors.
 </p>
@@ -765,9 +767,9 @@ A pleaseant theme with earthy colors.
 </div>
 </div>
 </div>
-<div id="outline-container-org7b6fc17" class="outline-3">
-<h3 id="org7b6fc17"><a href="https://github.com/ogdenwebb/emacs-kaolin-themes">Kaolin themes</a></h3>
-<div class="outline-text-3" id="text-org7b6fc17">
+<div id="outline-container-org673fb29" class="outline-3">
+<h3 id="org673fb29"><a href="https://github.com/ogdenwebb/emacs-kaolin-themes">Kaolin themes</a></h3>
+<div class="outline-text-3" id="text-org673fb29">
 <p>
 Set of eye pleasing themes for GNU Emacs. Supports both GUI and terminal.
 </p>
@@ -785,9 +787,9 @@ Set of eye pleasing themes for GNU Emacs. Supports both GUI and terminal.
 </div>
 </div>
 </div>
-<div id="outline-container-orge54cd10" class="outline-3">
-<h3 id="orge54cd10"><a href="https://github.com/hlissner/emacs-doom-themes">Doom themes</a></h3>
-<div class="outline-text-3" id="text-orge54cd10">
+<div id="outline-container-org4e3f862" class="outline-3">
+<h3 id="org4e3f862"><a href="https://github.com/hlissner/emacs-doom-themes">Doom themes</a></h3>
+<div class="outline-text-3" id="text-org4e3f862">
 <p>
 An opinionated pack of modern color-themes
 </p>
@@ -807,9 +809,9 @@ An opinionated pack of modern color-themes
 </div>
 </div>
 </div>
-<div id="outline-container-org97ccbfe" class="outline-3">
-<h3 id="org97ccbfe">Theme customization</h3>
-<div class="outline-text-3" id="text-org97ccbfe">
+<div id="outline-container-org49ff0a0" class="outline-3">
+<h3 id="org49ff0a0">Theme customization</h3>
+<div class="outline-text-3" id="text-org49ff0a0">
 <p>
 Persistent theme customization.
 </p>
@@ -821,13 +823,13 @@ Persistent theme customization.
 </div>
 </div>
 </div>
-<div id="outline-container-org9de48f8" class="outline-2">
-<h2 id="org9de48f8">Appearance</h2>
-<div class="outline-text-2" id="text-org9de48f8">
+<div id="outline-container-org3a882de" class="outline-2">
+<h2 id="org3a882de">Appearance</h2>
+<div class="outline-text-2" id="text-org3a882de">
 </div>
-<div id="outline-container-org7a18712" class="outline-3">
-<h3 id="org7a18712"><a href="https://github.com/rainstormstudio/nerd-icons.el">Nerd icons</a></h3>
-<div class="outline-text-3" id="text-org7a18712">
+<div id="outline-container-orgd9b3762" class="outline-3">
+<h3 id="orgd9b3762"><a href="https://github.com/rainstormstudio/nerd-icons.el">Nerd icons</a></h3>
+<div class="outline-text-3" id="text-orgd9b3762">
 <p>
 Adds fancy icons to emacs.
 </p>
@@ -843,9 +845,9 @@ Adds fancy icons to emacs.
 </div>
 </div>
 </div>
-<div id="outline-container-org83f0341" class="outline-3">
-<h3 id="org83f0341"><a href="https://github.com/hlissner/emacs-solaire-mode">Solaire mode</a></h3>
-<div class="outline-text-3" id="text-org83f0341">
+<div id="outline-container-org3a98439" class="outline-3">
+<h3 id="org3a98439"><a href="https://github.com/hlissner/emacs-solaire-mode">Solaire mode</a></h3>
+<div class="outline-text-3" id="text-org3a98439">
 <p>
 Gives other windows slightly different background colors (brightness).
 </p>
@@ -858,9 +860,9 @@ Gives other windows slightly different background colors (brightness).
 </div>
 </div>
 </div>
-<div id="outline-container-org510db46" class="outline-3">
-<h3 id="org510db46"><a href="https://elpa.gnu.org/packages/rainbow-mode.html">Rainbow-mode</a></h3>
-<div class="outline-text-3" id="text-org510db46">
+<div id="outline-container-org04813e8" class="outline-3">
+<h3 id="org04813e8"><a href="https://elpa.gnu.org/packages/rainbow-mode.html">Rainbow-mode</a></h3>
+<div class="outline-text-3" id="text-org04813e8">
 <p>
 Colorize color names in buffers.
 </p>
@@ -875,9 +877,9 @@ Colorize color names in buffers.
 </div>
 </div>
 </div>
-<div id="outline-container-orgdd031d2" class="outline-3">
-<h3 id="orgdd031d2"><a href="https://github.com/Fanael/rainbow-delimiters">Rainbow delimiters</a></h3>
-<div class="outline-text-3" id="text-orgdd031d2">
+<div id="outline-container-org9398c0d" class="outline-3">
+<h3 id="org9398c0d"><a href="https://github.com/Fanael/rainbow-delimiters">Rainbow delimiters</a></h3>
+<div class="outline-text-3" id="text-org9398c0d">
 <p>
 "Rainbow parentheses"-like mode which highlights delimiters such as parentheses, brackets or braces according to their depth.
 </p>
@@ -890,14 +892,29 @@ Colorize color names in buffers.
 </div>
 </div>
 </div>
+<div id="outline-container-orgc0c3bf9" class="outline-3">
+<h3 id="orgc0c3bf9"><a href="https://github.com/domtronn/all-the-icons.el">All the icons</a></h3>
+<div class="outline-text-3" id="text-orgc0c3bf9">
+<p>
+A utility package to collect various Icon Fonts and propertize them within Emacs.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: #8c8c8c;">(</span><span style="color: #cc6666; font-weight: bold;">use-package</span> <span style="color: #d3869b;">all-the-icons</span>
+  <span style="color: #fe8019;">:straight</span> t
+  <span style="color: #fe8019;">:if</span> <span style="color: #93a8c6;">(</span>display-graphic-p<span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+</pre>
 </div>
-<div id="outline-container-org552cc6c" class="outline-2">
-<h2 id="org552cc6c">Modeline</h2>
-<div class="outline-text-2" id="text-org552cc6c">
 </div>
-<div id="outline-container-org813f5ff" class="outline-3">
-<h3 id="org813f5ff"><a href="https://github.com/seagle0128/doom-modeline">Doom-modeline</a></h3>
-<div class="outline-text-3" id="text-org813f5ff">
+</div>
+</div>
+<div id="outline-container-org1b53ce4" class="outline-2">
+<h2 id="org1b53ce4">Modeline</h2>
+<div class="outline-text-2" id="text-org1b53ce4">
+</div>
+<div id="outline-container-orgf5a077f" class="outline-3">
+<h3 id="orgf5a077f"><a href="https://github.com/seagle0128/doom-modeline">Doom-modeline</a></h3>
+<div class="outline-text-3" id="text-orgf5a077f">
 <p>
 A fancy and fast mode-line inpsired by minimalism design.
 </p>
@@ -920,9 +937,9 @@ A fancy and fast mode-line inpsired by minimalism design.
 </div>
 </div>
 </div>
-<div id="outline-container-orge53d38c" class="outline-3">
-<h3 id="orge53d38c"><a href="https://github.com/TheBB/spaceline">Spaceline</a></h3>
-<div class="outline-text-3" id="text-orge53d38c">
+<div id="outline-container-org7709497" class="outline-3">
+<h3 id="org7709497"><a href="https://github.com/TheBB/spaceline">Spaceline</a></h3>
+<div class="outline-text-3" id="text-org7709497">
 <p>
 Powerline theme from Spacemacs.
 </p>
@@ -954,13 +971,13 @@ Powerline theme from Spacemacs.
 </div>
 </div>
 </div>
-<div id="outline-container-org2f5a694" class="outline-2">
-<h2 id="org2f5a694">Dashboard</h2>
-<div class="outline-text-2" id="text-org2f5a694">
+<div id="outline-container-org04a9a05" class="outline-2">
+<h2 id="org04a9a05">Dashboard</h2>
+<div class="outline-text-2" id="text-org04a9a05">
 </div>
-<div id="outline-container-org8ef7779" class="outline-3">
-<h3 id="org8ef7779"><a href="https://github.com/emacs-dashboard/emacs-dashboard">emacs-dashboard</a></h3>
-<div class="outline-text-3" id="text-org8ef7779">
+<div id="outline-container-orgea8d9c1" class="outline-3">
+<h3 id="orgea8d9c1"><a href="https://github.com/emacs-dashboard/emacs-dashboard">emacs-dashboard</a></h3>
+<div class="outline-text-3" id="text-orgea8d9c1">
 <p>
 An extensible emacs startup screen showing you what’s most important.
 </p>
@@ -1019,13 +1036,13 @@ An extensible emacs startup screen showing you what’s most important.
 </div>
 </div>
 </div>
-<div id="outline-container-orga283b70" class="outline-2">
-<h2 id="orga283b70">Auto Completion</h2>
-<div class="outline-text-2" id="text-orga283b70">
+<div id="outline-container-org28bea12" class="outline-2">
+<h2 id="org28bea12">Auto Completion</h2>
+<div class="outline-text-2" id="text-org28bea12">
 </div>
-<div id="outline-container-org6bd239b" class="outline-3">
-<h3 id="org6bd239b"><a href="https://github.com/company-mode/company-mode">Company</a></h3>
-<div class="outline-text-3" id="text-org6bd239b">
+<div id="outline-container-orgf0cad36" class="outline-3">
+<h3 id="orgf0cad36"><a href="https://github.com/company-mode/company-mode">Company</a></h3>
+<div class="outline-text-3" id="text-orgf0cad36">
 <p>
 Modular in-buffer completion framework.
 </p>
@@ -1053,9 +1070,9 @@ Modular in-buffer completion framework.
 </pre>
 </div>
 </div>
-<div id="outline-container-org26c3512" class="outline-3">
-<h3 id="org26c3512"><a href="https://github.com/emacsorphanage/company-jedi">company-jedi</a></h3>
-<div class="outline-text-3" id="text-org26c3512">
+<div id="outline-container-org5600202" class="outline-3">
+<h3 id="org5600202"><a href="https://github.com/emacsorphanage/company-jedi">company-jedi</a></h3>
+<div class="outline-text-3" id="text-org5600202">
 <p>
 Company backend for Python jedi.
 </p>
@@ -1075,16 +1092,16 @@ Company backend for Python jedi.
 </div>
 </div>
 </div>
-<div id="outline-container-org2660e8f" class="outline-2">
-<h2 id="org2660e8f">Evil</h2>
-<div class="outline-text-2" id="text-org2660e8f">
+<div id="outline-container-org99f32e5" class="outline-2">
+<h2 id="org99f32e5">Evil</h2>
+<div class="outline-text-2" id="text-org99f32e5">
 <p>
 Evil is an extensible vi layer for Emacs. It emulates the main features of Vim, and provides facilities for writing custom extensions.
 </p>
 </div>
-<div id="outline-container-orga14fff4" class="outline-3">
-<h3 id="orga14fff4"><a href="https://github.com/emacs-evil/evil">evil-mode</a></h3>
-<div class="outline-text-3" id="text-orga14fff4">
+<div id="outline-container-org5b0c4a7" class="outline-3">
+<h3 id="org5b0c4a7"><a href="https://github.com/emacs-evil/evil">evil-mode</a></h3>
+<div class="outline-text-3" id="text-org5b0c4a7">
 <p>
 Base package for <code>evil-mode</code>
 </p>
@@ -1098,7 +1115,7 @@ Base package for <code>evil-mode</code>
         evil-want-integration t<span style="color: #93a8c6;">)</span>
   <span style="color: #fe8019;">:custom</span>
   <span style="color: #93a8c6;">(</span>evil-want-C-u-scroll t<span style="color: #93a8c6;">)</span>
-  <span style="color: #93a8c6;">(</span>evil-want-C-i-jump nil<span style="color: #93a8c6;">)</span>
+  <span style="color: #93a8c6;">(</span>evil-want-C-i-jump t<span style="color: #93a8c6;">)</span>
   <span style="color: #fe8019;">:config</span>
   <span style="color: #93a8c6;">(</span>evil-mode 1<span style="color: #93a8c6;">)</span>
   <span style="color: #93a8c6;">(</span>evil-set-undo-system 'undo-redo<span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
@@ -1106,9 +1123,9 @@ Base package for <code>evil-mode</code>
 </div>
 </div>
 </div>
-<div id="outline-container-org9a7bedb" class="outline-3">
-<h3 id="org9a7bedb"><a href="https://github.com/syl20bnr/evil-escape">evil-escape</a></h3>
-<div class="outline-text-3" id="text-org9a7bedb">
+<div id="outline-container-orgaebee25" class="outline-3">
+<h3 id="orgaebee25"><a href="https://github.com/syl20bnr/evil-escape">evil-escape</a></h3>
+<div class="outline-text-3" id="text-orgaebee25">
 <p>
 Unfortunately we need a separate package to handle custom &lt;ESC&gt; key sequences.
 </p>
@@ -1124,9 +1141,9 @@ Unfortunately we need a separate package to handle custom &lt;ESC&gt; key sequen
 </div>
 </div>
 </div>
-<div id="outline-container-org7f62049" class="outline-3">
-<h3 id="org7f62049"><a href="https://github.com/emacs-evil/evil-surround">evil-surround</a></h3>
-<div class="outline-text-3" id="text-org7f62049">
+<div id="outline-container-org02d60a4" class="outline-3">
+<h3 id="org02d60a4"><a href="https://github.com/emacs-evil/evil-surround">evil-surround</a></h3>
+<div class="outline-text-3" id="text-org02d60a4">
 <p>
 Useful package for adding, editing or removing all types of surrounding characters (even HTML tags!).
 </p>
@@ -1141,9 +1158,9 @@ Useful package for adding, editing or removing all types of surrounding characte
 </div>
 </div>
 </div>
-<div id="outline-container-orge118fb1" class="outline-3">
-<h3 id="orge118fb1"><a href="https://github.com/gabesoft/evil-mc">evil-mc</a></h3>
-<div class="outline-text-3" id="text-orge118fb1">
+<div id="outline-container-orgb9d0145" class="outline-3">
+<h3 id="orgb9d0145"><a href="https://github.com/gabesoft/evil-mc">evil-mc</a></h3>
+<div class="outline-text-3" id="text-orgb9d0145">
 <p>
 Multiple cursors implementation for evil-mode.
 </p>
@@ -1157,9 +1174,9 @@ Multiple cursors implementation for evil-mode.
 </div>
 </div>
 </div>
-<div id="outline-container-orgb40e27c" class="outline-3">
-<h3 id="orgb40e27c"><a href="https://github.com/linktohack/evil-commentary">evil-commentary</a></h3>
-<div class="outline-text-3" id="text-orgb40e27c">
+<div id="outline-container-orgded2c19" class="outline-3">
+<h3 id="orgded2c19"><a href="https://github.com/linktohack/evil-commentary">evil-commentary</a></h3>
+<div class="outline-text-3" id="text-orgded2c19">
 <p>
 Evil bindings for commenting out chunks of code.
 </p>
@@ -1173,9 +1190,9 @@ Evil bindings for commenting out chunks of code.
 </div>
 </div>
 </div>
-<div id="outline-container-orge517c9b" class="outline-3">
-<h3 id="orge517c9b"><a href="https://github.com/emacs-evil/evil-collection">evil-collection</a></h3>
-<div class="outline-text-3" id="text-orge517c9b">
+<div id="outline-container-orga167cec" class="outline-3">
+<h3 id="orga167cec"><a href="https://github.com/emacs-evil/evil-collection">evil-collection</a></h3>
+<div class="outline-text-3" id="text-orga167cec">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #8c8c8c;">(</span><span style="color: #cc6666; font-weight: bold;">use-package</span> <span style="color: #d3869b;">evil-collection</span>
   <span style="color: #fe8019;">:straight</span> t
@@ -1189,14 +1206,25 @@ Evil bindings for commenting out chunks of code.
 </div>
 </div>
 </div>
+<div id="outline-container-orgb3faa63" class="outline-3">
+<h3 id="orgb3faa63"><a href="https://github.com/Andrew-William-Smith/evil-fringe-mark">evil-fringe-mark</a></h3>
+<div class="outline-text-3" id="text-orgb3faa63">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: #8c8c8c;">(</span><span style="color: #cc6666; font-weight: bold;">use-package</span> <span style="color: #d3869b;">evil-fringe-mark</span>
+  <span style="color: #fe8019;">:straight</span> t
+  <span style="color: #fe8019;">:init</span> <span style="color: #93a8c6;">(</span>global-evil-fringe-mark-mode<span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
+</pre>
 </div>
-<div id="outline-container-org0eb8b8c" class="outline-2">
-<h2 id="org0eb8b8c">Calendar</h2>
-<div class="outline-text-2" id="text-org0eb8b8c">
 </div>
-<div id="outline-container-org0dccc94" class="outline-3">
-<h3 id="org0dccc94"><a href="https://github.com/kiwanami/emacs-calfw/">calfw</a></h3>
-<div class="outline-text-3" id="text-org0dccc94">
+</div>
+</div>
+<div id="outline-container-orgd60104f" class="outline-2">
+<h2 id="orgd60104f">Calendar</h2>
+<div class="outline-text-2" id="text-orgd60104f">
+</div>
+<div id="outline-container-org26be822" class="outline-3">
+<h3 id="org26be822"><a href="https://github.com/kiwanami/emacs-calfw/">calfw</a></h3>
+<div class="outline-text-3" id="text-org26be822">
 <p>
 This program displays a calendar view in the Emacs buffer.
 </p>
@@ -1209,13 +1237,13 @@ This program displays a calendar view in the Emacs buffer.
 </div>
 </div>
 </div>
-<div id="outline-container-orgb29a9df" class="outline-2">
-<h2 id="orgb29a9df">Org-mode</h2>
-<div class="outline-text-2" id="text-orgb29a9df">
+<div id="outline-container-org25ed78d" class="outline-2">
+<h2 id="org25ed78d">Org-mode</h2>
+<div class="outline-text-2" id="text-org25ed78d">
 </div>
-<div id="outline-container-orgef47d65" class="outline-3">
-<h3 id="orgef47d65">org</h3>
-<div class="outline-text-3" id="text-orgef47d65">
+<div id="outline-container-org3c5366e" class="outline-3">
+<h3 id="org3c5366e">org</h3>
+<div class="outline-text-3" id="text-org3c5366e">
 <p>
 Org mode is for keeping notes, maintaining to-do lists, planning projects, authoring documents,
 computational notebooks, literate programming and more — in a fast and effective plain text system
@@ -1273,9 +1301,9 @@ computational notebooks, literate programming and more — in a fast and effecti
 </div>
 </div>
 </div>
-<div id="outline-container-orgf779b20" class="outline-3">
-<h3 id="orgf779b20"><a href="https://github.com/yjwen/org-reveal">ox-reveal</a></h3>
-<div class="outline-text-3" id="text-orgf779b20">
+<div id="outline-container-org4a05672" class="outline-3">
+<h3 id="org4a05672"><a href="https://github.com/yjwen/org-reveal">ox-reveal</a></h3>
+<div class="outline-text-3" id="text-org4a05672">
 <p>
 Reveal.js presentation back-end for org export engine.
 </p>
@@ -1293,9 +1321,9 @@ Reveal.js presentation back-end for org export engine.
 </div>
 </div>
 </div>
-<div id="outline-container-org753a583" class="outline-3">
-<h3 id="org753a583">calfw-org</h3>
-<div class="outline-text-3" id="text-org753a583">
+<div id="outline-container-org5ffdaf4" class="outline-3">
+<h3 id="org5ffdaf4">calfw-org</h3>
+<div class="outline-text-3" id="text-org5ffdaf4">
 <p>
 Display org schedules.
 </p>
@@ -1310,9 +1338,9 @@ Display org schedules.
 </div>
 </div>
 </div>
-<div id="outline-container-org201ac10" class="outline-3">
-<h3 id="org201ac10"><a href="https://github.com/hniksic/emacs-htmlize">htmlize</a></h3>
-<div class="outline-text-3" id="text-org201ac10">
+<div id="outline-container-orgeb662a3" class="outline-3">
+<h3 id="orgeb662a3"><a href="https://github.com/hniksic/emacs-htmlize">htmlize</a></h3>
+<div class="outline-text-3" id="text-orgeb662a3">
 <p>
 Used for exporting source code with syntax highlighting.
 </p>
@@ -1325,13 +1353,13 @@ Used for exporting source code with syntax highlighting.
 </div>
 </div>
 </div>
-<div id="outline-container-org52a1b10" class="outline-2">
-<h2 id="org52a1b10">Keybindings</h2>
-<div class="outline-text-2" id="text-org52a1b10">
+<div id="outline-container-org8bfed7a" class="outline-2">
+<h2 id="org8bfed7a">Keybindings</h2>
+<div class="outline-text-2" id="text-org8bfed7a">
 </div>
-<div id="outline-container-org2ef93b7" class="outline-3">
-<h3 id="org2ef93b7"><a href="https://github.com/noctuid/general.el">General</a></h3>
-<div class="outline-text-3" id="text-org2ef93b7">
+<div id="outline-container-org9f31d29" class="outline-3">
+<h3 id="org9f31d29"><a href="https://github.com/noctuid/general.el">General</a></h3>
+<div class="outline-text-3" id="text-org9f31d29">
 <p>
 More convenient key definitions.
 </p>
@@ -1436,9 +1464,9 @@ More convenient key definitions.
 </div>
 </div>
 </div>
-<div id="outline-container-org06ffe75" class="outline-3">
-<h3 id="org06ffe75"><a href="https://github.com/justbur/emacs-which-key">Which-key</a></h3>
-<div class="outline-text-3" id="text-org06ffe75">
+<div id="outline-container-org7e224ae" class="outline-3">
+<h3 id="org7e224ae"><a href="https://github.com/justbur/emacs-which-key">Which-key</a></h3>
+<div class="outline-text-3" id="text-org7e224ae">
 <p>
 Package that displays available keybindings in a popup.
 </p>
@@ -1454,13 +1482,13 @@ Package that displays available keybindings in a popup.
 </div>
 </div>
 </div>
-<div id="outline-container-orgea1b7a0" class="outline-2">
-<h2 id="orgea1b7a0">Source Control</h2>
-<div class="outline-text-2" id="text-orgea1b7a0">
+<div id="outline-container-orgb210f10" class="outline-2">
+<h2 id="orgb210f10">Source Control</h2>
+<div class="outline-text-2" id="text-orgb210f10">
 </div>
-<div id="outline-container-org6f2f49d" class="outline-3">
-<h3 id="org6f2f49d"><a href="https://github.com/magit/magit">Magit</a></h3>
-<div class="outline-text-3" id="text-org6f2f49d">
+<div id="outline-container-org10e048b" class="outline-3">
+<h3 id="org10e048b"><a href="https://github.com/magit/magit">Magit</a></h3>
+<div class="outline-text-3" id="text-org10e048b">
 <p>
 General source control package. Has a nice interface for every git operation there is.
 </p>
@@ -1479,9 +1507,9 @@ General source control package. Has a nice interface for every git operation the
 </div>
 </div>
 </div>
-<div id="outline-container-org7fc3356" class="outline-3">
-<h3 id="org7fc3356"><a href="https://github.com/syohex/emacs-git-gutter-fringe">Git Gutter</a></h3>
-<div class="outline-text-3" id="text-org7fc3356">
+<div id="outline-container-org55e6050" class="outline-3">
+<h3 id="org55e6050"><a href="https://github.com/syohex/emacs-git-gutter-fringe">Git Gutter</a></h3>
+<div class="outline-text-3" id="text-org55e6050">
 <p>
 Commit diff and other repo informations. Has the capability to stage hunks and what-not.
 </p>
@@ -1509,9 +1537,9 @@ Commit diff and other repo informations. Has the capability to stage hunks and w
 </div>
 </div>
 </div>
-<div id="outline-container-orgc986a5a" class="outline-2">
-<h2 id="orgc986a5a">Encryption</h2>
-<div class="outline-text-2" id="text-orgc986a5a">
+<div id="outline-container-org7e1e8ac" class="outline-2">
+<h2 id="org7e1e8ac">Encryption</h2>
+<div class="outline-text-2" id="text-org7e1e8ac">
 <p>
 Interface for GPG, setup for transparent encryption and decryption:
 </p>
@@ -1527,13 +1555,13 @@ Interface for GPG, setup for transparent encryption and decryption:
 </div>
 </div>
 </div>
-<div id="outline-container-org524fda2" class="outline-2">
-<h2 id="org524fda2">File Management</h2>
-<div class="outline-text-2" id="text-org524fda2">
+<div id="outline-container-org327cf16" class="outline-2">
+<h2 id="org327cf16">File Management</h2>
+<div class="outline-text-2" id="text-org327cf16">
 </div>
-<div id="outline-container-org9069c6f" class="outline-3">
-<h3 id="org9069c6f"><a href="https://github.com/ralesi/ranger.el">Ranger</a></h3>
-<div class="outline-text-3" id="text-org9069c6f">
+<div id="outline-container-org39d9173" class="outline-3">
+<h3 id="org39d9173"><a href="https://github.com/ralesi/ranger.el">Ranger</a></h3>
+<div class="outline-text-3" id="text-org39d9173">
 <p>
 Bringing the goodness of ranger to dired!
 </p>
@@ -1553,13 +1581,13 @@ Bringing the goodness of ranger to dired!
 </div>
 </div>
 </div>
-<div id="outline-container-orgdfb8c29" class="outline-2">
-<h2 id="orgdfb8c29">Project Management</h2>
-<div class="outline-text-2" id="text-orgdfb8c29">
+<div id="outline-container-org427d1d3" class="outline-2">
+<h2 id="org427d1d3">Project Management</h2>
+<div class="outline-text-2" id="text-org427d1d3">
 </div>
-<div id="outline-container-org9308b88" class="outline-3">
-<h3 id="org9308b88"><a href="https://github.com/Alexander-Miller/treemacs">Treemacs</a></h3>
-<div class="outline-text-3" id="text-org9308b88">
+<div id="outline-container-orgdacd0e1" class="outline-3">
+<h3 id="orgdacd0e1"><a href="https://github.com/Alexander-Miller/treemacs">Treemacs</a></h3>
+<div class="outline-text-3" id="text-orgdacd0e1">
 <p>
 A tree layout file explorer.
 </p>
@@ -1605,9 +1633,9 @@ it will inform treemacs about (un)staging of files and commits happening in magi
 </div>
 </div>
 </div>
-<div id="outline-container-org2fab732" class="outline-3">
-<h3 id="org2fab732"><a href="https://github.com/bbatsov/projectile">Projectile</a></h3>
-<div class="outline-text-3" id="text-org2fab732">
+<div id="outline-container-orgb724432" class="outline-3">
+<h3 id="orgb724432"><a href="https://github.com/bbatsov/projectile">Projectile</a></h3>
+<div class="outline-text-3" id="text-orgb724432">
 <p>
 Project interaction library.
 </p>
@@ -1618,13 +1646,14 @@ Project interaction library.
   <span style="color: #fe8019;">:custom</span>
   <span style="color: #93a8c6;">(</span>projectile-enable-caching t<span style="color: #93a8c6;">)</span>
   <span style="color: #fe8019;">:config</span>
+  <span style="color: #93a8c6;">(</span><span style="color: #cc6666; font-weight: bold;">setq</span> projectile-indexing-method 'alien<span style="color: #93a8c6;">)</span>
   <span style="color: #93a8c6;">(</span>projectile-mode<span style="color: #93a8c6;">)</span><span style="color: #8c8c8c;">)</span>
 </pre>
 </div>
 </div>
-<div id="outline-container-org089e1e8" class="outline-3">
-<h3 id="org089e1e8"><a href="https://github.com/ericdanan/counsel-projectile">projectile/counsel</a></h3>
-<div class="outline-text-3" id="text-org089e1e8">
+<div id="outline-container-org272efd3" class="outline-3">
+<h3 id="org272efd3"><a href="https://github.com/ericdanan/counsel-projectile">projectile/counsel</a></h3>
+<div class="outline-text-3" id="text-org272efd3">
 <p>
 <code>ivy</code> UI for Projectile.
 </p>
@@ -1647,13 +1676,13 @@ Project interaction library.
 </div>
 </div>
 </div>
-<div id="outline-container-orgf275603" class="outline-2">
-<h2 id="orgf275603">Syntax Checking</h2>
-<div class="outline-text-2" id="text-orgf275603">
+<div id="outline-container-org8b22ed9" class="outline-2">
+<h2 id="org8b22ed9">Syntax Checking</h2>
+<div class="outline-text-2" id="text-org8b22ed9">
 </div>
-<div id="outline-container-orgf6cce11" class="outline-3">
-<h3 id="orgf6cce11"><a href="https://github.com/flycheck/flycheck">Flycheck</a></h3>
-<div class="outline-text-3" id="text-orgf6cce11">
+<div id="outline-container-org2e9f752" class="outline-3">
+<h3 id="org2e9f752"><a href="https://github.com/flycheck/flycheck">Flycheck</a></h3>
+<div class="outline-text-3" id="text-org2e9f752">
 <p>
 Modern on-the-fly syntax checking extension.
 </p>
@@ -1672,16 +1701,16 @@ Modern on-the-fly syntax checking extension.
 </div>
 </div>
 </div>
-<div id="outline-container-org99ee193" class="outline-2">
-<h2 id="org99ee193">Language Modes</h2>
-<div class="outline-text-2" id="text-org99ee193">
+<div id="outline-container-org667b4d0" class="outline-2">
+<h2 id="org667b4d0">Language Modes</h2>
+<div class="outline-text-2" id="text-org667b4d0">
 <p>
 Base language packages.
 </p>
 </div>
-<div id="outline-container-orgdae2697" class="outline-3">
-<h3 id="orgdae2697"><a href="https://github.com/rust-lang/rust-mode">Rust</a></h3>
-<div class="outline-text-3" id="text-orgdae2697">
+<div id="outline-container-org7a5408c" class="outline-3">
+<h3 id="org7a5408c"><a href="https://github.com/rust-lang/rust-mode">Rust</a></h3>
+<div class="outline-text-3" id="text-org7a5408c">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #8c8c8c;">(</span><span style="color: #cc6666; font-weight: bold;">use-package</span> <span style="color: #d3869b;">rust-mode</span>
   <span style="color: #fe8019;">:straight</span> t<span style="color: #8c8c8c;">)</span>
@@ -1689,9 +1718,9 @@ Base language packages.
 </div>
 </div>
 </div>
-<div id="outline-container-org2197e06" class="outline-3">
-<h3 id="org2197e06"><a href="https://www.emacswiki.org/emacs/RubyMode">Ruby</a></h3>
-<div class="outline-text-3" id="text-org2197e06">
+<div id="outline-container-org9ae37fb" class="outline-3">
+<h3 id="org9ae37fb"><a href="https://www.emacswiki.org/emacs/RubyMode">Ruby</a></h3>
+<div class="outline-text-3" id="text-org9ae37fb">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #8c8c8c;">(</span><span style="color: #cc6666; font-weight: bold;">use-package</span> <span style="color: #d3869b;">ruby-mode</span>
   <span style="color: #fe8019;">:straight</span> t<span style="color: #8c8c8c;">)</span>
@@ -1699,9 +1728,9 @@ Base language packages.
 </div>
 </div>
 </div>
-<div id="outline-container-orgbaea031" class="outline-3">
-<h3 id="orgbaea031"><a href="https://github.com/mooz/js2-mode">Javascript</a></h3>
-<div class="outline-text-3" id="text-orgbaea031">
+<div id="outline-container-org55fe5f9" class="outline-3">
+<h3 id="org55fe5f9"><a href="https://github.com/mooz/js2-mode">Javascript</a></h3>
+<div class="outline-text-3" id="text-org55fe5f9">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #8c8c8c;">(</span><span style="color: #cc6666; font-weight: bold;">use-package</span> <span style="color: #d3869b;">js2-mode</span>
   <span style="color: #fe8019;">:straight</span> t
@@ -1714,9 +1743,9 @@ Base language packages.
 </div>
 </div>
 </div>
-<div id="outline-container-org2a3cd30" class="outline-3">
-<h3 id="org2a3cd30"><a href="https://github.com/felipeochoa/rjsx-mode">RSJX</a></h3>
-<div class="outline-text-3" id="text-org2a3cd30">
+<div id="outline-container-org48832a0" class="outline-3">
+<h3 id="org48832a0"><a href="https://github.com/felipeochoa/rjsx-mode">RSJX</a></h3>
+<div class="outline-text-3" id="text-org48832a0">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #8c8c8c;">(</span><span style="color: #cc6666; font-weight: bold;">use-package</span> <span style="color: #d3869b;">rjsx-mode</span>
   <span style="color: #fe8019;">:straight</span> t<span style="color: #8c8c8c;">)</span>
@@ -1724,19 +1753,21 @@ Base language packages.
 </div>
 </div>
 </div>
-<div id="outline-container-org88053ad" class="outline-3">
-<h3 id="org88053ad"><a href="https://github.com/emacs-typescript/typescript.el">Typescript</a></h3>
-<div class="outline-text-3" id="text-org88053ad">
+<div id="outline-container-org1eaed47" class="outline-3">
+<h3 id="org1eaed47"><a href="https://github.com/emacs-typescript/typescript.el">Typescript</a></h3>
+<div class="outline-text-3" id="text-org1eaed47">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #8c8c8c;">(</span><span style="color: #cc6666; font-weight: bold;">use-package</span> <span style="color: #d3869b;">typescript-mode</span>
+  <span style="color: #fe8019;">:custom</span>
+  <span style="color: #93a8c6;">(</span>typescript-indent-level 2<span style="color: #93a8c6;">)</span>
   <span style="color: #fe8019;">:straight</span> t<span style="color: #8c8c8c;">)</span>
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org9d0a872" class="outline-3">
-<h3 id="org9d0a872"><a href="https://github.com/fxbois/web-mode">Web</a></h3>
-<div class="outline-text-3" id="text-org9d0a872">
+<div id="outline-container-org6f35fee" class="outline-3">
+<h3 id="org6f35fee"><a href="https://github.com/fxbois/web-mode">Web</a></h3>
+<div class="outline-text-3" id="text-org6f35fee">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #8c8c8c;">(</span><span style="color: #cc6666; font-weight: bold;">use-package</span> <span style="color: #d3869b;">web-mode</span>
   <span style="color: #fe8019;">:straight</span> t
@@ -1747,9 +1778,9 @@ Base language packages.
 </div>
 </div>
 </div>
-<div id="outline-container-org4b72394" class="outline-3">
-<h3 id="org4b72394"><a href="https://github.com/emacsmirror/python-mode">Python</a></h3>
-<div class="outline-text-3" id="text-org4b72394">
+<div id="outline-container-org7ff5582" class="outline-3">
+<h3 id="org7ff5582"><a href="https://github.com/emacsmirror/python-mode">Python</a></h3>
+<div class="outline-text-3" id="text-org7ff5582">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #8c8c8c;">(</span><span style="color: #cc6666; font-weight: bold;">use-package</span> <span style="color: #d3869b;">python-mode</span>
   <span style="color: #fe8019;">:straight</span> t
@@ -1759,13 +1790,13 @@ Base language packages.
 </div>
 </div>
 </div>
-<div id="outline-container-orgff9e23f" class="outline-2">
-<h2 id="orgff9e23f">Language Server Protocol</h2>
-<div class="outline-text-2" id="text-orgff9e23f">
+<div id="outline-container-org087dcef" class="outline-2">
+<h2 id="org087dcef">Language Server Protocol</h2>
+<div class="outline-text-2" id="text-org087dcef">
 </div>
-<div id="outline-container-org4c09c71" class="outline-3">
-<h3 id="org4c09c71"><a href="https://github.com/emacs-lsp/lsp-mode">LSP</a></h3>
-<div class="outline-text-3" id="text-org4c09c71">
+<div id="outline-container-org40ba5f4" class="outline-3">
+<h3 id="org40ba5f4"><a href="https://github.com/emacs-lsp/lsp-mode">LSP</a></h3>
+<div class="outline-text-3" id="text-org40ba5f4">
 <p>
 <code>lsp-mode</code> aims to provide IDE-like experience by providing optional integration with the most popular Emacs packages like <code>company</code>, <code>flycheck</code> and <code>projectile</code>.
 </p>
@@ -1776,6 +1807,7 @@ Base language packages.
   <span style="color: #fe8019;">:general</span>
   <span style="color: #93a8c6;">(</span><span style="color: #cc6666; font-weight: bold;">nmap</span>
     <span style="color: #fe8019;">:prefix</span> globals--leader-key
+    <span style="color: #476562;">"la"</span> 'lsp-execute-code-action
     <span style="color: #476562;">"lF"</span> 'lsp-format-buffer
     <span style="color: #476562;">"lR"</span> 'lsp-rename<span style="color: #93a8c6;">)</span>
   <span style="color: #fe8019;">:hook</span> <span style="color: #93a8c6;">(</span><span style="color: #b0b1a3;">(</span>js2-mode        . lsp-deferred<span style="color: #b0b1a3;">)</span>
@@ -1791,9 +1823,9 @@ Base language packages.
 </pre>
 </div>
 </div>
-<div id="outline-container-org1287af5" class="outline-3">
-<h3 id="org1287af5"><a href="https://github.com/emacs-lsp/lsp-ui">LSP-UI</a></h3>
-<div class="outline-text-3" id="text-org1287af5">
+<div id="outline-container-org3f13a20" class="outline-3">
+<h3 id="org3f13a20"><a href="https://github.com/emacs-lsp/lsp-ui">LSP-UI</a></h3>
+<div class="outline-text-3" id="text-org3f13a20">
 <p>
 Higher level UI modules of <code>lsp-mode</code>.
 </p>
@@ -1810,8 +1842,8 @@ Higher level UI modules of <code>lsp-mode</code>.
     <span style="color: #476562;">"li"</span> 'lsp-ui-peek-find-implementation
     <span style="color: #476562;">"lr"</span> 'lsp-ui-peek-find-references
     <span style="color: #476562;">"ld"</span> 'lsp-ui-peek-find-definitions
-    <span style="color: #476562;">"ll"</span> 'lsp-ui-flycheck-list
-    <span style="color: #476562;">"la"</span> 'lsp-ui-sideline-apply-code-actions<span style="color: #93a8c6;">)</span>
+    <span style="color: #476562;">"lg"</span> 'lsp-ui-doc-glance
+    <span style="color: #476562;">"ll"</span> 'lsp-ui-flycheck-list<span style="color: #93a8c6;">)</span>
   <span style="color: #fe8019;">:custom</span>
   <span style="color: #93a8c6;">(</span>lsp-ui-doc-enable t<span style="color: #93a8c6;">)</span>
   <span style="color: #93a8c6;">(</span>lsp-ui-sideline-enable t<span style="color: #93a8c6;">)</span>
@@ -1826,13 +1858,13 @@ Higher level UI modules of <code>lsp-mode</code>.
 </div>
 </div>
 </div>
-<div id="outline-container-org07c11bb" class="outline-2">
-<h2 id="org07c11bb">Buffers and Windows</h2>
-<div class="outline-text-2" id="text-org07c11bb">
+<div id="outline-container-org98a8f21" class="outline-2">
+<h2 id="org98a8f21">Buffers and Windows</h2>
+<div class="outline-text-2" id="text-org98a8f21">
 </div>
-<div id="outline-container-orgbb08919" class="outline-3">
-<h3 id="orgbb08919"><a href="https://github.com/deb0ch/emacs-winum">Winum</a></h3>
-<div class="outline-text-3" id="text-orgbb08919">
+<div id="outline-container-org54c2ddb" class="outline-3">
+<h3 id="org54c2ddb"><a href="https://github.com/deb0ch/emacs-winum">Winum</a></h3>
+<div class="outline-text-3" id="text-org54c2ddb">
 <p>
 Numbering for buffers, windows and <code>eyebrowse</code> workspaces.
 </p>
@@ -1849,9 +1881,9 @@ Numbering for buffers, windows and <code>eyebrowse</code> workspaces.
 </div>
 </div>
 </div>
-<div id="outline-container-org7731488" class="outline-3">
-<h3 id="org7731488"><a href="https://github.com/wasamasa/eyebrowse">Eyebrowse</a></h3>
-<div class="outline-text-3" id="text-org7731488">
+<div id="outline-container-orgdd19eb0" class="outline-3">
+<h3 id="orgdd19eb0"><a href="https://github.com/wasamasa/eyebrowse">Eyebrowse</a></h3>
+<div class="outline-text-3" id="text-orgdd19eb0">
 <p>
 A simple-minded way of managing window configs in emacs.
 </p>
@@ -1868,9 +1900,9 @@ A simple-minded way of managing window configs in emacs.
 </div>
 </div>
 </div>
-<div id="outline-container-org6004bbb" class="outline-3">
-<h3 id="org6004bbb"><a href="https://www.emacswiki.org/emacs/WindMove">windmove</a></h3>
-<div class="outline-text-3" id="text-org6004bbb">
+<div id="outline-container-org8d99c33" class="outline-3">
+<h3 id="org8d99c33"><a href="https://www.emacswiki.org/emacs/WindMove">windmove</a></h3>
+<div class="outline-text-3" id="text-org8d99c33">
 <p>
 Windmove is used for moving buffers to other windows.
 </p>
@@ -1891,9 +1923,9 @@ Windmove is used for moving buffers to other windows.
 </div>
 </div>
 </div>
-<div id="outline-container-org8de0d33" class="outline-3">
-<h3 id="org8de0d33">Focus on newly created windows</h3>
-<div class="outline-text-3" id="text-org8de0d33">
+<div id="outline-container-orgada27ff" class="outline-3">
+<h3 id="orgada27ff">Focus on newly created windows</h3>
+<div class="outline-text-3" id="text-orgada27ff">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #8c8c8c;">(</span><span style="color: #cc6666; font-weight: bold;">defun</span> <span style="color: #777777;">split-and-follow-horizontally</span> <span style="color: #93a8c6;">()</span>
   <span style="color: #93a8c6;">(</span><span style="color: #cc6666; font-weight: bold;">interactive</span><span style="color: #93a8c6;">)</span>
@@ -1911,13 +1943,13 @@ Windmove is used for moving buffers to other windows.
 </div>
 </div>
 </div>
-<div id="outline-container-org5e3fbca" class="outline-2">
-<h2 id="org5e3fbca">Navigation</h2>
-<div class="outline-text-2" id="text-org5e3fbca">
+<div id="outline-container-org207e731" class="outline-2">
+<h2 id="org207e731">Navigation</h2>
+<div class="outline-text-2" id="text-org207e731">
 </div>
-<div id="outline-container-orgbe364b6" class="outline-3">
-<h3 id="orgbe364b6"><a href="https://github.com/abo-abo/swiper">Ivy</a></h3>
-<div class="outline-text-3" id="text-orgbe364b6">
+<div id="outline-container-orgd259c52" class="outline-3">
+<h3 id="orgd259c52"><a href="https://github.com/abo-abo/swiper">Ivy</a></h3>
+<div class="outline-text-3" id="text-orgd259c52">
 <p>
 <code>avy</code> is similar to Vim's easymotion plugin, it provides commands for jumping to visible text using a char-based decision tree.
 </p>
@@ -1950,9 +1982,9 @@ Windmove is used for moving buffers to other windows.
 </div>
 </div>
 </div>
-<div id="outline-container-org5f2a664" class="outline-3">
-<h3 id="org5f2a664"><a href="https://github.com/abo-abo/swiper">Ivy/Counsel</a></h3>
-<div class="outline-text-3" id="text-org5f2a664">
+<div id="outline-container-org0b4f183" class="outline-3">
+<h3 id="org0b4f183"><a href="https://github.com/abo-abo/swiper">Ivy/Counsel</a></h3>
+<div class="outline-text-3" id="text-org0b4f183">
 <p>
 Completion frontend for things such as <code>M-x find-file</code>.
 </p>
@@ -1971,9 +2003,9 @@ Completion frontend for things such as <code>M-x find-file</code>.
 </div>
 </div>
 </div>
-<div id="outline-container-orga8c9b79" class="outline-3">
-<h3 id="orga8c9b79"><a href="https://github.com/DarthFennec/highlight-indent-guides">Highlight Indent Guides</a></h3>
-<div class="outline-text-3" id="text-orga8c9b79">
+<div id="outline-container-orgd5aacdb" class="outline-3">
+<h3 id="orgd5aacdb"><a href="https://github.com/DarthFennec/highlight-indent-guides">Highlight Indent Guides</a></h3>
+<div class="outline-text-3" id="text-orgd5aacdb">
 <p>
 Indentation highlights via <code>font-lock</code>
 </p>
@@ -1989,13 +2021,13 @@ Indentation highlights via <code>font-lock</code>
 </div>
 </div>
 </div>
-<div id="outline-container-org6176425" class="outline-2">
-<h2 id="org6176425">Editing</h2>
-<div class="outline-text-2" id="text-org6176425">
+<div id="outline-container-org8ee8672" class="outline-2">
+<h2 id="org8ee8672">Editing</h2>
+<div class="outline-text-2" id="text-org8ee8672">
 </div>
-<div id="outline-container-org98028f4" class="outline-3">
-<h3 id="org98028f4"><a href="https://github.com/larstvei/Focus">Focus</a></h3>
-<div class="outline-text-3" id="text-org98028f4">
+<div id="outline-container-org5436b44" class="outline-3">
+<h3 id="org5436b44"><a href="https://github.com/larstvei/Focus">Focus</a></h3>
+<div class="outline-text-3" id="text-org5436b44">
 <p>
 Dim the font color of text in surrounding paragraphs.
 </p>
@@ -2014,9 +2046,9 @@ Dim the font color of text in surrounding paragraphs.
 </div>
 </div>
 </div>
-<div id="outline-container-org5c5628f" class="outline-3">
-<h3 id="org5c5628f"><a href="https://elpa.gnu.org/packages/undo-tree.html">Undo-tree</a></h3>
-<div class="outline-text-3" id="text-org5c5628f">
+<div id="outline-container-org05bd3d9" class="outline-3">
+<h3 id="org05bd3d9"><a href="https://elpa.gnu.org/packages/undo-tree.html">Undo-tree</a></h3>
+<div class="outline-text-3" id="text-org05bd3d9">
 <p>
 Branching tree of changes made in a file.
 </p>
@@ -2032,9 +2064,9 @@ Branching tree of changes made in a file.
 </div>
 </div>
 </div>
-<div id="outline-container-org9fab1b6" class="outline-3">
-<h3 id="org9fab1b6"><a href="https://github.com/gregsexton/origami.el">Origami</a></h3>
-<div class="outline-text-3" id="text-org9fab1b6">
+<div id="outline-container-org26c97af" class="outline-3">
+<h3 id="org26c97af"><a href="https://github.com/gregsexton/origami.el">Origami</a></h3>
+<div class="outline-text-3" id="text-org26c97af">
 <p>
 A text folding minor mode for Emacs.
 With this minor mode enabled, you can collapse and expand regions of text.
@@ -2052,13 +2084,13 @@ With this minor mode enabled, you can collapse and expand regions of text.
 </div>
 </div>
 </div>
-<div id="outline-container-orgfa41d37" class="outline-2">
-<h2 id="orgfa41d37">Templates</h2>
-<div class="outline-text-2" id="text-orgfa41d37">
+<div id="outline-container-org53d1208" class="outline-2">
+<h2 id="org53d1208">Templates</h2>
+<div class="outline-text-2" id="text-org53d1208">
 </div>
-<div id="outline-container-org0c47b97" class="outline-3">
-<h3 id="org0c47b97"><a href="https://github.com/joaotavora/yasnippet">Yasnippet</a></h3>
-<div class="outline-text-3" id="text-org0c47b97">
+<div id="outline-container-org57329c5" class="outline-3">
+<h3 id="org57329c5"><a href="https://github.com/joaotavora/yasnippet">Yasnippet</a></h3>
+<div class="outline-text-3" id="text-org57329c5">
 <p>
 A snippet template system.
 </p>
@@ -2099,9 +2131,9 @@ Solve conflicts between company-mode and yasnippet-mode.
 </div>
 </div>
 </div>
-<div id="outline-container-org9321d39" class="outline-3">
-<h3 id="org9321d39"><a href="https://github.com/AndreaCrotti/yasnippet-snippets">Yasnippet/snippets</a></h3>
-<div class="outline-text-3" id="text-org9321d39">
+<div id="outline-container-orgeade018" class="outline-3">
+<h3 id="orgeade018"><a href="https://github.com/AndreaCrotti/yasnippet-snippets">Yasnippet/snippets</a></h3>
+<div class="outline-text-3" id="text-orgeade018">
 <p>
 A collection of <code>yasnippet</code> snippets for many languages
 </p>
@@ -2115,13 +2147,13 @@ A collection of <code>yasnippet</code> snippets for many languages
 </div>
 </div>
 </div>
-<div id="outline-container-org1afe61a" class="outline-2">
-<h2 id="org1afe61a">Discord Presence</h2>
-<div class="outline-text-2" id="text-org1afe61a">
+<div id="outline-container-orgd6aa1f3" class="outline-2">
+<h2 id="orgd6aa1f3">Discord Presence</h2>
+<div class="outline-text-2" id="text-orgd6aa1f3">
 </div>
-<div id="outline-container-orgf669540" class="outline-3">
-<h3 id="orgf669540"><a href="https://github.com/Mstrodl/elcord">elcord</a></h3>
-<div class="outline-text-3" id="text-orgf669540">
+<div id="outline-container-org19d5d9a" class="outline-3">
+<h3 id="org19d5d9a"><a href="https://github.com/Mstrodl/elcord">elcord</a></h3>
+<div class="outline-text-3" id="text-org19d5d9a">
 <p>
 Discord rich presence for emacs.
 </p>
@@ -2143,7 +2175,7 @@ Discord rich presence for emacs.
 <div id="postamble" class="status">
 <p class="date">Date: 2020-02-01 Sat 00:00</p>
 <p class="author">Author: Bruno Coimbra (b-coimbra)</p>
-<p class="date">Created: 2024-06-09 Sun 22:14</p>
+<p class="date">Created: 2024-06-18 Tue 13:24</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

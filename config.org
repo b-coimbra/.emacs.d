@@ -1,0 +1,5 @@
+* Dashboard
+
+  #+begin_src emacs-lisp
+    (setq globals--banner-path "etc/banners/blackhole.png")
+  #+end_src

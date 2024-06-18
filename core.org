@@ -382,6 +382,16 @@
        :hook (prog-mode . rainbow-delimiters-mode))
    #+end_src
 
+** [[https://github.com/domtronn/all-the-icons.el][All the icons]]
+
+   A utility package to collect various Icon Fonts and propertize them within Emacs.
+
+   #+begin_src emacs-lisp
+     (use-package all-the-icons
+       :straight t
+       :if (display-graphic-p))
+   #+end_src
+
 * Modeline
 ** [[https://github.com/seagle0128/doom-modeline][Doom-modeline]]
 
@@ -546,7 +556,7 @@
              evil-want-integration t)
        :custom
        (evil-want-C-u-scroll t)
-       (evil-want-C-i-jump nil)
+       (evil-want-C-i-jump t)
        :config
        (evil-mode 1)
        (evil-set-undo-system 'undo-redo))
@@ -610,6 +620,15 @@
        (evil-collection-minibuffer-setup t)
        :config
        (evil-collection-init))
+   #+end_src
+
+
+** [[https://github.com/Andrew-William-Smith/evil-fringe-mark][evil-fringe-mark]]
+
+   #+begin_src emacs-lisp
+     (use-package evil-fringe-mark
+       :straight t
+       :init (global-evil-fringe-mark-mode))
    #+end_src
 
 * Calendar
@@ -947,6 +966,7 @@
        :custom
        (projectile-enable-caching t)
        :config
+       (setq projectile-indexing-method 'alien)
        (projectile-mode))
    #+end_src
 
@@ -1025,6 +1045,8 @@
 
    #+begin_src emacs-lisp
      (use-package typescript-mode
+       :custom
+       (typescript-indent-level 2)
        :straight t)
    #+end_src
 
@@ -1057,6 +1079,7 @@
        :general
        (nmap
          :prefix globals--leader-key
+         "la" 'lsp-execute-code-action
          "lF" 'lsp-format-buffer
          "lR" 'lsp-rename)
        :hook ((js2-mode        . lsp-deferred)
@@ -1087,8 +1110,8 @@
           "li" 'lsp-ui-peek-find-implementation
           "lr" 'lsp-ui-peek-find-references
           "ld" 'lsp-ui-peek-find-definitions
-          "ll" 'lsp-ui-flycheck-list
-          "la" 'lsp-ui-sideline-apply-code-actions)
+          "lg" 'lsp-ui-doc-glance
+          "ll" 'lsp-ui-flycheck-list)
         :custom
         (lsp-ui-doc-enable t)
         (lsp-ui-sideline-enable t)
