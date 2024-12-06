@@ -511,7 +511,8 @@
        :custom
        (company-begin-commands '(self-insert-command))
        (company-minimum-prefix-length 2)
-       (company-idle-delay 0.1)
+       (company-idle-delay 0.35)
+       (company-tooltip-limit 15)
        (company-show-numbers t)
        (company-tooltip-align-annotations t)
        :config
@@ -524,6 +525,7 @@
                       company-dabbrev-code)))
    #+end_src
 
+
 *** [[https://github.com/emacsorphanage/company-jedi][company-jedi]]
 
     Company backend for Python jedi.
@@ -531,6 +533,7 @@
     #+begin_src emacs-lisp
       (use-package company-jedi
         :straight t
+        :disabled t
         :after company
         :init
         (add-to-list 'company-backends 'company-jedi)
@@ -1091,7 +1094,8 @@
               (ruby-mode       . lsp-deferred))
        :commands (lsp lsp-deferred)
        :config
-       (setq lsp-enable-completion-at-point t))
+       (setq lsp-enable-completion-at-point t
+             lsp-auto-execute-action nil))
    #+end_src
 
 *** [[https://github.com/emacs-lsp/lsp-ui][LSP-UI]]
@@ -1113,13 +1117,13 @@
           "lg" 'lsp-ui-doc-glance
           "ll" 'lsp-ui-flycheck-list)
         :custom
-        (lsp-ui-doc-enable t)
         (lsp-ui-sideline-enable t)
         (lsp-ui-flycheck-enable t)
         (lsp-ui-flycheck-live-reporting t)
         (lsp-ui-sideline-toggle-symbols-info t)
         (lsp-ui-sideline-show-hover t)
-        (lsp-ui-peek-enable t))
+        (lsp-ui-peek-enable t)
+        (lsp-idle-delay 0.500))
     #+end_src
 
 * Buffers and Windows

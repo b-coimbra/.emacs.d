@@ -9,6 +9,9 @@
 (let ((gc-cons-threshold most-positive-fixnum)
       (gc-cons-percentage 0.6))
 
+  ;; Increase the amount of data which Emacs reads from the process
+  (setq read-process-output-max (* 1024 1024)) ;; 1mb
+
   ;; Silence compiler warnings as they can be pretty disruptive
   (if (boundp 'comp-deferred-compilation)
       (setq comp-deferred-compilation nil)
