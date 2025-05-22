@@ -655,7 +655,7 @@
        :init
        (setq org-startup-folded t
              org-element-use-cache nil)
-       :straight t
+       :straight (:type built-in)
        :config
        ;; prettify
        (setq org-hide-macro-markers t
@@ -852,43 +852,27 @@
    #+end_src
 
 * Source Control
-** [[https://github.com/magit/magit][Magit]]
-
-   General source control package. Has a nice interface for every git operation there is.
-
-   #+begin_src emacs-lisp
-     (use-package magit
-       :straight t
-       :defer 3
-       :general
-       (nmap
-         :prefix globals--leader-key
-         "g" '(nil :which-key "magit")
-         "gs" 'magit-status
-         "gb" 'magit-blame))
-   #+end_src
-
 ** [[https://github.com/syohex/emacs-git-gutter-fringe][Git Gutter]]
 
    Commit diff and other repo informations. Has the capability to stage hunks and what-not.
 
    #+begin_src emacs-lisp
-     (use-package git-gutter+
-       :straight t
-       :defer 3
-       :config
-       (global-git-gutter+-mode))
+     ;;(use-package git-gutter+
+     ;;  :straight t
+     ;;  :defer 3
+     ;;  :config
+     ;;  (global-git-gutter+-mode))
    #+end_src
 
    #+begin_src emacs-lisp
-     (use-package git-gutter-fringe+
-       :straight t
-       :after git-gutter+
-       :defer 3
-       :custom
-       (git-gutter-fr+-side 'left-fringe)
-       :config
-       (git-gutter-fr+-minimal))
+     ;;(use-package git-gutter-fringe+
+     ;;  :straight t
+     ;;  :after git-gutter+
+     ;;  :defer 3
+     ;;  :custom
+     ;;  (git-gutter-fr+-side 'left-fringe)
+     ;;  :config
+     ;;  (git-gutter-fr+-minimal))
    #+end_src
 
 * Encryption
@@ -948,15 +932,6 @@
        :straight t
        :demand t
        :after treemacs evil)
-   #+end_src
-
-   =treemacs-magit= is a small utility package to fill the small gaps left
-   by using filewatch-mode and git-mode in conjunction with magit:
-   it will inform treemacs about (un)staging of files and commits happening in magit.
-
-   #+begin_src emacs-lisp
-     (use-package treemacs-magit
-       :straight t)
    #+end_src
 
 ** [[https://github.com/bbatsov/projectile][Projectile]]
