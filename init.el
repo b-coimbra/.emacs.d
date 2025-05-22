@@ -60,8 +60,8 @@
   ;; Prevent package.el loading packages prior to their init-file loading.
   (setq package-enable-at-startup nil)
 
-  ;; Install org-mode
-  (straight-use-package 'org)
+  ;; Use built-in org-mode
+  (straight-use-package '(org :type built-in))
 
   ;; Tangle core configuration
   (org-babel-load-file (expand-file-name "core.org" user-emacs-directory))
